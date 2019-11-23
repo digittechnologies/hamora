@@ -1,0 +1,350 @@
+<div class="vd_head-section clearfix">
+        <div class="vd_panel-header">
+          <ul class="breadcrumb">
+            <li><a href="index.html">Home</a> </li>
+            <li class="active">Dashboard</li>
+          </ul>
+          <div class="vd_panel-menu hidden-sm hidden-xs" data-intro="<strong>Expand Control</strong><br/>To expand content page horizontally, vertically, or Both. If you just need one button just simply remove the other button code." data-step=5  data-position="left">
+<div data-action="remove-navbar" data-original-title="Remove Navigation Bar Toggle" data-toggle="tooltip" data-placement="bottom" class="remove-navbar-button menu"> <i class="fa fa-arrows-h"></i> </div>
+  <div data-action="remove-header" data-original-title="Remove Top Menu Toggle" data-toggle="tooltip" data-placement="bottom" class="remove-header-button menu"> <i class="fa fa-arrows-v"></i> </div>
+  <div data-action="fullscreen" data-original-title="Remove Navigation Bar and Top Menu Toggle" data-toggle="tooltip" data-placement="bottom" class="fullscreen-button menu"> <i class="glyphicon glyphicon-fullscreen"></i> </div>
+  
+</div>
+
+        </div>
+      </div>
+      <!-- vd_head-section -->
+      
+      <div class="vd_title-section clearfix">
+        <div class="vd_panel-header">
+          <h1>Admin Dashboard</h1>
+          <small class="subtitle">Population Dashboard</small>
+          <div class="vd_panel-menu  hidden-xs">
+<div class="menu no-bg vd_red" data-original-title="Start Layout Tour Guide" data-toggle="tooltip" data-placement="bottom" onClick="javascript:introJs().setOption('showBullets', false).start();"> <span class="menu-icon font-md"><i class="fa fa-question-circle"></i></span> </div>
+<!-- menu -->
+
+<!-- <div class="menu">
+<div data-action="click-trigger"> <span class="menu-icon mgr-10"><i class="fa fa-filter"></i></span>Filter <i class="fa fa-angle-down"></i> </div>
+<div class="vd_mega-menu-content width-xs-2 left-xs" data-action="click-target">
+  <div class="child-menu">
+    <div class="content-list content-menu">
+      <ul class="list-wrapper pd-lr-10">
+        <li> <a href="#"> <div class="menu-icon"><i class=" fa fa-user"></i></div> <div class="menu-text">Filter User</div> </a> </li>
+        <li> <a href="#"> <div class="menu-icon"><i class=" fa fa-calendar"></i></div> <div class="menu-text">Filter Date</div> </a> </li>
+      </ul>
+    </div>
+  </div>
+</div>
+</div> -->
+<!-- menu --> 
+</div>
+<!-- vd_panel-menu --> 
+        </div>
+        <!-- vd_panel-header --> 
+      </div>
+      <!-- vd_title-section -->
+      
+      <div class="vd_content-section clearfix">
+        <div class="row">
+          <div class="col-lg-3 col-md-6 col-sm-6 mgbt-sm-15">
+            <div class="vd_status-widget vd_bg-blue widget">
+<div class="vd_panel-menu">
+<div data-action="refresh" data-original-title="Refresh" data-rel="tooltip" class=" menu entypo-icon smaller-font"> <i class="icon-cycle"></i> </div>
+</div>
+<!-- vd_panel-menu --> 
+                             
+<a class="panel-body" href="#">
+        <div class="clearfix">
+            <span class="menu-icon">
+                <i class="fa fa-comment"></i>
+            </span>
+            <span class="menu-value">
+               {{posts[0].all_post}}
+            </span>  
+        </div>   
+        <div class="menu-text clearfix">
+            Total Post
+        </div>                                                               
+</a>        
+</div>                </div>
+          <div class="col-lg-3 col-md-6 col-sm-6 mgbt-sm-15">
+            <div class="vd_status-widget vd_bg-green widget">
+<div class="vd_panel-menu">
+<div data-action="refresh" data-original-title="Refresh" data-rel="tooltip" class=" menu entypo-icon smaller-font"> <i class="icon-cycle"></i> </div>
+</div>
+<!-- vd_panel-menu --> 
+                              
+<a class="panel-body" href="#">
+        <div class="clearfix">
+            <span class="menu-icon">
+                <i class="fa fa-check-circle-o"></i>
+            </span>
+            <span class="menu-value">
+                    {{posts[0].approved}}
+            </span>  
+        </div>   
+        <div class="menu-text clearfix">
+            Approved Post
+        </div>                                                               
+</a>        
+</div>                </div>
+          <div class="col-lg-3 col-md-6 col-sm-6 mgbt-xs-15">
+            <div class="vd_status-widget vd_bg-yellow widget">
+<div class="vd_panel-menu">
+<div data-action="refresh" data-original-title="Refresh" data-rel="tooltip" class=" menu entypo-icon smaller-font"> <i class="icon-cycle"></i> </div>
+</div>
+<!-- vd_panel-menu --> 
+                               
+<a class="panel-body" href="#">
+        <div class="clearfix">
+            <span class="menu-icon">
+                <i class="fa  fa-road"></i>
+            </span>
+            <span class="menu-value">
+                    {{posts[0].pending}}
+            </span>  
+        </div>   
+        <div class="menu-text clearfix">
+            Pending Post
+        </div>                                                               
+</a>        
+</div>                </div>
+          <div class="col-lg-3 col-md-6 col-sm-6 mgbt-xs-15">
+            <div class="vd_status-widget vd_bg-red widget">
+<div class="vd_panel-menu">
+<div data-action="refresh" data-original-title="Refresh" data-rel="tooltip" class=" menu entypo-icon smaller-font"> <i class="icon-cycle"></i> </div>
+</div>
+<!-- vd_panel-menu --> 
+                              
+<a class="panel-body" href="#">
+        <div class="clearfix">
+            <span class="menu-icon">
+                <i class="fa fa-trash-o"></i>
+            </span>
+            <span class="menu-value">
+                    {{posts[0].editted}}
+            </span>  
+        </div>   
+        <div class="menu-text clearfix">
+            Spam
+        </div>                                                               
+</a>        
+</div>                </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 mgbt-md-20 mgbt-lg-0">
+            <div class="panel vd_quick-press-widget widget">
+
+<div class="panel-heading vd_bg-grey">
+    <h3 class="panel-title">
+        <span class="menu-icon">
+            <i class="fa fa-pencil"></i>
+        </span>        
+        Quick Press        
+    </h3>
+    <div class="vd_panel-menu">
+<div data-action="minimize" data-original-title="Minimize" data-toggle="tooltip" data-placement="bottom" class=" menu entypo-icon"> <i class="icon-minus3"></i> </div>
+<div data-action="refresh"  data-original-title="Refresh" data-toggle="tooltip" data-placement="bottom" class=" menu entypo-icon smaller-font"> <i class="icon-cycle"></i> </div>
+<div data-original-title="Config" data-toggle="tooltip" data-placement="bottom" class=" menu entypo-icon smaller-font">
+<div class="menu-trigger" data-action="click-trigger"> <i class="icon-cog"></i> </div>
+<div data-action="click-target" class="vd_mega-menu-content  width-xs-2  left-xs">
+  <div class="child-menu">
+    <div class="content-list content-menu">
+      <ul class="list-wrapper pd-lr-10">
+        <li> <a href="#"> <div class="menu-icon"><i class=" fa fa-user"></i></div> <div class="menu-text">User Menu</div> </a> </li>
+        <li> <a href="#"> <div class="menu-icon"><i class=" icon-trophy"></i></div> <div class="menu-text">Panel Menu</div> </a> </li>
+        <li> <a href="#"> <div class="menu-icon"><i class=" fa fa-envelope"></i></div> <div class="menu-text">Other Menu</div> </a> </li>
+        <li class="line"></li>
+        <li> <a href="#"> <div class="menu-icon"><i class=" fa fa-tasks"></i></div> <div class="menu-text"> Tasks</div> </a> </li>
+        <li> <a href="#"> <div class="menu-icon"><i class=" icon-lock"></i></div> <div class="menu-text">Privacy</div> </a> </li>
+      </ul>
+    </div>
+  </div>
+</div>
+</div>
+<div data-action="close" data-original-title="Close" data-toggle="tooltip" data-placement="bottom" class=" menu entypo-icon"> <i class="icon-cross"></i> </div>
+</div>
+<!-- vd_panel-menu --> 
+          
+</div>
+<div class="panel-body">
+    <form role="form" action="#" class="form-horizontal">    
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Title</label>
+          <div class="col-sm-10 controls">
+            <input type="text" placeholder="small">
+          </div>
+        </div> 
+         <div class="form-group">
+                <label class="col-sm-2 control-label">Body</label>              
+              <div class="col-sm-10 controls">                                    
+                     <textarea name="editor1" data-rel="ckeditor" rows="3" ></textarea>                                                
+              </div>                                 
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Category</label>
+          <div class="col-sm-10 controls">
+                <select class="width-40">
+                  <option>Technology</option>
+                  <option>Media</option>
+                  <option>Advertising</option>
+                  <option>News</option>
+                  <option>Hobby</option>
+                </select>
+          </div>
+        </div>              
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Tags</label>
+          <div class="col-sm-10 controls">
+              <input  type="text" class="tags" data-rel="tags-input" value="foo,bar,baz,roffle" />
+
+          </div>
+        </div> 
+        <div class="form-group">
+          <div class="col-sm-2"></div>
+          <div class="col-sm-7 controls">
+              <button type="submit" class="btn vd_btn vd_bg-green vd_white"><i class="icon-ok"></i> Publish</button>
+              <button type="submit" class="btn vd_btn vd_bg-yellow vd_white"><i class="icon-ok"></i> Save Draft</button>                  
+              <button type="button" class="btn vd_btn vd_black">Reset</button>
+          </div>
+        </div>               
+      
+                                  
+    </form>     
+</div>
+</div> <!-- Panel Widget -->                     </div>
+          <div class="col-md-6">
+            <div class="tabs widget">
+    <ul class="nav nav-tabs widget">
+      <li class="active">
+      <a data-toggle="tab" href="#home-tab">
+          <span class="menu-icon"><i class="fa fa-comments"></i></span>
+          Recent Post
+          <span class="menu-active"><i class="fa fa-caret-up"></i></span>
+      </a></li>
+      <li>
+      <a data-toggle="tab" href="#posts-tab">
+          <span class="menu-icon"><i class="fa fa-rocket"></i></span>
+          Recent Edited Post
+          <span class="menu-active"><i class="fa fa-caret-up"></i></span>
+      </a></li>
+      <li>
+      <a data-toggle="tab" href="#list-tab">
+          <span class="menu-icon"><i class="fa fa-user"></i></span>
+          New Users
+          <span class="menu-active"><i class="fa fa-caret-up"></i></span>
+      </a></li>
+    </ul>
+    <div class="tab-content">
+      <div id="home-tab" class="tab-pane active">                                         
+       <div class="content-list content-image menu-action-right">
+       <div  data-rel="scroll" data-scrollheight="550">
+           <ul class="list-wrapper pd-lr-15" *ngFor="let r of resa">
+                <li *ngIf="r.status === 'N'">  
+                    <div class="menu-icon"><a href="#"><img alt="example image" src="https://sce-ogun.sabiogun.jtcheck.com/backend/public/upload/uploads/{{r.t_image}}" alt="example image"></a></div> 
+                    <div class="menu-text"> 
+                        {{r.name_title}} 
+                    </div>                                               
+                    <div class="menu-text">
+                        <div class="menu-info">
+                            in <a href="#">{{r.catname}}</a> - 
+
+                            <span class="menu-date">{{r.created_at}} </span> - 
+                            <span class="menu-rating vd_yellow"><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i></span>
+                                                                                           
+                        </div>
+                    </div>
+                    <div class="menu-action">  
+                        <div class="menu-action-icon vd_green" routerLink="" (click)="navigates(r.id)"  data-original-title="Approve" data-rel="tooltip-bottom">
+                            <i class="fa fa-pencil"></i>
+                        </div>   
+                                                                                
+                        <div class="menu-action-icon vd_red"   data-original-title="Reject" data-rel="tooltip-bottom">
+                            <i class="fa fa-times"></i>
+                        </div>                                                                                                                                       
+                    </div>                                                	  
+                </li>
+                    
+           </ul>
+           </div>
+           <div class="closing text-center">
+                <a href="#">See All Recent Reviews <i class="fa fa-angle-double-right"></i></a>
+           </div>                                                                                                            
+       </div>                              
+
+      </div>
+      <div id="posts-tab" class="tab-pane sidebar-widget">
+           <div class="content-list">	
+               <div data-rel="scroll">
+                  <ul class="list-wrapper pd-lr-15" *ngFor="let r of resa">
+                      <li *ngIf="r.status === 'E'">  
+                          <div class="menu-icon"><a href="#"><img alt="example image" src="https://sce-ogun.sabiogun.jtcheck.com/backend/public/upload/uploads/{{r.image}}" alt="example image"></a></div> 
+                          <div class="menu-text"> 
+                              {{r.name_title}} 
+                          </div>                                               
+                          <div class="menu-text">
+                              <div class="menu-info">
+                                  in <a href="#">{{r.catname}}</a> - 
+      
+                                  <span class="menu-date">{{r.created_at}} </span> - 
+                                  <span class="menu-rating vd_yellow"><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i></span>
+                                                                                                 
+                              </div>
+                          </div>
+                          <div class="menu-action">  
+                              <div class="menu-action-icon vd_green" routerLink="" (click)="navigates(r.id)"  data-original-title="Approve" data-rel="tooltip-bottom">
+                                  <i class="fa fa-pencil"></i>
+                              </div>   
+                                                                                      
+                              <div class="menu-action-icon vd_red"   data-original-title="Reject" data-rel="tooltip-bottom">
+                                  <i class="fa fa-times"></i>
+                              </div>                                                                                                                                       
+                          </div>                                                	  
+                      </li>
+                          
+                                                                                        
+                    
+               </ul>
+               </div>
+               <div class="closing text-center" >
+                    <a href="#">See All Activities <i class="fa fa-angle-double-right"></i></a>
+               </div>                                                                       
+           </div>                              
+      </div>
+      <div id="list-tab" class="tab-pane">
+           <div class="content-grid column-xs-2 column-sm-6 height-xs-3">	
+           <div data-rel="scroll" >
+               <ul class="list-wrapper">
+                <!-- <li> <a href="#"> 
+                        <div class="menu-icon width-50"><img alt="example image" src="assets/img/avatar/avatar.jpg"></div> 
+                     </a>
+                    <div class="menu-text"> Gabriella Montagna
+                        <div class="menu-info">
+                            <div class="menu-date">San Diego</div>                                                                         
+                            <div class="menu-action">
+                                <span class="menu-action-icon vd_green vd_bd-green" data-original-title="Approve" data-toggle="tooltip" data-placement="bottom">
+                                    <i class="fa fa-check"></i>
+                                </span> 
+                                <span class="menu-action-icon vd_red vd_bd-red" data-original-title="Reject" data-toggle="tooltip" data-placement="bottom">
+                                    <i class="fa fa-times"></i>
+                                </span>                                                                                                                   
+                            </div>                                
+                        </div>
+                    </div> 
+                 </li>                                                                                                                -->
+                    
+               </ul>
+               </div>
+               <div class="closing text-center">
+                    <a href="#">See All New Users <i class="fa fa-angle-double-right"></i></a>
+               </div>                                                                       
+           </div>      
+      </div>
+    </div>
+</div> <!-- tabs-widget -->              </div>
+          <!-- .col-md-6 --> 
+        </div>
+       
+      </div>
+      <!-- .vd_content-section --> 
+      

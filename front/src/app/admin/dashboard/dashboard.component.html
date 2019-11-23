@@ -1,0 +1,139 @@
+<div>
+    <!-- Breadcrumb -->
+    <div class="container">
+        <ol class="breadcrumb">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Account</a></li>
+            <li class="active">Profile</li>
+        </ol>
+    </div>
+    <!-- end Breadcrumb -->
+  
+    <div class="container">
+        <div class="row">
+        <!-- sidebar -->
+        <div class="col-md-3 col-sm-2">
+            <section id="sidebar">
+                <header><h3>Account</h3></header>
+                <aside>
+                    <ul class="sidebar-navigation" >
+                            <li  class="active"><a [routerLink]="['/User', {outlets: {side: ['Details']}}]"><i class="fa fa-dashboard"></i><span>Dasboard</span></a></li>
+                            <li><a [routerLink]="['/User', {outlets: {side: ['Mypost']}}]"><i class="fa fa-plus"></i><span>Population</span></a></li>                      
+                        <li><a [routerLink]="['/User', {outlets: {side: ['Profile']}}]"><i class="fa fa-user"></i><span>Profile</span></a></li>
+                        <li class="has-child"><a [routerLink]="['/User', {outlets: {side: ['Post']}}]" ><i class="fa fa-pencil"></i><span>Contribute</span></a>
+                            
+                        </li>
+                    </ul>
+                </aside>
+            </section><!-- /#sidebar -->
+        </div><!-- /.col-md-3 -->
+        <!-- end Sidebar -->
+        <div class="col-md-9 col-sm-10">         
+            <div id="page-content">      
+                
+                <div class="row">
+                    <div class="col-md-3 col-sm-2">                     
+            
+                            <a class="universal-button">
+                                <div class="center">
+                                    
+                                    <!-- <div class="form-group center"> -->
+                                <div>Total Populaion</div>
+                                <hr style="margin-top: 10px; margin-bottom: 10px; background-color: green;">
+                                <strong id="center" style="font-size: 25px;"> 200</strong>
+                                </div>
+                            </a><!-- /.universal-button -->                                            
+                    </div><!-- /.col-md-3 -->
+
+                    <div class="col-md-3 col-sm-2">
+                       
+                        <a class="universal-button">
+                            <div class="center">                                    
+                                <!-- <div class="form-group center"> -->
+                            <div>Live Post</div>
+                            <hr style="margin-top: 10px; margin-bottom: 10px; background-color: blue;">
+                            <strong id="center" style="font-size: 20px;"> 100</strong>
+                            </div>
+                        </a><!-- /.universal-button -->
+                </div><!-- /.col-md-3 -->
+                <div class="col-md-3 col-sm-2">             
+                        
+                        <a class="universal-button">
+                            <div class="center">
+                                
+                                <!-- <div class="form-group center"> -->
+                            <div>Pend Post</div>
+                            <hr style="margin-top: 10px; margin-bottom: 10px; background-color: red;">
+                            <strong id="center" style="font-size: 20px;"> 60</strong>
+                            </div>
+                        </a><!-- /.universal-button -->                      
+                </div><!-- /.col-md-3 -->
+                <div class="col-md-3 col-sm-2">                   
+                        <a class="universal-button">
+                            <div class="center">
+                                
+                                <!-- <div class="form-group center"> -->
+                            <div>Updated Post</div>
+                            <hr style="margin-top: 10px; margin-bottom: 10px; background-color: brown;">
+                            <strong id="center" style="font-size: 20px;"> 20</strong>
+                            </div>
+                        </a><!-- /.universal-button -->                       
+                </div><!-- /.col-md-3 -->
+                </div>
+                <div class="row">
+                    <div class="col-md-3 col-sm-2">                    
+                            
+                            <a class="universal-button">
+                                <div class="center">                                    
+                                    <!-- <div class="form-group center"> -->
+                                <div>Total People</div>
+                                <hr style="margin-top: 10px; margin-bottom: 10px;">
+                                <strong id="center" style="font-size: 25px;"> 200</strong>
+                                </div>
+                            </a><!-- /.universal-button -->                       
+                    </div><!-- /.col-md-3 -->
+                    <div class="col-md-3 col-sm-2">  
+                        <a class="universal-button">
+                            <div class="center">                                    
+                                <!-- <div class="form-group center"> -->
+                            <div>Total Staffs</div>
+                            <hr style="margin-top: 10px; margin-bottom: 10px;">
+                            <strong id="center" style="font-size: 25px;"> 200</strong>
+                            </div>
+                        </a><!-- /.universal-button -->
+                    </div>
+                  <div class="col-md-3 col-sm-2">                   
+                        <a class="universal-button">
+                            <div class="center">                                    
+                                <!-- <div class="form-group center"> -->
+                            <div>Total Users</div>
+                            <hr style="margin-top: 10px; margin-bottom: 10px;">
+                            <strong id="center" style="font-size: 25px;"> 200</strong>
+                            </div>
+                        </a><!-- /.universal-button -->
+                    
+                </div><!-- /.col-md-3 -->
+                <div class="col-md-3 col-sm-2">                    
+                      
+                        <a class="universal-button">
+                            <div class="center">                                    
+                                <!-- <div class="form-group center"> -->
+                            <div>Total Populaion</div>
+                            <hr style="margin-top: 10px; margin-bottom: 10px;">
+                            <strong id="center" style="font-size: 25px;"> 200</strong>
+                            </div>
+                        </a><!-- /.universal-button -->
+                   
+                </div><!-- /.col-md-3 -->
+                </div>            
+                   
+              </div>
+        
+                <router-outlet name="side"></router-outlet>
+          </div>
+        </div><!-- /.row -->
+    </div><!-- /.container -->
+  </div>
+  <!-- end Page Content -->
+  
+

@@ -1,0 +1,289 @@
+ <!-- main -->
+ <section class="bg-image bg-image-sm" style="background-image: url('assets/img/olumo.jpg');">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-sm-8 col-md-4 mx-auto">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title"><i class="fa fa-user-plus"></i> Register a new account</h4>
+          </div>
+          <div class="card-block">
+              <form role="form" id="form-create-account" #signupForm=ngForm (ngSubmit)="onSubmit()">
+              <a class="btn btn-social btn-google-plus btn-block btn-icon-left" href="" role="button"><i class="fa fa-google-plus"></i> Register with Google Plus</a>
+              <div class="divider"><span>or</span></div>
+              <div class="form-group input-icon-left m-b-10">
+                <i class="fa fa-user"></i>                
+                <input type="text" class="form-control form-control-secondary" placeholder="First name" id="account-surnamename" name="firstname" [(ngModel)]="form.firstname" required>
+                    <div class="text-danger" [hidden]="!error.firstname">
+                        {{error.firstname}}
+                    </div>
+              </div>
+              <div class="form-group input-icon-left m-b-10">
+                  <i class="fa fa-user"></i>                
+                  <input type="text" class="form-control form-control-secondary" placeholder="Last name" id="account-surnamename" name="lastname" [(ngModel)]="form.lastname" required>
+                      <div class="text-danger" [hidden]="!error.lastname">
+                          {{error.lastname}}
+                      </div>
+                </div>
+              <div class="form-group input-icon-left m-b-10">
+                <i class="fa fa-envelope"></i>              
+                <input type="email" class="form-control form-control-secondary" placeholder="Email Address" id="account-email" name="email" [(ngModel)]="form.email" required>
+                      <div class="text-danger" [hidden]="!error.email">
+                        {{error.email}}
+                    </div>
+              </div>
+              <div class="divider"><span>Security</span></div>
+              <div class="form-group input-icon-left m-b-10">
+                <i class="fa fa-lock"></i>
+                <input type="password" class="form-control form-control-secondary" placeholder="Password" id="account-password" name="password" [(ngModel)]="form.password" required>
+                      <div class="text-danger" [hidden]="!error.password">
+                        {{error.password}}
+                    </div>
+              </div>
+              <div class="form-group input-icon-left m-b-10">
+                <i class="fa fa-unlock"></i>
+                <input type="password" class="form-control form-control-secondary" placeholder="Repeat Password" id="confirm-password" name="password_confirmation" [(ngModel)]="form.password_confirmation" required>
+              </div>
+              <div class="divider"><span>I am not a robot</span></div>
+              <div class="g-recaptcha-outer">
+                <script src='https://www.google.com/recaptcha/api.js'></script>
+                <div class="g-recaptcha" data-sitekey="6LeBwhwUAAAAAG1RDj-rS2Wu4WYNoV021q0z-LNY"></div>
+              </div>
+              <div class="divider"><span>Terms of Service</span></div>
+              <label class="custom-control custom-checkbox custom-checkbox-primary custom-checked">
+              <input type="checkbox" class="custom-control-input" checked="">
+              <span class="custom-control-indicator"></span>
+              <span class="custom-control-description">Subscribe to monthly newsletter</span>
+            </label>
+              <label class="custom-control custom-checkbox custom-checkbox-primary">
+              <input type="checkbox" class="custom-control-input">
+              <span class="custom-control-indicator"></span>
+              <span class="custom-control-description">Accept <a href="#" data-toggle="modal" data-target="#terms">terms of service</a></span>
+            </label>
+              <button type="submit" class="btn btn-primary m-t-10 btn-block" [disabled]= "disabled">
+                  <i id="loader2" *ngIf="disabled"  class="fa fa-spin fa-spinner"></i>Complete Registration</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="terms">
+    <div class="modal-dialog modal-top" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title"><i class="fa fa-file-text-o"></i> Terms of Service</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        <div class="modal-body">
+          <h6>1. Morbi ut pharetra tellus</h6>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras lobortis justo vel lorem sagittis, eu bibendum ipsum accumsan. Donec congue eget elit ut posuere. Curabitur congue, enim a viverra ultrices, elit velit auctor neque, eget vehicula
+            augue purus et lectus. Mauris cursus ac ex in vehicula. Sed ut sagittis eros. Vivamus accumsan diam vitae lectus consectetur aliquet. Proin varius tempor ullamcorper. Quisque malesuada mollis arcu, in euismod nisi pharetra pellentesque.
+            Sed ullamcorper quis dui sed varius. Fusce efficitur augue purus, vitae mattis orci blandit ac. Integer suscipit arcu ac diam tincidunt, sed elementum augue lobortis.</p>
+          <p>Pellentesque finibus dui dui, sit amet scelerisque neque venenatis non. Nullam gravida nisi pretium malesuada luctus. Nunc porttitor ipsum a massa gravida congue. Vestibulum dapibus mauris sit amet volutpat faucibus. Nulla lacinia diam sed
+            ultricies venenatis. Ut ultricies, urna commodo aliquam molestie, lectus leo efficitur tellus, et aliquam magna magna id est. In euismod ac magna quis imperdiet.</p>
+          <p>Aliquam ornare elit neque. Interdum et malesuada fames ac ante ipsum primis in faucibus. Morbi ut pharetra tellus. Vestibulum a dui nisl. Sed commodo sodales dolor, et malesuada nulla consectetur vitae. Quisque nec neque ac tellus auctor pellentesque
+            vel eleifend urna. Phasellus non urna id tellus fringilla hendrerit. Quisque vel mauris nisi. Mauris nec odio vitae sapien sodales lacinia. Interdum et malesuada fames ac ante ipsum primis in faucibus. Etiam sit amet nisi quis ex pretium
+            congue id id magna. Aenean dictum justo sit amet augue mollis ullamcorper. Aliquam mattis vel mauris et elementum. Morbi et risus quis nisl ullamcorper pulvinar eget et erat.</p>
+          <p>Ut viverra urna non orci interdum, in viverra urna pretium. Suspendisse potenti. Mauris et massa a enim lobortis facilisis. In hac habitasse platea dictumst. Ut varius erat vulputate libero sagittis, vitae feugiat nibh malesuada. Sed vel lacinia
+            urna. Curabitur eget dui nisi.</p>
+          <p>Vivamus orci felis, varius tempor lacus eu, scelerisque bibendum nunc. Vestibulum rutrum, enim quis maximus pretium, nisi est condimentum magna, venenatis dignissim magna nulla quis felis. Quisque id tellus nec mauris sagittis mattis non et
+            quam. Etiam posuere, tellus sed tincidunt egestas, tortor orci interdum risus, nec egestas dolor tortor non turpis. Curabitur in tellus laoreet, congue eros a, bibendum tortor. Nulla in facilisis libero, sit amet sagittis tellus. Aliquam
+            nec pulvinar velit, mattis pharetra urna. Donec et tincidunt libero. Duis at nisi in neque vulputate tempus. Curabitur et lobortis lacus. In sagittis egestas lorem, nec bibendum lacus maximus sed.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Accept</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /main -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Page Content -->
+ <div id="page-content">
+  <!-- Breadcrumb -->
+  <div class="container">
+      <ol class="breadcrumb">
+          <li><a href="">Home</a></li>
+          <li class="active">Create an Account</li>
+      </ol>
+  </div>
+  <!-- end Breadcrumb -->
+
+  <div class="container">
+      <header><h1>Create an Account</h1></header>
+      
+      <div class="row">
+
+          <div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3">
+              <!-- <div> -->
+
+          <!-- <div class="col-md-4 col-sm-2 pt-4 ">
+              <div class="block clearfix">
+                  <section class="block" id="gallery">
+                      <header><h2>Gallery</h2></header>
+                      <div class="center">
+                          <div class="form-group">
+                              <input id="file-upload" type="file" class="file" multiple="true" data-show-upload="false" data-show-caption="false" data-show-remove="false" accept="image/jpeg,image/png" data-browse-class="btn btn-default" data-browse-label="Browse Images">
+                              <figure class="note"><strong>Hint:</strong> You can upload all images at once!</figure>
+                          </div>
+                      </div>
+                  </section>
+                  </div>
+          </div> -->
+          <!-- <div class="col-md-4 col-sm-6 col-md-offset-1 col-sm-offset-3"> -->
+
+              <h3>Native Information</h3>
+              <!-- <input type="file" name="file"  (change)="selectChangeHandler($event)"> -->
+              
+              <form role="form" id="form-create-account" #signupForm=ngForm (ngSubmit)="onSubmit()">
+                  <!-- <div class="radio" id="create-account-user">
+                      <label >
+                          <input type="radio" id="account-type-user" name="account-type"  required>Not Indigene
+                      </label>
+                
+                  </div> -->
+                  <!-- <div class="radio" id="agent-switch" data-agent-state="">
+                      <label>
+                          <input type="radio" id="account-type-agent" name="account-type" required>Indigene
+                      </label>
+                  </div> -->
+                  <!-- <div id="agency" class="disabled">
+                        <div class="form-group">
+                                <mat-form-field>
+                                    <mat-label>Select Town:</mat-label>
+                                    <mat-select [(ngModel)]="form.town" name="town" >
+                                     
+                                      <mat-option *ngFor="let g of Towns" [value]="g.value">
+                                        {{g.viewValue}}
+                                      </mat-option>
+                                    </mat-select>
+                                  </mat-form-field>
+                                </div>
+                     
+                      <div class="form-group">
+                        <label for="account-agency">Family:</label>
+                        <input type="text" class="form-control" id="family" name="family" [(ngModel)]="form.family" required>
+                        <div class="alert alert-danger" [hidden]="!error.family">
+                            {{error.family}}
+                        </div>
+                    </div>
+                  </div> -->                   
+                  <h4>Are you form Ogun state</h4>
+                    <mat-form-field>
+                      <mat-label>Are you from Ogun state</mat-label>
+                      <select matNativeControl required  ng-model="item">
+                        <option value="true">Yes</option>
+                        <option value="false">No</option>                        
+                      </select>
+                    </mat-form-field><br>
+                    <label for="Family-Name">Family Name:</label>
+                    <input type="text" ng-disabled="disable" class="form-control" id="account-surnamename" name="family" [(ngModel)]="form.family">
+                  <hr>
+                  <h3>Personal Information</h3>
+                <div class="form-group">
+                    <label for="account-surnamename">First Name:</label>
+                    <input type="text" class="form-control" id="account-surnamename" name="firstname" [(ngModel)]="form.firstname" required>
+                    <div class="text-danger" [hidden]="!error.firstname">
+                        {{error.firstname}}
+                    </div>
+                </div><!-- /.form-group -->
+                                  
+                  <div class="form-group">
+                      <label for="account-surnamename">Last Name:</label>
+                      <input type="text" class="form-control" id="account-surnamename" name="lastname" [(ngModel)]="form.lastname" required>
+                      <div class="text-danger" [hidden]="!error.lastname">
+                        {{error.lastname}}
+                    </div>
+                    </div><!-- /.form-group -->
+                  <div class="form-group">
+                        <label for="account-surnamename">Middle Name:</label>
+                        <input type="text" class="form-control" id="account-surnamename" name="middlename" [(ngModel)]="form.middlename" required>
+                        <div class="text-danger" [hidden]="!error.lastname">
+                            {{error.middlename}}
+                        </div>
+                    </div>
+                  <div class="form-group">
+                      <label for="account-email">Email:</label>
+                      <input type="email" class="form-control" id="account-email" name="email" [(ngModel)]="form.email" required>
+                      <div class="text-danger" [hidden]="!error.email">
+                        {{error.email}}
+                    </div>
+                  </div><!-- /.form-group -->
+                  <div class="form-group">
+                      <label for="account-password">Password:</label>
+                      <input type="password" class="form-control" id="account-password" name="password" [(ngModel)]="form.password" required>
+                      <div class="text-danger" [hidden]="!error.password">
+                        {{error.password}}
+                    </div>
+                  </div><!-- /.form-group -->
+                  <div class="form-group">
+                      <label for="confirm-password">Confirm Password:</label>
+                      <input type="password" class="form-control" id="confirm-password" name="password_confirmation" [(ngModel)]="form.password_confirmation" required>
+                  </div><!-- /.form-group -->
+                  <div class="form-group">
+                    <label for="account-full-name">Address:</label>
+                    <textarea type="text" class="form-control" id="account-full-name" name="address" [(ngModel)]="form.address" required></textarea>
+                    <div class="text-danger" [hidden]="!error.address">
+                        {{error.address}}
+                    </div>
+                </div><!-- /.form-group -->
+                  
+                  <div class="form-group">
+                    <label for="Phone">Phone:</label>
+                    <input type="text" class="form-control" id="Phone" name="phone" [(ngModel)]="form.phone" required>
+                    <div class="text-danger" [hidden]="!error.phone">
+                        {{error.phone}}
+                    </div>
+                </div><!-- /.form-group -->
+                <div class="form-group">
+                        <label for="account-surnamename">Biography:</label>
+                        <textarea type="text" class="form-control" id="account-full-name" name="familybackground" [(ngModel)]="form.familybackground" required></textarea>
+                        <div class="text-danger" [hidden]="!error.familybackground">
+                            {{error.familybackground}}
+                        </div>
+                    </div>
+                <div class="form-group clearfix">
+                  <button type="submit" [disabled]= "disabled" class="btn pull-right btn-default" id="account-submit">
+                      <i id="loader2" *ngIf="disabled"  class="fa fa-spin fa-spinner"></i> {{sav}}</button>
+              </div><!-- /.form-group -->
+              </form>
+              <hr>
+              <div class="center">
+                  <figure class="note">By clicking the “Create an Account” button you agree with our <a href="terms-conditions.html">Terms and conditions</a></figure>
+              </div>
+          </div>
+      </div><!-- /.row -->
+  </div><!-- /.container -->
+</div>
+<!-- end Page Content -->
+<!-- <mat-form-field>
+    <mat-label>Favorite car</mat-label>
+    <mat-select [(ngModel)]="selectedCar" name="car">
+      <mat-option value="" selected></mat-option>
+      <mat-option *ngFor="let car of res" [value]="car.actname">
+        {{car.actname}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <p> Selected car: {{selectedCar}} </p> -->

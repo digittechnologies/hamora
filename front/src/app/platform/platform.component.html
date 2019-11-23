@@ -1,0 +1,246 @@
+<!-- main -->
+<section class="hero" style="background-image: url('assets/img/SC.jpg');">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="hero-block">
+      <h2 class="hero-title">The Witcher 3: Don't Miss This Hidden Contract</h2>
+      <p>The world is in chaos. The air is thick with tension and the smoke of burnt villages.</p>
+      <a class="btn btn-primary btn-lg btn-shadow btn-md btn-rounded" href="blog-post.html" role="button">Contribute</a>
+    </div>
+  </div>
+</section>
+<section class="toolbar toolbar-links" data-fixed="true">
+  <div class="container">
+    <h5 class="m-r-30">Recent Contribution</h5>
+    <form method="post" class="hidden-lg-down" (submit)="search()">
+      <div class="form-group input-icon-right">
+        <i class="fa fa-search"></i>
+        <input type="text" class="form-control form-control-secondary" placeholder="Type to search..." (keyup) = 'locateMe($event)' [formControl]="control" [matAutocomplete]="auto">
+      </div>
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let street of filteredStreets | async" [value]="street">
+        <a href="/Content/{{street}}"> {{street}} </a>
+        </mat-option>
+    </mat-autocomplete>
+    </form>   
+  </div>
+</section>
+
+<section class="p-t-40 p-b-60">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="toolbar-custom">
+          <a class="btn btn-default btn-icon btn-sm m-r-10 float-left hidden-xs-down" href="#" data-toggle="tooltip" title="refresh" data-placement="bottom" role="button"><i class="fa fa-refresh"></i></a>
+          <div class="dropdown float-left">
+            <button class="btn btn-default" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Categories<i class="fa fa-caret-down"></i></button>
+            <div class="dropdown-menu">
+                <div  *ngFor="let ract of res"><a class="dropdown-item"  routerlink="" (click)="navigate(ract.id)">{{ract.actname}}</a></div>    
+            </div>
+          </div>
+        </div> 
+        
+        <!-- post -->
+        <div class="post post-card"  *ngFor="let all of article | paginate: {itemsPerPage: 10, currentPage: p}">
+          <div class="post post-md" >
+          <div class="post-thumbnail">
+            <a href="Content/{{all.id}}" (click)="nav(all.id)"><img src="https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/{{all.t_image}}" alt=""></a>
+          </div>
+          <div class="post-block">
+            <div class="post-header">
+              <div>
+              <a href="Content/{{all.id}}" (click)="nav(all.id)">
+                <img src="https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/{{all.image}}" alt="">
+              </a>
+              </div>
+              <div>
+                <h2 class="post-title">
+                  <h2 class="post-title"><a routerink="" (click)="nav(all.id)">{{all.name_title}}</a></h2>
+                </h2>
+                <div class="post-meta">
+                  <span><i class="fa fa-clock-o"></i> {{all.created_at}} by <a href="profile.html">{{all.firstname + ' '+ all.lastname}}</a></span>
+                  <span><a href="blog-post-carousel.html#comments"><i class="fa fa-comment-o"></i>{{all.comment_count}}</a></span>
+                </div>
+              </div>
+            </div>  
+            <p>{{all.content | slice:0:250 }}....</p>
+            <div class="post-footer">
+              <a class="btn btn-secondary" (click)="nav(all.id)" role="button">Read More</a>
+              <a class="float-right p-t-10" href="#"><i class="fa fa-heart-o"></i> {{all.views}}</a>
+            </div>
+          </div>
+        </div>
+          </div>   
+        <nav aria-label="Page navigation">
+          <ul class="pagination">           
+            <li class="page-item"><pagination-controls (pageChange)="p = $event" class="my-pagination text-info"></pagination-controls> </li>           
+          </ul>
+        </nav>
+      </div>
+
+      <!-- sidebar -->
+      <div class="col-lg-4">
+        <div class="sidebar">
+          <!-- widget post  -->
+          <div class="widget widget-post">
+            <h5 class="widget-title">Recommends</h5>
+            <a href="blog-post.html"><img src="https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/3.jpg" alt=""></a>
+            <h4><a href="blog-post.html">Titanfall 2's Trophies Only Have 3 Earned Through Multiplayer</a></h4>
+            <span><i class="fa fa-clock-o"></i> June 12, 2017</span>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel neque sed ante facilisis efficitur.</p>
+          </div>
+
+          <!-- widget facebook -->
+          <div class="widget">
+            <h5 class="widget-title">Follow Us on Facebook</h5>
+            <div id="fb-root"></div>
+            <script async="" src="https://www.google-analytics.com/analytics.js"></script>
+            <script id="facebook-jssdk" src="//connect.facebook.net/en_US/sdk.js#xfbml=1&amp;version=v2.8"></script>
+            <script>
+              (function(d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s);
+                js.id = id;
+                js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.9";
+                fjs.parentNode.insertBefore(js, fjs);
+              }(document, 'script', 'facebook-jssdk'));
+            </script>
+            <div class="fb-page" data-href="https://www.facebook.com/yakuthemes" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"></div>
+          </div>
+
+          <!-- widget post -->
+          <div class="widget widget-post">
+            <h5 class="widget-title">Popular on SabiOgun</h5>
+            <a href="blog-post.html"><img src="https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/3.jpg" alt=""></a>
+            <h4><a href="blog-post.html">Red Dead Redemption Being Modded Into GTA5 Multiplayer</a></h4>
+            <span><i class="fa fa-clock-o"></i> June 16, 2017</span>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel neque sed anter.</p>
+            <ul class="widget-list">              
+               
+              <li  *ngFor="let H of footer">
+                <div class="widget-img"><a (click)="nav(H.id)"><img src="https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/{{H.t_image}}" alt=""></a></div>
+                <div>
+                  <h4><a routerink="" (click)="nav(H.id)">{{H.name_title}}</a></h4>
+                  <span>{{H.created_at}}</span>
+                </div>
+              </li>             
+            </ul>
+          </div>
+
+          <!-- widget newsletter -->
+          <div class="widget widget-newsletter">
+            <div class="widget-block" style="background-image: url('assets/img/3.jpg')">
+              <div class="overlay"></div>
+              <form>
+                <p>Get notification when new Contribution are available on sabiogun.</p>
+                <div class="form-group input-icon-right">
+                  <input type="email" class="form-control" placeholder="Email address...">
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Subscribe</button>
+              </form>
+            </div>
+          </div>
+
+          <!-- widget tabs -->
+          <div class="widget widget-tabs">
+            <ul class="nav nav-tabs" role="tablist">
+              <li class="nav-item"><a class="nav-link active" href="#comments" aria-controls="comments" role="tab" data-toggle="tab"><i class="fa fa-comment-o"></i> Comments</a></li>
+              <li class="nav-item"><a class="nav-link" href="#popular" aria-controls="popular" role="tab" data-toggle="tab">Popular</a></li>
+              <li class="nav-item"><a class="nav-link" href="#recent" aria-controls="recent" role="tab" data-toggle="tab">Recent</a></li>
+            </ul>
+            <div class="tab-content">
+              <div role="tabpanel" class="tab-pane active" id="comments">
+                <ul class="widget-comments">
+                  <li>
+                    <div><a href="profile.html"><img src="assets/img/user/user-2.jpg" alt=""></a></div>
+                    <div>
+                      <a href="blog-post.html#comments"><b>Elizabeth:</b> It would have taken a ridiculous amount of careful precise actions.</a>
+                    </div>
+                  </li>
+                  <li>
+                    <div><a href="profile.html"><img src="assets/img/user/user-3.jpg" alt=""></a></div>
+                    <div>
+                      <a href="blog-post-disqus.html#comments"><b>Clark:</b> Lorem ipsum dolor sit amet, consectetur adipiscing elit curabitur risque.</a>
+                    </div>
+                  </li>
+                  <li>
+                    <div><a href="profile.html"><img src="assets/img/user/user-1.jpg" alt=""></a></div>
+                    <div>
+                      <a href="blog-post-video.html#comments"><b>Venom:</b> Practically no verticality, which on levels like The Spire (Geonosis) incredible.</a>
+                    </div>
+                  </li>
+                  <li>
+                    <div><a href="profile.html"><img src="assets/img/user/user-3.jpg" alt=""></a></div>
+                    <div>
+                      <a href="blog-post-disqus.html#comments"><b>Clark:</b> I'm low level at this point and have almost nothing unlocked, and veteran players have an unfair advantage over me thanks.</a>
+                    </div>
+                  </li>
+                  <li>
+                    <div><a href="profile.html"><img src="assets/img/user/user-5.jpg" alt=""></a></div>
+                    <div>
+                      <a href="blog-post-disqus.html#comments"><b>Trevor:</b> A lot of people would have stopped playing now if it wasn't for the online stuff!</a>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div role="tabpanel" class="tab-pane" id="popular">
+                <div class="widget-post">
+                  <ul class="widget-list">
+                    <li>
+                      <img src="https://i1.ytimg.com/vi/B6qY-P4eo1Q/mqdefault.jpg" alt="">
+                      <h4><a href="blog-post.html">How to Finish Mafia 3 With All of Your Underbosses</a></h4>
+                      <span><i class="fa fa-clock-o"></i> July 12, 2017</span>
+                      <span>19 comments</span>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel neque sed anter.</p>
+                    </li>
+                    <li>
+                      <h4><a href="blog-post.html">Uncharted: The Lost Legacy's Demo</a></h4>
+                      <span>June 28, 2017</span>
+                      <span>41 comments</span>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel neque sed anter.</p>
+                    </li>
+                    <li>
+                      <h4><a href="blog-post.html">Mafia III Stones Unturned DLC Launch Trailer</a></h4>
+                      <span>June 17, 2017</span>
+                      <span>7 comments</span>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel neque sed anter.</p>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div role="tabpanel" class="tab-pane" id="recent">
+                <div class="widget-post">
+                  <ul class="widget-list">
+                    <li>
+                      <img src="https://i1.ytimg.com/vi/ckUrcdnWZ2g/mqdefault.jpg" alt="">
+                      <h4><a href="blog-post.html">Free Mass Effect: Andromeda Trial Now Available On All Platforms</a></h4>
+                      <span><i class="fa fa-clock-o"></i> July 12, 2017</span>
+                      <span>76 comments</span>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel neque sed anter.</p>
+                    </li>
+                    <li>
+                      <h4><a href="blog-post.html">GTA 5 Online Players Find Secret Alien Mission</a></h4>
+                      <span>June 23, 2017</span>
+                      <span>34 comments</span>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel neque sed anter.</p>
+                    </li>
+                    <li>
+                      <h4><a href="blog-post.html">Mafia III Stones Unturned DLC Launch Trailer</a></h4>
+                      <span>June 17, 2017</span>
+                      <span>7 comments</span>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel neque sed anter.</p>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>        
+          <!-- widget tags -->
+         
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /main -->

@@ -1,0 +1,49 @@
+<mat-card-header>
+  <mat-toolbar class="toolbar">
+    <mat-card-title>Update Info</mat-card-title>
+    <span class="toolbar-spacer"></span>
+    <mat-icon (click)="onNoClick()">cancel</mat-icon>
+  </mat-toolbar>
+</mat-card-header>
+<mat-card-content>
+  <div class="container">
+    <form [formGroup]="_catForm" (submit)="onSubmit()">
+      <div class="form-group">
+        <div class="row">
+          <div class="col-md-12">
+            <label>Category Name</label>
+            <input type="text" formControlName="actname" class="form-control">
+          </div>
+          
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <label>Destription</label><br>
+               
+                    <textarea type="text" formControlName="destription" class="width-60 required" required   rows="6" > </textarea>
+                 
+                <!-- <input type="text" formControlName="destription" class="form-control"> -->
+              </div>
+          <!-- <div class="col-md-6">
+            <label>Contact Number</label>
+            <input type="text" formControlName="Contact" class="form-control">
+          </div>
+          <div class="col-md-6">
+            <label>Email</label>
+            <input type="text" formControlName="Email" class="form-control">
+          </div> -->
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+          <button type="submit" class="btn btn-success">
+            <mat-icon>save</mat-icon>
+          </button>
+          </div>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</mat-card-content>
+

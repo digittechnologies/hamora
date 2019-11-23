@@ -1,0 +1,52 @@
+<!-- main -->
+<section class="hero hero-profile" style="background-image: url('assets/img/SC.jpg');">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="hero-block">
+        <h5>{{profres.firstname + " " + profres.lastname}}</h5>
+        <a class="btn btn-primary btn-sm btn-shadow btn-rounded btn-icon btn-add" href="#" data-toggle="tooltip" title="Add friend" role="button"><i class="fa fa-user-plus"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="toolbar toolbar-profile" data-fixed="true">
+    <div class="container">
+      <div class="profile-avatar">
+        <a href="#"><img [src]="image" alt="image"></a>
+        <div class="sticky">
+          <a href="#"><img src="https://img.youtube.com/vi/D3pYbbA1kfk/maxresdefault.jpg" alt=""></a>
+          <div class="profile-info">
+            <h5>{{profres.firstname + " " + profres.lastname}}</h5>
+            <span>{{profres.email}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="dropdown float-right hidden-md-down">
+        <a class="btn btn-secondary btn-icon btn-sm m-l-25 float-right" href="#" data-toggle="dropdown" role="button"><i class="fa fa-cog"></i></a>
+        <div class="dropdown-menu dropdown-menu-right">
+          <a class="dropdown-item active" href="#"  [routerLink]="['/User', {outlets: {side: ['Profile']}}]">Setting</a>
+          <!-- <a class="dropdown-item" href="#">Mail</a>
+          <a class="dropdown-item" href="#">Report</a>
+          <a class="dropdown-item" href="#">Block</a> -->
+        </div>
+      </div>
+      <ul class="toolbar-nav hidden-md-down">
+        <li class="active"><a href="#" [routerLink]="['/User', {outlets: {side: ['Details']}}]" >Timeline</a></li>        \
+        <li><a href="#" [routerLink]="['/User', {outlets: {side: ['Mypost']}}]">Stories</a></li>
+        <li><a href="#" [routerLink]="['/User', {outlets: {side: ['family']}}]">Family/Friend</a></li>
+        <li><a href="#" [routerLink]="['/User', {outlets: {side: ['gallery']}}]">Images</a></li>   
+        <li><a href="#" [routerLink]="['/User', {outlets: {side: ['group']}}]">Groups</a></li>
+        <li><a href="#" [routerLink]="['/User', {outlets: {side: ['Post']}}]">Contribute</a></li>
+      </ul>
+    </div>
+  </section>
+  <div >
+        <router-outlet name="side"></router-outlet>
+  </div>
+
+  
+
+
+
+  
+

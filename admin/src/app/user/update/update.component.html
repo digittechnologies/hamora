@@ -1,0 +1,168 @@
+
+<div class="container">
+    <header><h1>Your contribution here</h1></header>
+    
+    <div class="row">
+        <div class="col-md-8 col-sm-8 ">
+                <header><h2>About</h2></header>
+                <div class="col-md-6 col-sm-6">
+                    <div class="form-group">
+                        <label for="form-create-agency-title">Category:</label>
+                        <input type="text" class="form-control" id="form-create-agency-title" disabled value="{{actname}}">
+                    </div><!-- /.form-group -->
+                </div>
+
+            <form  #signupForm=ngForm class="form-submit">
+                <div class="row">
+                    <div class="block">
+                        <div class="col-md-12 col-sm-12">
+                            <section id="submit-form">                                  
+
+                                <section>
+                                    <div class="row">
+                                        <div class="block clearfix">
+                                            <div class="col-md-8 col-sm-8">
+                                                <section id="summary" style="margin-top: -5%;">                                                        
+                                                    <div class="form-group">
+                                                        <label for="form-create-agency-title">Tag:</label>
+                                                        <input type="text" class="form-control" id="form-create-agency-title" disabled value="{{catname}}">
+                                                    </div><!-- /.form-group -->
+
+                                                    <div class="form-group">
+                                                        <label for="form-create-agency-title">Name or Title:</label>
+                                                        <input type="text" class="form-control" id="form-create-agency-title" disabled value="{{title}}">
+                                                    </div><!-- /.form-group -->
+                                                    <div class="form-group">
+                                                        <label for="form-create-agency-title">Location:</label>
+                                                        <input type="text" class="form-control" id="form-create-agency-title" disabled value="{{location}}">
+                                                    </div><!-- /.form-group -->                                                     
+                                                   
+                                                </section><!-- /#summary -->
+                                            </div><!-- /.col-md-6 -->
+
+                                            <div class="col-md-4 col-sm-4">
+                                                <div class="form-group">
+                                                    <label for="submit-area">Insert Image</label>
+                                                    <img alt="" class="image" src="image">
+                                                </div><!-- /.form-group -->
+                                            </div><!-- /.col-md-6 -->  
+                          
+                                        </div><!-- /.block -->
+                                    </div><!-- /.row -->
+                                </section>
+
+                                 <section id="basic-information">
+                                    <header><h2>Content</h2></header>
+                                <div>                                 
+
+                                    <div *ngIf="getLength()">
+                                    <div [formGroup]="orderForm" >                                            
+                                    <div  *ngFor="let i of items">                                   
+                                   
+                                    
+                                      <div class="row">
+                                        <div class="col-md-8">
+                                            <div class="form-group">
+                                                <label for="submit-title">Title</label>
+                                                <input type="text" class="form-control" value="{{i.header}}" id="submit-title" name="title" required>
+                                            </div><!-- /.form-group -->
+                                        </div>                                            
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <div class="form-group">
+                                                    <label for="submit-description">Content</label>
+                                                    <textarea class="form-control" id="submit-description" rows="8" name="submit-description" required>{{i.content}}</textarea>
+                                                </div>
+                                                <input type="button"  class="btn btn-primary btn-sm" (click)="deleteItem(i.id)" value="Remove Details">
+                                        </div>
+
+                                    </div>
+                                   </div>
+                                </div>
+                            </div>                                       
+
+                                    <div [formGroup]="orderForm">
+                                        <div class="row">
+
+                                                <div  *ngFor="let c of contents">                                   
+                                   
+                                    
+                                                        <div class="row">
+                                                          <div class="col-md-8">
+                                                              <div class="form-group">
+                                                                  <label for="submit-title">Title</label>
+                                                                  <input type="text" formControlName="header" class="form-control" value="{{c.header}}" id="submit-title" name="title" required>
+                                                              </div><!-- /.form-group -->
+                                                          </div>                                            
+                                                      </div>
+                                                      <div class="row">
+                                                          <div class="col-md-8">
+                                                              <div class="form-group">
+                                                                      <label for="submit-description">Content</label>
+                                                                      <textarea class="form-control" id="submit-description" rows="8" name="submit-description" required>{{c.content}}</textarea>
+                                                                  </div>
+                                                                  <input type="button" formControlName="content" class="btn btn-primary btn-sm" (click)="deleteItem(i.id)" value="Remove Details">
+                                                          </div>
+                  
+                                                      </div>
+                                                     </div>
+
+                                            <div class="col-md-12">
+                                                <!-- <mat-form-field class="example-full-width">
+                                                    <label for="submit-title">Header</label>                                             
+                                                    <input matInput formControlName="header" value="">
+                                                    
+                                                    </mat-form-field>     
+                                                                                                          -->
+                                                  <div class="form-group">
+                                                      <label for="form-create-agency-title">Location:</label>
+                                                      <input type="text" formControlName="header" class="form-control" id="form-create-agency-title" required>
+                                                  </div><!-- /.form-group -->   
+                                        </div>   
+                                        </div>                                                                                                            
+                                        
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <!-- <mat-form-field class="example-full-width">
+                                                    <label for="submit-description">Content</label>
+                                                
+                                                    <textarea matInput formControlName="content"  rows="8"></textarea>
+                                                </mat-form-field>                                             -->
+                                                <div class="form-group">
+                                                    <label for="form-create-agency-title">Location:</label>
+                                                    <textarea type="text" formControlName="content" class="form-control" id="form-create-agency-title" required></textarea>
+                                                </div><!-- /.form-group -->   
+
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                </section><!-- /#basic-information -->
+                                <button class="btn btn-default" (click)="addItem()">add</button>                               
+                                <hr>
+                            </section>
+                        </div><!-- /.col-md-9 -->
+                    </div>
+                </div><!-- /.row -->
+                <div class="row">
+                    <div class="block">
+                        <div class="col-md-9 col-sm-9">
+                            <div class="center">
+                                
+                                    <div class="form-group center">
+                                        <button type="submit" (click)="onSubmit()" [disabled]= "disabled" class="btn btn-default large" id="account-submit">
+                                                <i id="loader2" *ngIf="disabled"  class="fa fa-spin fa-spinner"></i> {{sav}}</button>
+                                    </div><!-- /.form-group -->                                   
+                               
+                                <figure class="note block">By clicking the “Proceed to Payment” or “Submit” button you agree with our <a href="terms-conditions.html">Terms and conditions</a></figure>
+                            </div>
+                        </div>
+                       
+                    </div>
+                </div>
+            </form><!-- /#form-submit -->      
+            </div>
+
+            </div>
+

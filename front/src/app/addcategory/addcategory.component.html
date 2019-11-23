@@ -1,0 +1,28 @@
+<form role="form" id="form-create-agency" #signupForm=ngForm (ngSubmit)="onSubmit()" >
+    <div class="alert alert-success" [hidden]="!message">
+        {{message}}
+      </div>
+    <mat-form-field>
+            <mat-label>Select Activity</mat-label>
+            <mat-select [(ngModel)]="form.activity_id" name="activity_id">
+              <mat-option value="" selected></mat-option>
+              <mat-option *ngFor="let car of res" [value]="car.id">
+                {{car.actname}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <!-- <p>Selected car: {{activity_id}}</p> -->
+          
+          <div class="form-group">
+              <label for="account-email">category name:</label>
+              <input type="text" class="form-control" id="account-email" name="catname" [(ngModel)]="form.catname" required>
+          </div>
+          <div class="form-group">
+              <label for="account-password">destription:</label>
+              <input type="text" class="form-control" id="account-password" name="destription" [(ngModel)]="form.destription" required>
+          </div>
+           
+          <div class="form-group clearfix">
+              <button type="submit" class="btn pull-right btn-default" id="account-submit">Save</button>
+          </div>
+          </form>

@@ -1,0 +1,102 @@
+
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8">
+          <div class="toolbar-custom">
+            <a class="btn btn-default btn-icon btn-sm m-r-10 float-left hidden-sm-down" href="#" data-toggle="tooltip" title="refresh" data-placement="bottom" role="button"><i class="fa fa-refresh"></i></a>
+            <div class="dropdown float-left">
+              <button class="btn btn-default" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">All Platform <i class="fa fa-caret-down"></i></button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item active" href="#">All Platform</a>
+                <a class="dropdown-item" href="#">Playstation 4</a>
+                <a class="dropdown-item" href="#">Xbox One</a>
+                <a class="dropdown-item" href="#">Origin</a>
+                <a class="dropdown-item" href="#">Steam</a>
+              </div>
+            </div>
+          </div>                                  
+
+          <!-- post -->
+          <div class="post post-review" *ngFor="let t of title | paginate: {itemsPerPage: 10, currentPage: p}">
+            <div class="post-thumbnail">
+              <a href="review-post.html">
+              <img src="https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/{{t.t_image}}" alt="Assassin's Creed: The Ezio Collection">
+              <span class="badge badge-success">7.5</span>
+            </a>
+            </div>
+            <div class="post-block">
+              <h2 class="post-title"><a href="review-post.html" routerLink="" (click)="navigate(t.id)">{{t.name_title}}</a></h2>
+              <div class="post-meta">
+                <span><i class="fa fa-clock-o"></i>{{t.created_at}} by <a href="profile.html">Constantine</a></span>
+                <span><a href="review-post.html#comments"><i class="fa fa-comment-o"></i> 98 comments</a></span>
+              </div>
+              <p>Unity shies away from having a vast collection of ancillary characters, focusing instead upon its lead Arno and his love interest Elise. With fewer of those secondary characters around.</p>
+            </div>
+          </div>
+          <pagination-controls (pageChange)="p = $event" class="my-pagination text-info"></pagination-controls> 
+          <div class="pagination-results m-t-0 m-b-40">
+            <span>Showing 10 to 20 of 48 results</span>
+            <nav aria-label="Page navigation">
+              <ul class="pagination">
+                <li class="page-item disabled"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true"><i class="fa fa-angle-left"></i></span></a></li>
+                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">4</a></li>
+                <li class="page-item"><a class="page-link" href="#">5</a></li>
+                <li class="separate"><span>...</span></li>
+                <li class="page-item"><a class="page-link" href="#">25</a></li>
+                <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true"><i class="fa fa-angle-right"></i></span></a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+
+        <!-- sidebar -->
+        <div class="col-lg-4">
+          <div class="sidebar">
+            <!-- widget search -->
+            <div class="widget widget-search">
+              <form>
+                <div class="form-group input-icon-right">
+                  <i class="fa fa-search"></i>
+                  <input type="text" class="form-control" placeholder="Search Review...">
+                </div>
+
+                <div class="form-group">
+                  <label for="select">Platforms:</label>
+                  <select id="select" class="select2 form-control" multiple="multiple">
+                  <option value="ps4" selected>Playstation 4</option>
+                  <option value="xbox-one" selected>Xbox One</option>
+                  <option value="steam">Steam</option>
+                  <option value="origin">Origin</option>
+                  <option value="uplay">Uplay</option>
+                </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="select">Genre:</label>
+                  <select class="select2 form-control">
+                  <option value="">All genres</option>
+                  <option value="4">Action</option>
+                  
+                </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="date">Release Date:</label>
+                  <div class="input-icon-right">
+                    <i class="fa fa-clock-o"></i>
+                    <input type="text" class="form-control" id="date" placeholder="Select date">
+                  </div>
+                </div>
+              </form>
+            </div>        
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- /main -->
+

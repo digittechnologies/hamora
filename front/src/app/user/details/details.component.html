@@ -1,0 +1,148 @@
+<section class="p-y-30">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-3 hidden-md-down">
+              <!-- widget about -->
+              <div class="widget widget-about">
+                <h5 class="widget-title">About Me</h5>
+                <p>{{profres.familybackground}}.</p>
+                <ul>
+                  <li><i class="fa fa-clock-o"></i>{{profres.created_at}}</li>
+                  <li><i class="fa fa-map-marker"></i>{{profres.family}}</li>
+                  <li><a href="https://themeforest.net/item/gameforest-responsive-gaming-html-theme/5007730" target="_blank"><i class="fa fa-chain-broken"></i>{{profres.email}}</a></li>
+                  <li><a href="https://www.facebook.com/yakuthemes" target="_blank"><i class="fa fa-facebook"></i>{{profres.facebook}}</a></li>
+                </ul>
+              </div>
+    
+              <!-- widget friends -->
+              <!-- <div class="widget widget-friends">
+                <h5 class="widget-title">Friends <span>(628)</span></h5>
+                <ul>
+                  <li><a href="#" data-toggle="tooltip" title="Elizabeth"><img src="assets/img/widget/widget-user-1.jpg" alt=""></a></li>
+                  <li><a href="#" data-toggle="tooltip" title="Clark"><img src="assets/img/widget/widget-user-2.jpg" alt=""></a></li>
+                  <li><a href="#" data-toggle="tooltip" title="Trevor"><img src="assets/img/widget/widget-user-3.jpg" alt=""></a></li>
+                  <li><a href="#" data-toggle="tooltip" title="Franklin"><img src="assets/img/widget/widget-user-4.jpg" alt=""></a></li>
+                  <li><a href="#" data-toggle="tooltip" title="John"><img src="assets/img/widget/widget-user-5.jpg" alt=""></a></li>
+                  <li><a href="#" data-toggle="tooltip" title="Bruce"><img src="assets/img/widget/widget-user-6.jpg" alt=""></a></li>
+                  <li><a href="#" data-toggle="tooltip" title="Sherlock"><img src="assets/img/widget/widget-user-7.jpg" alt=""></a></li>
+                  <li><a href="#" data-toggle="tooltip" title="Clara"><img src="assets/img/widget/widget-user-8.jpg" alt=""></a></li>
+                </ul>
+              </div> -->
+    
+              <!-- Widget Forums -->
+              <!-- <div class="widget widget-forums">
+                <h5 class="widget-title">Recent Forums</h5>
+                <ul>
+                  <li>
+                    <div class="forum-icon">
+                      <i class="fa fa-comment-o"></i>
+                    </div>
+                    <div class="forum-title">
+                      <h5><a href="forum-post.html">What is your favorite game?</a></h5>
+                      <span>5 weeks ago</span>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="forum-icon">
+                      <i class="fa fa-comment-o"></i>
+                    </div>
+                    <div class="forum-title">
+                      <h5><a href="forum-post.html">Battlefield 1 multiplayer</a></h5>
+                      <span>1 month ago</span>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="forum-icon">
+                      <i class="fa fa-bug"></i>
+                    </div>
+                    <div class="forum-title">
+                      <h5><a href="forum-post.html">Uncharted 4 Bug Reports</a></h5>
+                      <span>July 20, 2017</span>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="forum-icon">
+                      <i class="fa fa-envelope-open-o"></i>
+                    </div>
+                    <div class="forum-title">
+                      <h5><a href="forum-post.html">Days Gone is a promising game</a></h5>
+                      <span>July 10, 2017</span>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="forum-icon">
+                      <i class="fa fa-comment-o"></i>
+                    </div>
+                    <div class="forum-title">
+                      <h5><a href="forum-post.html">Q: Black Friday Playstation Sale</a></h5>
+                      <span>July 09, 2017</span>
+                    </div>
+                  </li>
+                </ul>
+              </div> -->
+    
+              <!-- Widget Images -->
+              <!-- <div class="widget widget-images">
+                <h5 class="widget-title">Images</h5>
+                <ul>
+                  <li><a href="#"><img src="assets/img/widget/widget-images-1.jpg" alt=""></a></li>
+                  <li><a href="#"><img src="assets/img/widget/widget-images-2.jpg" alt=""></a></li>
+                  <li><a href="#"><img src="assets/img/widget/widget-images-3.jpg" alt=""></a></li>
+                  <li><a href="#"><img src="assets/img/widget/widget-images-4.jpg" alt=""></a></li>
+                  <li><a href="#"><img src="assets/img/widget/widget-images-5.jpg" alt=""></a></li>
+                  <li><a href="#"><img src="assets/img/widget/widget-images-6.jpg" alt=""></a></li>
+                </ul>
+                <a class="" href="#" role="button"></a>
+              </div> -->
+            </div>
+    
+            <div class="col-lg-9">
+              <!-- post -->
+              <div class="post post-card post-profile" *ngFor="let all of article">                 
+                    <div class="post-header">
+                        <div>
+                        <a href="Content/{{all.id}}" (click)="nav(all.id)">
+                          <img src="https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/{{all.image}}" alt="">
+                        </a>
+                        </div>
+                        <div>
+                          <h2 class="post-title">
+                            <h2 class="post-title"><a routerink="" (click)="nav(all.id)">{{all.name_title}}</a></h2>
+                          </h2>
+                          <div class="post-meta">
+                            <span><i class="fa fa-clock-o"></i> {{all.created_at}} by <a href="profile.html">{{all.firstname + ' '+ all.lastname}}</a></span>
+                            <span><a href="blog-post-carousel.html#comments"><i class="fa fa-comment-o"></i>{{all.comment_count}}</a></span>
+                      <span><a href="#"><i class="fa fa-heart-o"></i>{{all.like}} likes</a></span>
+                    </div>
+                    <div class="dropdown float-right">
+                      <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-chevron-down"></i></a>
+                      <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" href="#">View</a>
+                        <a class="dropdown-item" href="#">Contribute</a>
+                        <a class="dropdown-item" href="#">Comment</a>
+                        <a class="dropdown-item" href="#">Delete</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <p>{{all.content | slice:0:250 }}....</p>
+                <div class="post-thumbnail">
+                  <img src="https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/{{all.t_image}}" alt="">
+                </div>
+                <div class="post-footer">
+                  <a href="#"><i class="fa fa-reply"></i>{{all.share}} shares</a>
+                  <a href="#"><i class="fa fa-comment-o"></i>{{all.comment_count}} comments</a>
+                  <a href="#"><i class="fa fa-heart-o"></i>{{all.like}} likes</a>
+                </div>
+                <div class="post-footer">
+                    <a class="btn btn-secondary" (click)="nav(all.id)" role="button">Read More</a>
+                    <a class="float-right p-t-10" href="#"><i class="fa fa-heart-o"></i> {{all.views}}</a>
+                  </div>
+              </div>   
+              <div class="text-center"><a href="games.html" class="btn btn-primary btn-shadow btn-rounded btn-effect btn-lg m-b-20">Show More</a></div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- /main --> 
+ 

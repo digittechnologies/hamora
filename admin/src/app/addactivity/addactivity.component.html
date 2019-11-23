@@ -1,0 +1,114 @@
+<div class="vd_head-section clearfix">
+    <div class="vd_panel-header">
+      <ul class="breadcrumb">
+        <li><a href="index.html">Home</a> </li>
+        <!-- <li><a href="listtables-tables-variation.html">Category</a> </li> -->
+        <li class="active">Activity</li>
+      </ul>
+      <div class="vd_panel-menu hidden-sm hidden-xs" data-intro="<strong>Expand Control</strong><br/>To expand content page horizontally, vertically, or Both. If you just need one button just simply remove the other button code." data-step=5  data-position="left">
+  <div data-action="remove-navbar" data-original-title="Remove Navigation Bar Toggle" data-toggle="tooltip" data-placement="bottom" class="remove-navbar-button menu"> <i class="fa fa-arrows-h"></i> </div>
+  <div data-action="remove-header" data-original-title="Remove Top Menu Toggle" data-toggle="tooltip" data-placement="bottom" class="remove-header-button menu"> <i class="fa fa-arrows-v"></i> </div>
+  <div data-action="fullscreen" data-original-title="Remove Navigation Bar and Top Menu Toggle" data-toggle="tooltip" data-placement="bottom" class="fullscreen-button menu"> <i class="glyphicon glyphicon-fullscreen"></i> </div>
+  
+  </div>
+  
+    </div>
+  </div>
+  <div class="vd_title-section clearfix">
+    <div class="vd_panel-header">
+      <h1> Activity Tables</h1>
+      <small class="subtitle">List of Activities</small> </div>
+  </div>
+  <div class="vd_content-section clearfix">
+  
+      <div class="row">
+          <div class="col-md-12">
+              <div class="panel widget light-widget">
+                  <div class="panel-heading no-title"> </div>
+                  <div class="panel-body">
+                    <h2 class="mgbt-xs-20">Add Activity</h2>
+                    <form class="form-horizontal"  #signupForm=ngForm (ngSubmit)="onSubmit()" role="form" id="register-form">
+                      <!-- <div class="alert alert-danger vd_hidden">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true"><i class="icon-cross"></i></button>
+                        <span class="vd_alert-icon"><i class="fa fa-exclamation-circle vd_red"></i></span><strong>Oh snap!</strong> Change a few things up and try submitting again. </div>
+                      <div class="alert alert-success vd_hidden">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true"><i class="icon-cross"></i></button>
+                        <span class="vd_alert-icon"><i class="fa fa-check-circle vd_green"></i></span><strong>Well done!</strong>. </div> -->
+                      <div class="form-group">
+                        <div class="col-md-12">
+                          <label class="control-label  col-sm-2">Activity Name <span class="vd_red">*</span></label>
+                          <div id="first-name-input-wrapper"  class="controls col-sm-6">
+                            <input type="text" placeholder="" class="width-60 required" name="actname" id="name" [(ngModel)]="form.actname" required >
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="col-md-12">
+                          <label class="control-label  col-sm-2">Description <span class="vd_red">*</span></label>
+                          <div id="company-input-wrapper" class="controls col-sm-6">
+                            <textarea type="text" placeholder="Your Company Co, Ltd." class="width-60 required" required  name="destription" rows="4" [(ngModel)]="form.destription"> </textarea>
+                          </div>
+                        </div>
+                      </div>            
+                      <div id="vd_login-error" class="alert alert-danger hidden"><i class="fa fa-exclamation-circle fa-fw"></i> Please fill the necessary field </div>
+                      <div class="form-group">
+                        <div class="col-sm-2"></div>
+                        <div class="col-md-6 mgbt-xs-10 mgtp-20">                        
+                          <div class="mgtp-10">
+                            <button class="btn vd_bg-green vd_white" type="submit" id="submit-register" name="submit-register">Save</button>
+                          </div>
+                        </div>                     
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                <!-- Panel Widget --> 
+          </div>
+          <!-- col-md-12 --> 
+        </div>
+        <!-- row -->
+  
+    <!-- row -->
+    <div class="row">
+      <div class="col-md-12">
+        <div class="panel widget">
+          <div class="panel-heading vd_bg-grey">
+            <h3 class="panel-title"> <span class="menu-icon"> <i class="fa fa-dot-circle-o"></i> </span> </h3>
+          </div>
+          <div class="panel-body  table-responsive">
+            <table class="table table-striped table-hover">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Name</th>
+                  <th>Description</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr> 
+              </thead>
+              <tbody>
+                <tr *ngFor="let c of res  | paginate: {itemsPerPage: 10, currentPage: p}">
+                  <td>1</td>
+                  <td>{{c.actname}}</td>
+                  <td class="center">{{c.destription}}</td>
+                  <td class="center"><span class="label label-danger" *ngIf ="c.status=== 'N'">INACTIVE</span>
+                    <span class="label label-warning" *ngIf ="c.status=== 'E'">PENDING</span>
+                    <span class="label label-success" *ngIf ="c.status=== 'Y'">LIVE</span>
+                    <span class="label label-default " *ngIf ="c.status=== 'T'">TRASH</span>  </td>
+                  <td class="menu-action rounded-btn" ><a data-original-title="view" data-toggle="tooltip" data-placement="top" class="btn menu-icon vd_bg-green"> <i class="fa fa-eye"></i> </a> 
+                                                      <a data-original-title="edit" data-toggle="tooltip" data-placement="top" class="btn menu-icon vd_bg-yellow"  (click)="editAct(c.id)"> <i class="fa fa-pencil"></i> </a> 
+                                                      <a data-original-title="delete" data-toggle="tooltip" data-placement="top" class="btn menu-icon vd_bg-red" (click)="acttrash(c.id)"> <i class="fa fa-times"></i> </a></td>
+                </tr>                
+              </tbody>
+            </table>
+          <pagination-controls (pageChange)="p = $event" class="my-pagination"></pagination-controls> 
+           
+          </div>
+        </div>
+        <!-- Panel Widget --> 
+      </div>
+      <!-- col-md-12 --> 
+    </div>
+    
+  </div>
+  <!-- .vd_content-section -->

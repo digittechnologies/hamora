@@ -1,0 +1,143 @@
+<div class="container">
+
+    <div class="row">
+        <!-- Content -->
+        <div class="col-md-9 col-sm-9">
+            
+            <section id="content">
+                <header><h1>{{actname}} > {{catname}} Detail</h1></header>
+                <article class="blog-post">
+                    <a ><img [src]='image'></a>
+                    <header><a ><h2>{{title}}</h2></a></header>
+                    <figure class="meta">
+                        <a href="#" class="link-icon"><i class="fa fa-user"></i>{{name}}</a>
+                        <a href="#" class="link-icon"><i class="fa fa-calendar"></i>{{dates}}</a>
+                        <!-- <div class="tags">
+                            <a href="#" class="tag article">Architecture</a>
+                            <a href="#" class="tag article">Design</a>
+                            <a href="#" class="tag article">Trend</a>
+                        </div> -->
+                    </figure>
+                    <p>{{about}}
+                    </p>
+                    <div *ngFor="let r of contents">
+                        <h3 style="font-size: 22px;">{{r.header}}</h3>
+                        <p style="font-size: 18px; align-self: auto; align-content: center; white-space: pre-line; ">{{r.content}}</p>
+                    </div>
+                    
+                    <!-- <h3>Audio Object</h3>
+                    <iframe width="100%" height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/71654970&amp;color=ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_artwork=true&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false"></iframe>
+                    <h3>Parahraph Headline</h3>
+                    <p>
+                        Phasellus metus ipsum, sollicitudin lacinia turpis in, pellentesque pulvinar diam.
+                        Cras ultricies augue sapien, aliquam hendrerit mi suscipit at. Suspendisse vulputate felis eget
+                        felis convallis fermentum et eu nulla. Donec sagittis sit amet erat non eleifend. Mauris at convallis
+                        magna. Quisque pellentesque id mauris vitae placerat.
+                    </p>
+                    <h4>List Headline</h4>
+                    <ul>
+                        <li>Phasellus metus ipsum, sollicitudin</li>
+                        <li>Quisque pellentesque id mauris</li>
+                        <li>Donec ac lorem commodo</li>
+                        <li>In nisi risus, molestie a sem adipiscing</li>
+                        <li>Pellentesque nec felis sit amet nunc</li>
+                    </ul> -->
+                </article><!-- /.blog-post-listing -->
+                <section id="about-author">
+                    <header><h3>About the Author</h3></header>
+                    <div class="post-author">
+                        <img [src]='uimage'>
+                        <div class="wrapper">
+                            <header>{{name}}</header>
+                            <p>{{bio}}
+                            </p>
+                        </div>
+                    </div>
+                </section>
+            </section><!-- /#content -->
+            <section id="comments">
+                    <header><h2 class="no-border">Comments</h2></header>
+                    <ul class="comments">
+                        <li class="comment" *ngFor="let r of comment">
+                            <figure>
+                                <div class="image">
+                                    <img alt="" src="https://sce-ogun.sabiogun.jtcheck.com/backend/public/upload/uploads/{{r.image}}">
+                                </div>
+                            </figure>
+                            <div class="comment-wrapper">
+                                <div class="name pull-left">{{r.firstname}} {{r.lastname}} {{r.middlename}} </div>
+                                <span class="date pull-right"><span class="fa fa-calendar"></span>{{r.created_at}}</span>
+                                <p>{{r.comment}}.
+                                </p>
+                                <a href="#" class="reply"><span class="fa fa-reply"></span>Reply</a>
+                                <hr>
+                            </div>
+                        </li>
+                       
+                    </ul>
+                </section><!-- /#comments -->
+            <section id="leave-reply">
+                    <header><h2 class="no-border">Leave a Comment</h2></header>
+                    <form role="form" id="form-blog-reply"  class="clearfix" #commentForm=ngForm (ngSubmit)="onSubmit()">
+                        
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="form-blog-reply-message">Your Message<em>*</em></label>
+                                    <textarea class="form-control" id="form-blog-reply-message" rows="5" [(ngModel)]="form.comment" name="comment" required></textarea>
+                                </div><!-- /.form-group -->
+                            </div><!-- /.col-md-12 -->
+                        </div><!-- /.row -->
+                        <div class="form-group clearfix">
+                            <button type="submit"  [disabled]= "disable" class="btn pull-right btn-default" id="form-blog-reply-submit">
+                                    <i id="loader2" *ngIf="disable"  class="fa fa-spin fa-spinner"></i> {{sav}}</button>
+                        </div><!-- /.form-group -->
+                        <div id="form-rating-status"></div>
+                    </form><!-- /#form-contact -->
+                </section>
+        </div><!-- /.col-md-9 -->
+        <!-- end Content -->
+
+        <!-- sidebar -->
+        <div class="col-md-3 col-sm-3">
+            <section id="sidebar">
+                
+                <!-- <aside id="search">
+                    <header><h3>Search</h3></header>
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Enter Keyword">
+                        <span class="input-group-btn"><button class="btn btn-default search" type="button"><i class="fa fa-search"></i></button></span>
+                    </div>
+                </aside> -->
+
+                <aside id="search">
+                        <header><h3>Location</h3></header>
+                    <div id="map" style="width:100%;height:250px;"></div>
+                </aside>
+                
+                <aside id="categories">
+                        <header><h3>Categories</h3></header>
+                        <ul class="list-links" *ngFor="let r of result">
+                            <li><a routerLink="" (click)="naviga(r.id)">{{r.actname}}</a></li>
+                            
+                        </ul>
+                    </aside>
+
+                <!-- <aside id="post-archive">
+                        <header><h3>Post Archive</h3></header>
+                        <ul class="list-links">
+                            <li><a href="#">June 2014</a></li>
+                            <li><a href="#">May 2014</a></li>
+                            <li><a href="#">April 2014</a></li>
+                            <li><a href="#">March 2014</a></li>
+                            <li><a href="#">January 2014</a></li>
+                            <li><a href="#">December 2013</a></li>
+                            <li><a href="#">November 2013</a></li>
+                            <li><a href="#">August 2013</a></li>
+                        </ul>
+                    </aside>/#post-archive -->
+            </section><!-- /#sidebar -->
+        </div><!-- /.col-md-3 -->
+        <!-- end Sidebar -->
+    </div><!-- /.row -->
+</div><!-- /.container -->

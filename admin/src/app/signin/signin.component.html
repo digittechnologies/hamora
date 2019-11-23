@@ -1,0 +1,168 @@
+ <!-- Page Content -->
+ <div id="page-content">
+  <!-- Breadcrumb -->
+  <div class="container">
+      <ol class="breadcrumb">
+          <li><a href="">Home</a></li>
+          <li class="active">Create an Account</li>
+      </ol>
+  </div>
+  <!-- end Breadcrumb -->
+
+  <div class="container">
+      <header><h1>Create an Account</h1></header>
+      
+      <div class="row">
+
+          <div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3">
+              <!-- <div> -->
+
+          <!-- <div class="col-md-4 col-sm-2 pt-4 ">
+              <div class="block clearfix">
+                  <section class="block" id="gallery">
+                      <header><h2>Gallery</h2></header>
+                      <div class="center">
+                          <div class="form-group">
+                              <input id="file-upload" type="file" class="file" multiple="true" data-show-upload="false" data-show-caption="false" data-show-remove="false" accept="image/jpeg,image/png" data-browse-class="btn btn-default" data-browse-label="Browse Images">
+                              <figure class="note"><strong>Hint:</strong> You can upload all images at once!</figure>
+                          </div>
+                      </div>
+                  </section>
+                  </div>
+          </div> -->
+          <!-- <div class="col-md-4 col-sm-6 col-md-offset-1 col-sm-offset-3"> -->
+
+              <h3>Native Information</h3>
+              <!-- <input type="file" name="file"  (change)="selectChangeHandler($event)"> -->
+              
+              <form role="form" id="form-create-account" #signupForm=ngForm (ngSubmit)="onSubmit()">
+                  <!-- <div class="radio" id="create-account-user">
+                      <label >
+                          <input type="radio" id="account-type-user" name="account-type"  required>Not Indigene
+                      </label>
+                
+                  </div> -->
+                  <!-- <div class="radio" id="agent-switch" data-agent-state="">
+                      <label>
+                          <input type="radio" id="account-type-agent" name="account-type" required>Indigene
+                      </label>
+                  </div> -->
+                  <!-- <div id="agency" class="disabled">
+                        <div class="form-group">
+                                <mat-form-field>
+                                    <mat-label>Select Town:</mat-label>
+                                    <mat-select [(ngModel)]="form.town" name="town" >
+                                     
+                                      <mat-option *ngFor="let g of Towns" [value]="g.value">
+                                        {{g.viewValue}}
+                                      </mat-option>
+                                    </mat-select>
+                                  </mat-form-field>
+                                </div>
+                     
+                      <div class="form-group">
+                        <label for="account-agency">Family:</label>
+                        <input type="text" class="form-control" id="family" name="family" [(ngModel)]="form.family" required>
+                        <div class="alert alert-danger" [hidden]="!error.family">
+                            {{error.family}}
+                        </div>
+                    </div>
+                  </div> -->                   
+                  <h4>Are you form Ogun state</h4>
+                    <mat-form-field>
+                      <mat-label>Are you from Ogun state</mat-label>
+                      <select matNativeControl required  ng-model="item">
+                        <option value="true">Yes</option>
+                        <option value="false">No</option>                        
+                      </select>
+                    </mat-form-field><br>
+                    <label for="Family-Name">Family Name:</label>
+                    <input type="text" ng-disabled="disable" class="form-control" id="account-surnamename" name="family" [(ngModel)]="form.family">
+                  <hr>
+                  <h3>Personal Information</h3>
+                <div class="form-group">
+                    <label for="account-surnamename">First Name:</label>
+                    <input type="text" class="form-control" id="account-surnamename" name="firstname" [(ngModel)]="form.firstname" required>
+                    <div class="text-danger" [hidden]="!error.firstname">
+                        {{error.firstname}}
+                    </div>
+                </div><!-- /.form-group -->
+                                  
+                  <div class="form-group">
+                      <label for="account-surnamename">Last Name:</label>
+                      <input type="text" class="form-control" id="account-surnamename" name="lastname" [(ngModel)]="form.lastname" required>
+                      <div class="text-danger" [hidden]="!error.lastname">
+                        {{error.lastname}}
+                    </div>
+                    </div><!-- /.form-group -->
+                  <div class="form-group">
+                        <label for="account-surnamename">Middle Name:</label>
+                        <input type="text" class="form-control" id="account-surnamename" name="middlename" [(ngModel)]="form.middlename" required>
+                        <div class="text-danger" [hidden]="!error.lastname">
+                            {{error.middlename}}
+                        </div>
+                    </div>
+                  <div class="form-group">
+                      <label for="account-email">Email:</label>
+                      <input type="email" class="form-control" id="account-email" name="email" [(ngModel)]="form.email" required>
+                      <div class="text-danger" [hidden]="!error.email">
+                        {{error.email}}
+                    </div>
+                  </div><!-- /.form-group -->
+                  <div class="form-group">
+                      <label for="account-password">Password:</label>
+                      <input type="password" class="form-control" id="account-password" name="password" [(ngModel)]="form.password" required>
+                      <div class="text-danger" [hidden]="!error.password">
+                        {{error.password}}
+                    </div>
+                  </div><!-- /.form-group -->
+                  <div class="form-group">
+                      <label for="confirm-password">Confirm Password:</label>
+                      <input type="password" class="form-control" id="confirm-password" name="password_confirmation" [(ngModel)]="form.password_confirmation" required>
+                  </div><!-- /.form-group -->
+                  <div class="form-group">
+                    <label for="account-full-name">Address:</label>
+                    <textarea type="text" class="form-control" id="account-full-name" name="address" [(ngModel)]="form.address" required></textarea>
+                    <div class="text-danger" [hidden]="!error.address">
+                        {{error.address}}
+                    </div>
+                </div><!-- /.form-group -->
+                  
+                  <div class="form-group">
+                    <label for="Phone">Phone:</label>
+                    <input type="text" class="form-control" id="Phone" name="phone" [(ngModel)]="form.phone" required>
+                    <div class="text-danger" [hidden]="!error.phone">
+                        {{error.phone}}
+                    </div>
+                </div><!-- /.form-group -->
+                <div class="form-group">
+                        <label for="account-surnamename">Biography:</label>
+                        <textarea type="text" class="form-control" id="account-full-name" name="familybackground" [(ngModel)]="form.familybackground" required></textarea>
+                        <div class="text-danger" [hidden]="!error.familybackground">
+                            {{error.familybackground}}
+                        </div>
+                    </div>
+                <div class="form-group clearfix">
+                  <button type="submit" [disabled]= "disabled" class="btn pull-right btn-default" id="account-submit">
+                      <i id="loader2" *ngIf="disabled"  class="fa fa-spin fa-spinner"></i> {{sav}}</button>
+              </div><!-- /.form-group -->
+              </form>
+              <hr>
+              <div class="center">
+                  <figure class="note">By clicking the “Create an Account” button you agree with our <a href="terms-conditions.html">Terms and conditions</a></figure>
+              </div>
+          </div>
+      </div><!-- /.row -->
+  </div><!-- /.container -->
+</div>
+<!-- end Page Content -->
+<!-- <mat-form-field>
+    <mat-label>Favorite car</mat-label>
+    <mat-select [(ngModel)]="selectedCar" name="car">
+      <mat-option value="" selected></mat-option>
+      <mat-option *ngFor="let car of res" [value]="car.actname">
+        {{car.actname}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <p> Selected car: {{selectedCar}} </p> -->

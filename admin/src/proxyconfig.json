@@ -1,0 +1,7 @@
+{
+    "/*": {
+        "target": "https://sabiogun.jtcheck.com",
+        "secure": false,
+        "changeOrigin": true
+    }
+}

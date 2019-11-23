@@ -1,0 +1,99 @@
+<div class="vd_head-section clearfix">
+  <div class="vd_panel-header">
+    <ul class="breadcrumb">
+      <li><a href="index.html">Home</a> </li>
+      <!-- <li><a href="listtables-tables-variation.html">Category</a> </li> -->
+      <li class="active">Category</li>
+    </ul>
+    <div class="vd_panel-menu hidden-sm hidden-xs" data-intro="<strong>Expand Control</strong><br/>To expand content page horizontally, vertically, or Both. If you just need one button just simply remove the other button code." data-step=5  data-position="left">
+<div data-action="remove-navbar" data-original-title="Remove Navigation Bar Toggle" data-toggle="tooltip" data-placement="bottom" class="remove-navbar-button menu"> <i class="fa fa-arrows-h"></i> </div>
+<div data-action="remove-header" data-original-title="Remove Top Menu Toggle" data-toggle="tooltip" data-placement="bottom" class="remove-header-button menu"> <i class="fa fa-arrows-v"></i> </div>
+<div data-action="fullscreen" data-original-title="Remove Navigation Bar and Top Menu Toggle" data-toggle="tooltip" data-placement="bottom" class="fullscreen-button menu"> <i class="glyphicon glyphicon-fullscreen"></i> </div>
+
+</div>
+
+  </div>
+</div>
+<div class="vd_title-section clearfix">
+  <div class="vd_panel-header">
+    <h1> Category Tables</h1>
+    <small class="subtitle">List of Category</small> </div>
+</div>
+<div class="vd_content-section clearfix">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel widget light-widget">
+                <div class="panel-heading no-title"> </div>
+                <div class="panel-body">
+                  <h2 class="mgbt-xs-20">Add Category</h2>
+                 <form role="form" id="form-create-agency" #signupForm=ngForm (ngSubmit)="onSubmit()" >
+        <div class="alert alert-success" [hidden]="!message">
+            {{message}}
+          </div>
+        <mat-form-field>
+                <mat-label>Select Activity</mat-label>
+                <mat-select [(ngModel)]="form.activity_id" name="activity_id">
+                  <mat-option value="" selected></mat-option>
+                  <mat-option *ngFor="let car of res" [value]="car.id">
+                    {{car.actname}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>              
+              <div class="form-group col-md-6">
+                  <label for="account-email">category name:</label>
+                  <input type="text" class="form-control" id="account-email" name="catname" [(ngModel)]="form.catname" required>
+              </div>
+              <div class="form-group col-md-6">
+                  <label for="account-password">destription:</label>
+                  <input type="text" class="form-control" id="account-password" name="destription" [(ngModel)]="form.destription" required>
+              </div>
+               
+              <div class="form-group clearfix col-md-6">
+                  <button type="submit" class="btn pull-right btn-default" id="account-submit">Save</button>
+              </div>
+              </form>
+                </div>
+              </div>
+              <!-- Panel Widget --> 
+        </div>
+        <!-- col-md-12 --> 
+      </div>
+      <!-- row -->
+
+
+      <!-- row -->
+  <div class="row">      
+      <div class="col-md-3" *ngFor="let c of res">
+        <div class="panel widget light-widget panel-bd-top vd_bdt-blue">
+          <div class="panel-heading no-title"> </div>
+          <div class="panel-body">
+            <h3 class="mgtp--5">{{c.actname}}</h3>
+            <div class="content-list content-image">
+              <ul class="list-wrapper no-bd-btm" *ngFor="let cr of cres">
+        <!-- <li class="group-heading">Category</li> -->
+        <li *ngIf="cr.activity_id === c.id">  
+            <a  > 
+                    <div class="menu-icon"><img src="assets/img/avatar/avatar.jpg" alt="example image"></div> 
+                    <div class="menu-text">{{cr.catname}}
+                        <div class="menu-info">
+                            <span class="menu-date" >{{cr.destription}}</span>                                                         
+                        </div>
+                        <div class="menu-info rounded-btn "><a data-original-title="view" data-toggle="tooltip" data-placement="top" class="btn menu-icon "> <i style="width:40px;" class="fa fa-eye"></i> </a> 
+                          <a data-original-title="edit" data-toggle="tooltip" data-placement="top" class="btn menu-icon "  (click)="editCategory(cr.id)"> <i style="width:40px;" class="fa fa-pencil" style="color:yellowgreen;"></i> </a> 
+                          <a data-original-title="delete" data-toggle="tooltip" data-placement="top" class="btn menu-icon " (click)="catetrash(cr.id)"> <i style="width:40px;" class="fa fa-times" style="color: red;"></i> </a></div>
+                    </div>                    
+            </a>
+        </li>
+        
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- Panel Widget --> 
+        
+      </div>
+      <!-- col-md-4 --> 
+    </div>
+    <!--row -->
+
+  

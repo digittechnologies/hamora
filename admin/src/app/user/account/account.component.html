@@ -1,0 +1,39 @@
+<div>
+    <!-- Breadcrumb -->
+    <div class="container">
+        <ol class="breadcrumb">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Account</a></li>
+            <li class="active">Profile</li>
+        </ol>
+    </div>
+    <!-- end Breadcrumb -->
+  
+    <div class="container">
+        <div class="row">
+        <!-- sidebar -->
+        <div class="col-md-3 col-sm-2">
+            <section id="sidebar">
+                <header><h3>Account</h3></header>
+                <aside>
+                    <ul class="sidebar-navigation" >
+                            <li  class="active"><a [routerLink]="['/User', {outlets: {side: ['Details']}}]"><i class="fa fa-dashboard"></i><span>Account</span></a></li>
+                            <li><a [routerLink]="['/User', {outlets: {side: ['Mypost']}}]"><i class="fa fa-plus"></i><span>My Post</span></a></li>                      
+                        <li><a [routerLink]="['/User', {outlets: {side: ['Profile']}}]"><i class="fa fa-user"></i><span>Profile</span></a></li>
+                        <li class="has-child"><a [routerLink]="['/User', {outlets: {side: ['Post']}}]" ><i class="fa fa-pencil"></i><span>Contribute</span></a>
+                            
+                        </li>
+                    </ul>
+                </aside>
+            </section><!-- /#sidebar -->
+        </div><!-- /.col-md-3 -->
+        <!-- end Sidebar -->
+        <div >
+                <router-outlet name="side"></router-outlet>
+          </div>
+        </div><!-- /.row -->
+    </div><!-- /.container -->
+  </div>
+  <!-- end Page Content -->
+  
+

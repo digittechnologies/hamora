@@ -1,0 +1,132 @@
+
+        <div class="col-md-9 col-sm-10">
+                <section id="profile">
+                    <header><h1>Profile</h1></header>
+                    <div class="account-profile">
+                        <div class="row">
+                                <!-- <div class="col-md-3 col-sm-3">
+                                        <img alt="" class="image" src="assets/img/agent-01.jpg">
+                                    </div> -->
+                            <div class="col-md-3 col-sm-3">
+                                <img alt="" class="image" src="https://sce-ogun.sabiogun.jtcheck.com/backend/public/upload/uploads/{{response.image}}">
+                            </div>
+                            <!-- ngModel   value="{{firstname}}" -->
+                            <div class="col-md-9 col-sm-9">
+
+                                <form [formGroup]="submissionForm" >
+                                      <label>Update profile</label><br>
+                                      <input type="file" name="file"  (change)="uploadFile($event)">
+                                     
+                                    <section id="contact">
+                                        
+                                            <dt><label for="form-account-name">First Name:</label></dt>
+                                            <dd><div class="form-group ">
+                                                    <input type="text" formControlName="firstname"> 
+                                            </div></dd>
+
+                                            <dt><label for="form-account-name">Last Name:</label></dt>
+                                            <dd><div class="form-group ">
+                                                    <input type="text" formControlName="lastname" >
+                                               </div></dd>
+
+                                               <dt><label for="form-account-name">Middle Name:</label></dt>
+                                            <dd><div class="form-group ">
+                                                    <input type="text" formControlName="middlename" >
+                                               </div></dd>
+
+                                               <dt><label for="form-account-name">Email:</label></dt>
+                                            <dd><div class="form-group ">
+                                                    <input type="text" formControlName="email" >
+                                               </div></dd>
+                                               <dt><label for="form-account-name">Family:</label></dt>
+                                            <dd><div class="form-group ">
+                                                    <input type="text" formControlName="family" >
+                                               </div></dd>
+                                               <dt><label for="form-account-name">About me:</label></dt>
+                                            <dd><div class="form-group ">
+                                                    <input type="text" rows="5" formControlName="familybackground" >
+                                               </div></dd>
+                                               <dt><label for="form-account-phone">Phone:</label></dt>
+                                            <dd><div class="form-group">
+                                                <input type="text" formControlName="phone" >
+                                            </div><!-- /.form-group --></dd>
+                                            <dt><label for="form-account-skype">Gender:</label></dt>
+                                            <dd><div class="form-group">
+                                                <input type="text" formControlName="gender" >
+                                            </div><!-- /.form-group --></dd>
+                                            <dt><label for="form-account-skype">Town:</label></dt>
+                                            <dd><div class="form-group">
+                                                <input type="text"   formControlName="town">
+                                            </div><!-- /.form-group --></dd>
+
+                                                    <!-- <input type="text" formControlName="firstname">
+                                                    <input type="text" formControlName="lastname"> -->
+                                                    <div class="form-group clearfix">
+                                                        <button (click)="onSubmit1()" [disabled]= "disabled"  class="btn pull-right btn-default" id="account-submit">
+                                                            <i id="loader2" *ngIf="disabled"  class="fa fa-spin fa-spinner"></i> {{sav}}</button>
+                                                    </div>
+                                                    <!-- <button (click)="onSubmit1()">SUBMIT</button> -->
+                                            
+                                    </section><br>
+                                </form>                                    
+                                    <!-- <section id="social">
+                                        <h3>My Social Network</h3>
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-twitter"></i></span>
+                                                <input type="text" class="form-control" id="account-social-twitter" name="account-social-twitter">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-facebook"></i></span>
+                                                <input type="text" class="form-control" id="account-social-facebook" name="account-social-facebook" >
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-pinterest"></i></span>
+                                                <input type="text" class="form-control" id="account-social-pinterest" name="account-social-pinterest">
+                                            </div>
+                                        </div>
+                                        
+                                    </section> -->
+                                
+                                <!-- <section id="change-password">
+                                    <header><h2>Change Your Password</h2></header>
+                                    <div class="row">
+                                        <div class="col-md-6 col-sm-6">
+                                            <form role="form" id="form-account-password" method="post" >
+                                                <div class="form-group">
+                                                    <label for="form-account-password-current">Current Password</label>
+                                                    <input type="password" class="form-control" id="form-account-password-current" name="form-account-password-current">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="form-account-password-new">New Password</label>
+                                                    <input type="password" class="form-control" id="form-account-password-new" name="form-account-password-new">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="form-account-password-confirm-new">Confirm New Password</label>
+                                                    <input type="password" class="form-control" id="form-account-password-confirm-new" name="form-account-password-confirm-new">
+                                                </div>
+                                                <div class="form-group clearfix">
+                                                    <button type="submit" class="btn btn-default" id="form-account-password-submit">Change Password</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6">
+                                            <strong>Hint:</strong>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras et dui
+                                                vestibulum, bibendum purus sit amet, vulputate mauris.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </section> -->
+                            </div><!-- /.col-md-9 -->
+                        </div><!-- /.row -->
+                    </div><!-- /.account-profile -->
+                </section><!-- /#profile -->
+            </div><!-- /.col-md-9 -->
+
+        
+       

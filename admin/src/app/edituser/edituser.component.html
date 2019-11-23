@@ -1,0 +1,68 @@
+<mat-card-header>
+  <mat-toolbar class="toolbar">
+    <mat-card-title>Update Info</mat-card-title>
+    <span class="toolbar-spacer"></span>
+    <mat-icon (click)="onNoClick()">cancel</mat-icon>
+  </mat-toolbar>
+</mat-card-header>
+<mat-card-content>
+  <div class="container">
+    <form [formGroup]="_userForm" (submit)="onSubmit()">
+      <div class="form-group">
+        <div class="row">
+          <div class="col-md-4">
+            <label>First Name</label>
+            <input type="text" formControlName="firstname" class="form-control">
+          </div>
+          <div class="col-md-4">
+            <label>Middle Name</label>
+            <input type="text" formControlName="middlename" class="form-control">
+          </div>
+          <div class="col-md-4">
+            <label>Last Name</label>
+            <input type="text" formControlName="lastname" class="form-control">
+          </div>
+        </div>
+        
+      <!-- </div> -->
+        <div class="row">
+            <div class="col-md-6">
+                <label>Address</label><br>
+               
+                    <!-- <textarea type="text" formControlName="destription" class="width-60 required" required   rows="6" > </textarea> -->
+                 
+                <input type="text" formControlName="address" class="form-control">
+              </div>
+              <div class="col-md-6">
+                <label>Phone Number</label>
+                <input type="text" formControlName="phone" class="form-control">
+              </div>
+          
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+              <label>Family</label><br>
+             
+                  <!-- <textarea type="text" formControlName="destription" class="width-60 required" required   rows="6" > </textarea> -->
+               
+              <input type="text" formControlName="family" class="form-control">
+            </div>
+            <div class="col-md-6">
+              <label>Role_id</label>
+              <input type="text" formControlName="role_id" class="form-control">
+            </div>
+        
+      </div>
+        <div class="row">
+          <div class="col-md-6">
+          <button type="submit" class="btn btn-success">
+            <mat-icon>save</mat-icon>
+          </button>
+          </div>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</mat-card-content>
+

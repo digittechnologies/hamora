@@ -1,0 +1,47 @@
+<!-- Page Content -->
+<div id="page-content">
+    <!-- Breadcrumb -->
+    <div class="container">
+        <ol class="breadcrumb">
+            <li><a href="#">Home</a></li>
+            <li class="active">Sign In</li>
+        </ol>
+    </div>
+    <!-- end Breadcrumb -->
+  
+    <div class="container">
+        <header><h1>Admin: Login</h1></header>
+        <div class="row">
+            <div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3">
+                <form role="form" id="form-create-account" #signupForm=ngForm (ngSubmit)="onSubmit()">
+                  <!-- <div class="alert alert-success" [hidden]="!message">
+                      {{message}}
+                    </div>
+                    <div class="alert alert-danger" [hidden]="!error">
+                      {{error}}
+                    </div> -->
+                  <div class="form-group">
+                              <label for="account-email">Email:</label>
+                              <input type="email" required class="form-control" id="account-email" name="email" [(ngModel)]="form.email" required>
+                          </div>
+                          <div class="form-group">
+                              <label for="account-password">Password:</label>
+                              <input type="password" required class="form-control" id="account-password" name="password" [(ngModel)]="form.password" required>
+                          </div>
+  
+                     
+                    <div class="form-group clearfix">
+                        <button type="submit" [disabled]= "disabled" class="btn pull-right btn-default" id="account-submit">
+                              <i id="loader2" *ngIf="disabled"  class="fa fa-spin fa-spinner"></i> {{sav}}</button>
+                    </div>
+                </form>
+                <hr>
+                <div class="center"><a [routerLink]="['/Signin']">Creat an Account</a></div>
+                <div class="center"><a [routerLink]="['/Fpassword']">I don't remember my password</a></div>
+            </div>
+        </div><!-- /.row -->
+    </div><!-- /.container -->
+  </div>
+  <!-- end Page Content -->
+  
+  

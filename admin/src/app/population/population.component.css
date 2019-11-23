@@ -1,0 +1,8 @@
+.my-pagination{
+    font-size: 12px;
+}
+
+.my-pagination /deep/ .ngx-pagination .current{
+    background: green;
+
+}
