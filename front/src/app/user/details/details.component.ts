@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { JarwisService } from 'src/app/service/jarwis.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-details',
@@ -13,7 +14,7 @@ export class DetailsComponent implements OnInit {
   article: any;
   gallery: any;
 
-  constructor(private Jarwis: JarwisService,) { }
+  constructor(private Jarwis: JarwisService, private router: Router,) { }
 
   ngOnInit() {
 
@@ -35,5 +36,8 @@ export class DetailsComponent implements OnInit {
       }
     )
   }
-
+  nav(id){
+    this.router.navigate(['Content/'+id+'']);
+    this.ngOnInit()
+  }
 }

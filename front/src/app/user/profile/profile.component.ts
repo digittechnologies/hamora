@@ -5,6 +5,10 @@ import { TokenService } from '../../service/token.service';
 import { Router } from '@angular/router';
 import {FormBuilder, FormGroup, Validators, NgForm, FormControl} from "@angular/forms";
 declare var $: any;
+export interface Town {
+  value: string;
+  viewValue: string;
+}
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -12,7 +16,7 @@ declare var $: any;
 })
 export class ProfileComponent implements OnInit {
 
-  
+  public selectedid:any;
   firstname: any;
   family: any;
   email: any;
@@ -23,6 +27,7 @@ export class ProfileComponent implements OnInit {
   familybackground: any;
   town: any;
   gender: any;
+  disable= "disabled";
   disabled= false;
   sav= 'Update';
   
@@ -34,12 +39,29 @@ export class ProfileComponent implements OnInit {
   public response:any;
   public form ={
     emails:'',
-    pass:''
+    pass:'',
+    id:''
 
   };
- 
+  Towns: Town[] = [
+    {value: 'true', viewValue: 'Yes'},
+    {value: 'flase', viewValue: 'No'},
+    // {value: 'Ota', viewValue: 'Ota'}
+  ];
+  dataChanged(event){
+    if (event=='false'){
+      // console.log(event)
+      this.submissionForm.controls.family.disable();
+    //  this.disabled= true;
+    }else{
+      // console.log(event)
+      this.submissionForm.controls.family.enable();
+      // this.disabled= false;
+    }
+    // console.log(event)
+   }
  ngOnInit() {
-      
+ 
    this.submissionForm = this.formBuilder.group(
      
      {
@@ -58,6 +80,7 @@ export class ProfileComponent implements OnInit {
   )
     this.displayprofile()
   }
+ 
   displayprofile(){
  this.Jarwis.profile().subscribe(
    data=>{
