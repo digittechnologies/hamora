@@ -55,54 +55,62 @@
                     <input type="text" class="form-control" id="description" placeholder="Name / Tittle" [(ngModel)]="form.name_title" name="name_title" required>
                     <!-- <small class="form-text">Short Description about your topic content.</small> -->
                   </div>
-  
-                  <div class="form-group">
-                    <label for="description">Header</label>
-                    <input type="text" class="form-control" id="description" placeholder="Header" [(ngModel)]="form.header" name="header" required>
-                    <!-- <small class="form-text">Short Description about your topic content.</small> -->
-                  </div>
-                  <div class="form-group m-t-25">
-                    <textarea  [(ngModel)]="form.content" name="content" rows="8" style="width: 100%"></textarea>
-                    <!-- <textarea id="summernote" [(ngModel)]="form.contents" name="contents">cnxvcxnvcmn</textarea> -->
-                    <small class="form-text">Others will se when reach your topic (max 50 character).</small>
-                  </div>
+                  <div *ngIf="getLength()">
+                    <div [formGroup]="orderForm" >
+                    <div  *ngFor="let i of items">
+                        <div class="form-group">
+                            <label for="description">Header</label>
+                            <input type="text" class="form-control" id="description" placeholder="Header" value="{{i.header}}"   required>
+                            <!-- <small class="form-text">Short Description about your topic content.</small> -->
+                          </div>
+                          <div class="form-group m-t-25">
+                              <label for="description">Content</label>
+
+                            <textarea   name="content" rows="8" style="width: 100%">{{i.content}}</textarea>
+                            <!-- <textarea id="summernote" [(ngModel)]="form.contents" name="contents">cnxvcxnvcmn</textarea> -->
+                            <!-- <small class="form-text">Others will se when reach your topic (max 50 character).</small> -->
+                          </div>
+                          <div class="form-group">
+
+                            <img src="{{i.c_image}}" style="width: 20%;">
+                            </div>
+                          <input type="button"  class="btn btn-primary btn-sm" (click)="deleteItem(i.id)" value="Remove Details">
+
+                    </div></div></div>
+                  
                   <div class="col-md-12 col-sm-12">
                         <div class="form-group">
-                            <label for="submit-area">Attachment</label>
+                            <label for="submit-area">Gallery</label>
                             <div class="input-group">
                                 <input id="file-upload" type="file" class="file" multiple="true" data-show-upload="false" data-show-caption="false" data-show-remove="false" accept="image/jpeg,image/png" data-browse-class="btn btn-default" data-browse-label="Browse Images" (change)="uploadFiles($event)">
                                 <!-- <span class="input-group-addon">m<sup>2</sup></span> -->
                             </div>
                         </div><!-- /.form-group -->
                     </div>
-                  
+                    <div [formGroup]="orderForm">
+                    <div class="form-group">
+                        <label for="description">Header</label>
+                        <input type="text" class="form-control" id="description" placeholder="Header" formControlName="header" required>
+                        <!-- <small class="form-text">Short Description about your topic content.</small> -->
+                      </div>
+                      <div class="form-group m-t-25">
+                          <label for="description">Content</label>
 
-<!--                   <div class="form-group">
-                    <label for="title">Topic Title</label>
-                    <input type="text" class="form-control" id="title" placeholder="Enter Title">
-                    <small class="form-text">Others will se when reach your topic (max 50 character).</small>
-                  </div>
-                  <div class="form-group">
-                    <label for="description">Short Description</label>
-                    <input type="text" class="form-control" id="description" placeholder="Description">
-                    <small class="form-text">Short Description about your topic content.</small>
-                  </div>
-                  <div class="form-group">
-                    <label for="thread">Thread</label>
-                    <select id="thread" class="form-control js-example-basic">
-                    <option value="gameforest">Gameforest</option>
-                    <option value="playstation-4">Playstation 4</option>
-                    <option value="xbox-one">Xbox One</option>
-                    <option value="pc">Pc</option>
-                    <option value="steam">Steam</option>
-                    <option value="fps">FPS</option>
-                  </select>
-                    <small class="form-text">Short Description about your topic content.</small>
-                  </div>
-                  <div class="form-group m-t-25">
-                    <div id="summernote"></div>
-                    <small class="form-text">Others will se when reach your topic (max 50 character).</small>
-                  </div> -->
+                        <textarea  formControlName="content" rows="8" style="width: 100%"></textarea>
+                        <!-- <textarea id="summernote" [(ngModel)]="form.contents" name="contents">cnxvcxnvcmn</textarea> -->
+                        <!-- <small class="form-text">Others will se when reach your topic (max 50 character).</small> -->
+                      </div>
+                      <div class="col-md-12 col-sm-12">
+                          <div class="form-group">
+                              <label for="submit-area">content image *</label>
+                              <div class="input-group">
+                                  <input id="file-upload" type="file" class="file"  data-show-upload="false" data-show-caption="false" data-show-remove="false" accept="image/jpeg,image/png" data-browse-class="btn btn-default" data-browse-label="Browse Images" (change)="uploadFile($event)">
+                                  <!-- <span class="input-group-addon">m<sup>2</sup></span> -->
+                              </div>
+                          </div><!-- /.form-group -->
+                      </div>
+</div>
+ <button class="btn btn-default" (click)="addItem()">add</button>                               
 
                 </div>
     

@@ -86,7 +86,7 @@ class ContentController extends Controller
         $authid=auth()->user()->id;
         $image_name= $request->image;
           $request->merge(['user_id'=>$authid]);
-        //  $detcontents = $request->contents;
+        $detcontents = $request->contents;
          $files=$image_name[0];
          $filenames=time().'.' . explode('/', explode(':', substr($files, 0, strpos($files,';')))[1])[1];
         Image::make($files)->resize(300, 300)->save(public_path('/upload/uploads/'.$filenames));
@@ -97,33 +97,39 @@ class ContentController extends Controller
         // return $content->id;
 $imageName=[];
 $count = 0;
-// foreach ($image_name as $img) {
-//         $file=$img;
-//        $filename=$count.'.'.time().'.' . explode('/', explode(':', substr($file, 0, strpos($file,';')))[1])[1];
+foreach ($image_name as $img) {
+        $file=$img;
+       $filename=$count.'.'.time().'.' . explode('/', explode(':', substr($file, 0, strpos($file,';')))[1])[1];
     
-//         Image::make($file)->resize(300, 300)->save(public_path('/upload/uploads/'.$filename));
-//     $imageName[] =[
-//      'title_id' => $content->id,
-//    'image_name'=> $filename,
-//     ] ; 
-//     $count++;
-// }
-//    Galleries::insert($imageName);
+        Image::make($file)->resize(300, 300)->save(public_path('/upload/uploads/'.$filename));
+    $imageName[] =[
+     'title_id' => $content->id,
+   'image_name'=> $filename,
+    ] ; 
+    $count++;
+}
+   Galleries::insert($imageName);
 //  return $imageName;
-        // $contentData=[];
-        $request->merge(['name_id'=>$content->id]);
-        // foreach ($detcontents as $item) {
+       $contentData=[];
+       $counts = 0;
+        // $request->merge(['name_id'=>$content->id]);
+        foreach ($detcontents as $item) {
+            $file=$item['c_image'];
+            $filename=$counts.''.time().'.' . explode('/', explode(':', substr($file, 0, strpos($file,';')))[1])[1];
+         
+             Image::make($file)->resize(300, 300)->save(public_path('/upload/uploads/'.$filename));
+            $contentData[] =[
+             'header'=>$item['header'],
+             'content' =>$item['content'],
            
-        //     $contentData[] =[
-        //      'header'=>$item['header'],
-        //      'content' =>$item['content'],
-           
-        //      'name_id' => $content->id,
-           
-        //     ] ; 
-        // }
-        $contentData=Content::create($request-> all());
-         return $contentData;
+             'name_id' => $content->id,
+             'c_image' =>$filename
+             ] ; 
+             $counts++;
+         }
+      
+          Content::insert($contentData);
+          return $contentData;
     }
 
  

@@ -20,10 +20,14 @@ export class AccountComponent implements OnInit {
   commercial = false;
   news = false;
   people = false;
-
+  firstname: any;
+  family: any;
+  email: any;
+  lastname: any;
 public res:any;
-  profres: any;
+response: any;
   image: string;
+  middlename: any;
   constructor( private Jarwis: JarwisService,
     private router: Router
   ) { }
@@ -33,8 +37,13 @@ public res:any;
     this.Jarwis.profile().subscribe(
       data=>{
       
-      this.profres = data;
-      this.image='https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/'+this.profres.image
+      this.response = data;
+     this.firstname=this.response.firstname,
+      this.lastname=this.response.lastname,
+      this.email=this.response.email,
+  this.family=this.response.family,
+  this.middlename=this.response.middlename,
+      this.image='https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/'+this.response.image
      
     });
 

@@ -27,8 +27,8 @@ location:null,
 about: 'Content',
 t_image:null,
 image:null,
-header:null,
-content:null,
+// header:null,
+contents:null,
 }
   disabled=false;
   sav= 'Contribute';
@@ -49,7 +49,7 @@ content:null,
   }
  
   onSubmit() {
-    // this.form.contents=this.items  
+    this.form.contents=this.items  
     console.log(this.form)
     this.Jarwis.content(this.form).subscribe(
       data => this.handleResponse(data),
@@ -80,12 +80,14 @@ content:null,
   addItem(): void{
     let header = this.orderForm.value.header;
     let content = this.orderForm.value.content;
-
-    let existingItem = this.items.filter(i => i.header==header && i.content == content)
+    let c_image=this.orderForm.value.c_image;
+    let existingItem = this.items.filter(i => i.header==header && i.content == content )
     if(existingItem.length == 0){
       let id = this.items.length;
-      this.items.push({id: id,header: header, content: content})      
-      
+      this.items.push({id: id,header: header, content: content, c_image : c_image})      
+      // console.log(this.items)
+      // this.orderForm.value.header=""
+      // this.orderForm.value.content=""
     }else{
       let snackBarRef = this.snackBar.open('Information already exist', 'Dismiss', {
         duration: 2000
@@ -103,7 +105,17 @@ content:null,
       
     }
   }
-  
+  uploadFile(event){
+    let files =event.target.files[0];
+    let reader = new FileReader();
+    let vm = this;
+    reader.onloadend =()=> {
+      // body...
+      this.orderForm.value.c_image = reader.result;
+   
+    }
+    reader.readAsDataURL(files);
+  }
   uploadFiles(event){
     let files =event.target.files;
     if (files){
@@ -149,7 +161,7 @@ content:null,
         header: '',
         content: '',
         // list: '',
-        // c_image:''
+         c_image:''
       }); 
     } 
    
