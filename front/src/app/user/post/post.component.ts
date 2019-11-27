@@ -20,6 +20,7 @@ public response:any;
 public selectedid:any;
 public location:any;
 public img=[];
+public video=[];
 public form = {
 category_id: null,
 name_title:'',
@@ -27,8 +28,8 @@ location:null,
 about: 'Content',
 t_image:null,
 image:null,
-header:null,
-content:null,
+videos:null,
+contents:null,
 }
   disabled=false;
   sav= 'Contribute';
@@ -49,7 +50,7 @@ content:null,
   }
  
   onSubmit() {
-    // this.form.contents=this.items  
+    this.form.contents=this.items  
     console.log(this.form)
     this.Jarwis.content(this.form).subscribe(
       data => this.handleResponse(data),
@@ -80,12 +81,15 @@ content:null,
   addItem(): void{
     let header = this.orderForm.value.header;
     let content = this.orderForm.value.content;
-
-    let existingItem = this.items.filter(i => i.header==header && i.content == content)
+    let c_image=this.orderForm.value.c_image;
+    let quote=this.orderForm.value.quote;
+    let existingItem = this.items.filter(i => i.header==header && i.content == content && i.quote == quote )
     if(existingItem.length == 0){
       let id = this.items.length;
-      this.items.push({id: id,header: header, content: content})      
-      
+      this.items.push({id: id,header: header, content: content, c_image : c_image, quote: quote})      
+      // console.log(this.items),
+      // this.orderForm.value.header=""
+      // this.orderForm.value.content=""
     }else{
       let snackBarRef = this.snackBar.open('Information already exist', 'Dismiss', {
         duration: 2000
@@ -103,7 +107,36 @@ content:null,
       
     }
   }
-  
+  uploadFile(event){
+    let files =event.target.files[0];
+    let reader = new FileReader();
+    let vm = this;
+    reader.onloadend =()=> {
+      // body...
+      this.orderForm.value.c_image = reader.result;
+   
+    }
+    reader.readAsDataURL(files);
+  }
+  uploadVideos(event){
+    let files =event.target.files;
+    if (files){
+      for(let file of files){
+        this.video.push(file.name);
+        // let reader= new FileReader();
+        // let vm = this;
+        // reader.onload =()=> {
+        //  this.video.push(reader.result);
+        
+        // }
+        // reader.readAsDataURL(file);
+        
+    }
+    }
+    this.form.videos =this.video;
+    // console.log(event)
+    console.log(this.form.videos)
+  }
   uploadFiles(event){
     let files =event.target.files;
     if (files){
@@ -119,8 +152,8 @@ content:null,
     }
     }
     this.form.image =this.img;
-    console.log(event)
-    console.log(this.form.image)
+    // console.log(event)
+    // console.log(this.form.image)
   }
   ngOnInit() {
 
@@ -148,8 +181,8 @@ content:null,
       this.orderForm =  this.formBuilder.group({
         header: '',
         content: '',
-        // list: '',
-        // c_image:''
+        quote: '',
+         c_image:''
       }); 
     } 
    

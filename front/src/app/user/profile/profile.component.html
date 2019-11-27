@@ -2,7 +2,7 @@
         <div class="container">
           <ol class="breadcrumb">
             <li><a href="/">Home</a></li>
-            <li><a href="forums.html">Forums</a></li>
+            <li><a>Forums</a></li>
             <li class="active">Forum Create</li>
           </ol>
         </div>
@@ -14,101 +14,102 @@
             <div class="col-lg-8 mx-auto">
     
               <!-- Nav tabs -->
-              <ul class="nav nav-tabs" role="tablist">
+              <!-- <ul class="nav nav-tabs" role="tablist">
                 <li class="nav-item"><a class="nav-link active" href="#forum" aria-controls="forum" role="tab" data-toggle="tab">Forum</a></li>
                 <li class="nav-item"><a class="nav-link" href="#options" aria-controls="options" role="tab" data-toggle="tab">Options</a></li>
-              </ul>
+              </ul> -->
     
-              <form class="tab-content p-t-20">
-                <div class="tab-pane active" id="forum" role="tabpanel">
+              <form class="tab-content p-t-20"  >
+                <!-- <div class="tab-pane active" id="forum" role="tabpanel"> -->
                   <!-- form -->
-                  <div class="form-group">
-                    <label for="title">Topic Title</label>
-                    <input type="text" class="form-control" id="title" placeholder="Enter Title">
-                    <small class="form-text">Others will se when reach your topic (max 50 character).</small>
-                  </div>
-                  <div class="form-group">
-                    <label for="description">Short Description</label>
-                    <input type="text" class="form-control" id="description" placeholder="Description">
-                    <small class="form-text">Short Description about your topic content.</small>
-                  </div>
-                  <div class="form-group">
-                    <label for="thread">Thread</label>
-                    <select id="thread" class="form-control js-example-basic">
-                    <option value="gameforest">Gameforest</option>
-                    <option value="playstation-4">Playstation 4</option>
-                    <option value="xbox-one">Xbox One</option>
-                    <option value="pc">Pc</option>
-                    <option value="steam">Steam</option>
-                    <option value="fps">FPS</option>
-                  </select>
-                    <small class="form-text">Short Description about your topic content.</small>
-                  </div>
-
-
-            
-
+         
+                  <h4>Are you form Ogun state</h4>
+                  
+                  <mat-form-field>
+                    <mat-label>Are you from Ogun state</mat-label>
+                    <mat-select [(ngModel)]="selectedid" name="id" (ngModelChange)="dataChanged($event)">
+                      <mat-option value="" selected></mat-option>
+                      <mat-option  value="true">
+                          Yes</mat-option>
+                      <mat-option value="false">No </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                 
+                  <!-- <label for="Family-Name">Family Name:</label>
+                  <input type="text" ng-disabled="disable" class="form-control" id="account-surnamename" formControlName="family"  > -->
+                <hr>
+               
                   <div class="row m-t-80">
                         <div class="col-lg-12">
                           <div class="p-r-30">
-                            <h5>Textual Inputs</h5>
-                            <p class="m-b-40">Most common form control, text-based input fields. Includes support for all HTML5 types.</p>
-                            <form>
+                            <div class="form-group row">
+                              <label for="example-week-input" class="col-sm-2 col-form-label">Change profile</label>
+                              <div class="col-sm-10">
+                            <input type="file" name="file"  (change)="uploadFile($event)">
+                                
+                              </div>
+                            </div>
+                            <!-- <h5>Textual Inputs</h5>
+                            <p class="m-b-40">Most common form control, text-based input fields. Includes support for all HTML5 types.</p> -->
+                            <form [formGroup]="submissionForm">
+                                <div class="form-group row">
+                                    <label for="example-week-input" class="col-sm-2 col-form-label">Family Name:</label>
+                                    <div class="col-sm-10">
+                    <input type="text" [attr.disabled]= "false"  class="form-control" id="account-surnamename" formControlName="family"  >
+                                      
+                                    </div>
+                                  </div>
                               <div class="form-group row">
-                                <label for="example-text-input" class="col-sm-2 col-form-label">Text</label>
+                                <label for="example-text-input" class="col-sm-2 col-form-label">Fisrtname</label>
                                 <div class="col-sm-10">
-                                  <input class="form-control" type="text" value="yakuzi" id="example-text-input">
+                                  <input class="form-control" type="text"  id="example-text-input" formControlName="firstname">
                                 </div>
                               </div>
                               <div class="form-group row">
-                                <label for="example-search-input" class="col-sm-2 col-form-label">Search</label>
+                                <label for="example-search-input" class="col-sm-2 col-form-label">Lastname</label>
                                 <div class="col-sm-10">
-                                  <input class="form-control" type="search" value="How do I shoot web" id="example-search-input">
+                                  <input class="form-control" type="text"  id="example-search-input" formControlName="lastname" >
                                 </div>
                               </div>
                               <div class="form-group row">
-                                <label for="example-email-input" class="col-sm-2 col-form-label">Email</label>
+                                <label for="example-email-input" class="col-sm-2 col-form-label">Middlename</label>
                                 <div class="col-sm-10">
-                                  <input class="form-control" type="email" value="yakuthemes@example.com" id="example-email-input">
+                                  <input class="form-control" type="text"  id="example-email-input" formControlName="middlename">
                                 </div>
                               </div>
                               <div class="form-group row">
-                                <label for="example-url-input" class="col-sm-2 col-form-label">URL</label>
+                                <label for="example-url-input" class="col-sm-2 col-form-label">Email</label>
                                 <div class="col-sm-10">
-                                  <input class="form-control" type="url" value="https://yakuthemes.com" id="example-url-input">
+                                  <input class="form-control" type="text"  id="example-url-input" formControlName="email" disabled>
                                 </div>
                               </div>
                               <div class="form-group row">
                                 <label for="example-tel-input" class="col-sm-2 col-form-label">Telephone</label>
                                 <div class="col-sm-10">
-                                  <input class="form-control" type="tel" value="1-(555)-555-5555" id="example-tel-input">
+                                  <input class="form-control" type="number"  id="example-tel-input" formControlName="phone">
                                 </div>
                               </div>
+                              
                               <div class="form-group row">
-                                <label for="example-password-input" class="col-sm-2 col-form-label">Password</label>
+                                <label for="example-number-input" class="col-sm-2 col-form-label">Town</label>
                                 <div class="col-sm-10">
-                                  <input class="form-control" type="password" value="yakuzitheking" id="example-password-input">
+                                  <input class="form-control" type="text"  id="example-number-input" formControlName="town">
                                 </div>
                               </div>
                               <div class="form-group row">
-                                <label for="example-number-input" class="col-sm-2 col-form-label">Number</label>
+                                <label for="example-datetime-local-input" class="col-sm-2 col-form-label">Gender</label>
                                 <div class="col-sm-10">
-                                  <input class="form-control" type="number" value="42" id="example-number-input">
+                                  <input class="form-control" type="text"  id="example-datetime-local-input" formControlName="gender">
                                 </div>
                               </div>
                               <div class="form-group row">
-                                <label for="example-datetime-local-input" class="col-sm-2 col-form-label">Datetime</label>
+                                <label for="example-date-input" class="col-sm-2 col-form-label">Biography</label>
                                 <div class="col-sm-10">
-                                  <input class="form-control" type="datetime-local" value="2017-08-19T13:45:00" id="example-datetime-local-input">
+                                  <textarea name="" id=""  rows="8" style="width: 100%" formControlName="familybackground"></textarea>
+                                  <!-- <input class="form-control" type="date" value="2017-08-19" id="example-date-input"> -->
                                 </div>
                               </div>
-                              <div class="form-group row">
-                                <label for="example-date-input" class="col-sm-2 col-form-label">Date</label>
-                                <div class="col-sm-10">
-                                  <input class="form-control" type="date" value="2017-08-19" id="example-date-input">
-                                </div>
-                              </div>
-                              <div class="form-group row">
+                              <!-- <div class="form-group row">
                                 <label for="example-month-input" class="col-sm-2 col-form-label">Month</label>
                                 <div class="col-sm-10">
                                   <input class="form-control" type="month" value="2017-08" id="example-month-input">
@@ -125,7 +126,7 @@
                                 <div class="col-sm-10">
                                   <input class="form-control" type="time" value="13:45:00" id="example-time-input">
                                 </div>
-                              </div>
+                              </div> -->
                             </form>
                           </div>
                         </div>                       
@@ -136,13 +137,10 @@
 
 
 
-                  <div class="form-group m-t-25">
-                    <div id="summernote"></div>
-                    <small class="form-text">Others will se when reach your topic (max 50 character).</small>
-                  </div>
-                </div>
+                 
+                <!-- </div> -->
     
-                <div class="tab-pane" id="options" role="tabpanel">
+                <!-- <div class="tab-pane" id="options" role="tabpanel">
                   <div class="form-group row">
                     <div class="col-6">
                       <label for="date">Publish Date:</label>
@@ -164,9 +162,13 @@
                     <label for="">Enable Replies</label>
                     <div><input type="checkbox" class="js-switch" checked></div>
                   </div>
-                </div>
+                </div> -->
                 <div class="m-t-30">
-                  <button class="btn btn-primary btn-rounded btn-shadow float-right" type="submit" name="save">Submit</button>
+                    <div class="form-group clearfix">
+                        <button (click)="onSubmit1()" [disabled]= "disabled"  class="btn pull-right btn-default" id="account-submit">
+                            <i id="loader2" *ngIf="disabled"  class="fa fa-spin fa-spinner"></i> {{sav}}</button>
+                    </div>
+                  <!-- <button class="btn btn-primary btn-rounded btn-shadow float-right" type="submit" name="save">Submit</button> -->
                 </div>
               </form>
             </div>
@@ -184,82 +186,4 @@
 
 
 
-        <div class="col-md-9 col-sm-10">
-                <section id="profile">
-                    <header><h1>Profile</h1></header>
-                    <div class="account-profile">
-                        <div class="row">
-                                <!-- <div class="col-md-3 col-sm-3">
-                                        <img alt="" class="image" src="assets/img/agent-01.jpg">
-                                    </div> -->
-                            <div class="col-md-3 col-sm-3">
-                                <img alt="" class="image" src="https://sce-ogun.sabiogun.jtcheck.com/backend/public/upload/uploads/{{response.image}}">
-                            </div>
-                            <!-- ngModel   value="{{firstname}}" -->
-                            <div class="col-md-9 col-sm-9">
-
-                                <form [formGroup]="submissionForm" >
-                                      <label>Update profile</label><br>
-                                      <input type="file" name="file"  (change)="uploadFile($event)">
-                                     
-                                    <section id="contact">
-                                        
-                                            <dt><label for="form-account-name">First Name:</label></dt>
-                                            <dd><div class="form-group ">
-                                                    <input type="text" formControlName="firstname"> 
-                                            </div></dd>
-
-                                            <dt><label for="form-account-name">Last Name:</label></dt>
-                                            <dd><div class="form-group ">
-                                                    <input type="text" formControlName="lastname" >
-                                               </div></dd>
-
-                                               <dt><label for="form-account-name">Middle Name:</label></dt>
-                                            <dd><div class="form-group ">
-                                                    <input type="text" formControlName="middlename" >
-                                               </div></dd>
-
-                                               <dt><label for="form-account-name">Email:</label></dt>
-                                            <dd><div class="form-group ">
-                                                    <input type="text" formControlName="email" >
-                                               </div></dd>
-                                               <dt><label for="form-account-name">Family:</label></dt>
-                                            <dd><div class="form-group ">
-                                                    <input type="text" formControlName="family" >
-                                               </div></dd>
-                                               <dt><label for="form-account-name">About me:</label></dt>
-                                            <dd><div class="form-group ">
-                                                    <input type="text" rows="5" formControlName="familybackground" >
-                                               </div></dd>
-                                               <dt><label for="form-account-phone">Phone:</label></dt>
-                                            <dd><div class="form-group">
-                                                <input type="text" formControlName="phone" >
-                                            </div><!-- /.form-group --></dd>
-                                            <dt><label for="form-account-skype">Gender:</label></dt>
-                                            <dd><div class="form-group">
-                                                <input type="text" formControlName="gender" >
-                                            </div><!-- /.form-group --></dd>
-                                            <dt><label for="form-account-skype">Town:</label></dt>
-                                            <dd><div class="form-group">
-                                                <input type="text"   formControlName="town">
-                                            </div><!-- /.form-group --></dd>
-
-                                                    <!-- <input type="text" formControlName="firstname">
-                                                    <input type="text" formControlName="lastname"> -->
-                                                    <div class="form-group clearfix">
-                                                        <button (click)="onSubmit1()" [disabled]= "disabled"  class="btn pull-right btn-default" id="account-submit">
-                                                            <i id="loader2" *ngIf="disabled"  class="fa fa-spin fa-spinner"></i> {{sav}}</button>
-                                                    </div>
-                                                    <!-- <button (click)="onSubmit1()">SUBMIT</button> -->
-                                            
-                                    </section><br>
-                                </form>                                    
-                                    
-                            </div><!-- /.col-md-9 -->
-                        </div><!-- /.row -->
-                    </div><!-- /.account-profile -->
-                </section><!-- /#profile -->
-            </div><!-- /.col-md-9 -->
-
         
-       

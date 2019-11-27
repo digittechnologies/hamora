@@ -46,7 +46,7 @@
               <div class="nav navbar-right">
                 <ul> 
                     <li class="dropdown dropdown-profile">
-                        <a href="login.html" data-toggle="dropdown" *ngIf="loggedIn"><img [src]='image' alt=""><span>{{response.firstname}}</span></a>
+                        <a  data-toggle="dropdown" *ngIf="loggedIn"><img [src]='image' alt=""><span>{{response.firstname}}</span></a>
                         <a href="/Login" [routerLink]="['/Login']" *ngIf="!loggedIn">Login</a>
                         <!-- <a href="/Signin" [routerLink]="['/Signin']" *ngIf="!loggedIn">Register</a> -->
                         <div class="dropdown-menu dropdown-menu-right">

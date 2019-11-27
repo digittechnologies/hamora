@@ -38,7 +38,7 @@ class UserController extends Controller
         return response()->json(
             // Activities::where('id','=',1)->get(),
             [
-        'name'=>title::orderBy('id')->join('categories','titles.category_id','=','categories.id')
+        'name'=>title::orderBy('id','desc')->join('categories','titles.category_id','=','categories.id')
         ->join('activities','categories.activity_id','=','activities.id')
         ->join('users','titles.user_id','=','users.id')
            ->join ('contents','titles.id','=','contents.name_id')
