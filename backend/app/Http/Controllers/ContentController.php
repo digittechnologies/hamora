@@ -115,16 +115,21 @@ foreach ($image_name as $img) {
 
    $videoName=[];
 $count = 0;
-foreach ($videodet as $vid) {
-        $file=$vid;
-         $filename= $counts.''.time().'.'.$file->getClientOriginalExtension();
-    //  $filename=$count.'.'.time().'.' . explode('/', explode(':', substr($file, 0, strpos($file,';')))[1])[1];
-    public_path('/upload/videos/'.$filename);
+if($videodet){ 
+foreach ( $videodet as $vid) {
+            $file=$vid;
+        //  return $file;
+         $filename= $count.''.time().'.'.$file->getClientOriginalName();
+         return $filename;
+         //  $filename=$count.'.'.time().'.' . explode('/', explode(':', substr($file, 0, strpos($file,';')))[1])[1];
+    $path=$file->move(public_path('/upload/videos/'.$filename));
+       
     $videoName[] =[
      'title_id' => 8,
    'video_name'=> $filename,
     ] ; 
     $count++;
+}
 }
 //    Videos::insert($videoName);
 return $videoName;
