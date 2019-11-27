@@ -168,7 +168,7 @@ class DisplayController extends Controller
             ->select('titles.*','categories.catname')
             ->where('titles.status','=','Y')
 
-            ->inRandomOrder()->limit(6)
+            ->inRandomOrder()->limit(4)
                ->get()
         ]);
     }

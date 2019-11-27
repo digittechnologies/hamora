@@ -8,6 +8,7 @@ import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {startWith, map} from 'rxjs/operators';
 import { $ } from 'protractor';
+import { AuthService } from '../service/auth.service';
 
 declare let jQuery: any;
 
@@ -81,7 +82,7 @@ export class HomeComponent implements OnInit {
   rest: any;
   resth: any;
   
-  constructor(private Jarwis: JarwisService,private router: Router,private mapserver: MapServiceService, private coordGet: MapServiceService) { }
+  constructor(private Jarwis: JarwisService,  private Auth: AuthService, private router: Router,private mapserver: MapServiceService, private coordGet: MapServiceService) { }
 
   public lat;
   data: any;
@@ -89,6 +90,7 @@ export class HomeComponent implements OnInit {
   public beach;
   public marker;
   public fakerIt = [];
+  public loggedIn: boolean;
 
   ngOnInit() {
     var v = <HTMLVideoElement>document.getElementsByTagName('video')[0];
@@ -132,7 +134,7 @@ export class HomeComponent implements OnInit {
     })(jQuery);
 
 
-
+    this.Auth.authStatus.subscribe(value => this.loggedIn = value);
     this.fakerIt = this.mapserver.localGovt();
 
     this.initMap();

@@ -1,37 +1,4 @@
-<audio src="assets/vid/audio.mp3" autoplay loop></audio>
-<!-- <section class="bg-image player p-y-70" style="background-image: url('https://youtu.be/hA3M_Is7ldQ');" data-property="{videoURL:'hA3M_Is7ldQ',containment:'self', stopMovieOnBlur:false, showControls: false, realfullscreen: true, showYTLogo: false, muted:true, quality: 'highres',autoPlay:true,loop:true,opacity:1}">
-    <div class="owl-carousel owl-slide full-height">
-      <div class="carousel-item image">
-         
-        <div class="carousel-caption">
-          <div>
-              <span style="font-family: Monospace; font-size: 40px;" class="text text-warning">Welcome to</span>
-              <h6 class="carousel-title text-success" style="font-size: 100px;">OGUN STATE</h6>
-              <p>The gateway state.</p>
-              <a class="btn btn-success btn-rounded btn-shadow btn-lg" [routerLink]="['/platform']" role="button">Visit Platform</a>
-          </div>
-        </div>
-    </div>
-    </div> 
-  </section> -->
-
-  <!-- <section class="bg-image" style="background-image: url('https://img.youtube.com/vi/BhTkoDVgF6s/maxresdefault.jpg');">
-    <div class="overlay"></div>
-    <div class="container">
-      <div class="video-play" data-src="https://www.youtube.com/embed/zFUymXnQ5z8?rel=0&amp;amp;autoplay=1&amp;amp;showinfo=0">
-        <div class="embed-responsive embed-responsive-16by9">
-          <img class="embed-responsive-item" src="https://img.youtube.com/vi/BhTkoDVgF6s/maxresdefault.jpg">
-          <div class="video-caption">
-            <h5>For Honor: Walkthrough Gameplay Warlords</h5>
-            <span class="length">5:32</span>
-          </div>
-          <div class="video-play-icon">
-            <i class="fa fa-play"></i>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section> -->
+<audio src="assets/vid/audio2.mp3" autoplay loop></audio>
 <header>
   <!-- <div class="overlay"></div> -->
   <video playsinline="playsinline" muted='' autoplay="autoplay" loop="loop" id="video">
@@ -43,21 +10,10 @@
         <span style="font-family: Monospace; font-size: 40px;" class="text text-warning ">Welcome to</span>
               <h6 class=" text-success display-3" style="font-size: 100px;">OGUN STATE</h6>
               <p class="lead mb-0">The gateway state.</p>
+              <a class="btn btn-outline-default btn-rounded btn-lg m-r-5" data-lightbox >Watch Documentary</a>
+              <a class="btn btn-success btn-rounded btn-shadow btn-lg" [routerLink]="['/User', {outlets: {side: ['Post']}}]" *ngIf="loggedIn" data-lightbox role="button">Visit Platform</a>
+              <a class="btn btn-success btn-rounded btn-shadow btn-lg" [routerLink]="['/Login']" *ngIf="!loggedIn" data-lightbox role="button">Get Started</a>
       </div>
     </div>
   </div>
 </header>
-<!-- <section class="my-5">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-8 mx-auto">
-        <p>The HTML5 video element uses an mp4 video as a source. Change the source video to add in your own background! The header text is vertically centered using flex utilities that are build into Bootstrap 4.</p>
-        <p>The overlay color can be changed by changing the <code>background-color</code> of the <code>.overlay</code> class in the CSS.</p>
-        <p>Set the mobile fallback image in the CSS by changing the background image of the header element within the media query at the bottom of the CSS snippet.</p>
-        <p class="mb-0">
-          Created by <a href="https://startbootstrap.com">Start Bootstrap</a>
-        </p>
-      </div>
-    </div>
-  </div>
-</section> -->

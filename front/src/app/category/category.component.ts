@@ -18,6 +18,7 @@ export class CategoryComponent implements OnInit {
   ftitle: any;
   footer: any;
   res: any;
+  loading=true;
 
   constructor(
     private Auth: AuthService,
@@ -42,6 +43,7 @@ export class CategoryComponent implements OnInit {
       
       this.Jarwis.gettitles(id).subscribe(data=>{
         this.response = data;
+        this.loading=false;
         this.actname=this.response.acti[0].actname
         this.title=this.response.title
         this.cat=this.response.cat

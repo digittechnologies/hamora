@@ -57,7 +57,10 @@ id: any;
   imgs=false;
   video=false;
   contribute=false;
-  stream=false
+  stream=false;
+  active1='active';
+  active2='';
+  active6= '';
 
 constructor(private Jarwis: JarwisService,public snackBar: MatSnackBar,private router: Router, public actRoute: ActivatedRoute, private coordGet: MapServiceService) { }
 @ViewChild('map') mapElement: any;
@@ -124,6 +127,52 @@ handleError(error) {
       $('[data-lightbox]').lightbox({
         disqus: 'gameforestyakuzieu'
       });
+      $('.owl-logos').owlCarousel({
+        margin: 100,
+        nav: false,
+        autoplay: true,
+        dots: false,
+        responsive: {
+          0: {
+            items: 1
+          },
+          500: {
+            items: 2
+          },
+          701: {
+            items: 3
+          },
+          1000: {
+            items: 5
+          }
+        }
+      });
+
+      $('.owl-videos').owlCarousel({
+        margin: 15,
+        loop: true,
+        dots: false,
+        autoplay: true,
+        responsive: {
+          0: {
+            items: 1
+          },
+          700: {
+            items: 2
+          },
+          800: {
+            items: 3
+          },
+          1000: {
+            items: 4
+          },
+          1200: {
+            items: 6
+          }
+        }
+      });
+      // Background Player
+      $(".player").mb_YTPlayer();
     })(jQuery);
 
     this.Jarwis.getfootertitle().subscribe(
@@ -171,34 +220,7 @@ handleError(error) {
                     this.contents=this.response.content;
                     this.comment=this.response.comment;  
                     
-                    console.log(this.response);
-                    
-                    //map Init
-                    // this.coordGet.getLocality(this.response.content[0].location).subscribe(data=>{
-                    //   this.data = data;
-                
-                    //   let lat = this.data.results[0].geometry.location.lat;
-                    //   let long = this.data.results[0].geometry.location.lng;
-                   
-                    //   var map = new google.maps.Map(document.getElementById('map'), {
-                    //     center: {lat: lat, lng:  long},
-                    //     zoom: 15,
-                    //     panControl: true,
-                    //     mapTypeControl: false,
-                    //     scaleControl: true,
-                    //     streetViewControl: false,
-                        
-                    //     rotateControl: true,
-                       
-                    //   })
-                    //   this.marker = new google.maps.Marker({
-                    //     map: map,
-                    //     draggable: true,
-                    //     animation: google.maps.Animation.DROP,
-                    //     position: {lat: lat, lng:  long},
-                        
-                    //   });
-                    // })
+                    console.log(this.response);                  
                     
                     this.images='https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/'+this.res.t_image
                     this.uimage='https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/'+this.res.image;
@@ -209,8 +231,44 @@ handleError(error) {
    
   }
   swip (show){
-    var view = (show == 'post')?this.post=true:this.post=false;
-    if (show == 'mapv'){this.mapv=true;
+    if(show == 'post'){this.post=true; this.active1='active';
+    this.actRoute.paramMap.subscribe(( params => {  
+      
+      var id= this.actRoute.snapshot.params['id'];
+     
+      this.tid= this.actRoute.snapshot.params['id'];
+      this.viewig();
+                       
+                    this.Jarwis.getcontent(id).subscribe(data=>{
+                    this.response = data;
+                    console.log(this.response);
+                    this.res=this.response.name[0];
+                    this.actname=this.res.actname;
+                    this.view=this.res.views;
+                    this.catname=this.res.catname;
+                    this.form.title_id=this.res.id;
+                    this.title=this.res.name_title;
+                    this.about=this.res.about;
+                    this.dates=this.res.created_at;
+                    this.bio=this.res.familybackground;
+                    this.name=this.res.firstname+" "+this.res.lastname+" "+this.res.middlename;
+                    this.location= this.response.content[0].location;
+                   this.img=this.res.t_image;
+
+                    this.contents=this.response.content;
+                    this.comment=this.response.comment;  
+                    
+                    console.log(this.response);                 
+                    
+                    this.images='https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/'+this.res.t_image
+                    this.uimage='https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/'+this.res.image;
+                     
+                    })
+                
+              }));   
+
+    }{this.post=false; this.active1='';}
+    if (show == 'mapv'){this.mapv=true; this.active2='active';
       this.coordGet.getLocality(this.response.content[0].location).subscribe(data=>{
         this.data = data;
   
@@ -236,11 +294,11 @@ handleError(error) {
           
         });
       })
-    }else{this.mapv=false;}
+    }else{this.mapv=false; this.active2='';}
     var view = (show == 'image')?this.imgs=true:this.imgs=false;
     var view = (show == 'video')?this.video=true:this.video=false;
     var view = (show == 'stream')?this.stream=true:this.stream=false;
-    if (show == 'contribute'){this.contribute=true;
+    if (show == 'contribute'){this.contribute=true; this.active6='active';
 
       this.actRoute.paramMap.subscribe(( params => {  
       
@@ -273,7 +331,7 @@ handleError(error) {
                   
                 }));
 
-    } else{this.contribute=false;}  
+    } else{this.contribute=false; this.active6='';}  
   }
 
  navigate (id){

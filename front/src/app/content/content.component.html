@@ -667,12 +667,12 @@
                   </div> -->
                   <div class="form-group">
                     <label for="title">Category</label>
-                    <input type="text" class="form-control" id="title" formControlName="catname" [(ngModel)]="form.location" name="location">
+                    <input type="text" class="form-control" id="title" value="{{catname}}" [(ngModel)]="form.location" name="location">
                     <!-- <small class="form-text">Others will se when reach your topic (max 50 character).</small> -->
                   </div>
                   <div class="form-group">
                     <label for="description">Title</label>
-                    <input type="text" class="form-control" id="description" formControlName="title" placeholder="Name / Tittle" [(ngModel)]="form.name_title" name="name_title" required>
+                    <input type="text" class="form-control" id="description" [value]="title" placeholder="Name / Tittle" [(ngModel)]="form.name_title" name="name_title" required>
                     <!-- <small class="form-text">Short Description about your topic content.</small> -->
                   </div>
   
