@@ -60,15 +60,20 @@
                     <div  *ngFor="let i of items">
                         <div class="form-group">
                             <label for="description">Header</label>
-                            <input type="text" class="form-control" id="description" placeholder="Header" value="{{i.header}}"   required>
+                            <input type="text" class="form-control" id="description" placeholder="Header" value="{{i.header}}"  formControlName="header"  required>
                             <!-- <small class="form-text">Short Description about your topic content.</small> -->
                           </div>
                           <div class="form-group m-t-25">
                               <label for="description">Content</label>
 
-                            <textarea   name="content" rows="8" style="width: 100%">{{i.content}}</textarea>
+                            <textarea   name="content" rows="8" style="width: 100%"  formControlName="content">{{i.content}}</textarea>
                             <!-- <textarea id="summernote" [(ngModel)]="form.contents" name="contents">cnxvcxnvcmn</textarea> -->
                             <!-- <small class="form-text">Others will se when reach your topic (max 50 character).</small> -->
+                          </div>
+                          <div class="form-group">
+                            <label for="description">Quote </label>
+                            <input type="text" class="form-control" id="description" placeholder="Quote" formControlName="quote" value="{{i.quote}}" required>
+                            <!-- <small class="form-text">Short Description about your topic content.</small> -->
                           </div>
                           <div class="form-group">
 
@@ -87,6 +92,15 @@
                             </div>
                         </div><!-- /.form-group -->
                     </div>
+                    <div class="col-md-12 col-sm-12">
+                      <div class="form-group">
+                          <label for="submit-area">Videos</label>
+                          <div class="input-group">
+                              <input id="file-upload" type="file" class="file" multiple="true" data-show-upload="false" data-show-caption="false" data-show-remove="false" accept="video/mp4" data-browse-class="btn btn-default" data-browse-label="Browse Videos" (change)="uploadVideos($event)">
+                              <!-- <span class="input-group-addon">m<sup>2</sup></span> -->
+                          </div>
+                      </div><!-- /.form-group -->
+                  </div>
                     <div [formGroup]="orderForm">
                     <div class="form-group">
                         <label for="description">Header</label>
@@ -99,6 +113,11 @@
                         <textarea  formControlName="content" rows="8" style="width: 100%"></textarea>
                         <!-- <textarea id="summernote" [(ngModel)]="form.contents" name="contents">cnxvcxnvcmn</textarea> -->
                         <!-- <small class="form-text">Others will se when reach your topic (max 50 character).</small> -->
+                      </div>
+                      <div class="form-group">
+                        <label for="description">Quote *</label>
+                        <input type="text" class="form-control" id="description" placeholder="Quote" formControlName="quote" required>
+                        <!-- <small class="form-text">Short Description about your topic content.</small> -->
                       </div>
                       <div class="col-md-12 col-sm-12">
                           <div class="form-group">

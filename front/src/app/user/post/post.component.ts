@@ -20,6 +20,7 @@ public response:any;
 public selectedid:any;
 public location:any;
 public img=[];
+public video=[];
 public form = {
 category_id: null,
 name_title:'',
@@ -27,7 +28,7 @@ location:null,
 about: 'Content',
 t_image:null,
 image:null,
-// header:null,
+videos:null,
 contents:null,
 }
   disabled=false;
@@ -81,11 +82,12 @@ contents:null,
     let header = this.orderForm.value.header;
     let content = this.orderForm.value.content;
     let c_image=this.orderForm.value.c_image;
-    let existingItem = this.items.filter(i => i.header==header && i.content == content )
+    let quote=this.orderForm.value.quote;
+    let existingItem = this.items.filter(i => i.header==header && i.content == content && i.quote == quote )
     if(existingItem.length == 0){
       let id = this.items.length;
-      this.items.push({id: id,header: header, content: content, c_image : c_image})      
-      // console.log(this.items)
+      this.items.push({id: id,header: header, content: content, c_image : c_image, quote: quote})      
+      // console.log(this.items),
       // this.orderForm.value.header=""
       // this.orderForm.value.content=""
     }else{
@@ -116,6 +118,25 @@ contents:null,
     }
     reader.readAsDataURL(files);
   }
+  uploadVideos(event){
+    let files =event.target.files;
+    if (files){
+      for(let file of files){
+        this.video.push(file.name);
+        // let reader= new FileReader();
+        // let vm = this;
+        // reader.onload =()=> {
+        //  this.video.push(reader.result);
+        
+        // }
+        // reader.readAsDataURL(file);
+        
+    }
+    }
+    this.form.videos =this.video;
+    // console.log(event)
+    console.log(this.form.videos)
+  }
   uploadFiles(event){
     let files =event.target.files;
     if (files){
@@ -131,8 +152,8 @@ contents:null,
     }
     }
     this.form.image =this.img;
-    console.log(event)
-    console.log(this.form.image)
+    // console.log(event)
+    // console.log(this.form.image)
   }
   ngOnInit() {
 
@@ -160,7 +181,7 @@ contents:null,
       this.orderForm =  this.formBuilder.group({
         header: '',
         content: '',
-        // list: '',
+        quote: '',
          c_image:''
       }); 
     } 

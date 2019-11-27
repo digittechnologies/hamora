@@ -11,6 +11,7 @@ use Image;
 use App\User;
 use App\comment_tbs;
 use App\Galleries;
+use App\Videos;
 class ContentController extends Controller
 {
     /**
@@ -87,14 +88,16 @@ class ContentController extends Controller
         $image_name= $request->image;
           $request->merge(['user_id'=>$authid]);
         $detcontents = $request->contents;
+        $videodet = $request->videos;
+       
          $files=$image_name[0];
          $filenames=time().'.' . explode('/', explode(':', substr($files, 0, strpos($files,';')))[1])[1];
         Image::make($files)->resize(300, 300)->save(public_path('/upload/uploads/'.$filenames));
        
         $request->merge(['t_image'=>$filenames]);
         // return $request;
-        $content= title::create($request-> all());
-        // return $content->id;
+        // $content= title::create($request-> all());
+    // return $content->id;
 $imageName=[];
 $count = 0;
 foreach ($image_name as $img) {
@@ -103,32 +106,50 @@ foreach ($image_name as $img) {
     
         Image::make($file)->resize(300, 300)->save(public_path('/upload/uploads/'.$filename));
     $imageName[] =[
-     'title_id' => $content->id,
+     'title_id' => 8,
    'image_name'=> $filename,
     ] ; 
     $count++;
 }
-   Galleries::insert($imageName);
-//  return $imageName;
+//    Galleries::insert($imageName);
+
+   $videoName=[];
+$count = 0;
+foreach ($videodet as $vid) {
+        $file=$vid;
+         $filename= $counts.''.time().'.'.$file->getClientOriginalExtension();
+    //  $filename=$count.'.'.time().'.' . explode('/', explode(':', substr($file, 0, strpos($file,';')))[1])[1];
+    public_path('/upload/videos/'.$filename);
+    $videoName[] =[
+     'title_id' => 8,
+   'video_name'=> $filename,
+    ] ; 
+    $count++;
+}
+//    Videos::insert($videoName);
+return $videoName;
        $contentData=[];
        $counts = 0;
         // $request->merge(['name_id'=>$content->id]);
         foreach ($detcontents as $item) {
             $file=$item['c_image'];
+            if($file){
+            
             $filename=$counts.''.time().'.' . explode('/', explode(':', substr($file, 0, strpos($file,';')))[1])[1];
          
              Image::make($file)->resize(300, 300)->save(public_path('/upload/uploads/'.$filename));
-            $contentData[] =[
+            }
+             $contentData[] =[
              'header'=>$item['header'],
              'content' =>$item['content'],
-           
-             'name_id' => $content->id,
+             'quote'=>$item['quote'],
+             'name_id' => 8,
              'c_image' =>$filename
              ] ; 
              $counts++;
          }
       
-          Content::insert($contentData);
+        //   Content::insert($contentData);
           return $contentData;
     }
 
