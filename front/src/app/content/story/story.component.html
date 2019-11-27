@@ -1,0 +1,273 @@
+<section class="p-t-35 p-b-0">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-11">
+          <!-- post -->
+            <div class="post post-single" *ngIf="post">           
+
+              <div class="post-header">
+                      <div>
+                      <a >
+                        <img [src]="uimage" alt="">
+                      </a>
+                      </div>
+                      <div>
+                        <h2 class="post-title">
+                              <h2 class="post-title">{{title}} </h2>                                
+                        </h2>
+                        <a class="btn btn-secondary float-right social-share" (click)="nav(all.id)" role="button">Folllow</a>
+                        <div class="post-meta">
+                              <span><i class="fa fa-clock-o"></i> {{res.created_at}} by <a href="profile.html">{{name}}</a></span>
+                              <span><a href="#comments"><i class="fa fa-comment-o"></i> {{res.comment_count}} comments</a></span>
+                        </div>
+                      </div>
+                    </div> 
+
+
+              <div class="post-thumbnail">
+                      <img style="width:100%; height: 400px;" src="https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/{{res.t_image}}" alt="">
+                    </div>
+            
+              <div id="description" *ngFor="let r of contents">
+                      <h5>{{r.header}}</h5>
+                      <p style="font-size: 18px; align-self: auto; align-content: center; white-space: pre-line; "> {{r.content}} </p>                                
+                  </div><!-- /#description -->
+
+            </div>
+          <!-- /.post -->          
+
+          <div class="post-actions no-border">
+            <div class="post-tags">
+              <a href="#">#playstation-4</a>
+              <a href="#">#uncharted-4</a>
+              <a href="#">#nathan-drake</a>
+              <a href="#">#open-world</a>
+              <a href="#">#action</a>
+            </div>
+            <div class="social-share">
+              <a class="btn btn-social btn-facebook btn-circle" href="#" data-toggle="tooltip" title="Share on Facebook" data-placement="bottom" role="button"><i class="fa fa-facebook"></i></a>
+              <span>5.345k</span>
+              <a class="btn btn-social btn-twitter btn-circle" href="#" data-toggle="tooltip" title="Share on Twitter" data-placement="bottom" role="button"><i class="fa fa-twitter"></i></a>
+              <a class="btn btn-social btn-google-plus btn-circle" href="#" data-toggle="tooltip" title="Share on Google Plus" data-placement="bottom" role="button"><i class="fa fa-google-plus"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-1 hidden-md-down">
+          <!-- widget share -->
+          <div class="widget widget-share" data-fixed="widget">
+            <div class="widget-block">
+              <span>54</span>
+              <a class="btn btn-social btn-facebook btn-circle" href="#" data-toggle="tooltip" title="Share on Facebook" data-placement="right" role="button"><i class="fa fa-thumbs-o-up"></i></a>
+              <a class="btn btn-social btn-facebook btn-circle" href="#" data-toggle="tooltip" title="Share on Facebook" data-placement="right" role="button"><i class="fa fa-facebook"></i></a>
+              <a class="btn btn-social btn-twitter btn-circle" href="#" data-toggle="tooltip" title="Share on Twitter" data-placement="right" role="button"><i class="fa fa-twitter"></i></a>
+              <a class="btn btn-social btn-google-plus btn-circle" href="#" data-toggle="tooltip" title="Share on Google Plus" data-placement="right" role="button"><i class="fa fa-google-plus"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-image bg-image-sm" style="background-image: url('https://i.ytimg.com/vi/1bR7uzsswhQ/maxresdefault.jpg');">
+    <div class="overlay-dark"></div>
+    <div class="container">
+      <div class="review">
+        <div class="row">
+          <div class="col-12 col-sm-10">
+            <h2 class="review-title">Contributors</h2>
+            <p>Melee-focused action games have spent years enacting the fantasy of engaging in armed combat, fortunately sparing us the hours. Fortunately, For Honor comes with a suite of options and modes to get you up to speed in each class relatively
+              quickly.</p>
+          </div>
+          <div class="col-12 col-sm-2">
+            <!-- <div class="chart easypiechart" data-percent="85" data-scale-color="#e3e3e3"><span>85</span>%</div> -->
+          </div>
+        </div>
+        <div class="row m-t-20">
+          <div class="col-lg-5">
+              <div class="review-good">
+                  <h5>Story:</h5>
+                  <p><i>"Nuanced, emotional characters":</i><a>contributor Name</a>, 21th oct, 2019: 12:00pm</p>
+                  <p><i>"Nuanced, emotional characters":</i><a>contributor Name</a>, 21th oct, 2019: 12:00pm</p>
+                  <p><i>"Nuanced, emotional characters":</i><a>contributor Name</a>, 21th oct, 2019: 12:00pm</p>
+                </div>
+          </div>
+          <div class="col-lg-7">
+            <div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="review-good">
+                  <h5>Image:</h5>
+                  <p><i>"Nuanced, emotional characters":</i><a>contributor Name</a>, 21th oct, 2019: 12:00pm</p>
+                  <p><i>"Nuanced, emotional characters":</i><a>contributor Name</a>, 21th oct, 2019: 12:00pm</p>
+                  <p><i>"Nuanced, emotional characters":</i><a>contributor Name</a>, 21th oct, 2019: 12:00pm</p>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6">
+                <div class="review-bad">
+                  <h5>Video:</h5>
+                  <p><i>"Nuanced, emotional characters":</i><a>contributor Name</a>, 21th oct, 2019: 12:00pm</p>
+                  <p><i>"Nuanced, emotional characters":</i><a>contributor Name</a>, 21th oct, 2019: 12:00pm</p>
+                  <p><i>"Nuanced, emotional characters":</i><a>contributor Name</a>, 21th oct, 2019: 12:00pm</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="p-t-25">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-9">
+            <div id="comments" class="comments anchor">
+                <div class="comments-header">
+                  <h5><i class="fa fa-comment-o m-r-5"></i> Comments ({{res.comment_count}})</h5>
+                  <div class="dropdown float-right">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Sorted by Best <span class="caret"></span></button>
+                    <div class="dropdown-menu dropdown-menu-right">
+                      <a class="dropdown-item active" href="#">Best</a>
+                      <a class="dropdown-item" href="#">Latest</a>
+                      <a class="dropdown-item" href="#">Oldest</a>
+                      <a class="dropdown-item" href="#">Random</a>
+                    </div>
+                  </div>
+                </div>
+                <a class="btn btn-primary text-left m-t-15 btn-block" href="#comments" role="button"><i class="fa fa-spinner fa-pulse m-r-5"></i> Load more 4 comments</a>
+                <ul>
+                  <li>
+                    <div class="comment" *ngFor="let r of comment">
+                      <div class="comment-avatar">
+                        <a href="profile.html"><img alt="" src="https://sce-ogun.sabiogun.jtcheck.com/backend/public/upload/uploads/{{r.image}}"></a>
+                        <a class="badge badge-primary" href="profile.html" data-toggle="tooltip" data-placement="bottom" title="Add as friend"><i class="fa fa-user-plus"></i></a>
+                      </div>
+                      <div class="comment-post">
+                        <div class="comment-header">
+                          <div class="comment-author">
+                            <h5><a href="profile.html">{{r.firstname}}</a></h5>
+                            <span>{{r.lastname}} {{r.middlename}} </span>
+                          </div>
+                          <div class="comment-action">
+                            <div class="dropdown float-right">
+                              <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-chevron-down"></i></a>
+                              <div class="dropdown-menu dropdown-menu-right">
+                                <a class="dropdown-item" href="#">Moderate</a>
+                                <a class="dropdown-item" href="#">Embed</a>
+                                <a class="dropdown-item" href="#">Report</a>
+                                <a class="dropdown-item" href="#">Mark as spam</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <p>{{r.comment}}.</p>
+                        <div class="comment-footer">
+                          <ul>
+                            <li><a href="#"><i class="fa fa-heart-o"></i> Like</a></li>
+                            <li><a href="#"><i class="icon-reply"></i> Reply</a></li>
+                            <li><a href="#"><i class="fa fa-clock-o"></i> 3 hours ago</a></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <ul>
+                      <li>
+                        <div class="comment">
+                          <div class="comment-avatar"><img src="img/user/user-2.jpg" alt=""></div>
+                          <div class="comment-post">
+                            <div class="comment-header">
+                              <div class="comment-author">
+                                <h5><a href="profile.html">Elizabeth</a></h5>
+                                <span>Member</span>
+                              </div>
+                              <div class="comment-action">
+                                <div class="dropdown float-right">
+                                  <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-chevron-down"></i></a>
+                                  <div class="dropdown-menu dropdown-menu-right">
+                                    <a class="dropdown-item" href="#">Moderate</a>
+                                    <a class="dropdown-item" href="#">Embed</a>
+                                    <a class="dropdown-item" href="#">Report</a>
+                                    <a class="dropdown-item" href="#">Mark as spam</a>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <p>Please also consider replacing Battles with Blast (in Skirmish): it can use the same AI and would be much more fun (tokens are annoying and maps are limited)!</p>
+                            <div class="comment-footer">
+                              <ul>
+                                <li><a href="#"><i class="fa fa-heart-o"></i> Like</a></li>
+                                <li><a href="#"><i class="icon-reply"></i> Reply</a></li>
+                                <li><a href="#"><i class="fa fa-clock-o"></i> 24 minutes ago</a></li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </li>                 
+                </ul>
+                <form  role="form" id="form-blog-reply"  class="clearfix" #commentForm=ngForm (ngSubmit)="onSubmit()">
+                  <h5>Leave a comment</h5>
+                  <div class="form-group">
+                    <textarea class="form-control" rows="5" placeholder="Your Comment" [(ngModel)]="form.comment" name="comment" required></textarea>
+                  </div>
+                  <button type="submit" class="btn btn-primary" [disabled]= "disable" >
+                        <i id="loader2" *ngIf="disable"  class="fa fa-spin fa-spinner"></i>Submit Comment</button>
+                </form>
+              </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="sidebar">
+            <!-- widget post  -->
+            <div class="widget widget-post">
+              <h5 class="widget-title">Recommends</h5>
+              <a href="review-post.html"><img src="https://i1.ytimg.com/vi/4BLkEJu9szM/mqdefault.jpg" alt=""></a>
+              <h4><a href="review-post.html">Titanfall 2's Trophies Only Have 3 Earned Through Multiplayer</a></h4>
+              <span><i class="fa fa-clock-o"></i> June 12, 2017</span>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel neque sed ante facilisis efficitur.</p>
+            </div>
+            <!-- /widget post -->
+
+            <!-- widget facebook -->
+            <div class="widget">
+              <h5 class="widget-title">Follow Us on Facebook</h5>
+              <div id="fb-root"></div>
+              <script async="" src="https://www.google-analytics.com/analytics.js"></script>
+              <script id="facebook-jssdk" src="//connect.facebook.net/en_US/sdk.js#xfbml=1&amp;version=v2.8"></script>
+              <script>
+                (function(d, s, id) {
+                  var js, fjs = d.getElementsByTagName(s)[0];
+                  if (d.getElementById(id)) return;
+                  js = d.createElement(s);
+                  js.id = id;
+                  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.9";
+                  fjs.parentNode.insertBefore(js, fjs);
+                }(document, 'script', 'facebook-jssdk'));
+              </script>
+              <div class="fb-page" data-href="https://www.facebook.com/yakuthemes" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"></div>
+            </div>
+            <!-- /widget facebook -->
+
+            <!-- widget video -->
+            <div class="widget widget-video">
+              <h5 class="widget-title">New Video</h5>
+              <div class="widget-img">
+                <a href="blog-post-video.html">
+                <img src="https://i1.ytimg.com/vi/neIfY3VoPXo/mqdefault.jpg" alt="">
+              </a>
+                <span>2:49</span>
+                <a class="video-play-icon" href="blog-post-video.html">
+                <i class="fa fa-play"></i>
+              </a>
+              </div>
+              <h4>
+                <a href="blog-post-video.html">The Witcher 3: Wild Hunt The Sword Of Destiny Gameplay Trailer</a>
+              </h4>
+              <span><i class="fa fa-clock-o"></i> June 12, 2017</span>
+              <span><i class="fa fa-eye"></i> 723x</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

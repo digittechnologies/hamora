@@ -20,6 +20,8 @@ import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { PlatformComponent } from './platform/platform.component';
 import { GalleryComponent } from './user/gallery/gallery.component';
+import { MapvComponent } from './content/mapv/mapv.component';
+import { StoryComponent } from './content/story/story.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent },
@@ -40,13 +42,24 @@ const routes: Routes = [
      ],
         },
 
+// {path: 'Content/:id', component: ContentComponent,
+
+// children: [
+    
+//           {path: 'map_view/:id', component: MapvComponent, outlet: 'storymenu'},
+//           {path: 'story/:id', component: StoryComponent, outlet: 'storymenu'},
+
+//         ],
+
+//     },
+
  
 
   {path: 'Admin', component: DashboardComponent}, 
   {path: 'Admin/signin', component: AdminLoginComponent},
   // {path: 'home', component: DashboardComponent },
-  {path: 'Category/:id', component: CategoryComponent},
-  {path: 'Content/:id', component: ContentComponent },
+  {path: 'Category/:id', component: CategoryComponent}, 
+  {path: 'Content/:id', component: ContentComponent}, 
   {path: 'addcat', component:  AddcategoryComponent },
   {path: 'About', component:  AboutComponent },
   {path: 'Contact', component:  ContactComponent },

@@ -112,18 +112,20 @@
               </div>
               <div>
                 <h2 class="post-title">
-                  <h2 class="post-title"><a routerink="" (click)="nav(all.id)">{{all.name_title}}</a></h2>
-                </h2>
+                  <h2 class="post-title"><a routerink="" (click)="nav(all.id)">{{all.name_title}}</a></h2>                  
+                </h2>                
                 <div class="post-meta">
                   <span><i class="fa fa-clock-o"></i> {{all.created_at}} by <a href="profile.html">{{all.firstname + ' '+ all.lastname}}</a></span>
                   <span><a href="blog-post-carousel.html#comments"><i class="fa fa-comment-o"></i>{{all.comment_count}}</a></span>
+                  <span><a href="blog-post-carousel.html#comments"><i class="fa fa-eye"></i>{{all.views}}</a></span>
                 </div>
               </div>
             </div>  
             <p>{{all.content | slice:0:250 }}....</p>
             <div class="post-footer">
               <a class="btn btn-secondary" (click)="nav(all.id)" role="button">Read More</a>
-              <a class="float-right p-t-10" href="#"><i class="fa fa-heart-o"></i> {{all.views}}</a>
+              <a class="btn btn-secondary" (click)="nav(all.id)" role="button">Folllow</a>
+              <a class="btn btn-secondary float-right p-t-10" href="#"><i class="fa fa-thumbs-o-up"></i> {{all.views}}</a>
             </div>
           </div>
         </div>
