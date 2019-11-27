@@ -7,6 +7,7 @@ import { MapServiceService } from '../map-service.service';
 import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {startWith, map} from 'rxjs/operators';
+import { $ } from 'protractor';
 
 declare let jQuery: any;
 
@@ -20,6 +21,8 @@ declare let jQuery: any;
 })
 export class HomeComponent implements OnInit {
 
+  @ViewChild('video') videoElement: any;
+  
   control = new FormControl();
   filteredStreets: Observable<string[]>;
    @ViewChild('map') mapElement: any;
@@ -88,11 +91,10 @@ export class HomeComponent implements OnInit {
   public fakerIt = [];
 
   ngOnInit() {
-    
-
+    var v = <HTMLVideoElement>document.getElementsByTagName('video')[0];
+    v.muted = true;
     (function($) {
       "use strict";
-
       // Full Width Carousel
       $('.owl-slide').owlCarousel({
         nav: true,

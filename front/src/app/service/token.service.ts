@@ -7,8 +7,8 @@ export class TokenService {
     // login: 'https://sce-ogun.sabiogun.jtcheck.com/backend/public/api/login',
     // signup: 'https://sce-ogun.sabiogun.jtcheck.com/backend/public/api/signup'
 
-    login: 'http://localhost/sce-platform2/backend/public/api/login',
-    signup: 'http://localhost/sce-platform2/backend/public/api/signup'
+    login: 'http://localhost/sce-platform/backend/public/api/login',
+    signup: 'http://localhost/sce-platform/backend/public/api/signup'
 
     
   };

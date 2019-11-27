@@ -3,31 +3,46 @@
         <div class="container">
           <ol class="breadcrumb">
             <li><a href="/">Home</a></li>
-            <li><a >{{actname}}  </a></li>
-            <li class="active">{{catname}}</li>
+            <li><a [routerLink]="['/platform']">Platform</a></li>
+            <li class="active">{{title}}</li>
           </ol>
         </div>
-      </section>
-    
-      <section>
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-3 hidden-md-down">
-              <!-- widget share -->
-              <div class="widget widget-share" data-fixed="widget">
-                    <div id="map" style="width:100%;height:280px;"></div><br>
-                <div class="widget-block">
-                  <span>5.345k</span>
-                  <a class="btn btn-social btn-facebook btn-circle" href="#" data-toggle="tooltip" title="Share on Facebook" data-placement="right" role="button"><i class="fa fa-facebook"></i></a>
-                  <a class="btn btn-social btn-twitter btn-circle" href="#" data-toggle="tooltip" title="Share on Twitter" data-placement="right" role="button"><i class="fa fa-twitter"></i></a>
-                  <a class="btn btn-social btn-google-plus btn-circle" href="#" data-toggle="tooltip" title="Share on Google Plus" data-placement="right" role="button"><i class="fa fa-google-plus"></i></a>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-9">
-              <!-- post -->
-              <div class="post post-single">           
+      </section>   
+      
+    <section class="hero hero-review" style="background-image: url('assets/img/SC.jpg');">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="hero-block">
+        <!-- <div class="chart easypiechart m-b-20" data-percent="85" data-scale-color="#e3e3e3"><span>{{catname}}</span></div> -->
+        <h2 class="hero-title">{{title}}</h2>
+        <!-- <p>Uncharted 4: A Thief's End will explore what it means when Drake is forced back into the world of thieves.</p> -->
+        <a class="btn btn-primary btn-lg btn-shadow btn-rounded m-t-20" href="https://www.youtube.com/watch?v=6cXyQg_5uoc" data-lightbox role="button">Watch Review <i class="fa fa-play"></i></a>
+        <a class="btn btn-outline-default btn-lg btn-shadow btn-rounded m-l-10 m-t-20" href="register.html" role="button">Write Review <i class="fa fa-pencil"></i></a>
+      </div>
+    </div>
+  </section>
+  <section class="toolbar toolbar-links" data-fixed="true">
+    <div class="container">
+      <h5>{{title}}</h5>
+      <ul class="toolbar-nav">
+        <li><a routerlink="" active (click)="swip('post')">Articles</a></li>
+        <!-- <li class="active"><a href="reviews.html">Reviews</a></li> -->
+        <li><a routerlink="" (click)="swip('mapv')">Map</a></li>
+        <li><a routerlink="" (click)="swip('image')">Images</a></li>
+        <li><a routerlink="" (click)="swip('video')">Videos</a></li>
+        <li><a routerlink="" (click)="swip('stream')">Streams</a></li>        
+        <li><a routerlink="" (click)="swip('contribute')">Contribute</a></li>
+      </ul>
+    </div>
+  </section>
 
+  <section>
+    <div class="container">
+      <div class="row">       
+        <div class="col-lg-12">
+          <!-- main -->  
+              <!-- post -->
+              <div class="post post-single" *ngIf="post">  
                 <div class="post-header">
                         <div>
                         <a >
@@ -52,22 +67,676 @@
               
                 <div id="description" *ngFor="let r of contents">
                         <h5>{{r.header}}</h5>
-                        <p> {{r.content}} </p>                                
+                        <p style="font-size: 18px; align-self: auto; align-content: center; white-space: pre-line; "> {{r.content}} </p>                                
                     </div><!-- /#description -->
+                    <div class="post-actions" >
+                      <div class="post-tags" *ngFor="let r of result">
+                    
+                      </div>
+                      <div class="social-share">
+                        <a class="btn btn-social btn-facebook btn-circle" href="#" data-toggle="tooltip" title="Share on Facebook" data-placement="bottom" role="button"><i class="fa fa-facebook"></i></a>
+                        <span>5.345k</span>
+                        <a class="btn btn-social btn-twitter btn-circle" href="#" data-toggle="tooltip" title="Share on Twitter" data-placement="bottom" role="button"><i class="fa fa-twitter"></i></a>
+                        <a class="btn btn-social btn-google-plus btn-circle" href="#" data-toggle="tooltip" title="Share on Google Plus" data-placement="bottom" role="button"><i class="fa fa-google-plus"></i></a>
+                      </div>
+                    </div>
+
+                    <div id="comments" class="comments anchor">
+                      <div class="comments-header">
+                        <h5><i class="fa fa-comment-o m-r-5"></i> Comments ({{res.comment_count}})</h5>
+                        <div class="dropdown float-right">
+                          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Sorted by Best <span class="caret"></span></button>
+                          <div class="dropdown-menu dropdown-menu-right">
+                            <a class="dropdown-item active" href="#">Best</a>
+                            <a class="dropdown-item" href="#">Latest</a>
+                            <a class="dropdown-item" href="#">Oldest</a>
+                            <a class="dropdown-item" href="#">Random</a>
+                          </div>
+                        </div>
+                      </div>
+                      <a class="btn btn-primary text-left m-t-15 btn-block" href="#comments" role="button"><i class="fa fa-spinner fa-pulse m-r-5"></i> Load more 4 comments</a>
+                      <ul>
+                        <li>
+                          <div class="comment" *ngFor="let r of comment">
+                            <div class="comment-avatar">
+                              <a href="profile.html"><img alt="" src="https://sce-ogun.sabiogun.jtcheck.com/backend/public/upload/uploads/{{r.image}}"></a>
+                              <a class="badge badge-primary" href="profile.html" data-toggle="tooltip" data-placement="bottom" title="Add as friend"><i class="fa fa-user-plus"></i></a>
+                            </div>
+                            <div class="comment-post">
+                              <div class="comment-header">
+                                <div class="comment-author">
+                                  <h5><a href="profile.html">{{r.firstname}}</a></h5>
+                                  <span>{{r.lastname}} {{r.middlename}} </span>
+                                </div>
+                                <div class="comment-action">
+                                  <div class="dropdown float-right">
+                                    <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-chevron-down"></i></a>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                      <a class="dropdown-item" href="#">Moderate</a>
+                                      <a class="dropdown-item" href="#">Embed</a>
+                                      <a class="dropdown-item" href="#">Report</a>
+                                      <a class="dropdown-item" href="#">Mark as spam</a>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <p>{{r.comment}}.</p>
+                              <div class="comment-footer">
+                                <ul>
+                                  <li><a href="#"><i class="fa fa-heart-o"></i> Like</a></li>
+                                  <li><a href="#"><i class="icon-reply"></i> Reply</a></li>
+                                  <li><a href="#"><i class="fa fa-clock-o"></i> 3 hours ago</a></li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                          <ul>
+                            <li>
+                              <div class="comment">
+                                <div class="comment-avatar"><img src="img/user/user-2.jpg" alt=""></div>
+                                <div class="comment-post">
+                                  <div class="comment-header">
+                                    <div class="comment-author">
+                                      <h5><a href="profile.html">Elizabeth</a></h5>
+                                      <span>Member</span>
+                                    </div>
+                                    <div class="comment-action">
+                                      <div class="dropdown float-right">
+                                        <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-chevron-down"></i></a>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                          <a class="dropdown-item" href="#">Moderate</a>
+                                          <a class="dropdown-item" href="#">Embed</a>
+                                          <a class="dropdown-item" href="#">Report</a>
+                                          <a class="dropdown-item" href="#">Mark as spam</a>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <p>Please also consider replacing Battles with Blast (in Skirmish): it can use the same AI and would be much more fun (tokens are annoying and maps are limited)!</p>
+                                  <div class="comment-footer">
+                                    <ul>
+                                      <li><a href="#"><i class="fa fa-heart-o"></i> Like</a></li>
+                                      <li><a href="#"><i class="icon-reply"></i> Reply</a></li>
+                                      <li><a href="#"><i class="fa fa-clock-o"></i> 24 minutes ago</a></li>
+                                    </ul>
+                                  </div>
+                                </div>
+                              </div>
+                            </li>
+                          </ul>
+                        </li>                 
+                      </ul>
+                      <form  role="form" id="form-blog-reply"  class="clearfix" #commentForm=ngForm (ngSubmit)="onSubmit()">
+                        <h5>Leave a comment</h5>
+                        <div class="form-group">
+                          <textarea class="form-control" rows="5" placeholder="Your Comment" [(ngModel)]="form.comment" name="comment" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" [disabled]= "disable" >
+                              <i id="loader2" *ngIf="disable"  class="fa fa-spin fa-spinner"></i>Submit Comment</button>
+                      </form>
+                    </div>
 
               </div>
-              
-              <div class="post-actions" >
-                <div class="post-tags" *ngFor="let r of result">
-              
-                </div>
-                <div class="social-share">
-                  <a class="btn btn-social btn-facebook btn-circle" href="#" data-toggle="tooltip" title="Share on Facebook" data-placement="bottom" role="button"><i class="fa fa-facebook"></i></a>
-                  <span>5.345k</span>
-                  <a class="btn btn-social btn-twitter btn-circle" href="#" data-toggle="tooltip" title="Share on Twitter" data-placement="bottom" role="button"><i class="fa fa-twitter"></i></a>
-                  <a class="btn btn-social btn-google-plus btn-circle" href="#" data-toggle="tooltip" title="Share on Google Plus" data-placement="bottom" role="button"><i class="fa fa-google-plus"></i></a>
+
+              <div class="post post-single" *ngIf="mapv">
+                <div class="col-lg-12">
+                  <!-- widget share -->
+                  <div class="widget widget-share" data-fixed="widget">
+                        <div id="map" style="width:100%;height:600px;"></div><br>
+                    
+                  </div>
                 </div>
               </div>
+
+              <div class="post post-single" *ngIf="imgs">
+                <div class="row row-3 figure-effect">
+                  <div class="col-12 col-sm-6 col-md-4">
+                    <figure>
+                      <div class="figure-img">
+                        <a href="https://i.ytimg.com/vi/JbgJA-r86HQ/maxresdefault.jpg" data-lightbox='{"disqus": true, "gallery": "uncharted"}'>
+                        <img src="https://i.ytimg.com/vi/JbgJA-r86HQ/maxresdefault.jpg" alt="">
+                      </a>
+                        <a class="figure-likes" href="#">32</a>
+                      </div>
+                    </figure>
+                  </div>
+                  <div class="col-12 col-sm-6 col-md-4">
+                    <figure>
+                      <div class="figure-img">
+                        <a href="https://i.ytimg.com/vi/Q0cWcCJUj2Y/maxresdefault.jpg" data-lightbox='{"disqus": true, "gallery": "uncharted"}'>
+                        <img src="https://i.ytimg.com/vi/Q0cWcCJUj2Y/maxresdefault.jpg" alt="">
+                      </a>
+                        <a class="figure-likes" href="#">29</a>
+                      </div>
+                    </figure>
+                  </div>
+                  <div class="col-12 col-sm-6 col-md-4">
+                    <figure>
+                      <div class="figure-img">
+                        <a href="https://i.ytimg.com/vi/PZmPm4teJdo/maxresdefault.jpg" data-lightbox='{"disqus": true, "gallery": "uncharted"}'>
+                        <img src="https://i.ytimg.com/vi/PZmPm4teJdo/maxresdefault.jpg" alt="">
+                      </a>
+                        <a class="figure-likes" href="#">578</a>
+                      </div>
+                    </figure>
+                  </div>
+                  <div class="col-12 col-sm-6 col-md-4">
+                    <figure>
+                      <div class="figure-img">
+                        <a href="https://i.ytimg.com/vi/AA2YRRCPqCk/maxresdefault.jpg" data-lightbox='{"disqus": true, "gallery": "uncharted"}'>
+                        <img src="https://i.ytimg.com/vi/AA2YRRCPqCk/maxresdefault.jpg" alt="">
+                      </a>
+                        <a class="figure-likes" href="#">763</a>
+                      </div>
+                    </figure>
+                  </div>
+                  <div class="col-12 col-sm-6 col-md-4">
+                    <figure>
+                      <div class="figure-img">
+                        <a href="https://i.ytimg.com/vi/FpfZOHzOoZM/maxresdefault.jpg" data-lightbox='{"disqus": true, "gallery": "uncharted"}'>
+                        <img src="https://i.ytimg.com/vi/FpfZOHzOoZM/maxresdefault.jpg" alt="">
+                      </a>
+                        <a class="figure-likes" href="#">348</a>
+                      </div>
+                    </figure>
+                  </div>
+                  <div class="col-12 col-sm-6 col-md-4">
+                    <figure>
+                      <div class="figure-img">
+                        <a href="https://i.ytimg.com/vi/aPXdxipSlCw/maxresdefault.jpg" data-lightbox='{"disqus": true, "gallery": "uncharted"}'>
+                        <img src="https://i.ytimg.com/vi/aPXdxipSlCw/maxresdefault.jpg" alt="">
+                      </a>
+                        <a class="figure-likes" href="#">45</a>
+                      </div>
+                    </figure>
+                  </div>
+                  <div class="col-12 col-sm-6 col-md-4">
+                    <figure>
+                      <div class="figure-img">
+                        <a href="https://i.ytimg.com/vi/d4BC48aem60/maxresdefault.jpg" data-lightbox='{"disqus": true, "gallery": "uncharted"}'>
+                        <img src="https://i.ytimg.com/vi/d4BC48aem60/maxresdefault.jpg" alt="">
+                      </a>
+                        <a class="figure-likes" href="#">512</a>
+                      </div>
+                    </figure>
+                  </div>
+                  <div class="col-12 col-sm-6 col-md-4">
+                    <figure>
+                      <div class="figure-img">
+                        <a href="https://i.ytimg.com/vi/xM__xYONwvs/maxresdefault.jpg" data-lightbox='{"disqus": true, "gallery": "uncharted"}'>
+                        <img src="https://i.ytimg.com/vi/xM__xYONwvs/maxresdefault.jpg" alt="">
+                      </a>
+                        <a class="figure-likes" href="#">15</a>
+                      </div>
+                    </figure>
+                  </div>
+                  <div class="col-12 col-sm-6 col-md-4">
+                    <figure>
+                      <div class="figure-img">
+                        <a href="https://i.ytimg.com/vi/a_uuQyUGYH4/maxresdefault.jpg" data-lightbox='{"disqus": true, "gallery": "uncharted"}'>
+                        <img src="https://i.ytimg.com/vi/a_uuQyUGYH4/maxresdefault.jpg" alt="">
+                      </a>
+                        <a class="figure-likes" href="#">34</a>
+                      </div>
+                    </figure>
+                  </div>
+                  <div class="col-12 col-sm-6 col-md-4">
+                    <figure>
+                      <div class="figure-img">
+                        <a href="https://i.ytimg.com/vi/D3pYbbA1kfk/maxresdefault.jpg" data-lightbox='{"disqus": true, "gallery": "uncharted"}'>
+                        <img src="https://i.ytimg.com/vi/D3pYbbA1kfk/maxresdefault.jpg" alt="">
+                      </a>
+                        <a class="figure-likes" href="#">95</a>
+                      </div>
+                    </figure>
+                  </div>
+                  <div class="col-12 col-sm-6 col-md-4">
+                    <figure>
+                      <div class="figure-img">
+                        <a href="https://i.ytimg.com/vi/zIjQCu8y2EE/maxresdefault.jpg" data-lightbox='{"disqus": true, "gallery": "uncharted"}'>
+                        <img src="https://i.ytimg.com/vi/zIjQCu8y2EE/maxresdefault.jpg" alt="">
+                      </a>
+                        <a class="figure-likes" href="#">89</a>
+                      </div>
+                    </figure>
+                  </div>
+                  <div class="col-12 col-sm-6 col-md-4">
+                    <figure>
+                      <div class="figure-img">
+                        <a href="https://i.ytimg.com/vi/IDnAfWlAoO0/maxresdefault.jpg" data-lightbox='{"disqus": true, "gallery": "uncharted"}'>
+                        <img src="https://i.ytimg.com/vi/IDnAfWlAoO0/maxresdefault.jpg" alt="">
+                      </a>
+                        <a class="figure-likes" href="#">46</a>
+                      </div>
+                    </figure>
+                  </div>
+                  <div class="col-12 col-sm-6 col-md-4">
+                    <figure>
+                      <div class="figure-img">
+                        <a href="https://i.ytimg.com/vi/mJOdi7UemSo/maxresdefault.jpg" data-lightbox='{"disqus": true, "gallery": "uncharted"}'>
+                        <img src="https://i.ytimg.com/vi/mJOdi7UemSo/maxresdefault.jpg" alt="">
+                      </a>
+                        <a class="figure-likes" href="#">341</a>
+                      </div>
+                    </figure>
+                  </div>
+                  <div class="col-12 col-sm-6 col-md-4">
+                    <figure>
+                      <div class="figure-img">
+                        <a href="https://i.ytimg.com/vi/3byajfBLot0/maxresdefault.jpg" data-lightbox='{"disqus": true, "gallery": "uncharted"}'>
+                        <img src="https://i.ytimg.com/vi/3byajfBLot0/maxresdefault.jpg" alt="">
+                      </a>
+                        <a class="figure-likes" href="#">456</a>
+                      </div>
+                    </figure>
+                  </div>
+                  <div class="col-12 col-sm-6 col-md-4">
+                    <figure>
+                      <div class="figure-img">
+                        <a href="https://i.ytimg.com/vi/-bGI9jobudM/maxresdefault.jpg" data-lightbox='{"disqus": true, "gallery": "uncharted"}'>
+                        <img src="https://i.ytimg.com/vi/-bGI9jobudM/maxresdefault.jpg" alt="">
+                      </a>
+                        <a class="figure-likes" href="#">576</a>
+                      </div>
+                    </figure>
+                  </div>
+                </div>
+              </div>
+
+              <div class="post post-single" *ngIf="video">
+                <!-- main --> 
+                <section>
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-lg-9">
+                        <div class="post post-single">
+                          <div class="post-header">
+                            <div>
+                              <a href="profile.html"><img src="img/user/user-3.jpg" alt=""></a>
+                            </div>
+                            <div>
+                              <h2 class="post-title">Star Wars Battlefront II: Full Length Reveal Trailer</h2>
+                              <div class="post-meta">
+                                <span><i class="fa fa-clock-o"></i> August 22, 2017 by <a href="profile.html">Clark</a></span>
+                                <span><a href="#comments"><i class="fa fa-comment-o"></i> 33 comments</a></span>
+                              </div>
+                            </div>
+                          </div>
+                          
+                <section class="bg-image" style="background-image: url('https://img.youtube.com/vi/zSd9McRXHZ8/maxresdefault.jpg');">
+                  <div class="overlay-light"></div>
+                  <div class="container">
+                    <div class="embed-responsive embed-responsive-16by9">
+                      <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/Kae-JjbLsgA?rel=0&amp;amp;autoplay=1&amp;amp;showinfo=0" allowfullscreen></iframe>
+                    </div>
+                  </div>
+                </section>
+                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas elit ante, congue sodales orci ac, ultrices pretium lectus. Maecenas lorem enim, dignissim sed lacus non, feugiat iaculis lorem. Integer eu aliquet diam. Suspendisse fringilla
+                            porta justo, vel tempus risus. Ut et enim sit amet libero fermentum aliquam et ut sem.</p>
+                          
+                        </div>
+                        <div class="post-actions">
+                          <div class="post-tags">
+                            <a href="#">#star wars</a>
+                            <a href="#">#battlefront 2</a>
+                            <a href="#">#gameplay</a>
+                            <a href="#">#trailer</a>
+                            <a href="#">#galaxy</a>
+                          </div>
+                          <div class="social-share">
+                            <a class="btn btn-social btn-facebook btn-circle" href="#" data-toggle="tooltip" title="" data-placement="bottom" role="button" data-original-title="Share on facebook"><i class="fa fa-facebook"></i></a>
+                            <span>5.345k</span>
+                            <a class="btn btn-social btn-twitter btn-circle" href="#" data-toggle="tooltip" title="" data-placement="bottom" role="button" data-original-title="Share on twitter"><i class="fa fa-twitter"></i></a>
+                            <a class="btn btn-social btn-google-plus btn-circle" href="#" data-toggle="tooltip" title="" data-placement="bottom" role="button" data-original-title="Share on google-plus"><i class="fa fa-google-plus"></i></a>
+                          </div>
+                        </div>
+                        <div id="comments" class="comments anchor">
+                          <div class="comments-header">
+                            <h5><i class="fa fa-comment-o"></i> Comments (5)</h5>
+                            <div class="dropdown float-right">
+                              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Sorted by best <span class="caret"></span></button>
+                              <div class="dropdown-menu dropdown-menu-right">
+                                <a class="dropdown-item active" href="#">Best</a>
+                                <a class="dropdown-item" href="#">Latest</a>
+                                <a class="dropdown-item" href="#">Oldest</a>
+                                <a class="dropdown-item" href="#">Random</a>
+                              </div>
+                            </div>
+                          </div>
+                          <a class="btn btn-primary text-left m-t-15 btn-block" href="#comments" role="button"><i class="fa fa-spinner fa-pulse m-r-5"></i> Load more 4 comments</a>
+                          <ul>
+                            <li>
+                              <div class="comment">
+                                <div class="comment-avatar">
+                                  <a href="profile.html"><img src="img/user/user-1.jpg" alt=""></a>
+                                  <a class="badge badge-primary" href="profile.html" data-toggle="tooltip" data-placement="bottom" title="Add as friend"><i class="fa fa-user-plus"></i></a>
+                                </div>
+                                <div class="comment-post">
+                                  <div class="comment-header">
+                                    <div class="comment-author">
+                                      <h5><a href="profile.html">Venom</a></h5>
+                                      <span>Member</span>
+                                    </div>
+                                    <div class="comment-action">
+                                      <div class="dropdown float-right">
+                                        <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-chevron-down"></i></a>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                          <a class="dropdown-item" href="#">Moderate</a>
+                                          <a class="dropdown-item" href="#">Embed</a>
+                                          <a class="dropdown-item" href="#">Report</a>
+                                          <a class="dropdown-item" href="#">Mark as spam</a>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <p>Awesome these are news we were looking for, thanks DICE best thing i've heard today, but more game modes are welcome.</p>
+                                  <div class="comment-footer">
+                                    <ul>
+                                      <li><a href="#"><i class="fa fa-heart-o"></i> Like</a></li>
+                                      <li><a href="#"><i class="icon-reply"></i> Reply</a></li>
+                                      <li><a href="#"><i class="fa fa-clock-o"></i> 3 hours ago</a></li>
+                                    </ul>
+                                  </div>
+                                </div>
+                              </div>
+                              <ul>
+                                <li>
+                                  <div class="comment">
+                                    <div class="comment-avatar"><img src="img/user/user-2.jpg" alt=""></div>
+                                    <div class="comment-post">
+                                      <div class="comment-header">
+                                        <div class="comment-author">
+                                          <h5><a href="profile.html">Elizabeth</a></h5>
+                                          <span>Member</span>
+                                        </div>
+                                        <div class="comment-action">
+                                          <div class="dropdown float-right">
+                                            <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-chevron-down"></i></a>
+                                            <div class="dropdown-menu dropdown-menu-right">
+                                              <a class="dropdown-item" href="#">Moderate</a>
+                                              <a class="dropdown-item" href="#">Embed</a>
+                                              <a class="dropdown-item" href="#">Report</a>
+                                              <a class="dropdown-item" href="#">Mark as spam</a>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <p>Please also consider replacing Battles with Blast (in Skirmish): it can use the same AI and would be much more fun (tokens are annoying and maps are limited)!</p>
+                                      <div class="comment-footer">
+                                        <ul>
+                                          <li><a href="#"><i class="fa fa-heart-o"></i> Like</a></li>
+                                          <li><a href="#"><i class="icon-reply"></i> Reply</a></li>
+                                          <li><a href="#"><i class="fa fa-clock-o"></i> 24 minutes ago</a></li>
+                                        </ul>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </li>
+                              </ul>
+                            </li>
+                            <li>
+                              <div class="comment">
+                                <div class="comment-avatar"><a href="profile.html"><img src="img/user/user-3.jpg" alt=""></a></div>
+                                <div class="comment-post">
+                                  <div class="comment-header">
+                                    <div class="comment-author">
+                                      <h5>
+                                        <a href="profile.html">Clark</a>
+                                        <span class="badge badge-outline-primary">Admin</span>
+                                      </h5>
+                                    </div>
+                                    <div class="comment-action">
+                                      <div class="comment-action">
+                                        <div class="dropdown float-right">
+                                          <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-chevron-down"></i></a>
+                                          <div class="dropdown-menu dropdown-menu-right">
+                                            <a class="dropdown-item" href="#">Moderate</a>
+                                            <a class="dropdown-item" href="#">Embed</a>
+                                            <a class="dropdown-item" href="#">Report</a>
+                                            <a class="dropdown-item" href="#">Mark as spam</a>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <p>Thank you this news and I can't wait for offline content to drop next week.</p>
+                                  <div class="comment-footer">
+                                    <ul>
+                                      <li><a href="#"><i class="fa fa-heart-o"></i> Like</a></li>
+                                      <li><a href="#"><i class="icon-reply"></i> Reply</a></li>
+                                      <li><a href="#"><i class="fa fa-clock-o"></i> June 16, 2017 8:13 pm</a></li>
+                                    </ul>
+                                  </div>
+                                </div>
+                              </div>
+                            </li>
+                            <li>
+                              <div class="comment">
+                                <div class="comment-avatar"><a href="profile.html"><img src="img/user/user-4.jpg" alt=""></a></div>
+                                <div class="comment-post">
+                                  <div class="comment-header">
+                                    <div class="comment-author">
+                                      <h5><a href="profile.html">Strange</a></h5>
+                                      <span>Member</span>
+                                    </div>
+                                    <div class="comment-action">
+                                      <div class="comment-action">
+                                        <div class="dropdown float-right">
+                                          <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-chevron-down"></i></a>
+                                          <div class="dropdown-menu dropdown-menu-right">
+                                            <a class="dropdown-item" href="#">Moderate</a>
+                                            <a class="dropdown-item" href="#">Embed</a>
+                                            <a class="dropdown-item" href="#">Report</a>
+                                            <a class="dropdown-item" href="#">Mark as spam</a>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <p>To all those reading who have not yet bought this game yet, and are a fan of Star Wars - Don't listen to the nay-sayers on these forums, this game is simply amazing!</p>
+                                  <div class="comment-footer">
+                                    <ul>
+                                      <li><a href="#"><i class="fa fa-heart-o"></i> Like</a></li>
+                                      <li><a href="#"><i class="icon-reply"></i> Reply</a></li>
+                                      <li><a href="#"><i class="fa fa-clock-o"></i> June 11, 2017 14:26 am</a></li>
+                                    </ul>
+                                  </div>
+                                </div>
+                              </div>
+                            </li>
+                          </ul>
+                          <form>
+                            <h5>Leave a comment</h5>
+                            <div class="form-group">
+                              <textarea class="form-control" rows="5" placeholder="Your Comment"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-shadow">Submit Comment</button>
+                          </form>
+                        </div>
+                      </div>
+                      <div class="col-lg-3">
+                        <div class="sidebar">
+                          <!-- widget post  -->
+                          <div class="widget widget-videos">
+                            <h5 class="widget-title">Recommends</h5>
+                            <ul class="widget-list">
+                              <li>
+                                <div class="widget-img">
+                                  <a href="blog-post.html"><img src="https://i1.ytimg.com/vi/4BLkEJu9szM/mqdefault.jpg" alt=""></a>
+                                  <span>2:13</span>
+                                </div>
+                                <h4><a href="blog-post.html">Titanfall 2's Trophies Only Have 3 Earned Through Multiplayer</a></h4>
+                                <span><i class="fa fa-clock-o"></i> July 30, 2017</span>
+                                <span><i class="fa fa-eye"></i> 345x</span>
+                              </li>
+                              <li>
+                                <div class="widget-img">
+                                  <a href="blog-post.html"><img src="https://i1.ytimg.com/vi/Kae-JjbLsgA/mqdefault.jpg" alt=""></a>
+                                  <span>13:07</span>
+                                </div>
+                                <h4><a href="blog-post.html">Star Wars Battlefront II -- The Story of an Imperial Soldier</a></h4>
+                                <span><i class="fa fa-clock-o"></i> July 29, 2017</span>
+                                <span><i class="fa fa-eye"></i> 1269x</span>
+                              </li>
+                              <li>
+                                <div class="widget-img">
+                                  <a href="blog-post.html"><img src="https://i.ytimg.com/vi/kUKrStkG-hE/mqdefault.jpg" alt=""></a>
+                                  <span>5:17</span>
+                                </div>
+                                <h4><a href="blog-post.html">Far Cry 5: Full Length Reveal Trailer</a></h4>
+                                <span><i class="fa fa-clock-o"></i> July 20, 2017</span>
+                                <span><i class="fa fa-eye"></i> 692x</span>
+                              </li>
+                              <li>
+                                <div class="widget-img">
+                                  <a href="blog-post.html"><img src="https://i1.ytimg.com/vi/B6qY-P4eo1Q/mqdefault.jpg" alt=""></a>
+                                  <span>2:30</span>
+                                </div>
+                                <h4><a href="blog-post.html">Mafia 3: The Movie (All Cutscenes HD)</a></h4>
+                                <span><i class="fa fa-clock-o"></i> June 13, 2017</span>
+                                <span><i class="fa fa-eye"></i> 1136x</span>
+                              </li>
+                              <li>
+                                <div class="widget-img">
+                                  <a href="blog-post.html"><img src="https://i1.ytimg.com/vi/1Y_DVbmRNhc/mqdefault.jpg" alt=""></a>
+                                  <span>2:12</span>
+                                </div>
+                                <h4><a href="blog-post.html">Ghost in the Shell (2017) - Official Trailer</a></h4>
+                                <span><i class="fa fa-clock-o"></i> May 14, 2017</span>
+                                <span><i class="fa fa-eye"></i> 7879x</span>
+                              </li>
+                              <li>
+                                <div class="widget-img">
+                                  <a href="blog-post.html"><img src="https://i1.ytimg.com/vi/PmaZw1xMxBQ/mqdefault.jpg" alt=""></a>
+                                  <span>15:38</span>
+                                </div>
+                                <h4><a href="blog-post.html">Call of Duty: Infinite Warfare Gameplay</a></h4>
+                                <span><i class="fa fa-clock-o"></i> March 1, 2017</span>
+                                <span><i class="fa fa-eye"></i> 723x</span>
+                              </li>
+                            </ul>
+                          </div>
+                          <!-- /widget post -->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+                <!-- /main -->
+              </div>  
+              
+              <div class="post post-single" *ngIf="contribute">
+                <!-- main -->
+              <!-- main -->
+      <section>
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 mx-auto">
+    
+              <!-- Nav tabs -->
+              <ul class="nav nav-tabs" role="tablist">
+                <li class="nav-item"><a class="nav-link active" href="#forum" aria-controls="forum" role="tab" data-toggle="tab">Story</a></li>
+                <li class="nav-item"><a class="nav-link" href="#options" aria-controls="options" role="tab" data-toggle="tab">Image</a></li>
+                <li class="nav-item"><a class="nav-link" href="#options" aria-controls="options" role="tab" data-toggle="tab">Video</a></li>
+                <li class="nav-item"><a class="nav-link" href="#options" aria-controls="options" role="tab" data-toggle="tab">Stream</a></li>
+              </ul>
+    
+              <form class="tab-content p-t-20">
+                <div class="tab-pane active" id="forum" role="tabpanel">
+                  <!-- form -->
+                  <!-- <mat-form-field>
+                    <mat-label>Select to contribute</mat-label>
+                    <mat-select [(ngModel)]="selectedid" name="category_id" (ngModelChange)="dataChanged($event)">
+                      <mat-option value="" selected></mat-option>
+                      <mat-option *ngFor="let r of res" [value]="r.id">
+                        {{r.actname}}
+                      </mat-option>                              
+                    </mat-select>                           
+                  </mat-form-field> -->
+                  <!-- <div class="form-group"> -->
+                    <!-- <label for="submit-location">Category</label><br> -->
+                <!-- <mat-form-field>
+                    <mat-label>Category</mat-label>
+                    <mat-select [(ngModel)]="form.category_id" name="category_id">
+                      <mat-option value="" selected></mat-option>
+                      <mat-option *ngFor="let cat of response" [value]="cat.id">
+                        {{cat.catname}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  </div> -->
+                  <div class="form-group">
+                    <label for="title">Category</label>
+                    <input type="text" class="form-control" id="title" formControlName="catname" [(ngModel)]="form.location" name="location">
+                    <!-- <small class="form-text">Others will se when reach your topic (max 50 character).</small> -->
+                  </div>
+                  <div class="form-group">
+                    <label for="description">Title</label>
+                    <input type="text" class="form-control" id="description" formControlName="title" placeholder="Name / Tittle" [(ngModel)]="form.name_title" name="name_title" required>
+                    <!-- <small class="form-text">Short Description about your topic content.</small> -->
+                  </div>
+  
+                  <div class="form-group" *ngFor="let h of contents">
+                    <label for="description"></label>
+                    <input type="text" class="form-control" value="{{catname}}" id="description" [(ngModel)]="form.header" name="header" required>
+                    <!-- <small class="form-text">Short Description about your topic content.</small> -->
+                  
+                    <textarea  [(ngModel)]="form.content" name="content" rows="8" style="width: 100%">{{h.content}}</textarea>
+                    <!-- <textarea id="summernote" [(ngModel)]="form.contents" name="contents">cnxvcxnvcmn</textarea> -->
+                    <small class="form-text">Others will se when reach your topic (max 50 character).</small>
+                  </div>
+                  <div class="col-md-12 col-sm-12">
+                        <div class="form-group">
+                            <label for="submit-area">Attachment</label>
+                            <div class="input-group">
+                                <input id="file-upload" type="file" class="file" multiple="true" data-show-upload="false" data-show-caption="false" data-show-remove="false" accept="image/jpeg,image/png" data-browse-class="btn btn-default" data-browse-label="Browse Images" (change)="uploadFiles($event)">
+                                <!-- <span class="input-group-addon">m<sup>2</sup></span> -->
+                            </div>
+                        </div><!-- /.form-group -->
+                    </div>          
+                </div>
+    
+                <div class="tab-pane" id="options" role="tabpanel">
+                  <div class="form-group row">
+                    <div class="col-6">
+                      <label for="date">Publish Date:</label>
+                      <input type="text" class="form-control flatpickr flatpickr-input active" id="date" placeholder="Pick a date">
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="description">Attachment</label>
+                    <div class="row">
+                      <div class="col-8">
+                        <label class="custom-file">
+                        <input type="file" id="file2" class="custom-file-input">
+                        <span class="custom-file-control"></span>
+                      </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="">Enable Replies</label>
+                    <div><input type="checkbox" class="js-switch" checked></div>
+                  </div>
+                </div>
+                <div class="m-t-30">
+
+                        <button type="submit" (click)="onSubmit()" [disabled]= "disabled" class="btn btn-default btn-rounded btn-shadow float-right" >
+                                <i id="loader2" *ngIf="disabled"  class="fa fa-spin fa-spinner"></i> {{sav}}</button>
+                  <!-- <button class="btn btn-primary btn-rounded btn-shadow float-right" type="submit" name="save">Submit</button> -->
+
+            
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- /main -->
+              <!-- /main -->
+              </div>
+             
               <div class="post-related">
                 <h6 class="subtitle">Related Posts</h6>
                 <div class="row">
@@ -85,101 +754,7 @@
                     </div>
                   </div>                  
                 </div>
-              </div>
-              <div id="comments" class="comments anchor">
-                <div class="comments-header">
-                  <h5><i class="fa fa-comment-o m-r-5"></i> Comments ({{res.comment_count}})</h5>
-                  <div class="dropdown float-right">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Sorted by Best <span class="caret"></span></button>
-                    <div class="dropdown-menu dropdown-menu-right">
-                      <a class="dropdown-item active" href="#">Best</a>
-                      <a class="dropdown-item" href="#">Latest</a>
-                      <a class="dropdown-item" href="#">Oldest</a>
-                      <a class="dropdown-item" href="#">Random</a>
-                    </div>
-                  </div>
-                </div>
-                <a class="btn btn-primary text-left m-t-15 btn-block" href="#comments" role="button"><i class="fa fa-spinner fa-pulse m-r-5"></i> Load more 4 comments</a>
-                <ul>
-                  <li>
-                    <div class="comment" *ngFor="let r of comment">
-                      <div class="comment-avatar">
-                        <a href="profile.html"><img alt="" src="https://sce-ogun.sabiogun.jtcheck.com/backend/public/upload/uploads/{{r.image}}"></a>
-                        <a class="badge badge-primary" href="profile.html" data-toggle="tooltip" data-placement="bottom" title="Add as friend"><i class="fa fa-user-plus"></i></a>
-                      </div>
-                      <div class="comment-post">
-                        <div class="comment-header">
-                          <div class="comment-author">
-                            <h5><a href="profile.html">{{r.firstname}}</a></h5>
-                            <span>{{r.lastname}} {{r.middlename}} </span>
-                          </div>
-                          <div class="comment-action">
-                            <div class="dropdown float-right">
-                              <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-chevron-down"></i></a>
-                              <div class="dropdown-menu dropdown-menu-right">
-                                <a class="dropdown-item" href="#">Moderate</a>
-                                <a class="dropdown-item" href="#">Embed</a>
-                                <a class="dropdown-item" href="#">Report</a>
-                                <a class="dropdown-item" href="#">Mark as spam</a>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <p>{{r.comment}}.</p>
-                        <div class="comment-footer">
-                          <ul>
-                            <li><a href="#"><i class="fa fa-heart-o"></i> Like</a></li>
-                            <li><a href="#"><i class="icon-reply"></i> Reply</a></li>
-                            <li><a href="#"><i class="fa fa-clock-o"></i> 3 hours ago</a></li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                    <ul>
-                      <li>
-                        <div class="comment">
-                          <div class="comment-avatar"><img src="img/user/user-2.jpg" alt=""></div>
-                          <div class="comment-post">
-                            <div class="comment-header">
-                              <div class="comment-author">
-                                <h5><a href="profile.html">Elizabeth</a></h5>
-                                <span>Member</span>
-                              </div>
-                              <div class="comment-action">
-                                <div class="dropdown float-right">
-                                  <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-chevron-down"></i></a>
-                                  <div class="dropdown-menu dropdown-menu-right">
-                                    <a class="dropdown-item" href="#">Moderate</a>
-                                    <a class="dropdown-item" href="#">Embed</a>
-                                    <a class="dropdown-item" href="#">Report</a>
-                                    <a class="dropdown-item" href="#">Mark as spam</a>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <p>Please also consider replacing Battles with Blast (in Skirmish): it can use the same AI and would be much more fun (tokens are annoying and maps are limited)!</p>
-                            <div class="comment-footer">
-                              <ul>
-                                <li><a href="#"><i class="fa fa-heart-o"></i> Like</a></li>
-                                <li><a href="#"><i class="icon-reply"></i> Reply</a></li>
-                                <li><a href="#"><i class="fa fa-clock-o"></i> 24 minutes ago</a></li>
-                              </ul>
-                            </div>
-                          </div>
-                        </div>
-                      </li>
-                    </ul>
-                  </li>                 
-                </ul>
-                <form  role="form" id="form-blog-reply"  class="clearfix" #commentForm=ngForm (ngSubmit)="onSubmit()">
-                  <h5>Leave a comment</h5>
-                  <div class="form-group">
-                    <textarea class="form-control" rows="5" placeholder="Your Comment" [(ngModel)]="form.comment" name="comment" required></textarea>
-                  </div>
-                  <button type="submit" class="btn btn-primary" [disabled]= "disable" >
-                        <i id="loader2" *ngIf="disable"  class="fa fa-spin fa-spinner"></i>Submit Comment</button>
-                </form>
-              </div>
+              </div>              
             </div>
           </div>
         </div>

@@ -19,15 +19,16 @@ declare let jQuery: any;
 })
 export class PlatformComponent implements OnInit {
 
-  
+  defaultImage='https://images.unsplash.com/photo-1443890923422-7819ed4101c0?fm=jpg'
+
   control = new FormControl();
   filteredStreets: Observable<string[]>;
    @ViewChild('map') mapElement: any;
    map: google.maps.Map;
 
    uimage: string;
-    defaultImage = 'assets/img/logo.png';
-    image = 'https://images.unsplash.com/photo-1443890923422-7819ed4101c0?fm=jpg';
+    // defaultImage = 'assets/img/logo.png';
+    image:any;
 
     public lat;
   data: any;
@@ -74,6 +75,7 @@ export class PlatformComponent implements OnInit {
         this.article=this.ftitle.name
         this.gallery=this.ftitle.gallery
             console.log(this.gallery);
+            this.image= 'https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/'+this.article.t_image;
         }
       )
 

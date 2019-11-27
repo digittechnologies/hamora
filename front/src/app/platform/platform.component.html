@@ -3,8 +3,8 @@
   <div class="overlay"></div>
   <div class="container">
     <div class="hero-block">
-      <h2 class="hero-title">The Witcher 3: Don't Miss This Hidden Contract</h2>
-      <p>The world is in chaos. The air is thick with tension and the smoke of burnt villages.</p>
+      <h2 class="hero-title">Do you Know about Ogun State or you have a story to tell </h2>
+      <p>Share your story here.</p>
       <a class="btn btn-primary btn-lg btn-shadow btn-md btn-rounded" href="blog-post.html" role="button">Contribute</a>
     </div>
   </div>
@@ -44,8 +44,12 @@
         <div class="post post-card"  *ngFor="let all of article | paginate: {itemsPerPage: 10, currentPage: p}">
           <div class="post post-md" >
           <div class="post-thumbnail">
-            <a href="Content/{{all.id}}" (click)="nav(all.id)"><img src="https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/{{all.t_image}}" alt=""></a>
+            <!-- <a href="Content/{{all.id}}" (click)="nav(all.id)"><img src="https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/{{all.t_image}}" alt=""></a> -->
+            <img src="assets/img/loading.gif" class="lazy" data-src="assets/img/SC.jpg" [src]="image" width="240" height="152">
           </div>
+          <!-- <div class="post-thumbnail">
+            <a href="Content/{{all.id}}" (click)="nav(all.id)"><img *ngFor="let image of all.t_image" alt="" [defaultImage]="defualtImage" [lazyLoad]="image" [offset]="offset" style="max-width:100px; margin:30px; width: 200px;"></a>
+          </div> -->
           <div class="post-block">
             <div class="post-header">
               <div>

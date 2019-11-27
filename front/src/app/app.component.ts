@@ -172,8 +172,8 @@ $('body').removeClass('navbar-search-open');
     event.preventDefault();
     this.Token.remove();
     this.Auth.changeAuthStatus(false);
-    this.ngOnInit();
     this.router.navigateByUrl('');
+    this.ngOnInit();
   }
   navigate(id){
     this.router.navigate(['Category/'+id+''])

@@ -40,7 +40,7 @@ import { GalleryComponent } from './user/gallery/gallery.component';
 import { VideoComponent } from './user/video/video.component';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 // import { OwlModule } from 'ngx-owl-carousel';
-// import { LazyLoadImageModule, scrollPreset } from 'ng-lazyload-image';
+import { LazyLoadImageModule, scrollPreset } from 'ng-lazyload-image';
 
 
 @NgModule({
@@ -86,6 +86,7 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
     // LazyLoadImageModule.forRoot({
     //   preset: scrollPreset 
     // }),
+    LazyLoadImageModule,
     ScrollingModule,
     MatAutocompleteModule​,
     MatFormFieldModule,

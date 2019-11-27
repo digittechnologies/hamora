@@ -7,13 +7,49 @@
       </ol>
     </div>
   </section>
+  <!-- main -->
+<section class="hero" style="background-image: url('assets/img/SC.jpg');">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="hero-block">
+      <h2 class="hero-title">Do you Know about Ogun State or you have a story to tell </h2>
+      <p>Share your story here.</p>
+      <a class="btn btn-primary btn-lg btn-shadow btn-md btn-rounded" href="blog-post.html" role="button">Contribute</a>
+    </div>
+  </div>
+</section>
+<section class="toolbar toolbar-links" data-fixed="true">
+  <div class="container">
+    <h5 class="m-r-30">Recent Contribution</h5>
+    <form method="post" class="hidden-lg-down" (submit)="search()">
+      <div class="form-group input-icon-right">
+        <i class="fa fa-search"></i>
+        <input type="text" class="form-control form-control-secondary" placeholder="Type to search..." (keyup) = 'locateMe($event)' [formControl]="control" [matAutocomplete]="auto">
+      </div>
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let street of filteredStreets | async" [value]="street">
+        <a href="/Content/{{street}}"> {{street}} </a>
+        </mat-option>
+    </mat-autocomplete>
+    </form>   
+  </div>
+</section>
 
-  <section>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8">
 
-            
+<section class="p-t-40 p-b-60">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="toolbar-custom">
+          <a class="btn btn-default btn-icon btn-sm m-r-10 float-left hidden-xs-down" href="#" data-toggle="tooltip" title="refresh" data-placement="bottom" role="button"><i class="fa fa-refresh"></i></a>
+          <div class="dropdown float-left">
+            <button class="btn btn-default" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Categories<i class="fa fa-caret-down"></i></button>
+            <div class="dropdown-menu">
+                <div  *ngFor="let ract of res"><a class="dropdown-item"  routerlink="" (click)="navigates(ract.id)">{{ract.actname}}</a></div>    
+            </div>
+          </div>
+        </div> 
+        
          <!-- post -->
         <div class="post post-card"  *ngFor="let all of title | paginate: {itemsPerPage: 10, currentPage: p}">
                 <div class="post post-md" >
