@@ -43,7 +43,8 @@ class UserController extends Controller
         ->join('users','titles.user_id','=','users.id')
            ->join ('contents','titles.id','=','contents.name_id')
         ->select('titles.*','categories.catname','contents.header','contents.content','categories.destription','categories.activity_id','activities.actname','users.firstname','users.lastname','users.middlename', 'users.familybackground', 'users.image')
-      ->get(),
+        ->where('titles.status','=','Y')
+        ->get(),
         'gallery'=>Galleries::orderBy('id')->join('titles','Galleries.title_id','=','titles.id')
        ->join('users','titles.user_id','=','users.id')
         ->select('Galleries.*','titles.name_title','titles.location','titles.t_image','users.firstname','users.lastname','users.middlename','users.image','users.email')

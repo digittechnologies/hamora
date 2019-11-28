@@ -72,9 +72,9 @@
   
   @media (pointer: coarse) and (hover: none) {
     header {
-      background: url('/assets/vid/video-bg.mp4/') black no-repeat center center scroll;
+      background: url('https://youtu.be/g1MoNUpoTJs') black no-repeat center center scroll;
     }
-    header video {
+    /* header video {
       display: none;
-    }
+    } */
   }

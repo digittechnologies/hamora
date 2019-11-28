@@ -41,7 +41,12 @@ import { VideoComponent } from './user/video/video.component';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 // import { OwlModule } from 'ngx-owl-carousel';
 import { LazyLoadImageModule, scrollPreset } from 'ng-lazyload-image';
+
 import { ContributeComponent } from './contribute/contribute.component';
+
+import { MapvComponent } from './content/mapv/mapv.component';
+import { StoryComponent } from './content/story/story.component';
+
 
 
 @NgModule({
@@ -69,7 +74,10 @@ import { ContributeComponent } from './contribute/contribute.component';
     PlatformComponent,
     GalleryComponent,
     VideoComponent,
-    ContributeComponent
+    ContributeComponent,
+    MapvComponent,
+    StoryComponent
+
   ],
   imports: [
     BrowserModule,

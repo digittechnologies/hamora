@@ -49,6 +49,58 @@
             </div>
           </div>
         </div> 
+
+        <div class="post post-card" *ngIf="loading">
+            <div class="post post-md">
+                <div class="post-thumbnail">
+                  <a href="blog-post-medium.html"><img src="assets/img/loading.gif" alt="LC Launch"></a>
+                </div>
+                <div class="post-block">              
+                  <div class="post-meta">
+                      <img  width="50%" src="assets/img/loading.gif" alt="">
+                  </div>              
+                </div>
+              </div>
+            </div>
+
+            <div class="post post-card" *ngIf="loading">
+                <div class="post post-md">
+                    <div class="post-thumbnail">
+                      <a href="blog-post-medium.html"><img src="assets/img/loading.gif" alt="LC Launch"></a>
+                    </div>
+                    <div class="post-block">              
+                      <div class="post-meta">
+                          <img  width="50%" src="assets/img/loading.gif" alt="">
+                      </div>              
+                    </div>
+                  </div>
+                </div>
+
+                <div class="post post-card" *ngIf="loading">
+                    <div class="post post-md">
+                        <div class="post-thumbnail">
+                          <a href="blog-post-medium.html"><img src="assets/img/loading.gif" alt="LC Launch"></a>
+                        </div>
+                        <div class="post-block">              
+                          <div class="post-meta">
+                              <img  width="50%" src="assets/img/loading.gif" alt="">
+                          </div>              
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="post post-card" *ngIf="loading">
+                        <div class="post post-md">
+                            <div class="post-thumbnail">
+                              <a href="blog-post-medium.html"><img src="assets/img/loading.gif" alt="LC Launch"></a>
+                            </div>
+                            <div class="post-block">              
+                              <div class="post-meta">
+                                  <img  width="50%" src="assets/img/loading.gif" alt="">
+                              </div>              
+                            </div>
+                          </div>
+                        </div>
         
          <!-- post -->
         <div class="post post-card"  *ngFor="let all of title | paginate: {itemsPerPage: 10, currentPage: p}">

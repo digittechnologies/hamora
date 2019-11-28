@@ -49,6 +49,7 @@ export class PlatformComponent implements OnInit {
   resac: any;
   documentArray: any;
   article: any;
+  loading=true;
 
   mySlideImages = [1,2,3].map((i)=> `https://picsum.photos/640/480?image=${i}`);
   myCarouselImages =[1,2,3,4,5,6].map((i)=>`https://picsum.photos/640/480?image=${i}`);
@@ -73,6 +74,7 @@ export class PlatformComponent implements OnInit {
 
       this.Jarwis.getArticle().subscribe(
         data=>{
+          this.loading=false;
         this.ftitle = data; 
 
         this.article=this.ftitle.name
