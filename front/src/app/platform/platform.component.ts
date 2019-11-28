@@ -8,6 +8,7 @@ import { MapServiceService } from '../map-service.service';
 import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs';
 import { ViewChild } from '@angular/core';
+import { MatSnackBar } from '@angular/material';
 import {startWith, map} from 'rxjs/operators';
 
 declare let jQuery: any;
@@ -19,15 +20,16 @@ declare let jQuery: any;
 })
 export class PlatformComponent implements OnInit {
 
-  
+  defaultImage='https://images.unsplash.com/photo-1443890923422-7819ed4101c0?fm=jpg'
+
   control = new FormControl();
   filteredStreets: Observable<string[]>;
    @ViewChild('map') mapElement: any;
    map: google.maps.Map;
 
    uimage: string;
-    defaultImage = 'assets/img/logo.png';
-    image = 'https://images.unsplash.com/photo-1443890923422-7819ed4101c0?fm=jpg';
+    // defaultImage = 'assets/img/logo.png';
+    image:any;
 
     public lat;
   data: any;
@@ -53,13 +55,15 @@ export class PlatformComponent implements OnInit {
   mySlideOptions={items: 1, dots: true, nav: false};
   myCarouselOptions={items: 3, dots: true, nav: true};
   gallery: any;
+  follows: any;
 
   constructor( private Auth: AuthService,
     private router: Router,
     private Jarwis: JarwisService,
     private Token: TokenService,
     private mapserver: MapServiceService, 
-    private coordGet: MapServiceService
+    private coordGet: MapServiceService,
+    public snackBar: MatSnackBar,
   ) { }
   public response:any;
   public res:any;
@@ -74,6 +78,7 @@ export class PlatformComponent implements OnInit {
         this.article=this.ftitle.name
         this.gallery=this.ftitle.gallery
             console.log(this.gallery);
+            this.image= 'https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/'+this.article.t_image;
         }
       )
 
@@ -238,7 +243,32 @@ export class PlatformComponent implements OnInit {
     })
   }
 
-
+  likes(id){
+// console.log(id)
+this.Jarwis.like(id).subscribe(
+  data =>  {
+    let snackBarRef = this.snackBar.open("like", 'Dismiss', {
+      duration: 2000
+    }) 
+    this.ngOnInit()
+  }
+  
+  );
+  }
+  follow(id){
+    // this.follows=this.article
+    let follows = this.article.filter(c => c.id == id);
+     console.log(follows)
+    // this.Jarwis.follow(id).subscribe(
+    //   data =>  {
+    //     let snackBarRef = this.snackBar.open("follow", 'Dismiss', {
+    //       duration: 2000
+    //     }) 
+    //     this.ngOnInit()
+    //   }
+      
+    //   );
+      }
   navigate(id){
     this.router.navigate(['Category/'+id+''])
     this.ngOnInit()

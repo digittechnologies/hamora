@@ -17,6 +17,7 @@ export class CategoryComponent implements OnInit {
   p:any;
   ftitle: any;
   footer: any;
+  res: any;
 
   constructor(
     private Auth: AuthService,
@@ -27,6 +28,15 @@ export class CategoryComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
+    
+    this.Jarwis.getact().subscribe(
+      data=>{        
+      this.res = data;          
+      }
+    )
+
+
     this.actRoute.paramMap.subscribe((params => {
       let id = params.get('id');
       

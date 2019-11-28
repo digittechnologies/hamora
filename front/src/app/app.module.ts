@@ -21,7 +21,7 @@ import { ProfileComponent } from './user/profile/profile.component';
 import { DetailsComponent } from './user/details/details.component';
 import { PostComponent } from './user/post/post.component';
 import { MypostComponent } from './user/mypost/mypost.component';
-import {MatSelectModule,MatInputModule, MatListModule, MatSnackBarModule,} from '@angular/material';
+import {MatSelectModule,MatInputModule, MatListModule, MatSnackBarModule, MatButtonModule,MatDialogModule} from '@angular/material';
 import { AddcategoryComponent } from './addcategory/addcategory.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
@@ -40,7 +40,8 @@ import { GalleryComponent } from './user/gallery/gallery.component';
 import { VideoComponent } from './user/video/video.component';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 // import { OwlModule } from 'ngx-owl-carousel';
-// import { LazyLoadImageModule, scrollPreset } from 'ng-lazyload-image';
+import { LazyLoadImageModule, scrollPreset } from 'ng-lazyload-image';
+import { ContributeComponent } from './contribute/contribute.component';
 
 
 @NgModule({
@@ -67,7 +68,8 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
     AdminLoginComponent,
     PlatformComponent,
     GalleryComponent,
-    VideoComponent
+    VideoComponent,
+    ContributeComponent
   ],
   imports: [
     BrowserModule,
@@ -81,11 +83,14 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
     MatInputModule,
     MatTabsModule,
     MatListModule,
+    MatButtonModule,
     MatSnackBarModule,
     NgxPaginationModule,
+    MatDialogModule,
     // LazyLoadImageModule.forRoot({
     //   preset: scrollPreset 
     // }),
+    LazyLoadImageModule,
     ScrollingModule,
     MatAutocompleteModule​,
     MatFormFieldModule,
@@ -94,6 +99,7 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
   
   ],
   providers: [JarwisService,TokenService,AuthService,BeforeLoginService,AfterLoginService],
+  entryComponents: [ContributeComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
