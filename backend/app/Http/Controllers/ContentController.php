@@ -96,7 +96,7 @@ class ContentController extends Controller
        
         $request->merge(['t_image'=>$filenames]);
         // return $request;
-        // $content= title::create($request-> all());
+        $content= title::create($request-> all());
     // return $content->id;
 $imageName=[];
 $count = 0;
@@ -111,28 +111,28 @@ foreach ($image_name as $img) {
     ] ; 
     $count++;
 }
-//    Galleries::insert($imageName);
+ Galleries::insert($imageName);
 
-   $videoName=[];
-$count = 0;
-if($videodet){ 
-foreach ( $videodet as $vid) {
-            $file=$vid;
-        //  return $file;
-         $filename= $count.''.time().'.'.$file->getClientOriginalName();
-         return $filename;
-         //  $filename=$count.'.'.time().'.' . explode('/', explode(':', substr($file, 0, strpos($file,';')))[1])[1];
-    $path=$file->move(public_path('/upload/videos/'.$filename));
+//    $videoName=[];
+// $count = 0;
+// if($videodet){ 
+// foreach ( $videodet as $vid) {
+//             $file=$vid;
+//         //  return $file;
+//          $filename= $count.''.time().'.'.$file->getClientOriginalName();
+//          return $filename;
+//          //  $filename=$count.'.'.time().'.' . explode('/', explode(':', substr($file, 0, strpos($file,';')))[1])[1];
+//     $path=$file->move(public_path('/upload/videos/'.$filename));
        
-    $videoName[] =[
-     'title_id' => 8,
-   'video_name'=> $filename,
-    ] ; 
-    $count++;
-}
-}
+//     $videoName[] =[
+//      'title_id' => 8,
+//    'video_name'=> $filename,
+//     ] ; 
+//     $count++;
+// }
+// }
 //    Videos::insert($videoName);
-return $videoName;
+// return $videoName;
        $contentData=[];
        $counts = 0;
         // $request->merge(['name_id'=>$content->id]);
@@ -154,7 +154,7 @@ return $videoName;
              $counts++;
          }
       
-        //   Content::insert($contentData);
+         Content::insert($contentData);
           return $contentData;
     }
 

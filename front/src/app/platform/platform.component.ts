@@ -258,16 +258,19 @@ this.Jarwis.like(id).subscribe(
   follow(id){
     // this.follows=this.article
     let follows = this.article.filter(c => c.id == id);
-     console.log(follows)
-    // this.Jarwis.follow(id).subscribe(
-    //   data =>  {
-    //     let snackBarRef = this.snackBar.open("follow", 'Dismiss', {
-    //       duration: 2000
-    //     }) 
-    //     this.ngOnInit()
-    //   }
+    let follow=follows[0]
+    let follow_id=follow.user_id
+     console.log(follow_id)
+    this.Jarwis.follow({title_id:id,followed_user_id:follow_id}).subscribe(
+      data =>  {
+        let snackBarRef = this.snackBar.open("follow", 'Dismiss', {
+          duration: 2000
+        }) 
+        console.log(data)
+        this.ngOnInit()
+      }
       
-    //   );
+      );
       }
   navigate(id){
     this.router.navigate(['Category/'+id+''])

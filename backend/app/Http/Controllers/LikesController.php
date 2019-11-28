@@ -5,13 +5,25 @@ use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
 use App\Likes;
+use App\Follows;
 class LikesController extends Controller
 {
     //
 
-    public function index()
+    public function follow(Request $request)
     {
-        //
+        //user_id title_id followed_user_id
+        $authid=auth()->user()->id;   
+        $request->merge(['user_id'=>$authid]);
+        //  return $request->followed_user_id;
+         $countfollow= DB::table("follows")->where('followed_user_id','=',$request->followed_user_id)->where('user_id','=',$authid)
+         ->count();
+         if($countfollow==0){
+             $folow=follows::create($request-> all());
+             return $folow;
+         }else{
+             return 'follow before';
+         }
     }
     public function likes(Request $request)
     {

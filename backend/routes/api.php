@@ -99,7 +99,7 @@ Route::get('name','UserController@name');
 Route::post('contribute','ContributeController@store');
 
 Route::post('like','LikesController@likes');
-
+Route::post('follow','LikesController@follow');
 //  Route::get('test',function(){rolecate
 //      return response()->json([
 //          'user'=>['fname'=>'tawa',
