@@ -68,9 +68,9 @@ contents:null,
   
   
   handleResponse(data) {    
-    let snackBarRef = this.snackBar.open('Save Successfully', 'Dismiss', {
-      duration: 2000
-    })
+    let snackBarRef = this.snackBar.open("Thank you for your contribution, our Editorial team will like to confirm your contribution before it goes live.", 'Dismiss', {
+      duration: 8000
+    }) 
    this.disabled=true;
     this.router.navigateByUrl('/User/(side:Details)');
   }

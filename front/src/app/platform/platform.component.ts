@@ -8,6 +8,7 @@ import { MapServiceService } from '../map-service.service';
 import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs';
 import { ViewChild } from '@angular/core';
+import { MatSnackBar } from '@angular/material';
 import {startWith, map} from 'rxjs/operators';
 
 declare let jQuery: any;
@@ -55,13 +56,15 @@ export class PlatformComponent implements OnInit {
   mySlideOptions={items: 1, dots: true, nav: false};
   myCarouselOptions={items: 3, dots: true, nav: true};
   gallery: any;
+  follows: any;
 
   constructor( private Auth: AuthService,
     private router: Router,
     private Jarwis: JarwisService,
     private Token: TokenService,
     private mapserver: MapServiceService, 
-    private coordGet: MapServiceService
+    private coordGet: MapServiceService,
+    public snackBar: MatSnackBar,
   ) { }
   public response:any;
   public res:any;
@@ -242,7 +245,35 @@ export class PlatformComponent implements OnInit {
     })
   }
 
-
+  likes(id){
+// console.log(id)
+this.Jarwis.like(id).subscribe(
+  data =>  {
+    let snackBarRef = this.snackBar.open("like", 'Dismiss', {
+      duration: 2000
+    }) 
+    this.ngOnInit()
+  }
+  
+  );
+  }
+  follow(id){
+    // this.follows=this.article
+    let follows = this.article.filter(c => c.id == id);
+    let follow=follows[0]
+    let follow_id=follow.user_id
+     console.log(follow_id)
+    this.Jarwis.follow({title_id:id,followed_user_id:follow_id}).subscribe(
+      data =>  {
+        let snackBarRef = this.snackBar.open("follow", 'Dismiss', {
+          duration: 2000
+        }) 
+        console.log(data)
+        this.ngOnInit()
+      }
+      
+      );
+      }
   navigate(id){
     this.router.navigate(['Category/'+id+''])
     this.ngOnInit()

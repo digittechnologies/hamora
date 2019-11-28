@@ -8,7 +8,7 @@ export class JarwisService {
 
   // private baseUrl = 'https://sce-ogun.sabiogun.jtcheck.com/backend/public/api';
 
-   private baseUrl = 'http://localhost/sce-platform/backend/public/api';
+   private baseUrl = 'http://localhost/sce-platform2/backend/public/api';
 
   constructor(private http: HttpClient) { }
   roleuser() {
@@ -121,7 +121,21 @@ export class JarwisService {
 //  search(searchTerm:string) {
 //     return this.http.get(`${this.baseUrl}/getalltitle/${searchTerm}`)
 //   }
-
+contribute(data) {
+  return this.http.post(`${this.baseUrl}/contribute`,data,{headers:{
+    Authorization:`Bearer ${localStorage.token}`
+  }})
+}
+like(data) {
+  return this.http.post(`${this.baseUrl}/like`,data,{headers:{
+    Authorization:`Bearer ${localStorage.token}`
+  }})
+}
+follow(data) {
+  return this.http.post(`${this.baseUrl}/follow`,data,{headers:{
+    Authorization:`Bearer ${localStorage.token}`
+  }})
+}
 comment(data) {
   return this.http.post(`${this.baseUrl}/comment`, data,{headers:{
     Authorization:`Bearer ${localStorage.token}`

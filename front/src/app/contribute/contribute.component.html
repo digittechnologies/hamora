@@ -1,0 +1,54 @@
+
+
+  <div mat-dialog-content>
+    <div class="container">
+      <form [formGroup]="_catForm" >
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-12">
+              <label>Header</label>
+              <input type="text" formControlName="header" class="form-control">
+            </div>
+            
+          </div>
+          <div class="row">
+              <div class="col-md-12">
+                  <label>Content</label><br>
+                 
+                      <textarea type="text" formControlName="content" class="width-60 required" required   rows="6" style="width: 100%"> </textarea>
+                   
+                  <!-- <input type="text" formControlName="destription" class="form-control"> -->
+                </div>
+        
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <label>quote *</label>
+              <input type="text" formControlName="quote" class="form-control">
+            </div>
+            
+          </div>
+          <div class="col-md-12 col-sm-12">
+            <div class="form-group">
+                <label for="submit-area">content image *</label>
+                <div class="input-group">
+                    <input id="file-upload" type="file" class="file"  data-show-upload="false" data-show-caption="false" data-show-remove="false" accept="image/jpeg,image/png" data-browse-class="btn btn-default" data-browse-label="Browse Images" (change)="uploadFile($event)">
+                    <!-- <span class="input-group-addon">m<sup>2</sup></span> -->
+                </div>
+            </div><!-- /.form-group -->
+        </div>
+        </div>
+  
+      </form>
+    </div>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">No Thanks</button>
+    <button mat-button type="submit" (click)="onSubmit()"  cdkFocusInitial >Save</button>
+  </div>
+  
+
+
+
+
+

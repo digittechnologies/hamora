@@ -7,8 +7,8 @@
               <!-- Nav tabs -->
               <ul class="nav nav-tabs" role="tablist">
                 <li class="nav-item"><a class="nav-link active" href="#forum" aria-controls="forum" role="tab" data-toggle="tab">Story</a></li>
-                <li class="nav-item"><a class="nav-link" href="#options" aria-controls="options" role="tab" data-toggle="tab">Image</a></li>
-                <li class="nav-item"><a class="nav-link" href="#options" aria-controls="options" role="tab" data-toggle="tab">Video</a></li>
+                <li class="nav-item"><a class="nav-link" href="#gallery" aria-controls="gallery" role="tab" data-toggle="tab">Image</a></li>
+                <li class="nav-item"><a class="nav-link" href="#videos" aria-controls="videos" role="tab" data-toggle="tab">Video</a></li>
                 <li class="nav-item"><a class="nav-link" href="#options" aria-controls="options" role="tab" data-toggle="tab">Stream</a></li>
                 <li class="nav-item"><a class="nav-link" href="#options" aria-controls="options" role="tab" data-toggle="tab">Options</a></li>
               </ul>
@@ -75,24 +75,7 @@
 
                     </div></div></div>
                   
-                  <div class="col-md-12 col-sm-12">
-                        <div class="form-group">
-                            <label for="submit-area">Gallery</label>
-                            <div class="input-group">
-                                <input id="file-upload" type="file" class="file" multiple="true" data-show-upload="false" data-show-caption="false" data-show-remove="false" accept="image/jpeg,image/png" data-browse-class="btn btn-default" data-browse-label="Browse Images" (change)="uploadFiles($event)">
-                                <!-- <span class="input-group-addon">m<sup>2</sup></span> -->
-                            </div>
-                        </div><!-- /.form-group -->
-                    </div>
-                    <div class="col-md-12 col-sm-12">
-                      <div class="form-group">
-                          <label for="submit-area">Videos</label>
-                          <div class="input-group">
-                              <input id="file-upload" type="file" class="file" multiple="true" data-show-upload="false" data-show-caption="false" data-show-remove="false" accept="video/mp4" data-browse-class="btn btn-default" data-browse-label="Browse Videos" (change)="uploadVideos($event)">
-                              <!-- <span class="input-group-addon">m<sup>2</sup></span> -->
-                          </div>
-                      </div><!-- /.form-group -->
-                  </div>
+                 
                     <div [formGroup]="orderForm">
                     <div class="form-group">
                         <label for="description">Header</label>
@@ -124,7 +107,41 @@
  <button class="btn btn-default" (click)="addItem()">add</button>                               
 
                 </div>
-    
+                <div class="tab-pane" id="gallery" role="tabpanel">
+                  <!-- <div class="form-group row">
+                    <div class="col-6">
+                      <label for="date">Publish Date:</label>
+                      <input type="text" class="form-control flatpickr flatpickr-input active" id="date" placeholder="Pick a date">
+                    </div>
+                  </div> -->
+
+                  <div class="col-md-12 col-sm-12">
+                    <div class="form-group">
+                        <label for="submit-area">Gallery</label>
+                        <div class="input-group">
+                            <input id="file-upload" type="file" class="file" multiple="true" data-show-upload="false" data-show-caption="false" data-show-remove="false" accept="image/jpeg,image/png" data-browse-class="btn btn-default" data-browse-label="Browse Images" (change)="uploadFiles($event)">
+                            <!-- <span class="input-group-addon">m<sup>2</sup></span> -->
+                        </div>
+                    </div><!-- /.form-group -->
+                </div>
+                  <!-- <div class="form-group">
+                    <label for="">Enable Replies</label>
+                    <div><input type="checkbox" class="js-switch" checked></div>
+                  </div> -->
+                </div>
+                <div class="tab-pane" id="videos" role="tabpanel">
+                 
+                  <!-- <div class="col-md-12 col-sm-12">
+                    <div class="form-group">
+                        <label for="submit-area">Videos</label>
+                        <div class="input-group">
+                            <input id="file-upload" type="file" class="file" multiple="true" data-show-upload="false" data-show-caption="false" data-show-remove="false" accept="video/mp4" data-browse-class="btn btn-default" data-browse-label="Browse Videos" (change)="uploadVideos($event)">
+                        </div>
+                    </div>
+                    
+                </div> -->
+                
+                </div>
                 <div class="tab-pane" id="options" role="tabpanel">
                   <div class="form-group row">
                     <div class="col-6">

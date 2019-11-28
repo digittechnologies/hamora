@@ -21,7 +21,7 @@ import { ProfileComponent } from './user/profile/profile.component';
 import { DetailsComponent } from './user/details/details.component';
 import { PostComponent } from './user/post/post.component';
 import { MypostComponent } from './user/mypost/mypost.component';
-import {MatSelectModule,MatInputModule, MatListModule, MatSnackBarModule,} from '@angular/material';
+import {MatSelectModule,MatInputModule, MatListModule, MatSnackBarModule, MatButtonModule,MatDialogModule} from '@angular/material';
 import { AddcategoryComponent } from './addcategory/addcategory.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
@@ -41,8 +41,12 @@ import { VideoComponent } from './user/video/video.component';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 // import { OwlModule } from 'ngx-owl-carousel';
 import { LazyLoadImageModule, scrollPreset } from 'ng-lazyload-image';
+
+import { ContributeComponent } from './contribute/contribute.component';
+
 import { MapvComponent } from './content/mapv/mapv.component';
 import { StoryComponent } from './content/story/story.component';
+
 
 
 @NgModule({
@@ -70,8 +74,10 @@ import { StoryComponent } from './content/story/story.component';
     PlatformComponent,
     GalleryComponent,
     VideoComponent,
+    ContributeComponent,
     MapvComponent,
     StoryComponent
+
   ],
   imports: [
     BrowserModule,
@@ -85,8 +91,10 @@ import { StoryComponent } from './content/story/story.component';
     MatInputModule,
     MatTabsModule,
     MatListModule,
+    MatButtonModule,
     MatSnackBarModule,
     NgxPaginationModule,
+    MatDialogModule,
     // LazyLoadImageModule.forRoot({
     //   preset: scrollPreset 
     // }),
@@ -99,6 +107,7 @@ import { StoryComponent } from './content/story/story.component';
   
   ],
   providers: [JarwisService,TokenService,AuthService,BeforeLoginService,AfterLoginService],
+  entryComponents: [ContributeComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

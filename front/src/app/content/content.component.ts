@@ -3,10 +3,12 @@ import { JarwisService } from '../service/jarwis.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import {map} from 'rxjs/operators';
 import {} from 'googlemaps';
+import { MatDialog } from '@angular/material';
+import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
 import { ViewChild } from '@angular/core';
 import { MapServiceService } from '../map-service.service';
 import { MatSnackBar } from '@angular/material';
-
+import { ContributeComponent } from '../contribute/contribute.component';
 declare let jQuery: any;
 
 @Component({
@@ -47,7 +49,7 @@ id: any;
   view: any;
  public tid;
   location: any;
-
+  public orderForm: FormGroup;
   img:any;
   images: any;
   ftitle: any;
@@ -58,8 +60,9 @@ id: any;
   video=false;
   contribute=false;
   stream=false
-
-constructor(private Jarwis: JarwisService,public snackBar: MatSnackBar,private router: Router, public actRoute: ActivatedRoute, private coordGet: MapServiceService) { }
+  isPopupOpened = true;
+  gallery: any;
+constructor(private Jarwis: JarwisService, private formBuilder: FormBuilder,public snackBar: MatSnackBar,private router: Router, public actRoute: ActivatedRoute, private coordGet: MapServiceService,private dialog?: MatDialog,) { }
 @ViewChild('map') mapElement: any;
 
 
@@ -102,7 +105,17 @@ handleError(error) {
   this.error = error.error.errors;
 }
   ngOnInit() {
-
+    this.orderForm =  this.formBuilder.group({
+     
+      gcontents: this.formBuilder.array([
+        // {
+        //   header:'',
+        //   content: ''
+        // }
+      ])
+      // list: '',
+      // c_image:''
+    });
     (function($) {
       "use strict";
       // select2
@@ -216,9 +229,9 @@ handleError(error) {
 
                     this.contents=this.response.content;
                     this.comment=this.response.comment;  
-                    
-                    console.log(this.response);
-                    
+                    this.gallery=this.response.gallery;
+                    console.log(this.gallery);
+                   
                     //map Init
                     // this.coordGet.getLocality(this.response.content[0].location).subscribe(data=>{
                     //   this.data = data;
@@ -311,7 +324,8 @@ handleError(error) {
   
                       this.contents=this.response.content;
                       this.comment=this.response.comment;  
-                    
+                    this.gallery=this.response.gallery;
+                    console.log(this.gallery)
                       this.images='https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/'+this.res.t_image
                       this.uimage='https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/'+this.res.image;
                        
@@ -321,7 +335,47 @@ handleError(error) {
 
     } else{this.contribute=false;}  
   }
+  onContribute(id){
+    // console.log(id)
+    // console.log(this.contents)
+    this.isPopupOpened = true;
+    // this.Jarwis.getact().subscribe(
+    //   data=>{
+      
+    //   this.cress = data;       
 
+    //   }
+    // ) 
+    
+    // console.log(this.cress)
+    let contribute = this.contents.filter(c => c.id == id);
+    
+   const dialogRef = this.dialog.open(ContributeComponent, {
+     minWidth: '50%',
+     data: {contribute: contribute[0]}
+     
+   });
+  
+   
+
+    dialogRef.afterClosed().subscribe(result => {
+     this.isPopupOpened = false;
+     if(result == 'undefined'){
+
+     }else{
+      this.Jarwis.contribute(result).subscribe(
+        data =>  {
+          let snackBarRef = this.snackBar.open("Thank you for your contribution, our Editorial team will like to confirm your contribution before it goes live.", 'Dismiss', {
+            duration: 8000
+          }) 
+        }
+        );
+      console.log(result)
+       this.ngOnInit()
+     }
+    });
+  
+  }
  navigate (id){
     this.router.navigate(['Content/'+id+''])
    
