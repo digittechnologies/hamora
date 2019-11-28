@@ -126,6 +126,11 @@ contribute(data) {
     Authorization:`Bearer ${localStorage.token}`
   }})
 }
+contributeimage(data) {
+  return this.http.post(`${this.baseUrl}/contributeimg`,data,{headers:{
+    Authorization:`Bearer ${localStorage.token}`
+  }})
+}
 like(data) {
   return this.http.post(`${this.baseUrl}/like`,data,{headers:{
     Authorization:`Bearer ${localStorage.token}`
@@ -133,6 +138,21 @@ like(data) {
 }
 follow(data) {
   return this.http.post(`${this.baseUrl}/follow`,data,{headers:{
+    Authorization:`Bearer ${localStorage.token}`
+  }})
+}
+displaytimeline() {
+  return this.http.get(`${this.baseUrl}/displaytimeline`,{headers:{
+    Authorization:`Bearer ${localStorage.token}`
+  }})
+}
+timelinebyfollow() {
+  return this.http.get(`${this.baseUrl}/timelinebyfollow`,{headers:{
+    Authorization:`Bearer ${localStorage.token}`
+  }})
+}
+displaygallery() {
+  return this.http.get(`${this.baseUrl}/displaygallery`,{headers:{
     Authorization:`Bearer ${localStorage.token}`
   }})
 }

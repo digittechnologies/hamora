@@ -45,6 +45,10 @@ Route::get('displaypeople','DisplayController@displaypeople');
 Route::get('displaynews','DisplayController@displaynews');
 Route::get('displaytourist','DisplayController@displaytourist');
 
+
+Route::get('timelinebyfollow','DisplayController@displaytimelinebyfollow');
+Route::get('displaytimeline','DisplayController@displaytimelinebyuser');
+Route::get('displaygallery','DisplayController@displaygallery');
 Route::get('displayactbytitle','DisplayController@displayactbytitle');
 Route::get('getalltitle','DisplayController@getalltitle');
 Route::get('getalladmintitle','DisplayController@getalladmintitle');
@@ -97,6 +101,10 @@ Route::post('acttrash','ActivitiesController@acttrash');
 
 Route::get('name','UserController@name');
 Route::post('contribute','ContributeController@store');
+Route::get('getContribute','ContributeController@index');
+Route::post('editcontribute','ContributeController@update');
+Route::get('livecontribute','ContributeController@livecontribute');
+Route::post('contributeimg','ContributeController@contributeimage');
 
 Route::post('like','LikesController@likes');
 Route::post('follow','LikesController@follow');

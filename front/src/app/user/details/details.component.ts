@@ -13,6 +13,8 @@ export class DetailsComponent implements OnInit {
   ftitle: any;
   article: any;
   gallery: any;
+  timeline: any;
+  followed: any;
 
   constructor(private Jarwis: JarwisService, private router: Router,) { }
 
@@ -25,7 +27,18 @@ export class DetailsComponent implements OnInit {
       this.image='https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/'+this.profres.image
      
     });
-
+    this.Jarwis.timelinebyfollow().subscribe(
+      data=>{
+      this.followed = data; 
+          console.log(this.followed);
+      }
+    )
+    this.Jarwis.displaytimeline().subscribe(
+      data=>{
+      this.timeline = data; 
+          console.log(this.timeline);
+      }
+    )
     this.Jarwis.getArticle().subscribe(
       data=>{
       this.ftitle = data; 

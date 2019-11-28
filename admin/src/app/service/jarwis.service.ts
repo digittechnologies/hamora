@@ -9,7 +9,7 @@ export class JarwisService {
   // private baseUrl = 'https://sce-ogun.sabiogun.jtcheck.com/backend/public/api';
 
 
-  private baseUrl = 'http://localhost/sce-platform/backend/public/api';
+  private baseUrl = 'http://localhost/sce-platform2/backend/public/api';
 
 
   constructor(private http: HttpClient) { }
@@ -187,7 +187,9 @@ getadmins() {
 getUsers() {
   return this.http.get<any>(`${this.baseUrl}/getUsers`,)
 }
-
+getContribute() {
+  return this.http.get<any>(`${this.baseUrl}/getContribute`,)
+}
 userupdate(data) {
   return this.http.post<any>(`${this.baseUrl}/userupdate`, data)
 }
@@ -203,8 +205,13 @@ movetrashact(data) {
 movetrashcat(data) {
   return this.http.post<any>(`${this.baseUrl}/movetrashc`, data)
 }
+editcontribute(data){
+  return this.http.post<any>(`${this.baseUrl}/editcontribute`, data)
 
-
+}
+livecontribute() {
+  return this.http.get(`${this.baseUrl}/livecontribute`,)
+}
 // catetrash(data) {
 //   return this.http.post<any>(`${this.baseUrl}/catetrash`, data)
 // }

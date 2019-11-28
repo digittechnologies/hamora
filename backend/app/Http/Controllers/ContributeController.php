@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Content;
 use App\ Category;
@@ -22,6 +22,13 @@ class ContributeController extends Controller
     public function index()
     {
         //
+
+        return response()->json(
+            Contribute::orderBy('id','desc')
+            ->select('contributes.*')
+            ->where('status','=','N')
+            ->get()
+            );
     }
 
     /**
@@ -61,7 +68,24 @@ class ContributeController extends Controller
         $contribute=Contribute::create($request-> all());
         return $contribute;
     }
-
+    public function contributeimage(Request $request)
+    {
+        $authid=auth()->user()->id;
+        $image= $request->c_image;
+        $request->merge(['user_id'=>$authid]);
+       
+        $request->merge(['title_id'=>$request->title_id]);
+        // return $request;
+        if($image){
+            $files=$image;
+            $filenames=time().'.' . explode('/', explode(':', substr($files, 0, strpos($files,';')))[1])[1];
+           Image::make($files)->resize(300, 300)->save(public_path('/upload/uploads/'.$filenames));
+          
+           $request->merge(['c_image'=>$filenames]);
+        }
+        $contribute=Contribute::create($request-> all());
+        return $contribute;
+    }
     /**
      * Display the specified resource.
      *
@@ -91,11 +115,44 @@ class ContributeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+   
+    public function update(Request $request)
     {
-        //
+        $image= $request->c_image;
+        $data=$request->formdata;
+        if($image){
+            $files=$image;
+            $filenames=time().'.' . explode('/', explode(':', substr($files, 0, strpos($files,';')))[1])[1];
+           Image::make($files)->resize(300, 300)->save(public_path('/upload/uploads/'.$filenames));
+          
+           $request->merge(['c_image'=>$filenames]);
+        }
+        //   $request->merge(['user_id'=>$authid]);
+          $request->merge(['header'=>$data['header']]);
+          $request->merge(['content'=>$data['content']]);
+          $request->merge(['quote'=>$data['quote']]);
+          $request->merge(['title_id'=>$data['title_id']]);
+          $request->merge(['content_id'=>$data['content_id']]);
+          $updatec=DB::table('contributes')
+          ->where('content_id', $request->content_id)
+          ->update(['status' =>'Y','c_image'=>$request->c_image,'header'=>$request->header,'content'=>$request->content,'quote'=>$request->quote]);
+        //  return $updatec;
+          $updatet=DB::table('contents')
+          ->where('id', $request->content_id)
+          ->update(['c_image'=>$request->c_image,'header'=>$request->header,'content'=>$request->content,'quote'=>$request->quote]);
+          return $updatet;
+        }
+       
+    public function livecontribute()
+    {
+    //   $id=$request[0]
+    return response()->json(
+        Contribute::orderBy('id','desc')
+        ->select('contributes.*')
+        ->where('status','=','Y')
+        ->get()
+        );
     }
-
     /**
      * Remove the specified resource from storage.
      *

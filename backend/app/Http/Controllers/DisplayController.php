@@ -10,6 +10,8 @@ use App\Content;
 use App\Activities;
 use App\comment_tbs;
 use App\User;
+use App\Galleries;
+use App\Follows;
 class DisplayController extends Controller
 {
     /**
@@ -17,7 +19,69 @@ class DisplayController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function displaytimelinebyuser()
+    {
+        $id=auth()->user()->id;
+        return response()->json(
+        title::orderBy('id','desc')->join('categories','titles.category_id','=','categories.id')
+        ->join('activities','categories.activity_id','=','activities.id')
+        ->join('users','titles.user_id','=','users.id')
+        ->join ('contents','titles.id','=','contents.name_id')
+        ->select('titles.*','categories.catname','titles.user_id','contents.header','contents.content','categories.destription','categories.activity_id','activities.actname','users.firstname','users.lastname','users.middlename', 'users.familybackground', 'users.image')
+        ->where('titles.status','=','Y')
+        ->where('titles.user_id','=',$id)
+        ->get()
+        );
+    }
+    public function displaytimelinebyfollow()
+    {
+        $id=auth()->user()->id;
+        // title::orderBy('id','desc')->join('categories','titles.category_id','=','categories.id')
+        // ->join('activities','categories.activity_id','=','activities.id')
+        // ->join('users','titles.user_id','=','users.id')
+        // ->join('follows','titles.')
+        //    ->join ('contents','titles.id','=','contents.name_id')
+        // ->select('titles.*','categories.catname','contents.header','contents.content','categories.destription','categories.activity_id','activities.actname','users.firstname','users.lastname','users.middlename', 'users.familybackground', 'users.image')
+        // ->where('titles.status','=','Y')
+        // ->get()
+        // $follow=follows::join('titles','follows.title_id','=','titles.id')
+        // ->select('follows.*','titles.status','titles.user_id')
+        // // ->where('titles.status','=','Y')
+        // ->where('follows.user_id','=',$id)->get();
+    
+        // return response()->json(
+        // follows::orderBy('id','desc')->join('titles','follows.title_id','=','title.id')
+        // ->join('categories','titles.category_id','=','categories.id')
+        // ->join('activities','categories.activity_id','=','activities.id')
+        // ->join('users','titles.user_id','=','users.id')
+        // ->join ('contents','titles.id','=','contents.name_id')
+        // ->select('follows.*','categories.catname','titles.user_id','contents.header','contents.content','categories.destription','categories.activity_id','activities.actname','users.firstname','users.lastname','users.middlename', 'users.familybackground', 'users.image')
+        // ->where('titles.status','=','Y')
+        // ->where('titles.user_id','=',$id)
+        // ->get()
+        // );
+      
+    
 
+
+
+    }
+    public function displaygallery()
+    {
+        $id=auth()->user()->id;
+        return response()->json(
+            
+            [
+
+        'gallery'=>Galleries::orderBy('id')->join('titles','galleries.title_id','=','titles.id')
+       ->join('users','titles.user_id','=','users.id')
+        ->select('galleries.*','titles.name_title','titles.location','titles.t_image','users.firstname','users.lastname','users.middlename','users.image','users.email','titles.user_id')
+       ->where('titles.user_id','=',$id)
+       ->get(),
+
+            ]
+        );
+    }
     public function displayactbytitle()
     {
         return response()->json(
