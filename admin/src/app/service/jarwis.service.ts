@@ -190,6 +190,12 @@ getUsers() {
 getContribute() {
   return this.http.get<any>(`${this.baseUrl}/getContribute`,)
 }
+editimgcontribute(data) {
+  return this.http.post<any>(`${this.baseUrl}/editimgcontribute`, data)
+}
+getimgContribute() {
+  return this.http.get<any>(`${this.baseUrl}/imgcontribute`,)
+}
 userupdate(data) {
   return this.http.post<any>(`${this.baseUrl}/userupdate`, data)
 }

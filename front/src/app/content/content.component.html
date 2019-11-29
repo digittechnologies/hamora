@@ -16,8 +16,8 @@
   <!-- <div class="chart easypiechart m-b-20" data-percent="85" data-scale-color="#e3e3e3"><span>{{catname}}</span></div> -->
   <h2 class="hero-title">{{title}}</h2>
   <!-- <p>Uncharted 4: A Thief's End will explore what it means when Drake is forced back into the world of thieves.</p> -->
-  <a class="btn btn-primary btn-lg btn-shadow btn-rounded m-t-20" href="https://www.youtube.com/watch?v=6cXyQg_5uoc" data-lightbox role="button">Watch Review <i class="fa fa-play"></i></a>
-  <a class="btn btn-outline-default btn-lg btn-shadow btn-rounded m-l-10 m-t-20" href="register.html" role="button">Write Review <i class="fa fa-pencil"></i></a>
+  <a class="btn btn-primary btn-lg btn-shadow btn-rounded m-t-20"  data-lightbox role="button">Watch Review <i class="fa fa-play"></i></a>
+  <a class="btn btn-outline-default btn-lg btn-shadow btn-rounded m-l-10 m-t-20"  role="button">Write Review <i class="fa fa-pencil"></i></a>
 </div>
 </div>
 </section>
@@ -52,7 +52,7 @@
                     <h2 class="post-title">
                           <h2 class="post-title">{{title}} </h2>                                
                     </h2>
-                    <a class="btn btn-secondary float-right social-share" (click)="nav(all.id)" role="button">Folllow</a>
+                    <a class="btn btn-secondary float-right social-share" (click)="follow(all.id)" role="button">Folllow</a>
                     <div class="post-meta">
                           <span><i class="fa fa-clock-o"></i> {{res.created_at}} by <a href="profile.html">{{name}}</a></span>
                           <span><a href="#comments"><i class="fa fa-comment-o"></i> {{res.comment_count}} comments</a></span>
@@ -123,9 +123,9 @@
       <div class="col-lg-5">
           <div class="review-good">
               <h5>Story:</h5>
-              <p><i>"Nuanced, emotional characters":</i><a>contributor Name</a>, 21th oct, 2019: 12:00pm</p>
-              <p><i>"Nuanced, emotional characters":</i><a>contributor Name</a>, 21th oct, 2019: 12:00pm</p>
-              <p><i>"Nuanced, emotional characters":</i><a>contributor Name</a>, 21th oct, 2019: 12:00pm</p>
+              <p *ngFor="let r of contributes"><i>"{{r.header}}":</i><a>contributor Name {{r.firstname}} {{r.middlename}} {{r.lastname}}</a>, {{r.created_at}}</p>
+              <!-- <p><i>"Nuanced, emotional characters":</i><a>contributor Name</a>, 21th oct, 2019: 12:00pm</p>
+              <p><i>"Nuanced, emotional characters":</i><a>contributor Name</a>, 21th oct, 2019: 12:00pm</p> -->
             </div>
       </div>
       <div class="col-lg-7">
@@ -133,17 +133,17 @@
           <div class="col-12 col-sm-6">
             <div class="review-good">
               <h5>Image:</h5>
-              <p><i>"Nuanced, emotional characters":</i><a>contributor Name</a>, 21th oct, 2019: 12:00pm</p>
-              <p><i>"Nuanced, emotional characters":</i><a>contributor Name</a>, 21th oct, 2019: 12:00pm</p>
-              <p><i>"Nuanced, emotional characters":</i><a>contributor Name</a>, 21th oct, 2019: 12:00pm</p>
+              <p *ngFor="let r of cgallery"><i>"{{r.name_title}}":</i><a>contributor Name {{r.firstname}} {{r.middlename}} {{r.lastname}}</a>, {{r.created_at}}</p>
+              <!-- <p><i>"Nuanced, emotional characters":</i><a>contributor Name</a>, 21th oct, 2019: 12:00pm</p> -->
+              <!-- <p><i>"Nuanced, emotional characters":</i><a>contributor Name</a>, 21th oct, 2019: 12:00pm</p> -->
             </div>
           </div>
           <div class="col-12 col-sm-6">
             <div class="review-bad">
               <h5>Video:</h5>
+              <!-- <p><i>"Nuanced, emotional characters":</i><a>contributor Name</a>, 21th oct, 2019: 12:00pm</p>
               <p><i>"Nuanced, emotional characters":</i><a>contributor Name</a>, 21th oct, 2019: 12:00pm</p>
-              <p><i>"Nuanced, emotional characters":</i><a>contributor Name</a>, 21th oct, 2019: 12:00pm</p>
-              <p><i>"Nuanced, emotional characters":</i><a>contributor Name</a>, 21th oct, 2019: 12:00pm</p>
+              <p><i>"Nuanced, emotional characters":</i><a>contributor Name</a>, 21th oct, 2019: 12:00pm</p> -->
             </div>
           </div>
         </div>
@@ -288,16 +288,16 @@
         <div class="widget widget-video">
           <h5 class="widget-title">New Video</h5>
           <div class="widget-img">
-            <a href="blog-post-video.html">
+            <a >
             <img src="https://i1.ytimg.com/vi/neIfY3VoPXo/mqdefault.jpg" alt="">
           </a>
             <span>2:49</span>
-            <a class="video-play-icon" href="blog-post-video.html">
+            <a class="video-play-icon" >
             <i class="fa fa-play"></i>
           </a>
           </div>
           <h4>
-            <a href="blog-post-video.html">The Witcher 3: Wild Hunt The Sword Of Destiny Gameplay Trailer</a>
+            <a >The Witcher 3: Wild Hunt The Sword Of Destiny Gameplay Trailer</a>
           </h4>
           <span><i class="fa fa-clock-o"></i> June 12, 2017</span>
           <span><i class="fa fa-eye"></i> 723x</span>
@@ -726,7 +726,7 @@
         <div class="m-t-30">
 
             <button type="submit" (click)="saveimage()" [disabled]= "disabled" class="btn btn-default btn-rounded btn-shadow float-right" >
-                    <i id="loader2" *ngIf="disabled"  class="fa fa-spin fa-spinner"></i> {{sav}}</button>
+                    <i id="loader2" *ngIf="disabled"  class="fa fa-spin fa-spinner"></i> Contribute</button>
       <!-- <button class="btn btn-primary btn-rounded btn-shadow float-right" type="submit" name="save">Submit</button> -->
 
 

@@ -13,17 +13,23 @@ class LikesController extends Controller
     public function follow(Request $request)
     {
         //user_id title_id followed_user_id
-        $authid=auth()->user()->id;   
+        $authid=auth()->user()->id; 
         $request->merge(['user_id'=>$authid]);
+        if($request->followed_user_id==$authid) {
+            return 'can not follow';
+        } else{
+            $countfollow= DB::table("follows")->where('followed_user_id','=',$request->followed_user_id)->where('user_id','=',$authid)
+            ->count();
+            if($countfollow==0){
+                $folow=follows::create($request-> all());
+                return $folow;
+            }else{
+                return 'follow before';
+            }
+        }
+        
         //  return $request->followed_user_id;
-         $countfollow= DB::table("follows")->where('followed_user_id','=',$request->followed_user_id)->where('user_id','=',$authid)
-         ->count();
-         if($countfollow==0){
-             $folow=follows::create($request-> all());
-             return $folow;
-         }else{
-             return 'follow before';
-         }
+        
     }
     public function likes(Request $request)
     {

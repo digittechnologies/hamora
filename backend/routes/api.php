@@ -103,9 +103,10 @@ Route::get('name','UserController@name');
 Route::post('contribute','ContributeController@store');
 Route::get('getContribute','ContributeController@index');
 Route::post('editcontribute','ContributeController@update');
+Route::get('imgcontribute','ContributeController@imgcontribute');
 Route::get('livecontribute','ContributeController@livecontribute');
 Route::post('contributeimg','ContributeController@contributeimage');
-
+Route::post('editimgcontribute','ContributeController@editimgcontribute');
 Route::post('like','LikesController@likes');
 Route::post('follow','LikesController@follow');
 //  Route::get('test',function(){rolecate
