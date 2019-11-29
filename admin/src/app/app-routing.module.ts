@@ -19,6 +19,7 @@ import { TrashComponent } from './trash/trash.component';
 import { ProfileComponent } from './user/profile/profile.component';
 import { AlladminsComponent } from './alladmins/alladmins.component';
 import { AllusersComponent } from './allusers/allusers.component';
+import { ContributeComponent } from './contribute/contribute.component';
 
 const routes: Routes = [
 
@@ -31,7 +32,7 @@ const routes: Routes = [
   {path: 'population/:id', component: PopulationComponent,canActivate: [AfterLoginService] },
   {path: 'edit/:id', component: EditComponent,canActivate: [AfterLoginService] },
   {path: 'trash', component:  TrashComponent,canActivate: [AfterLoginService]},
-  
+  {path: 'contribute', component:  ContributeComponent,canActivate: [AfterLoginService]},
   {path: 'Category/:id', component: CategoryComponent},
   {path: 'Content/:id', component: ContentComponent },
   {path: 'addcat', component:  AddcategoryComponent },

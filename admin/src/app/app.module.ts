@@ -41,6 +41,8 @@ import { AlladminsComponent } from './alladmins/alladmins.component';
 import { EdituserComponent } from './edituser/edituser.component';
 import { ModalComponent } from './modal/modal.component';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { ContributeComponent } from './contribute/contribute.component';
+import { EditcontributeComponent } from './editcontribute/editcontribute.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +72,9 @@ import {NgxPaginationModule} from 'ngx-pagination';
     AllusersComponent,
     AlladminsComponent,
     EdituserComponent,
-    ModalComponent
+    ModalComponent,
+    ContributeComponent,
+    EditcontributeComponent
   ],
   imports: [
     NgxPaginationModule,
@@ -98,7 +102,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
   
   ],
   providers: [JarwisService,TokenService,AuthService,BeforeLoginService,AfterLoginService],
-  entryComponents: [EditcatComponent,EditactComponent,EdituserComponent,ModalComponent],
+  entryComponents: [EditcatComponent,EditactComponent,EdituserComponent,ModalComponent,EditcontributeComponent],
   bootstrap: [AppComponent],
 })
 export class AppModule { }
