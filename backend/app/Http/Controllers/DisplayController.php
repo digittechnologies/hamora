@@ -36,30 +36,13 @@ class DisplayController extends Controller
     public function displaytimelinebyfollow()
     {
         $id=auth()->user()->id;
-        // title::orderBy('id','desc')->join('categories','titles.category_id','=','categories.id')
-        // ->join('activities','categories.activity_id','=','activities.id')
-        // ->join('users','titles.user_id','=','users.id')
-        // ->join('follows','titles.')
-        //    ->join ('contents','titles.id','=','contents.name_id')
-        // ->select('titles.*','categories.catname','contents.header','contents.content','categories.destription','categories.activity_id','activities.actname','users.firstname','users.lastname','users.middlename', 'users.familybackground', 'users.image')
-        // ->where('titles.status','=','Y')
-        // ->get()
-        // $follow=follows::join('titles','follows.title_id','=','titles.id')
-        // ->select('follows.*','titles.status','titles.user_id')
-        // // ->where('titles.status','=','Y')
-        // ->where('follows.user_id','=',$id)->get();
-    
-        // return response()->json(
-        // follows::orderBy('id','desc')->join('titles','follows.title_id','=','title.id')
-        // ->join('categories','titles.category_id','=','categories.id')
-        // ->join('activities','categories.activity_id','=','activities.id')
-        // ->join('users','titles.user_id','=','users.id')
-        // ->join ('contents','titles.id','=','contents.name_id')
-        // ->select('follows.*','categories.catname','titles.user_id','contents.header','contents.content','categories.destription','categories.activity_id','activities.actname','users.firstname','users.lastname','users.middlename', 'users.familybackground', 'users.image')
-        // ->where('titles.status','=','Y')
-        // ->where('titles.user_id','=',$id)
-        // ->get()
-        // );
+        
+        return response()->json(
+            follows::join('titles','follows.title_id','=','titles.id')
+            ->select('follows.*','titles.status','titles.user_id')
+            // ->where('titles.status','=','Y')
+            ->where('follows.user_id','=',$id)->get()
+        );
       
     
 

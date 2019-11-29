@@ -15,6 +15,8 @@ export class ContributeComponent implements OnInit {
   resp: any;
   leng: any;
   lengt: any;
+  resimg: any;
+  lengimg: any;
   constructor(private Jarwis: JarwisService, public snackBar: MatSnackBar,private dialog?: MatDialog, ) { }
   editcontribute(id){
     this.isPopupOpened = true;
@@ -44,22 +46,62 @@ export class ContributeComponent implements OnInit {
            }) 
          }
          );
+      //  console.log(result)
+        this.ngOnInit()
+      }
+     });
+   
+  }
+  editlivecontribute(id){
+    this.isPopupOpened = true;
+    this.Jarwis.livecontribute().subscribe(
+      data=>{
+      
+      this.resp = data;  
+      
+      }
+    )
+    let category = this.resp.filter(c => c.id == id);
+    
+    const dialogRef = this.dialog.open(EditcontributeComponent, {
+      minWidth: '50%',
+      data: {category: category[0]}
+      
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.isPopupOpened = false;
+      if(result == 'undefined'){
+ 
+      }else{
+       this.Jarwis.editcontribute(result).subscribe(
+         data =>  {
+           let snackBarRef = this.snackBar.open("Save successfully", 'Dismiss', {
+             duration: 2000
+           }) 
+         }
+         );
        console.log(result)
         this.ngOnInit()
       }
      });
    
   }
-  // livecontribute(){
+  editimgcontribute(id){
+    this.Jarwis.editimgcontribute(id).subscribe(
+      data =>  {
+        let snackBarRef = this.snackBar.open("Save successfully", 'Dismiss', {
+          duration: 2000
+        }) 
+      }
+      );
     
-    
-  //   //  this.ngOnInit()
-  // }
+   this.ngOnInit()
+  }
   ngOnInit() {
     this.Jarwis.livecontribute().subscribe(
       data =>  {
        this.resp=data;
-       this.lengt=this.res.length;
+       this.lengt=this.resp.length;
       }
       );
     this.Jarwis.getContribute().subscribe(
@@ -67,6 +109,14 @@ export class ContributeComponent implements OnInit {
       
       this.res = data;  
       this.leng=this.res.length;
+      }
+    )
+    this.Jarwis.getimgContribute().subscribe(
+      data=>{
+      
+      this.resimg = data;  
+      this.lengimg=this.resimg.length;
+      // console.log(this.resimg)
       }
     )
   }

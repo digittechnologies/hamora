@@ -17,6 +17,7 @@ class CreateGalleriesTable extends Migration
             $table->increments('id');
             $table->string('image_name')->nullable();
             $table->string('title_id')->nullable();
+            $table->string('status')->default('Y');
             $table->timestamps();
         });
     }
