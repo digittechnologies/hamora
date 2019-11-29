@@ -161,7 +161,7 @@ export class MapComponent implements OnInit {
     })
   }
 
-  public search(): void {alert()
+  public search(): void {
    
     console.log(this.valToSearch);
     this.mapserver.getLocality(this.valToSearch.status).subscribe(data=>{
