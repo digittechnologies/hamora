@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Content extends Model
 {
     protected $fillable = [
-        'header', 'content','name_id'
+        'header', 'content', 'quote','name_id'
     ];
 }
