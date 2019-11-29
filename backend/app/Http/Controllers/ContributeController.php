@@ -75,15 +75,16 @@ class ContributeController extends Controller
         $request->merge(['user_id'=>$authid]);
        
         $request->merge(['title_id'=>$request->title_id]);
+        $request->merge(['status'=>'C']);
+        $request->merge(['contribute'=>'C']);
         // return $request;
-        if($image){
             $files=$image;
             $filenames=time().'.' . explode('/', explode(':', substr($files, 0, strpos($files,';')))[1])[1];
            Image::make($files)->resize(300, 300)->save(public_path('/upload/uploads/'.$filenames));
           
-           $request->merge(['c_image'=>$filenames]);
-        }
-        $contribute=Contribute::create($request-> all());
+           $request->merge(['image_name'=>$filenames]);
+      
+        $contribute=Galleries::create($request-> all());
         return $contribute;
     }
     /**
@@ -103,9 +104,14 @@ class ContributeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function editimgcontribute(Request $request)
     {
-        //
+        $id=$request[0];
+        $trash=DB::table('galleries')
+    ->where('id', $id)
+    ->update(['status' =>'Y']); 
+    return $id;
+        
     }
 
     /**
@@ -150,6 +156,16 @@ class ContributeController extends Controller
         Contribute::orderBy('id','desc')
         ->select('contributes.*')
         ->where('status','=','Y')
+        ->get()
+        );
+    }
+    public function imgcontribute()
+    {
+    //   $id=$request[0]
+    return response()->json(
+        Galleries::orderBy('id','desc')
+        ->select('galleries.*')
+        ->where('status','=','C')
         ->get()
         );
     }

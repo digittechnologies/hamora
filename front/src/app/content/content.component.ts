@@ -64,6 +64,9 @@ id: any;
   gallery: any;
   c_image:any;
   title_id: any;
+  article:any;
+  cgallery: any;
+  contributes:any;
 constructor(private Jarwis: JarwisService, private formBuilder: FormBuilder,public snackBar: MatSnackBar,private router: Router, public actRoute: ActivatedRoute, private coordGet: MapServiceService,private dialog?: MatDialog,) { }
 @ViewChild('map') mapElement: any;
 
@@ -107,6 +110,18 @@ handleError(error) {
   this.error = error.error.errors;
 }
   ngOnInit() {
+    this.Jarwis.getArticle().subscribe(
+      data=>{
+        // this.loading=false;
+      this.ftitle = data; 
+
+      this.article=this.ftitle.name
+      this.gallery=this.ftitle.gallery
+          console.log(this.gallery);
+          this.image= 'https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/'+this.article.t_image;
+      }
+    )
+
     this.orderForm =  this.formBuilder.group({
      
       gcontents: this.formBuilder.array([
@@ -232,7 +247,9 @@ handleError(error) {
                     this.contents=this.response.content;
                     this.comment=this.response.comment;  
                     this.gallery=this.response.gallery;
-                    console.log(this.gallery);
+                    this.cgallery=this.response.cgallery;
+                    this.contributes=this.response.contribute;
+                    console.log(this.cgallery);
                    
                     //map Init
                     // this.coordGet.getLocality(this.response.content[0].location).subscribe(data=>{
@@ -401,6 +418,23 @@ handleError(error) {
     // console.log(result)
      this.ngOnInit()
   }
+  follow(id){
+    // this.follows=this.article
+    let follows = this.article.filter(c => c.id == id);
+    let follow=follows[0]
+    let follow_id=follow.user_id
+     console.log(follow_id)
+    this.Jarwis.follow({title_id:id,followed_user_id:follow_id}).subscribe(
+      data =>  {
+        let snackBarRef = this.snackBar.open("follow", 'Dismiss', {
+          duration: 2000
+        }) 
+        console.log(data)
+        this.ngOnInit()
+      }
+      
+      );
+      }
  navigate (id){
     this.router.navigate(['Content/'+id+''])
    

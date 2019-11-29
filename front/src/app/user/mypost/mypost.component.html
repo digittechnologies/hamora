@@ -37,7 +37,7 @@
                 <span class="label label-success" *ngIf ="t.status=== 'Y'">LIVE</span>
                 <span class="label label-default " *ngIf ="t.status=== 'T'">TRASH</span></p>
               <a [routerLink]="['/User', {outlets: {side: ['Update', t.id]}}]" class="edit"><i class="fa fa-pencil"></i>Edit</a>
-              <a ><i class="delete fa fa-trash-o"></i></a>
+              <!-- <a ><i class="delete fa fa-trash-o"></i></a> -->
             </div>
 
           </div>

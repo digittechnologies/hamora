@@ -12,6 +12,7 @@ use App\User;
 use App\comment_tbs;
 use App\Galleries;
 use App\Videos;
+use App\Contribute;
 class ContentController extends Controller
 {
     /**
@@ -33,6 +34,7 @@ class ContentController extends Controller
        ->join('users','titles.user_id','=','users.id')
         ->select('galleries.*','titles.name_title','titles.location','titles.t_image','users.firstname','users.lastname','users.middlename','users.image','users.email')
        ->where('galleries.title_id','=',$id)
+       ->where('galleries.status','=','Y')
        ->get(),
        'comment'=>comment_tbs::orderBy('id')->join('titles','comment_tbs.title_id','=','titles.id')
        ->join('users','comment_tbs.user_id','=','users.id')
@@ -42,8 +44,20 @@ class ContentController extends Controller
        'content'=>Content::orderBy('id')->join('titles','contents.name_id','=','titles.id')
         ->select('contents.*','titles.name_title','titles.location','titles.t_image','titles.views')
        ->where('contents.name_id','=',$id)
-       
-       ->get()
+       ->get(),
+       'contribute'=>Contribute::orderBy('id','desc')->join('titles','contributes.title_id','=','titles.id')
+       ->join('users','contributes.user_id','=','users.id')
+        ->select('contributes.*','titles.name_title','titles.location','titles.t_image','users.firstname','users.lastname','users.middlename','users.image','users.email')
+       ->where('contributes.title_id','=',$id)
+       ->where('contributes.status','=','Y')
+       ->get(),
+       'cgallery'=>Galleries::orderBy('id')->join('titles','galleries.title_id','=','titles.id')
+       ->join('users','titles.user_id','=','users.id')
+        ->select('galleries.*','titles.name_title','titles.location','titles.t_image','users.firstname','users.lastname','users.middlename','users.image','users.email')
+       ->where('galleries.title_id','=',$id)
+       ->where('galleries.status','=','Y')
+       ->where('galleries.contribute','=','C')
+       ->get(),
        ]
     );
     }
@@ -86,16 +100,16 @@ class ContentController extends Controller
         
         $authid=auth()->user()->id;
         $image_name= $request->image;
-          $request->merge(['user_id'=>$authid]);
+        $request->merge(['user_id'=>$authid]);
         $detcontents = $request->contents;
         $videodet = $request->videos;
-       
+    //    return $videodet;
          $files=$image_name[0];
          $filenames=time().'.' . explode('/', explode(':', substr($files, 0, strpos($files,';')))[1])[1];
         Image::make($files)->resize(300, 300)->save(public_path('/upload/uploads/'.$filenames));
        
         $request->merge(['t_image'=>$filenames]);
-        // return $request;
+        return $request;
         $content= title::create($request-> all());
     // return $content->id;
 $imageName=[];
@@ -119,8 +133,8 @@ foreach ($image_name as $img) {
 // foreach ( $videodet as $vid) {
 //             $file=$vid;
 //         //  return $file;
-//          $filename= $count.''.time().'.'.$file->getClientOriginalName();
-//          return $filename;
+//          $filename= $count.''.time().'.'.$file;
+//         //  return $filename;
 //          //  $filename=$count.'.'.time().'.' . explode('/', explode(':', substr($file, 0, strpos($file,';')))[1])[1];
 //     $path=$file->move(public_path('/upload/videos/'.$filename));
        
@@ -154,7 +168,7 @@ foreach ($image_name as $img) {
              $counts++;
          }
       
-         Content::insert($contentData);
+        //  Content::insert($contentData);
           return $contentData;
     }
 

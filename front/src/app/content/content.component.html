@@ -16,8 +16,8 @@
   <!-- <div class="chart easypiechart m-b-20" data-percent="85" data-scale-color="#e3e3e3"><span>{{catname}}</span></div> -->
   <h2 class="hero-title">{{title}}</h2>
   <!-- <p>Uncharted 4: A Thief's End will explore what it means when Drake is forced back into the world of thieves.</p> -->
-  <a class="btn btn-primary btn-lg btn-shadow btn-rounded m-t-20" href="https://www.youtube.com/watch?v=6cXyQg_5uoc" data-lightbox role="button">Watch Review <i class="fa fa-play"></i></a>
-  <a class="btn btn-outline-default btn-lg btn-shadow btn-rounded m-l-10 m-t-20" href="register.html" role="button">Write Review <i class="fa fa-pencil"></i></a>
+  <a class="btn btn-primary btn-lg btn-shadow btn-rounded m-t-20"  data-lightbox role="button">Watch Review <i class="fa fa-play"></i></a>
+  <a class="btn btn-outline-default btn-lg btn-shadow btn-rounded m-l-10 m-t-20"  role="button">Write Review <i class="fa fa-pencil"></i></a>
 </div>
 </div>
 </section>
@@ -126,9 +126,9 @@
       <div class="col-lg-5">
           <div class="review-good">
               <h5>Story:</h5>
-              <p><i>"Nuanced, emotional characters":</i><a>contributor Name</a>, 21th oct, 2019: 12:00pm</p>
-              <p><i>"Nuanced, emotional characters":</i><a>contributor Name</a>, 21th oct, 2019: 12:00pm</p>
-              <p><i>"Nuanced, emotional characters":</i><a>contributor Name</a>, 21th oct, 2019: 12:00pm</p>
+              <p *ngFor="let r of contributes"><i>"{{r.header}}":</i><a>contributor Name {{r.firstname}} {{r.middlename}} {{r.lastname}}</a>, {{r.created_at}}</p>
+              <!-- <p><i>"Nuanced, emotional characters":</i><a>contributor Name</a>, 21th oct, 2019: 12:00pm</p>
+              <p><i>"Nuanced, emotional characters":</i><a>contributor Name</a>, 21th oct, 2019: 12:00pm</p> -->
             </div>
       </div>
       <div class="col-lg-7">
@@ -136,17 +136,17 @@
           <div class="col-12 col-sm-6">
             <div class="review-good">
               <h5>Image:</h5>
-              <p><i>"Nuanced, emotional characters":</i><a>contributor Name</a>, 21th oct, 2019: 12:00pm</p>
-              <p><i>"Nuanced, emotional characters":</i><a>contributor Name</a>, 21th oct, 2019: 12:00pm</p>
-              <p><i>"Nuanced, emotional characters":</i><a>contributor Name</a>, 21th oct, 2019: 12:00pm</p>
+              <p *ngFor="let r of cgallery"><i>"{{r.name_title}}":</i><a>contributor Name {{r.firstname}} {{r.middlename}} {{r.lastname}}</a>, {{r.created_at}}</p>
+              <!-- <p><i>"Nuanced, emotional characters":</i><a>contributor Name</a>, 21th oct, 2019: 12:00pm</p> -->
+              <!-- <p><i>"Nuanced, emotional characters":</i><a>contributor Name</a>, 21th oct, 2019: 12:00pm</p> -->
             </div>
           </div>
           <div class="col-12 col-sm-6">
             <div class="review-bad">
               <h5>Video:</h5>
+              <!-- <p><i>"Nuanced, emotional characters":</i><a>contributor Name</a>, 21th oct, 2019: 12:00pm</p>
               <p><i>"Nuanced, emotional characters":</i><a>contributor Name</a>, 21th oct, 2019: 12:00pm</p>
-              <p><i>"Nuanced, emotional characters":</i><a>contributor Name</a>, 21th oct, 2019: 12:00pm</p>
-              <p><i>"Nuanced, emotional characters":</i><a>contributor Name</a>, 21th oct, 2019: 12:00pm</p>
+              <p><i>"Nuanced, emotional characters":</i><a>contributor Name</a>, 21th oct, 2019: 12:00pm</p> -->
             </div>
           </div>
         </div>
@@ -291,16 +291,16 @@
         <div class="widget widget-video">
           <h5 class="widget-title">New Video</h5>
           <div class="widget-img">
-            <a href="blog-post-video.html">
+            <a >
             <img src="https://i1.ytimg.com/vi/neIfY3VoPXo/mqdefault.jpg" alt="">
           </a>
             <span>2:49</span>
-            <a class="video-play-icon" href="blog-post-video.html">
+            <a class="video-play-icon" >
             <i class="fa fa-play"></i>
           </a>
           </div>
           <h4>
-            <a href="blog-post-video.html">The Witcher 3: Wild Hunt The Sword Of Destiny Gameplay Trailer</a>
+            <a >The Witcher 3: Wild Hunt The Sword Of Destiny Gameplay Trailer</a>
           </h4>
           <span><i class="fa fa-clock-o"></i> June 12, 2017</span>
           <span><i class="fa fa-eye"></i> 723x</span>
@@ -369,288 +369,573 @@
       <div class="col-lg-11">
 
         <div class="post post-single" >
-          <!-- main --> 
+          <!-- main -->
+  <section class="bg-image" style="background-image: url('https://img.youtube.com/vi/K5tRSwd-Sc0/maxresdefault.jpg');">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="video-play" data-src="https://www.youtube.com/embed/i8qzBkHjk_0?rel=0&amp;amp;autoplay=1&amp;amp;showinfo=0">
+        <div class="embed-responsive embed-responsive-16by9">
+          <img class="embed-responsive-item" src="https://img.youtube.com/vi/K5tRSwd-Sc0/maxresdefault.jpg">
+          <div class="video-caption">
+            <h5>For Honor: Walkthrough Gameplay Warlords</h5>
+            <span class="length">5:32</span>
+          </div>
+          <div class="video-play-icon">
+            <i class="fa fa-play"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-          <section class="bg-image" style="background-image: url('https://img.youtube.com/vi/zSd9McRXHZ8/maxresdefault.jpg');">
-            <div class="overlay-light"></div>
-            <div class="container">
-              <div class="embed-responsive embed-responsive-16by9">
-                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/Kae-JjbLsgA?rel=0&amp;amp;autoplay=1&amp;amp;showinfo=0" allowfullscreen></iframe>
+  <section class="bg-secondary p-t-15 p-b-5 p-x-15">
+    <div class="owl-carousel owl-videos">
+      <div class="card card-video">
+        <div class="card-img">
+          <a href="video-post.html">
+          <img src="https://i1.ytimg.com/vi/GaERL8Nrl9k/mqdefault.jpg" alt="Tom Clancy's Ghost Recon: Wildlands">
+        </a>
+          <div class="card-meta">
+            <span>4:32</span>
+          </div>
+        </div>
+        <div class="card-block">
+          <h4 class="card-title"><a href="video-post.html">Tom Clancy's Ghost Recon: Wildlands</a></h4>
+          <div class="card-meta">
+            <span><i class="fa fa-clock-o"></i> 2 hours ago</span>
+            <span>423 views</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card card-video">
+        <div class="card-img">
+          <a href="video-post.html">
+          <img src="https://i1.ytimg.com/vi/mW4LMCtoIkg/mqdefault.jpg" class="card-img-top" alt="Anthem Official Gameplay Reveal">
+        </a>
+          <div class="card-meta">
+            <span>6:46</span>
+          </div>
+        </div>
+        <div class="card-block">
+          <h4 class="card-title"><a href="video-post.html">Anthem Official Gameplay Reveal</a></h4>
+          <div class="card-meta">
+            <span><i class="fa fa-clock-o"></i> 2 weeks ago</span>
+            <span>447 views</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card card-video">
+        <div class="card-img">
+          <a href="video-post.html">
+          <img src="https://i1.ytimg.com/vi/-PohBqV_i7s/mqdefault.jpg" class="card-img-top" alt="Shadow of War Gameplay Walkthrough">
+        </a>
+          <div class="card-meta">
+            <span>9:58</span>
+          </div>
+        </div>
+        <div class="card-block">
+          <h4 class="card-title"><a href="video-post.html">Shadow of War Gameplay Walkthrough</a></h4>
+          <div class="card-meta">
+            <span><i class="fa fa-clock-o"></i> March 10, 2017</span>
+            <span>914 views</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card card-video">
+        <div class="card-img">
+          <a href="video-post.html">
+          <img src="https://i1.ytimg.com/vi/feqIj5PaqCQ/mqdefault.jpg" class="card-img-top" alt="Call of Duty WW2 Multiplayer Gameplay">
+        </a>
+          <div class="card-meta">
+            <span>4:32</span>
+          </div>
+        </div>
+        <div class="card-block">
+          <h4 class="card-title"><a href="video-post.html">Call of Duty WW2 Multiplayer Gameplay</a></h4>
+          <div class="card-meta">
+            <span><i class="fa fa-clock-o"></i> 3 days ago</span>
+            <span>423 views</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card card-video">
+        <div class="card-img">
+          <a href="video-post.html">
+          <img src="https://i.ytimg.com/vi/N1NsF9c90f0/mqdefault.jpg" alt="Final Fantasy VII Remake">
+        </a>
+          <div class="card-meta">
+            <span>3:05</span>
+          </div>
+        </div>
+        <div class="card-block">
+          <h4 class="card-title"><a href="video-post.html">Final Fantasy VII Remake</a></h4>
+          <div class="card-meta">
+            <span><i class="fa fa-clock-o"></i> 2 days ago</span>
+            <span>589 views</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card card-video">
+        <div class="card-img">
+          <a href="video-post.html">
+          <img src="https://i.ytimg.com/vi/lQXpDL3SNWQ/mqdefault.jpg" class="card-img-top" alt="Spider-Man Official 4K Trailer">
+        </a>
+          <div class="card-meta">
+            <span>3:07</span>
+          </div>
+        </div>
+        <div class="card-block">
+          <h4 class="card-title"><a href="video-post.html">Spider-Man Official 4K Trailer</a></h4>
+          <div class="card-meta">
+            <span><i class="fa fa-clock-o"></i> 2 weeks ago</span>
+            <span>1798 views</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card card-video">
+        <div class="card-img">
+          <a href="video-post.html">
+          <img src="https://i1.ytimg.com/vi/9EzRBzdf--g/mqdefault.jpg" alt="METRO EXODUS Gameplay Trailer">
+        </a>
+          <div class="card-meta">
+            <span>1:24</span>
+          </div>
+        </div>
+        <div class="card-block">
+          <h4 class="card-title"><a href="video-post.html">Wolfenstein II Gameplay Trailer</a></h4>
+          <div class="card-meta">
+            <span><i class="fa fa-clock-o"></i> July 16, 2017</span>
+            <span>7330 views</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="heading">
+        <i class="fa fa-film"></i>
+        <h2>Recent Videos</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      </div>
+      <div class="row row-5">
+        <div class="col-12 col-sm-6 col-md-3">
+          <div class="card card-video">
+            <div class="card-img">
+              <a href="video-post.html">
+              <img src="https://i.ytimg.com/vi/GaERL8Nrl9k/mqdefault.jpg" class="card-img-top" alt="Tom Clancy's Ghost Recon: Wildlands Gameplay">
+            </a>
+              <div class="card-meta">
+                <span>3:05</span>
               </div>
             </div>
-          </section>
-
-          <section>
-            <div class="container">
-              <div class="row">
-                <div class="col-lg-9">
-                  <div class="post post-single">
-                    <div class="post-header">
-                      <div>
-                        <a href="profile.html"><img src="img/user/user-3.jpg" alt=""></a>
-                      </div>
-                      <div>
-                        <h2 class="post-title">Star Wars Battlefront II: Full Length Reveal Trailer</h2>
-                        <div class="post-meta">
-                          <span><i class="fa fa-clock-o"></i> August 22, 2017 by <a href="profile.html">Clark</a></span>
-                          <span><a href="#comments"><i class="fa fa-comment-o"></i> 33 comments</a></span>
-                        </div>
-                      </div>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas elit ante, congue sodales orci ac, ultrices pretium lectus. Maecenas lorem enim, dignissim sed lacus non, feugiat iaculis lorem. Integer eu aliquet diam. Suspendisse fringilla
-                      porta justo, vel tempus risus. Ut et enim sit amet libero fermentum aliquam et ut sem.</p>
-                    <p>Maecenas viverra, mi non consectetur scelerisque, erat enim interdum erat, imperdiet elementum sapien metus a odio. Sed sapien sapien, tincidunt quis fringilla vel, eleifend tincidunt nunc. Fusce dapibus leo vestibulum, scelerisque metusnec,
-                      imperdiet tortor.usce et urna vel neque fermentum consectetur. Donec vel convallis elit. Nulla et odio a magna aliquam varius a vel ex. Cras sed dolor sapien. Sed sit amet interdum sapien, ut laoreet dui. Fusce vulputate consequat mi et
-                      rutrum.</p>
-                  </div>
-                  <div class="post-actions">
-                    <div class="post-tags">
-                      <a href="#">#star wars</a>
-                      <a href="#">#battlefront 2</a>
-                      <a href="#">#gameplay</a>
-                      <a href="#">#trailer</a>
-                      <a href="#">#galaxy</a>
-                    </div>
-                    <div class="social-share">
-                      <a class="btn btn-social btn-facebook btn-circle" href="#" data-toggle="tooltip" title="" data-placement="bottom" role="button" data-original-title="Share on facebook"><i class="fa fa-facebook"></i></a>
-                      <span>5.345k</span>
-                      <a class="btn btn-social btn-twitter btn-circle" href="#" data-toggle="tooltip" title="" data-placement="bottom" role="button" data-original-title="Share on twitter"><i class="fa fa-twitter"></i></a>
-                      <a class="btn btn-social btn-google-plus btn-circle" href="#" data-toggle="tooltip" title="" data-placement="bottom" role="button" data-original-title="Share on google-plus"><i class="fa fa-google-plus"></i></a>
-                    </div>
-                  </div>
-                  <div id="comments" class="comments anchor">
-                    <div class="comments-header">
-                      <h5><i class="fa fa-comment-o"></i> Comments (5)</h5>
-                      <div class="dropdown float-right">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Sorted by best <span class="caret"></span></button>
-                        <div class="dropdown-menu dropdown-menu-right">
-                          <a class="dropdown-item active" href="#">Best</a>
-                          <a class="dropdown-item" href="#">Latest</a>
-                          <a class="dropdown-item" href="#">Oldest</a>
-                          <a class="dropdown-item" href="#">Random</a>
-                        </div>
-                      </div>
-                    </div>
-                    <a class="btn btn-primary text-left m-t-15 btn-block" href="#comments" role="button"><i class="fa fa-spinner fa-pulse m-r-5"></i> Load more 4 comments</a>
-                    <ul>
-                      <li>
-                        <div class="comment">
-                          <div class="comment-avatar">
-                            <a href="profile.html"><img src="img/user/user-1.jpg" alt=""></a>
-                            <a class="badge badge-primary" href="profile.html" data-toggle="tooltip" data-placement="bottom" title="Add as friend"><i class="fa fa-user-plus"></i></a>
-                          </div>
-                          <div class="comment-post">
-                            <div class="comment-header">
-                              <div class="comment-author">
-                                <h5><a href="profile.html">Venom</a></h5>
-                                <span>Member</span>
-                              </div>
-                              <div class="comment-action">
-                                <div class="dropdown float-right">
-                                  <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-chevron-down"></i></a>
-                                  <div class="dropdown-menu dropdown-menu-right">
-                                    <a class="dropdown-item" href="#">Moderate</a>
-                                    <a class="dropdown-item" href="#">Embed</a>
-                                    <a class="dropdown-item" href="#">Report</a>
-                                    <a class="dropdown-item" href="#">Mark as spam</a>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <p>Awesome these are news we were looking for, thanks DICE best thing i've heard today, but more game modes are welcome.</p>
-                            <div class="comment-footer">
-                              <ul>
-                                <li><a href="#"><i class="fa fa-heart-o"></i> Like</a></li>
-                                <li><a href="#"><i class="icon-reply"></i> Reply</a></li>
-                                <li><a href="#"><i class="fa fa-clock-o"></i> 3 hours ago</a></li>
-                              </ul>
-                            </div>
-                          </div>
-                        </div>
-                        <ul>
-                          <li>
-                            <div class="comment">
-                              <div class="comment-avatar"><img src="img/user/user-2.jpg" alt=""></div>
-                              <div class="comment-post">
-                                <div class="comment-header">
-                                  <div class="comment-author">
-                                    <h5><a href="profile.html">Elizabeth</a></h5>
-                                    <span>Member</span>
-                                  </div>
-                                  <div class="comment-action">
-                                    <div class="dropdown float-right">
-                                      <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-chevron-down"></i></a>
-                                      <div class="dropdown-menu dropdown-menu-right">
-                                        <a class="dropdown-item" href="#">Moderate</a>
-                                        <a class="dropdown-item" href="#">Embed</a>
-                                        <a class="dropdown-item" href="#">Report</a>
-                                        <a class="dropdown-item" href="#">Mark as spam</a>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                                <p>Please also consider replacing Battles with Blast (in Skirmish): it can use the same AI and would be much more fun (tokens are annoying and maps are limited)!</p>
-                                <div class="comment-footer">
-                                  <ul>
-                                    <li><a href="#"><i class="fa fa-heart-o"></i> Like</a></li>
-                                    <li><a href="#"><i class="icon-reply"></i> Reply</a></li>
-                                    <li><a href="#"><i class="fa fa-clock-o"></i> 24 minutes ago</a></li>
-                                  </ul>
-                                </div>
-                              </div>
-                            </div>
-                          </li>
-                        </ul>
-                      </li>
-                      <li>
-                        <div class="comment">
-                          <div class="comment-avatar"><a href="profile.html"><img src="img/user/user-3.jpg" alt=""></a></div>
-                          <div class="comment-post">
-                            <div class="comment-header">
-                              <div class="comment-author">
-                                <h5>
-                                  <a href="profile.html">Clark</a>
-                                  <span class="badge badge-outline-primary">Admin</span>
-                                </h5>
-                              </div>
-                              <div class="comment-action">
-                                <div class="comment-action">
-                                  <div class="dropdown float-right">
-                                    <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-chevron-down"></i></a>
-                                    <div class="dropdown-menu dropdown-menu-right">
-                                      <a class="dropdown-item" href="#">Moderate</a>
-                                      <a class="dropdown-item" href="#">Embed</a>
-                                      <a class="dropdown-item" href="#">Report</a>
-                                      <a class="dropdown-item" href="#">Mark as spam</a>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <p>Thank you this news and I can't wait for offline content to drop next week.</p>
-                            <div class="comment-footer">
-                              <ul>
-                                <li><a href="#"><i class="fa fa-heart-o"></i> Like</a></li>
-                                <li><a href="#"><i class="icon-reply"></i> Reply</a></li>
-                                <li><a href="#"><i class="fa fa-clock-o"></i> June 16, 2017 8:13 pm</a></li>
-                              </ul>
-                            </div>
-                          </div>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="comment">
-                          <div class="comment-avatar"><a href="profile.html"><img src="img/user/user-4.jpg" alt=""></a></div>
-                          <div class="comment-post">
-                            <div class="comment-header">
-                              <div class="comment-author">
-                                <h5><a href="profile.html">Strange</a></h5>
-                                <span>Member</span>
-                              </div>
-                              <div class="comment-action">
-                                <div class="comment-action">
-                                  <div class="dropdown float-right">
-                                    <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-chevron-down"></i></a>
-                                    <div class="dropdown-menu dropdown-menu-right">
-                                      <a class="dropdown-item" href="#">Moderate</a>
-                                      <a class="dropdown-item" href="#">Embed</a>
-                                      <a class="dropdown-item" href="#">Report</a>
-                                      <a class="dropdown-item" href="#">Mark as spam</a>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <p>To all those reading who have not yet bought this game yet, and are a fan of Star Wars - Don't listen to the nay-sayers on these forums, this game is simply amazing!</p>
-                            <div class="comment-footer">
-                              <ul>
-                                <li><a href="#"><i class="fa fa-heart-o"></i> Like</a></li>
-                                <li><a href="#"><i class="icon-reply"></i> Reply</a></li>
-                                <li><a href="#"><i class="fa fa-clock-o"></i> June 11, 2017 14:26 am</a></li>
-                              </ul>
-                            </div>
-                          </div>
-                        </div>
-                      </li>
-                    </ul>
-                    <form>
-                      <h5>Leave a comment</h5>
-                      <div class="form-group">
-                        <textarea class="form-control" rows="5" placeholder="Your Comment"></textarea>
-                      </div>
-                      <button type="submit" class="btn btn-primary btn-shadow">Submit Comment</button>
-                    </form>
-                  </div>
-                </div>
-                <div class="col-lg-3">
-                  <div class="sidebar">
-                    <!-- widget post  -->
-                    <div class="widget widget-videos">
-                      <h5 class="widget-title">Recommends</h5>
-                      <ul class="widget-list">
-                        <li>
-                          <div class="widget-img">
-                            <a href="blog-post.html"><img src="https://i1.ytimg.com/vi/4BLkEJu9szM/mqdefault.jpg" alt=""></a>
-                            <span>2:13</span>
-                          </div>
-                          <h4><a href="blog-post.html">Titanfall 2's Trophies Only Have 3 Earned Through Multiplayer</a></h4>
-                          <span><i class="fa fa-clock-o"></i> July 30, 2017</span>
-                          <span><i class="fa fa-eye"></i> 345x</span>
-                        </li>
-                        <li>
-                          <div class="widget-img">
-                            <a href="blog-post.html"><img src="https://i1.ytimg.com/vi/Kae-JjbLsgA/mqdefault.jpg" alt=""></a>
-                            <span>13:07</span>
-                          </div>
-                          <h4><a href="blog-post.html">Star Wars Battlefront II -- The Story of an Imperial Soldier</a></h4>
-                          <span><i class="fa fa-clock-o"></i> July 29, 2017</span>
-                          <span><i class="fa fa-eye"></i> 1269x</span>
-                        </li>
-                        <li>
-                          <div class="widget-img">
-                            <a href="blog-post.html"><img src="https://i.ytimg.com/vi/kUKrStkG-hE/mqdefault.jpg" alt=""></a>
-                            <span>5:17</span>
-                          </div>
-                          <h4><a href="blog-post.html">Far Cry 5: Full Length Reveal Trailer</a></h4>
-                          <span><i class="fa fa-clock-o"></i> July 20, 2017</span>
-                          <span><i class="fa fa-eye"></i> 692x</span>
-                        </li>
-                        <li>
-                          <div class="widget-img">
-                            <a href="blog-post.html"><img src="https://i1.ytimg.com/vi/B6qY-P4eo1Q/mqdefault.jpg" alt=""></a>
-                            <span>2:30</span>
-                          </div>
-                          <h4><a href="blog-post.html">Mafia 3: The Movie (All Cutscenes HD)</a></h4>
-                          <span><i class="fa fa-clock-o"></i> June 13, 2017</span>
-                          <span><i class="fa fa-eye"></i> 1136x</span>
-                        </li>
-                        <li>
-                          <div class="widget-img">
-                            <a href="blog-post.html"><img src="https://i1.ytimg.com/vi/1Y_DVbmRNhc/mqdefault.jpg" alt=""></a>
-                            <span>2:12</span>
-                          </div>
-                          <h4><a href="blog-post.html">Ghost in the Shell (2017) - Official Trailer</a></h4>
-                          <span><i class="fa fa-clock-o"></i> May 14, 2017</span>
-                          <span><i class="fa fa-eye"></i> 7879x</span>
-                        </li>
-                        <li>
-                          <div class="widget-img">
-                            <a href="blog-post.html"><img src="https://i1.ytimg.com/vi/PmaZw1xMxBQ/mqdefault.jpg" alt=""></a>
-                            <span>15:38</span>
-                          </div>
-                          <h4><a href="blog-post.html">Call of Duty: Infinite Warfare Gameplay</a></h4>
-                          <span><i class="fa fa-clock-o"></i> March 1, 2017</span>
-                          <span><i class="fa fa-eye"></i> 723x</span>
-                        </li>
-                      </ul>
-                    </div>
-                    <!-- /widget post -->
-                  </div>
-                </div>
+            <div class="card-block">
+              <h4 class="card-title"><a href="video-post.html">Tom Clancy's Ghost Recon: Wildlands</a></h4>
+              <div class="card-meta">
+                <span><i class="fa fa-clock-o"></i> 2 days ago</span>
+                <span>589 views</span>
+              </div>
+              <p>Defeating the corrupt tyrants entrenched there will require not only strength.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-3">
+          <div class="card card-video">
+            <div class="card-img">
+              <a href="video-post.html">
+              <img src="https://i1.ytimg.com/vi/9xMsBIlvTEE/mqdefault.jpg" class="card-img-top" alt="Star Wars: Battlefront 2 New Gameplay">
+            </a>
+              <div class="card-meta">
+                <span>4:32</span>
               </div>
             </div>
-          </section>
-          <!-- /main -->
+            <div class="card-block">
+              <h4 class="card-title"><a href="video-post.html">Star Wars: Battlefront 2 New Gameplay</a></h4>
+              <div class="card-meta">
+                <span><i class="fa fa-clock-o"></i> 3 days ago</span>
+                <span>423 views</span>
+              </div>
+              <p>Multiplayer gameplay revealed for Star Wars Battlefront 2.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-3">
+          <div class="card card-video">
+            <div class="card-img">
+              <a href="video-post.html">
+              <img src="https://i1.ytimg.com/vi/mW4LMCtoIkg/mqdefault.jpg" class="card-img-top" alt="Anthem Official Gameplay Reveal">
+            </a>
+              <div class="card-meta">
+                <span>3:07</span>
+              </div>
+            </div>
+            <div class="card-block">
+              <h4 class="card-title"><a href="video-post.html">Anthem Official Gameplay Reveal</a></h4>
+              <div class="card-meta">
+                <span><i class="fa fa-clock-o"></i> 2 weeks ago</span>
+                <span>1798 views</span>
+              </div>
+              <p>In Anthem, a new shared-world action-RPG from EA's BioWare studio.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-3">
+          <div class="card card-video">
+            <div class="card-img">
+              <a href="video-post.html">
+              <img src="https://i.ytimg.com/vi/PgLQ9kzmfT8/mqdefault.jpg" class="card-img-top" alt="Far Cry 5: Full Length Reveal Trailer">
+            </a>
+              <div class="card-meta">
+                <span>15:56</span>
+              </div>
+            </div>
+            <div class="card-block">
+              <h4 class="card-title"><a href="video-post.html">Far Cry 5: Full Length Reveal Trailer</a></h4>
+              <div class="card-meta">
+                <span><i class="fa fa-clock-o"></i> May 26, 2017</span>
+                <span>6521 views</span>
+              </div>
+              <p>Far Cry comes to America in the latest installment of the award-winning franchise..</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-3">
+          <div class="card card-video">
+            <div class="card-img">
+              <a href="video-post.html">
+              <img src="https://i.ytimg.com/vi/lQXpDL3SNWQ/mqdefault.jpg" class="card-img-top" alt="Spider-Man Official 4K Trailer">
+            </a>
+              <div class="card-meta">
+                <span>6:46</span>
+              </div>
+            </div>
+            <div class="card-block">
+              <h4 class="card-title"><a href="video-post.html">Spider-Man Official 4K Trailer</a></h4>
+              <div class="card-meta">
+                <span><i class="fa fa-clock-o"></i> April 5, 2017</span>
+                <span>447 views</span>
+              </div>
+              <p>Spider-Man for PS4 was a surprise hit last year, will we see it at...</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-3">
+          <div class="card card-video">
+            <div class="card-img">
+              <a href="video-post.html">
+              <img src="https://i1.ytimg.com/vi/QEuEOugOXcc/mqdefault.jpg" class="card-img-top" alt="METRO EXODUS Gameplay Trailer">
+            </a>
+              <div class="card-meta">
+                <span>1:24</span>
+              </div>
+            </div>
+            <div class="card-block">
+              <h4 class="card-title"><a href="video-post.html">Metro Exodus: Gameplay Trailer 2017</a></h4>
+              <div class="card-meta">
+                <span><i class="fa fa-clock-o"></i> April 1, 2017</span>
+                <span>7330 views</span>
+              </div>
+              <p>The latest installment in the post-apocalyptic first-person shooter from...</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-3">
+          <div class="card card-video">
+            <div class="card-img">
+              <a href="video-post.html">
+              <img src="https://i1.ytimg.com/vi/ckUrcdnWZ2g/mqdefault.jpg" class="card-img-top" alt="The Last Guardian Pet Cosplay Contest">
+            </a>
+              <div class="card-meta">
+                <span>1:58</span>
+              </div>
+            </div>
+            <div class="card-block">
+              <h4 class="card-title"><a href="video-post.html">The Last Guardian Pet Cosplay Contest</a></h4>
+              <div class="card-meta">
+                <span><i class="fa fa-clock-o"></i> March 28, 2017</span>
+                <span>812 views</span>
+              </div>
+              <p>Take a sneak peek at some new footage for The Last Guardian.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-3">
+          <div class="card card-video">
+            <div class="card-img">
+              <a href="video-post.html">
+              <img src="https://i1.ytimg.com/vi/-PohBqV_i7s/mqdefault.jpg" class="card-img-top" alt="Watch Dogs 2 - Reveal Trailer">
+            </a>
+              <div class="card-meta">
+                <span>4:04</span>
+              </div>
+            </div>
+            <div class="card-block">
+              <h4 class="card-title"><a href="video-post.html">Shadow of War Gameplay Walkthrough</a></h4>
+              <div class="card-meta">
+                <span><i class="fa fa-clock-o"></i> March 15, 2017</span>
+                <span>546 views</span>
+              </div>
+              <p>Join us as we take a look at Shadow of War and discuss...</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-3">
+          <div class="card card-video">
+            <div class="card-img">
+              <a href="video-post.html">
+              <img src="https://i1.ytimg.com/vi/1Y_DVbmRNhc/mqdefault.jpg" class="card-img-top" alt="Ghost in the Shell (2017) - Official Trailer">
+            </a>
+              <div class="card-meta">
+                <span>2:12</span>
+              </div>
+            </div>
+            <div class="card-block">
+              <h4 class="card-title"><a href="video-post.html">Ghost in the Shell (2017) - Official Trailer</a></h4>
+              <div class="card-meta">
+                <span>
+                <i class="fa fa-clock-o"></i> March 13, 2017</span>
+                <span>7879 views</span>
+              </div>
+              <p>The first teasers for the upcoming live-action adaptation of classic...</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-3">
+          <div class="card card-video">
+            <div class="card-img">
+              <a href="video-post.html">
+              <img src="https://i1.ytimg.com/vi/VHDmlMVWIwQ/mqdefault.jpg" class="card-img-top" alt="Battlefield 1: In the Name of the Tsar Trailer">
+            </a>
+              <div class="card-meta">
+                <span>9:58</span>
+              </div>
+            </div>
+            <div class="card-block">
+              <h4 class="card-title"><a href="video-post.html">Battlefield 1: In the Name of the Tsar</a></h4>
+              <div class="card-meta">
+                <span><i class="fa fa-clock-o"></i> March 10, 2017</span>
+                <span>914 views</span>
+              </div>
+              <p>Battlefield 1 heads to the Eastern front in its next huge expansion, which introduces...</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-3">
+          <div class="card card-video">
+            <div class="card-img">
+              <a href="video-post.html">
+              <img src="https://i1.ytimg.com/vi/lqUUstkJbrc/mqdefault.jpg" class="card-img-top" alt="Overwatch Animated Short Infiltration">
+            </a>
+              <div class="card-meta">
+                <span>5:40</span>
+              </div>
+            </div>
+            <div class="card-block">
+              <h4 class="card-title"><a href="video-post.html">Overwatch Animated Short Infiltration</a></h4>
+              <div class="card-meta">
+                <span><i class="fa fa-clock-o"></i> March 3, 2017</span>
+                <span>1254 views</span>
+              </div>
+              <p>What do you get when you spend $39.99 on Overwatch loot crates?</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-3">
+          <div class="card card-video">
+            <div class="card-img">
+              <a href="video-post.html">
+              <img src="https://i1.ytimg.com/vi/feqIj5PaqCQ/mqdefault.jpg" class="card-img-top" alt="Call of Duty WW2 Multiplayer Gameplay">
+            </a>
+              <div class="card-meta">
+                <span>15:38</span>
+              </div>
+            </div>
+            <div class="card-block">
+              <h4 class="card-title"><a href="video-post.html">Call of Duty WW2 Multiplayer Gameplay</a></h4>
+              <div class="card-meta">
+                <span><i class="fa fa-clock-o"></i> March 1, 2017</span>
+                <span>7236 views</span>
+              </div>
+              <p>We head into some intense battles in this new Call of Duty WW2 gameplay...</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-3">
+          <div class="card card-video">
+            <div class="card-img">
+              <a href="video-post.html">
+              <img src="https://i1.ytimg.com/vi/B6qY-P4eo1Q/mqdefault.jpg" class="card-img-top" alt="Mafia 3: The Movie (All Cutscenes HD)">
+            </a>
+              <div class="card-meta">
+                <span>2:47:52</span>
+              </div>
+            </div>
+            <div class="card-block">
+              <h4 class="card-title"><a href="video-post.html">Mafia 3: The Movie (All Cutscenes HD)</a></h4>
+              <div class="card-meta">
+                <span><i class="fa fa-clock-o"></i> February 14, 2017</span>
+                <span>12376 views</span>
+              </div>
+              <p>Mafia 3 tackles some controversial subject matter and 2K has not provided copies...</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-3">
+          <div class="card card-video">
+            <div class="card-img">
+              <a href="video-post.html">
+              <img src="https://i1.ytimg.com/vi/KsHHiWqgbw8/mqdefault.jpg" class="card-img-top" alt="I’m Ready To Spend Another 100 Hours">
+            </a>
+              <div class="card-meta">
+                <span>4:59</span>
+              </div>
+            </div>
+            <div class="card-block">
+              <h4 class="card-title"><a href="video-post.html">I’m Ready To Spend Another 100 Hours</a></h4>
+              <div class="card-meta">
+                <span><i class="fa fa-clock-o"></i> February 13, 2017</span>
+                <span>1236 views</span>
+              </div>
+              <p>Use the brand new wardrobe to select the right outfit for your days and nights...</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-3">
+          <div class="card card-video">
+            <div class="card-img">
+              <a href="video-post.html">
+              <img src="https://i1.ytimg.com/vi/qZmnPUNP2Ps/mqdefault.jpg" class="card-img-top" alt="A Minute of Crazy Cosplay from Blizzcon">
+            </a>
+              <div class="card-meta">
+                <span>1:15</span>
+              </div>
+            </div>
+            <div class="card-block">
+              <h4 class="card-title"><a href="video-post.html">A Minute of Crazy Cosplay from Blizzcon</a></h4>
+              <div class="card-meta">
+                <span><i class="fa fa-clock-o"></i> February 10, 2017</span>
+                <span>772 views</span>
+              </div>
+              <p>Feast your eyes on some new Diablo III gameplay footage from BlizzCon...</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-3">
+          <div class="card card-video">
+            <div class="card-img">
+              <a href="video-post.html">
+              <img src="https://i1.ytimg.com/vi/WfBhaP6sIX0/mqdefault.jpg" class="card-img-top" alt="Hearthstone Mean Streets of Gadgetzan">
+            </a>
+              <div class="card-meta">
+                <span>1:31</span>
+              </div>
+            </div>
+            <div class="card-block">
+              <h4 class="card-title"><a href="video-post.html">Hearthstone Mean Streets of Gadgetzan</a></h4>
+              <div class="card-meta">
+                <span><i class="fa fa-clock-o"></i> February 5, 2017</span>
+                <span>558 views</span>
+              </div>
+              <p>Blizzard's free-to-play card game Hearthstone is rolling out...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="text-center"><a href="videos.html" class="btn btn-primary btn-shadow btn-rounded btn-effect btn-lg m-t-20">Show More</a></div>
+    </div>
+  </section>
+
+  <section class="bg-secondary p-t-30 p-b-0">
+    <div class="container">
+      <h6 class="subtitle">Recommended Videos</h6>
+      <div class="row row-5">
+        <div class="col-12 col-sm-6 col-md-3">
+          <div class="card card-video">
+            <div class="card-img">
+              <a href="video-post.html">
+              <img src="https://i1.ytimg.com/vi/feqIj5PaqCQ/mqdefault.jpg" class="card-img-top" alt="Call of Duty WW2 Multiplayer Gameplay">
+            </a>
+              <div class="card-meta">
+                <span>15:38</span>
+              </div>
+            </div>
+            <div class="card-block">
+              <h4 class="card-title"><a href="video-post.html">Call of Duty WW2 Multiplayer Gameplay</a></h4>
+              <div class="card-meta">
+                <span><i class="fa fa-clock-o"></i> March 1, 2017</span>
+                <span>7236 views</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-3">
+          <div class="card card-video">
+            <div class="card-img">
+              <a href="video-post.html">
+              <img src="https://i1.ytimg.com/vi/B6qY-P4eo1Q/mqdefault.jpg" class="card-img-top" alt="Mafia 3: The Movie (All Cutscenes HD)">
+            </a>
+              <div class="card-meta">
+                <span>2:47:52</span>
+              </div>
+            </div>
+            <div class="card-block">
+              <h4 class="card-title"><a href="video-post.html">Mafia 3: The Movie (All Cutscenes HD)</a></h4>
+              <div class="card-meta">
+                <span><i class="fa fa-clock-o"></i> February 14, 2017</span>
+                <span>12376 views</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-3">
+          <div class="card card-video">
+            <div class="card-img">
+              <a href="video-post.html">
+              <img src="https://i1.ytimg.com/vi/VHDmlMVWIwQ/mqdefault.jpg" class="card-img-top" alt="Battlefield 1: In the Name of the Tsar Trailer">
+            </a>
+              <div class="card-meta">
+                <span>9:58</span>
+              </div>
+            </div>
+            <div class="card-block">
+              <h4 class="card-title"><a href="video-post.html">Battlefield 1: In the Name of the Tsar</a></h4>
+              <div class="card-meta">
+                <span><i class="fa fa-clock-o"></i> March 10, 2017</span>
+                <span>914 views</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-3">
+          <div class="card card-video">
+            <div class="card-img">
+              <a href="video-post.html">
+              <img src="https://i.ytimg.com/vi/lQXpDL3SNWQ/mqdefault.jpg" class="card-img-top" alt="Spider-Man Official 4K Trailer">
+            </a>
+              <div class="card-meta">
+                <span>6:46</span>
+              </div>
+            </div>
+            <div class="card-block">
+              <h4 class="card-title"><a href="video-post.html">Spider-Man Official 4K Trailer</a></h4>
+              <div class="card-meta">
+                <span><i class="fa fa-clock-o"></i> April 5, 2017</span>
+                <span>447 views</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- /main -->
         </div>
     
       </div>
@@ -729,7 +1014,7 @@
         <div class="m-t-30">
 
             <button type="submit" (click)="saveimage()" [disabled]= "disabled" class="btn btn-default btn-rounded btn-shadow float-right" >
-                    <i id="loader2" *ngIf="disabled"  class="fa fa-spin fa-spinner"></i> {{sav}}</button>
+                    <i id="loader2" *ngIf="disabled"  class="fa fa-spin fa-spinner"></i> Contribute</button>
       <!-- <button class="btn btn-primary btn-rounded btn-shadow float-right" type="submit" name="save">Submit</button> -->
 
 
