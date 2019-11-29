@@ -62,6 +62,8 @@ id: any;
   stream=false
   isPopupOpened = true;
   gallery: any;
+  c_image:any;
+  title_id: any;
 constructor(private Jarwis: JarwisService, private formBuilder: FormBuilder,public snackBar: MatSnackBar,private router: Router, public actRoute: ActivatedRoute, private coordGet: MapServiceService,private dialog?: MatDialog,) { }
 @ViewChild('map') mapElement: any;
 
@@ -316,6 +318,7 @@ handleError(error) {
                       this.form.title_id=this.res.id;
                       this.title=this.res.name_title;
                       this.about=this.res.about;
+                      this.title_id=this.res.id;
                       this.dates=this.res.created_at;
                       this.bio=this.res.familybackground;
                       this.name=this.res.firstname+" "+this.res.lastname+" "+this.res.middlename;
@@ -375,6 +378,28 @@ handleError(error) {
      }
     });
   
+  }
+  uploadFiles(event){
+    let files =event.target.files[0];
+    let reader = new FileReader();
+    let vm = this;
+    reader.onloadend =()=> {
+      // body...
+      this.c_image = reader.result;
+   
+    }
+    reader.readAsDataURL(files);
+  }
+  saveimage(){
+    this.Jarwis.contributeimage({c_image:this.c_image,title_id:this.title_id}).subscribe(
+      data =>  {
+        let snackBarRef = this.snackBar.open("Thank you for your contribution, our Editorial team will like to confirm your contribution before it goes live.", 'Dismiss', {
+          duration: 8000
+        }) 
+      }
+      );
+    // console.log(result)
+     this.ngOnInit()
   }
  navigate (id){
     this.router.navigate(['Content/'+id+''])

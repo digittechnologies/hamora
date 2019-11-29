@@ -715,14 +715,22 @@
     <div class="tab-pane" id="options" role="tabpanel">
       
       
-        <!-- <div class="col-md-12 col-sm-12">
+        <div class="col-md-12 col-sm-12">
             <div class="form-group">
                 <label for="submit-area">Attachment</label>
                 <div class="input-group">
-                    <input id="file-upload" type="file" class="file" multiple="true" data-show-upload="false" data-show-caption="false" data-show-remove="false" accept="image/jpeg,image/png" data-browse-class="btn btn-default" data-browse-label="Browse Images" (change)="uploadFiles($event)">
+                    <input id="file-upload" type="file" class="file"  data-show-upload="false" data-show-caption="false" data-show-remove="false" accept="image/jpeg,image/png" data-browse-class="btn btn-default" data-browse-label="Browse Images" (change)="uploadFiles($event)">
                 </div>
             </div>
-        </div>   -->
+        </div> 
+        <div class="m-t-30">
+
+            <button type="submit" (click)="saveimage()" [disabled]= "disabled" class="btn btn-default btn-rounded btn-shadow float-right" >
+                    <i id="loader2" *ngIf="disabled"  class="fa fa-spin fa-spinner"></i> {{sav}}</button>
+      <!-- <button class="btn btn-primary btn-rounded btn-shadow float-right" type="submit" name="save">Submit</button> -->
+
+
+    </div> 
     </div>
     <div class="m-t-30">
 
