@@ -189,7 +189,8 @@ $('body').removeClass('navbar-search-open');
     this.valToSearch = event.target.value;
     // alert(this.valToSearch.category)
     //map Init
-    this.coordGet.getLocality(this.valToSearch).subscribe(data=>{console.log(data)
+    this.coordGet.getLocality(this.valToSearch).subscribe(data=>{
+      console.log(this.newArr)
       this.data = data;
 
       let lat = this.data.results[0].geometry.location.lat;

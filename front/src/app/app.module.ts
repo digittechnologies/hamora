@@ -46,6 +46,7 @@ import { ContributeComponent } from './contribute/contribute.component';
 
 import { MapvComponent } from './content/mapv/mapv.component';
 import { StoryComponent } from './content/story/story.component';
+import { MapComponent } from './map/map.component';
 
 
 
@@ -76,7 +77,8 @@ import { StoryComponent } from './content/story/story.component';
     VideoComponent,
     ContributeComponent,
     MapvComponent,
-    StoryComponent
+    StoryComponent,
+    MapComponent
 
   ],
   imports: [
