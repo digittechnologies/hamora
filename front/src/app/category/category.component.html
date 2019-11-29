@@ -1,222 +1,225 @@
 <!-- main -->
 <section class="breadcrumbs">
-    <div class="container">
-      <ol class="breadcrumb">
-        <li><a [routerLink]="['/platform']">Home</a></li>
-        <li class="active">Calegory: {{actname}}</li>
-      </ol>
-    </div>
-  </section>
-  <!-- main -->
-<section class="hero" style="background-image: url('assets/img/SC.jpg');">
-  <div class="overlay"></div>
   <div class="container">
-    <div class="hero-block">
-      <h2 class="hero-title">Do you Know about Ogun State or you have a story to tell </h2>
-      <p>Share your story here.</p>
-      <a class="btn btn-primary btn-lg btn-shadow btn-md btn-rounded" href="blog-post.html" role="button">Contribute</a>
-    </div>
+    <ol class="breadcrumb">
+      <li><a [routerLink]="['/Home']">Home</a></li>
+      <li><a [routerLink]="['/Platform']" >Platform</a></li>
+      <li class="active">Calegory: {{actname}}</li>
+    </ol>
   </div>
 </section>
-<section class="toolbar toolbar-links" data-fixed="true">
-  <div class="container">
-    <h5 class="m-r-30">Recent Contribution</h5>
-    <form method="post" class="hidden-lg-down" (submit)="search()">
-      <div class="form-group input-icon-right">
-        <i class="fa fa-search"></i>
-        <input type="text" class="form-control form-control-secondary" placeholder="Type to search..." (keyup) = 'locateMe($event)' [formControl]="control" [matAutocomplete]="auto">
-      </div>
-      <mat-autocomplete #auto="matAutocomplete">
-        <mat-option *ngFor="let street of filteredStreets | async" [value]="street">
-        <a href="/Content/{{street}}"> {{street}} </a>
-        </mat-option>
-    </mat-autocomplete>
-    </form>   
+<!-- main -->
+<section class="hero" style="background-image: url('assets/img/SC.jpg');">
+<div class="overlay"></div>
+<div class="container">
+  <div class="hero-block">
+    <h2 class="hero-title">Do you Know about Ogun State or you have a story to tell </h2>
+    <p>Share your story here.</p>
+    <a class="btn btn-primary btn-lg btn-shadow btn-md btn-rounded" href="blog-post.html" role="button">Contribute</a>
   </div>
+</div>
+</section>
+<section class="toolbar toolbar-links" data-fixed="true">
+<div class="container">
+  <h5 class="m-r-30">Calegory: {{actname}}</h5>
+  <form method="post" class="hidden-lg-down" (submit)="search()">
+    <div class="form-group input-icon-right">
+      <i class="fa fa-search"></i>
+      <input type="text" class="form-control form-control-secondary" placeholder="Type to search..." (keyup) = 'locateMe($event)' [formControl]="control" [matAutocomplete]="auto">
+    </div>
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let street of filteredStreets | async" [value]="street">
+      <a href="/Content/{{street}}"> {{street}} </a>
+      </mat-option>
+  </mat-autocomplete>
+  </form>   
+</div>
 </section>
 
 
 <section class="p-t-40 p-b-60">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8">
-        <div class="toolbar-custom">
-          <a class="btn btn-default btn-icon btn-sm m-r-10 float-left hidden-xs-down" href="#" data-toggle="tooltip" title="refresh" data-placement="bottom" role="button"><i class="fa fa-refresh"></i></a>
-          <div class="dropdown float-left">
-            <button class="btn btn-default" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Categories<i class="fa fa-caret-down"></i></button>
-            <div class="dropdown-menu">
-                <div  *ngFor="let ract of res"><a class="dropdown-item"  routerlink="" (click)="navigates(ract.id)">{{ract.actname}}</a></div>    
-            </div>
-          </div>
-        </div> 
-
-        <div class="post post-card" *ngIf="loading">
-            <div class="post post-md">
-                <div class="post-thumbnail">
-                  <a href="blog-post-medium.html"><img src="assets/img/loading.gif" alt="LC Launch"></a>
-                </div>
-                <div class="post-block">              
-                  <div class="post-meta">
-                      <img  width="50%" src="assets/img/loading.gif" alt="">
-                  </div>              
-                </div>
-              </div>
-            </div>
-
-            <div class="post post-card" *ngIf="loading">
-                <div class="post post-md">
-                    <div class="post-thumbnail">
-                      <a href="blog-post-medium.html"><img src="assets/img/loading.gif" alt="LC Launch"></a>
-                    </div>
-                    <div class="post-block">              
-                      <div class="post-meta">
-                          <img  width="50%" src="assets/img/loading.gif" alt="">
-                      </div>              
-                    </div>
-                  </div>
-                </div>
-
-                <div class="post post-card" *ngIf="loading">
-                    <div class="post post-md">
-                        <div class="post-thumbnail">
-                          <a href="blog-post-medium.html"><img src="assets/img/loading.gif" alt="LC Launch"></a>
-                        </div>
-                        <div class="post-block">              
-                          <div class="post-meta">
-                              <img  width="50%" src="assets/img/loading.gif" alt="">
-                          </div>              
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="post post-card" *ngIf="loading">
-                        <div class="post post-md">
-                            <div class="post-thumbnail">
-                              <a href="blog-post-medium.html"><img src="assets/img/loading.gif" alt="LC Launch"></a>
-                            </div>
-                            <div class="post-block">              
-                              <div class="post-meta">
-                                  <img  width="50%" src="assets/img/loading.gif" alt="">
-                              </div>              
-                            </div>
-                          </div>
-                        </div>
-        
-         <!-- post -->
-        <div class="post post-card"  *ngFor="let all of title | paginate: {itemsPerPage: 10, currentPage: p}">
-                <div class="post post-md" >
-                <div class="post-thumbnail">
-                  <a href="Content/{{all.id}}" (click)="navigate(all.id)"><img src="https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/{{all.t_image}}" alt=""></a>
-                </div>
-                <div class="post-block">
-                  <div class="post-header">
-                    <div>
-                    <a href="Content/{{all.id}}" (click)="nav(all.id)">
-                      <img src="https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/{{all.image}}" alt="">
-                    </a>
-                    </div>
-                    <div>
-                      <h2 class="post-title">
-                        <h2 class="post-title"><a routerink="" (click)="navigate(all.id)">{{all.name_title}}</a></h2>
-                      </h2>
-                      <div class="post-meta">
-                        <span><i class="fa fa-clock-o"></i> {{all.created_at}} by <a href="profile.html">{{all.firstname + ' '+ all.lastname}}</a></span>
-                        <span><a href="blog-post-carousel.html#comments"><i class="fa fa-comment-o"></i>{{all.comment_count}}</a></span>
-                      </div>
-                    </div>
-                  </div>  
-                  <p>{{all.content | slice:0:250 }}....</p>
-                  <div class="post-footer">
-                    <a class="btn btn-secondary" (click)="navigate(all.id)" role="button">Read More</a>
-                    <a class="float-right p-t-10" href="#"><i class="fa fa-heart-o"></i> {{all.views}}</a>
-                  </div>
-                </div>
-              </div>
-        </div>         
-
-          <div class="pagination-results m-t-30">
-           
-            <nav aria-label="Page navigation">
-              <ul class="pagination">
-                <li class="page-item disabled"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true"><i class="fa fa-angle-left"></i></span></a></li>
-               
-                <li class="page-item"> <pagination-controls (pageChange)="p = $event" class="my-pagination text-info"></pagination-controls> </li>
-            
-                <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true"><i class="fa fa-angle-right"></i></span></a></li>
-              </ul>
-            </nav>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="toolbar-custom">
+        <a class="btn btn-default btn-icon btn-sm m-r-10 float-left hidden-xs-down" href="#" data-toggle="tooltip" title="refresh" data-placement="bottom" role="button"><i class="fa fa-refresh"></i></a>
+        <div class="dropdown float-left">
+          <button class="btn btn-default" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Categories<i class="fa fa-caret-down"></i></button>
+          <div class="dropdown-menu">
+              <div  *ngFor="let ract of res"><a class="dropdown-item"  routerlink="" (click)="navigates(ract.id)">{{ract.actname}}</a></div>    
           </div>
         </div>
+      </div> 
 
-        <!-- sidebar -->
-        <div class="col-lg-4">
-          <div class="sidebar">
-            <!-- widget search -->
-            <div class="widget widget-search">
-              <form>
-                <div class="form-group input-icon-right">
-                  <i class="fa fa-search"></i>
-                  <input type="text" class="form-control" placeholder="Type to search...">
-                </div>
-              </form>
-            </div>
-
-            <!-- widget post  -->
-            <div class="widget widget-post">
-              <h5 class="widget-title">Recommends</h5>
-              <a href="blog-post-medium.html"><img src="https://i1.ytimg.com/vi/4BLkEJu9szM/mqdefault.jpg" alt=""></a>
-              <h4><a href="blog-post-medium.html">Titanfall 2's Trophies Only Have 3 Earned Through Multiplayer</a></h4>
-              <span><i class="fa fa-clock-o"></i> June 12, 2017</span>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel neque sed ante facilisis efficitur.</p>
-            </div>
-
-            <!-- widget facebook -->
-            <div class="widget">
-              <h5 class="widget-title">Follow Us on Facebook</h5>
-              <div id="fb-root"></div>
-              <script async="" src="https://www.google-analytics.com/analytics.js"></script>
-              <script id="facebook-jssdk" src="//connect.facebook.net/en_US/sdk.js#xfbml=1&amp;version=v2.8"></script>
-              <script>
-                (function(d, s, id) {
-                  var js, fjs = d.getElementsByTagName(s)[0];
-                  if (d.getElementById(id)) return;
-                  js = d.createElement(s);
-                  js.id = id;
-                  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.9";
-                  fjs.parentNode.insertBefore(js, fjs);
-                }(document, 'script', 'facebook-jssdk'));
-              </script>
-              <div class="fb-page" data-href="https://www.facebook.com/yakuthemes" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"></div>
-            </div>
-
-            <div class="widget widget-post">
-                    <h5 class="widget-title">Popular on SabiOgun</h5>
-                    <a href="blog-post.html"><img src="https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/3.jpg" alt=""></a>
-                    <h4><a href="blog-post.html">Red Dead Redemption Being Modded Into GTA5 Multiplayer</a></h4>
-                    <span><i class="fa fa-clock-o"></i> June 16, 2017</span>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel neque sed anter.</p>
-                    <ul class="widget-list">              
-                       
-                      <li  *ngFor="let H of footer">
-                        <div class="widget-img"><a (click)="nav(H.id)"><img src="https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/{{H.t_image}}" alt=""></a></div>
-                        <div>
-                          <h4><a routerink="" (click)="nav(H.id)">{{H.name_title}}</a></h4>
-                          <span>{{H.created_at}}</span>
-                        </div>
-                      </li>             
-                    </ul>
-                  </div>
-           
-            <!-- widget tags -->
-            <div class="widget widget-tags">
-              <h5 class="widget-title">Popular Tags</h5>
-              <div class="post-tags" *ngFor="let c of cat">
-                    <a routerLink="/subCat/:c.id">#{{c.catname}}</a>                
+      <div class="post post-card" *ngIf="loading">
+          <div class="post post-md">
+              <div class="post-thumbnail">
+                <a href="blog-post-medium.html"><img src="assets/img/loading.gif" alt="LC Launch"></a>
               </div>
+              <div class="post-block">              
+                <div class="post-meta">
+                    <img  width="50%" src="assets/img/loading.gif" alt="">
+                </div>              
+              </div>
+            </div>
+          </div>
+
+          <div class="post post-card" *ngIf="loading">
+              <div class="post post-md">
+                  <div class="post-thumbnail">
+                    <a href="blog-post-medium.html"><img src="assets/img/loading.gif" alt="LC Launch"></a>
+                  </div>
+                  <div class="post-block">              
+                    <div class="post-meta">
+                        <img  width="50%" src="assets/img/loading.gif" alt="">
+                    </div>              
+                  </div>
+                </div>
+              </div>
+
+              <div class="post post-card" *ngIf="loading">
+                  <div class="post post-md">
+                      <div class="post-thumbnail">
+                        <a href="blog-post-medium.html"><img src="assets/img/loading.gif" alt="LC Launch"></a>
+                      </div>
+                      <div class="post-block">              
+                        <div class="post-meta">
+                            <img  width="50%" src="assets/img/loading.gif" alt="">
+                        </div>              
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="post post-card" *ngIf="loading">
+                      <div class="post post-md">
+                          <div class="post-thumbnail">
+                            <a href="blog-post-medium.html"><img src="assets/img/loading.gif" alt="LC Launch"></a>
+                          </div>
+                          <div class="post-block">              
+                            <div class="post-meta">
+                                <img  width="50%" src="assets/img/loading.gif" alt="">
+                            </div>              
+                          </div>
+                        </div>
+                      </div>
+      
+       <!-- post -->
+      <div class="post post-card"  *ngFor="let all of title | paginate: {itemsPerPage: 10, currentPage: p}">
+              <div class="post post-md" >
+              <div class="post-thumbnail">
+                <a href="Content/{{all.id}}" (click)="navigate(all.id)"><img src="https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/{{all.t_image}}" alt=""></a>
+              </div>
+              <div class="post-block">
+                <div class="post-header">
+                  <div>
+                  <a href="Content/{{all.id}}" (click)="nav(all.id)">
+                    <img src="https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/{{all.image}}" alt="">
+                  </a>
+                  </div>
+                  <div>
+                    <h2 class="post-title">
+                      <h2 class="post-title"><a routerink="" (click)="navigate(all.id)">{{all.name_title}}</a></h2>
+                    </h2>
+                    <div class="post-meta">
+                      <span><i class="fa fa-clock-o"></i> {{all.created_at}} by <a href="profile.html">{{all.firstname + ' '+ all.lastname}}</a></span>
+                      <span><a href="blog-post-carousel.html#comments"><i class="fa fa-comment-o"></i>{{all.comment_count}}</a></span>
+                      <a class="float-right p-t-10" href="#"><i class="fa fa-heart-o"></i> {{all.views}}</a>
+                    </div>
+                  </div>
+                </div>  
+                <p>{{all.content | slice:0:250 }}....</p>
+                <div class="post-footer">
+                  <a class="btn btn-secondary" (click)="navigate(all.id)" role="button">Read More</a>                 
+                  <a class="btn btn-secondary" (click)="follow(all.id)" role="button">Folllow</a>
+                  <a class="btn btn-secondary float-right p-t-10" (click)="likes(all.id)"><i class="fa fa-thumbs-o-up"></i> {{all.like}}</a>
+                </div>
+              </div>
+            </div>
+      </div>         
+
+        <div class="pagination-results m-t-30">
+         
+          <nav aria-label="Page navigation">
+            <ul class="pagination">
+              <li class="page-item disabled"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true"><i class="fa fa-angle-left"></i></span></a></li>
+             
+              <li class="page-item"> <pagination-controls (pageChange)="p = $event" class="my-pagination text-info"></pagination-controls> </li>
+          
+              <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true"><i class="fa fa-angle-right"></i></span></a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+
+      <!-- sidebar -->
+      <div class="col-lg-4">
+        <div class="sidebar">
+          <!-- widget search -->
+          <div class="widget widget-search">
+            <form>
+              <div class="form-group input-icon-right">
+                <i class="fa fa-search"></i>
+                <input type="text" class="form-control" placeholder="Type to search...">
+              </div>
+            </form>
+          </div>
+
+          <!-- widget post  -->
+          <!-- <div class="widget widget-post">
+            <h5 class="widget-title">Recommends</h5>
+            <a href="blog-post-medium.html"><img src="https://i1.ytimg.com/vi/4BLkEJu9szM/mqdefault.jpg" alt=""></a>
+            <h4><a href="blog-post-medium.html">Titanfall 2's Trophies Only Have 3 Earned Through Multiplayer</a></h4>
+            <span><i class="fa fa-clock-o"></i> June 12, 2017</span>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel neque sed ante facilisis efficitur.</p>
+          </div> -->
+
+          <!-- widget facebook -->
+          <div class="widget">
+            <h5 class="widget-title">Follow Us on Facebook</h5>
+            <div id="fb-root"></div>
+            <script async="" src="https://www.google-analytics.com/analytics.js"></script>
+            <script id="facebook-jssdk" src="//connect.facebook.net/en_US/sdk.js#xfbml=1&amp;version=v2.8"></script>
+            <script>
+              (function(d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s);
+                js.id = id;
+                js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.9";
+                fjs.parentNode.insertBefore(js, fjs);
+              }(document, 'script', 'facebook-jssdk'));
+            </script>
+            <div class="fb-page" data-href="https://www.facebook.com/yakuthemes" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"></div>
+          </div>
+
+          <div class="widget widget-post">
+                  <h5 class="widget-title">Popular on SabiOgun</h5>
+                  <!-- <a href="blog-post.html"><img src="https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/3.jpg" alt=""></a>
+                  <h4><a href="blog-post.html">Red Dead Redemption Being Modded Into GTA5 Multiplayer</a></h4>
+                  <span><i class="fa fa-clock-o"></i> June 16, 2017</span>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel neque sed anter.</p> -->
+                  <ul class="widget-list">              
+                     
+                    <li  *ngFor="let H of footer">
+                      <div class="widget-img"><a (click)="nav(H.id)"><img src="https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/{{H.t_image}}" alt=""></a></div>
+                      <div>
+                        <h4><a routerink="" (click)="nav(H.id)">{{H.name_title}}</a></h4>
+                        <span>{{H.created_at}}</span>
+                      </div>
+                    </li>             
+                  </ul>
+                </div>
+         
+          <!-- widget tags -->
+          <div class="widget widget-tags">
+            <h5 class="widget-title">Popular Tags</h5>
+            <div class="post-tags" *ngFor="let c of cat">
+                  <a routerLink="/subCat/:c.id">#{{c.catname}}</a>                
             </div>
           </div>
         </div>
       </div>
     </div>
-  </section>
-  <!-- /main -->
+  </div>
+</section>
+<!-- /main -->

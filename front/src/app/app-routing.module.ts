@@ -22,14 +22,15 @@ import { PlatformComponent } from './platform/platform.component';
 import { GalleryComponent } from './user/gallery/gallery.component';
 import { MapvComponent } from './content/mapv/mapv.component';
 import { StoryComponent } from './content/story/story.component';
+import { MapComponent } from './map/map.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent },
   {path: 'home', component: HomeComponent },
-  {path: 'platform', component: PlatformComponent },
+  {path: 'Platform', component: PlatformComponent },
   {path: 'Login', component: LoginComponent,canActivate: [BeforeLoginService] },
   {path: 'Signin', component: SigninComponent,canActivate: [BeforeLoginService] },
-  {path: 'User', component: AccountComponent,canActivate: [AfterLoginService], 
+  {path: 'User', component: AccountComponent,canActivate: [AfterLoginService] ,
 
   children: [
     
@@ -63,6 +64,7 @@ const routes: Routes = [
   {path: 'addcat', component:  AddcategoryComponent },
   {path: 'About', component:  AboutComponent },
   {path: 'Contact', component:  ContactComponent },
+  {path: 'map', component: MapComponent}
 
 ];
 

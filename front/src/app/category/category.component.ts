@@ -3,6 +3,7 @@ import { JarwisService } from '../service/jarwis.service';
 import { AuthService } from '../service/auth.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { TokenService } from '../service/token.service';
+import { MatSnackBar } from '@angular/material';
 @Component({
   selector: 'app-category',
   templateUrl: './category.component.html',
@@ -18,6 +19,7 @@ export class CategoryComponent implements OnInit {
   ftitle: any;
   footer: any;
   res: any;
+  article: any;
   loading=true;
 
   constructor(
@@ -25,7 +27,8 @@ export class CategoryComponent implements OnInit {
     private router: Router,
     private Jarwis: JarwisService,
     public actRoute: ActivatedRoute,
-    private Token: TokenService
+    private Token: TokenService,
+    public snackBar: MatSnackBar,
   ) { }
 
   ngOnInit() {
@@ -73,4 +76,35 @@ export class CategoryComponent implements OnInit {
     this.router.navigate(['Content/'+id+'']);
     this.ngOnInit()
   }
+
+  likes(id){
+    // console.log(id)
+    this.Jarwis.like(id).subscribe(
+      data =>  {
+        let snackBarRef = this.snackBar.open("like", 'Dismiss', {
+          duration: 2000
+        }) 
+        this.ngOnInit()
+      }
+      
+      );
+      }
+      follow(id){
+        // this.follows=this.article
+        let follows = this.article.filter(c => c.id == id);
+        let follow=follows[0]
+        let follow_id=follow.user_id
+         console.log(follow_id)
+        this.Jarwis.follow({title_id:id,followed_user_id:follow_id}).subscribe(
+          data =>  {
+            let snackBarRef = this.snackBar.open("follow", 'Dismiss', {
+              duration: 2000
+            }) 
+            console.log(data)
+            this.ngOnInit()
+          }
+          
+          );
+          }
+
 }

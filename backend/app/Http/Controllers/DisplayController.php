@@ -291,9 +291,11 @@ class DisplayController extends Controller
     {
         return response()->json([
           
-               'title'=> title::orderBy('id','desc')->join('categories','titles.category_id','=','categories.id')
-                ->join('users','titles.user_id','=','users.id')
-            ->select('titles.*','categories.catname','categories.destription','categories.activity_id','users.firstname','users.lastname','users.middlename')
+            'title'=> title::orderBy('id','desc')->join('categories','titles.category_id','=','categories.id')
+            ->join('activities','categories.activity_id','=','activities.id')
+            ->join('users','titles.user_id','=','users.id')
+            ->join ('contents','titles.id','=','contents.name_id')
+            ->select('titles.*','categories.catname','contents.header','contents.content','categories.destription','categories.activity_id','activities.actname','users.firstname','users.lastname','users.middlename', 'users.familybackground', 'users.image')  
             ->where('activity_id','=',$id)
             ->where('titles.status','=','Y')
                ->get(),

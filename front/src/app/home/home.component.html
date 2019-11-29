@@ -7,12 +7,12 @@
   <div class="container h-100">
     <div class="d-flex h-100 text-center align-items-center">
       <div class="w-100 text-white">     
-        <span style="font-family: Monospace; font-size: 40px;" class="text text-warning ">Welcome to</span>
-              <h6 class=" text-success display-3" style="font-size: 100px;">OGUN STATE</h6>
-              <p class="lead mb-0">The gateway state.</p>
-              <a class="btn btn-outline-default btn-rounded btn-lg m-r-5" data-lightbox >Watch Documentary</a>
-              <a class="btn btn-success btn-rounded btn-shadow btn-lg" [routerLink]="['/User', {outlets: {side: ['Post']}}]" *ngIf="loggedIn" data-lightbox role="button">Visit Platform</a>
-              <a class="btn btn-success btn-rounded btn-shadow btn-lg" [routerLink]="['/Login']" *ngIf="!loggedIn" data-lightbox role="button">Get Started</a>
+        <span style="font-family:Agency FB; font-size: 40px; color: #D6CE26;" class="text  ">Welcome to</span>
+              <h6 class="display-3" style="color: #008B11; font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-size: 100px;">OGUN STATE</h6>
+              <p class="lead mb-0">The Gateway State.</p><br>
+              <!-- <a class="btn btn-outline-default btn-rounded btn-lg m-r-5" data-lightbox >Watch Documentary</a> -->
+              <!-- <a class="btn btn-success btn-rounded btn-shadow btn-lg" [routerLink]="['/User', {outlets: {side: ['Post']}}]" *ngIf="loggedIn" data-lightbox role="button">Visit Platform</a> -->
+              <a class="btn btn-success btn-rounded btn-shadow btn-lg" [routerLink]="['/Platform']" role="button">Get Started</a>
       </div>
     </div>
   </div>

@@ -106,7 +106,7 @@ foreach ($image_name as $img) {
     
         Image::make($file)->resize(300, 300)->save(public_path('/upload/uploads/'.$filename));
     $imageName[] =[
-     'title_id' => 8,
+     'title_id' => $content->id,
    'image_name'=> $filename,
     ] ; 
     $count++;
@@ -125,7 +125,7 @@ foreach ($image_name as $img) {
 //     $path=$file->move(public_path('/upload/videos/'.$filename));
        
 //     $videoName[] =[
-//      'title_id' => 8,
+//      'title_id' => $content->id,
 //    'video_name'=> $filename,
 //     ] ; 
 //     $count++;
@@ -148,7 +148,7 @@ foreach ($image_name as $img) {
              'header'=>$item['header'],
              'content' =>$item['content'],
              'quote'=>$item['quote'],
-             'name_id' => 8,
+             'name_id' => $content->id,
              'c_image' =>$filename
              ] ; 
              $counts++;

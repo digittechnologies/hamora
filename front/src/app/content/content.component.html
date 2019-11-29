@@ -52,7 +52,7 @@
                     <h2 class="post-title">
                           <h2 class="post-title">{{title}} </h2>                                
                     </h2>
-                    <a class="btn btn-secondary float-right social-share" (click)="nav(all.id)" role="button">Folllow</a>
+                    <a class="btn btn-secondary float-right social-share" (click)="follow(res.id)" role="button">Folllow</a>
                     <div class="post-meta">
                           <span><i class="fa fa-clock-o"></i> {{res.created_at}} by <a href="profile.html">{{name}}</a></span>
                           <span><a href="#comments"><i class="fa fa-comment-o"></i> {{res.comment_count}} comments</a></span>
@@ -62,7 +62,7 @@
 
 
           <div class="post-thumbnail">
-                  <img style="width:100%; height: 400px;" src="https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/{{res.t_image}}" alt="">
+                  <img  src="https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/{{res.t_image}}" alt="">
                 </div>
         
           <div id="description" *ngFor="let r of contents">
@@ -81,11 +81,14 @@
           <a href="#">#action</a>
         </div>
         <div class="social-share">
+            <a class="btn btn-social btn-info btn-circle" (click)="likes(res.id)" data-toggle="tooltip" title="Share on Facebook" data-placement="right" role="button"><i class="fa fa-thumbs-o-up"></i></a>
+            <span>{{res.like}}</span>
+  
           <a class="btn btn-social btn-facebook btn-circle" href="#" data-toggle="tooltip" title="Share on Facebook" data-placement="bottom" role="button"><i class="fa fa-facebook"></i></a>
-          <span>5.345k</span>
+          <span></span>
           <a class="btn btn-social btn-twitter btn-circle" href="#" data-toggle="tooltip" title="Share on Twitter" data-placement="bottom" role="button"><i class="fa fa-twitter"></i></a>
           <a class="btn btn-social btn-google-plus btn-circle" href="#" data-toggle="tooltip" title="Share on Google Plus" data-placement="bottom" role="button"><i class="fa fa-google-plus"></i></a>
-        </div>
+        </div>        
       </div>
     </div>
 
@@ -93,8 +96,8 @@
       <!-- widget share -->
       <div class="widget widget-share" data-fixed="widget">
         <div class="widget-block">
-          <span>54</span>
-          <a class="btn btn-social btn-facebook btn-circle" href="#" data-toggle="tooltip" title="Share on Facebook" data-placement="right" role="button"><i class="fa fa-thumbs-o-up"></i></a>
+          <span>{{res.like}}</span><br>
+          <a class="btn btn-social btn-info btn-circle" (click)="likes(res.id)" href="#" data-toggle="tooltip" title="Share on Facebook" data-placement="right" role="button"><i class="fa fa-thumbs-o-up"></i></a>
           <a class="btn btn-social btn-facebook btn-circle" href="#" data-toggle="tooltip" title="Share on Facebook" data-placement="right" role="button"><i class="fa fa-facebook"></i></a>
           <a class="btn btn-social btn-twitter btn-circle" href="#" data-toggle="tooltip" title="Share on Twitter" data-placement="right" role="button"><i class="fa fa-twitter"></i></a>
           <a class="btn btn-social btn-google-plus btn-circle" href="#" data-toggle="tooltip" title="Share on Google Plus" data-placement="right" role="button"><i class="fa fa-google-plus"></i></a>
