@@ -220,6 +220,7 @@ $('body').removeClass('navbar-search-open');
   }
 
   public search(): void {
+    this.router.navigate(['map']);
    
     console.log(this.valToSearch);
     this.mapserver.getLocality(this.valToSearch.status).subscribe(data=>{
