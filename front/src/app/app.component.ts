@@ -11,6 +11,8 @@ import { ViewChild } from '@angular/core';
 import {startWith, map} from 'rxjs/operators';
 
 declare let jQuery: any;
+declare var $: any;
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -56,6 +58,17 @@ export class AppComponent {
   public res:any;
   ftitle: any;
   ngOnInit() {
+    this.Jarwis.getalltitle().subscribe(data=>{
+      let y:any = data;
+      for(let x=0; x<y.length; x++){
+        let z = data[x].name_title;
+        let w = data[x].location;
+        if(!this.newArr.includes(z) || !this.newArr.includes(w)){
+          this.newArr.push(z);
+          this.newArr.push(w);
+        };
+      }
+      })
 
     this.filteredStreets = this.control.valueChanges.pipe(
       startWith(''),
@@ -186,11 +199,12 @@ $('body').removeClass('navbar-search-open');
   }
 
   locateMe(event: any) {
+    $('._card').removeClass('d-none');
     this.valToSearch = event.target.value;
     // alert(this.valToSearch.category)
     //map Init
     this.coordGet.getLocality(this.valToSearch).subscribe(data=>{
-      console.log(this.newArr)
+      // console.log(this.newArr);
       this.data = data;
 
       let lat = this.data.results[0].geometry.location.lat;
@@ -258,7 +272,7 @@ $('body').removeClass('navbar-search-open');
     })
   }
 
-  streets: string[] = this.newArr ;
+  streets: string[] = this.newArr;
   private _filter(value: string): string[] {
     console.log(this.newArr)
     

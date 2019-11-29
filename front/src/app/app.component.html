@@ -86,7 +86,7 @@
               <form method="post">
                 <input type="text" class="form-control" placeholder="Search..." (keyup) = 'locateMe($event)' [formControl]="control" [matAutocomplete]="auto">
                 <i class="fa fa-times close"></i>
-                <div class="card">
+                <div class="card _card d-none">
                   <textarea class="card-block" *ngFor="let street of filteredStreets | async" [value]="street">
                     <a href="/Content/{{street}}">{{street}}</a>
                   </textarea>>
