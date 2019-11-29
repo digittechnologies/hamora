@@ -40,6 +40,7 @@
                     <li><a href="/Contact" [routerLink]="['/Contact']">Contact</a></li>
                     <li><a href="/Post" [routerLink]="['/User', {outlets: {side: ['Post']}}]" *ngIf="loggedIn" >Contribute</a></li>                  
                     <li><a href="/Login" [routerLink]="['/Login']" *ngIf="!loggedIn" >Contribute</a></li>  
+                    <li><a href="/map" [routerLink]="['/map']">Map</a></li>  
                   </ul>
                 </nav>
               </div>
@@ -112,7 +113,7 @@
         <div class="container">
           <div class="row">
             <div class="col-sm-12 col-md-5">
-              <h4 class="footer-title">About Sabo-Ogun</h4>
+              <h4 class="footer-title">About Sabi-Ogun</h4>
               <p>Ogun State culture has a rich culture with formidable background that requires preservation and promotion which will not
                     happen effectively without the leverage of technology and DEAB intervention.</p>
 
