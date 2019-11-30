@@ -284,4 +284,9 @@ this.Jarwis.like(id).subscribe(
     this.ngOnInit()
   }
 
+  refresh(){
+    this.router.navigate(['Platform']);
+    this.ngOnInit()
+  }
+
 }

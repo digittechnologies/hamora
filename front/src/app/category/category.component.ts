@@ -107,4 +107,8 @@ export class CategoryComponent implements OnInit {
           );
           }
 
+          refresh(){          
+            this.ngOnInit()
+          }
+
 }

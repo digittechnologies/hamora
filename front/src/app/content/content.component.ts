@@ -227,6 +227,7 @@ handleError(error) {
      
       this.tid= this.actRoute.snapshot.params['id'];
       this.viewig();
+      
                        
                     this.Jarwis.getcontent(id).subscribe(data=>{
                     this.response = data;
@@ -284,6 +285,87 @@ handleError(error) {
                     })
                 
               }));   
+
+              this.actRoute.paramMap.subscribe(( params => {  
+      
+                var id= this.actRoute.snapshot.params['id'];
+               
+                this.tid= this.actRoute.snapshot.params['id'];
+                this.viewig();
+                          
+          
+                if(typeof params.get('id') == 'string') { 
+                  
+                  
+                  this.Jarwis.getalltitle().subscribe(data=>{
+                      for(let x in data){
+                        data[x]              
+                        if(data[x].name_title==params.get('id') || data[x].location==params.get('id')){
+                          this.detail = data[x];                
+                          id = data[x].id;
+                          
+                              this.Jarwis.getcontent(id).subscribe(data=>{
+                              this.response = data;
+                              console.log(this.response);
+                              this.res=this.response.name[0];
+                              this.actname=this.res.actname;
+                              this.view=this.res.views;
+                              this.catname=this.res.catname;
+                              this.form.title_id=this.res.id;
+                              this.title=this.res.name_title;
+                              this.about=this.res.about;
+                              this.dates=this.res.created_at;
+                              this.bio=this.res.familybackground;
+                              this.name=this.res.firstname+" "+this.res.lastname+" "+this.res.middlename;
+                              this.location= this.response.content[0].location;
+                             this.img=this.res.t_image;
+          
+                              this.contents=this.response.content;
+                              this.comment=this.response.comment;  
+                              this.gallery=this.response.gallery;
+                              this.cgallery=this.response.cgallery;
+                              this.contributes=this.response.contribute;
+                              console.log(this.cgallery);
+                             
+                              
+                              this.images='https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/'+this.res.t_image
+                              this.uimage='https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/'+this.res.image;
+                          })   
+                        }} 
+                         
+                          
+                        })  } 
+          // else{        
+          //                     this.Jarwis.getcontent(id).subscribe(data=>{
+          //                     this.response = data;
+          //                     console.log(this.response);
+          //                     this.res=this.response.name[0];
+          //                     this.actname=this.res.actname;
+          //                     this.view=this.res.views;
+          //                     this.catname=this.res.catname;
+          //                     this.form.title_id=this.res.id;
+          //                     this.title=this.res.name_title;
+          //                     this.about=this.res.about;
+          //                     this.dates=this.res.created_at;
+          //                     this.bio=this.res.familybackground;
+          //                     this.name=this.res.firstname+" "+this.res.lastname+" "+this.res.middlename;
+          //                     this.location= this.response.content[0].location;
+          //                    this.img=this.res.t_image;
+          
+          //                     this.contents=this.response.content;
+          //                     this.comment=this.response.comment;  
+          //                     this.gallery=this.response.gallery;
+          //                     this.cgallery=this.response.cgallery;
+          //                     this.contributes=this.response.contribute;
+          //                     console.log(this.cgallery);
+                             
+                              
+          //                     this.images='https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/'+this.res.t_image
+          //                     this.uimage='https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/'+this.res.image;
+                               
+          //                     })}
+                            } 
+          ));   
    
   }
   swip (show){

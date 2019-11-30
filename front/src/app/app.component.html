@@ -46,17 +46,13 @@
               <form method="post">
                 <input type="text" class="form-control" placeholder="Search..." (keyup) = 'locateMe($event)' [formControl]="control" [matAutocomplete]="auto">
                 <i class="fa fa-times close"></i>
-                <div class="card _card d-none">
-                  <textarea class="card-block" *ngFor="let street of filteredStreets | async" [value]="street">
-                    <a href="/Content/{{street}}">{{street}}</a>
-                  </textarea>>
-                </div>
-                <!-- <mat-autocomplete #auto="matAutocomplete">
+                <div class="card _card d-none">                
+                   <mat-autocomplete #auto="matAutocomplete">
                   <mat-option *ngFor="let street of filteredStreets | async" [value]="street">
                   <a href="/Content/{{street}}"> {{street}} </a>
                   </mat-option>
-              </mat-autocomplete> -->
-              
+              </mat-autocomplete>
+                </div>       
               </form>
             </div>
           </div>
@@ -88,7 +84,7 @@
               <div class="row">
                 <div class="col">
                   <ul  *ngFor="let r of res">
-                    <li><a href="#" (click)="navigate(r.id)">{{r.actname}}</a></li>                    
+                    <li><a rounterlink="" (click)="navigate(r.id)">{{r.actname}}</a></li>                    
                   </ul>
                 </div>
                 <div class="col">
@@ -114,11 +110,11 @@
           </div>
           <div class="footer-bottom">
             <div class="footer-social">
-              <a href="https://facebook.com/yakuthemes" target="_blank" data-toggle="tooltip" title="facebook"><i class="fa fa-facebook"></i></a>
-              <a href="https://twitter.com/yakuthemes" target="_blank" data-toggle="tooltip" title="twitter"><i class="fa fa-twitter"></i></a>
-              <a href="https://steamcommunity.com/id/yakuzi" target="_blank" data-toggle="tooltip" title="steam"><i class="fa fa-steam"></i></a>
-              <a href="https://www.twitch.tv/" target="_blank" data-toggle="tooltip" title="twitch"><i class="fa fa-twitch"></i></a>
-              <a href="https://www.youtube.com/user/1YAKUZI" target="_blank" data-toggle="tooltip" title="youtube"><i class="fa fa-youtube"></i></a>
+              <a target="_blank" data-toggle="tooltip" title="facebook"><i class="fa fa-facebook"></i></a>
+              <a target="_blank" data-toggle="tooltip" title="twitter"><i class="fa fa-twitter"></i></a>
+              <a target="_blank" data-toggle="tooltip" title="steam"><i class="fa fa-steam"></i></a>
+              <a target="_blank" data-toggle="tooltip" title="twitch"><i class="fa fa-twitch"></i></a>
+              <a target="_blank" data-toggle="tooltip" title="youtube"><i class="fa fa-youtube"></i></a>
             </div>
             <p>Copyright &copy; 2019 <a href="https://themeforest.net/item/gameforest-responsive-gaming-html-theme/5007730" target="_blank">Sabiogun</a>. All rights reserved.</p>
           </div>
