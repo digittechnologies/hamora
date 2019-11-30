@@ -111,4 +111,9 @@ export class CategoryComponent implements OnInit {
             this.ngOnInit()
           }
 
+          nav(id){
+            this.router.navigate(['Content/'+id+'']);
+            this.ngOnInit()
+          }
+
 }

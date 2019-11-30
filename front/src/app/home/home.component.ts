@@ -4,7 +4,6 @@ import {} from 'googlemaps';
 import { ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import {FormControl} from '@angular/forms';
-;
 import { AuthService } from '../service/auth.service';
 
 declare let jQuery: any;
