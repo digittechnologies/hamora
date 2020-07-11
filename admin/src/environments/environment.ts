@@ -3,7 +3,12 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+
+  baseUrl : 'http://localhost/sce-platform2/backend/public/api',
+  imageUrl : 'http://localhost/sce-platform2/backend/public/upload',
+  login: 'http://localhost/sce-platform2/backend/public/api/adminLogin',
+  signup: 'http://localhost/sce-platform2/backend/public/api/signup',
 };
 
 /*
