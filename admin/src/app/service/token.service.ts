@@ -1,17 +1,21 @@
 import { Injectable } from '@angular/core';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class TokenService {
   private iss = {
     
-    login: 'https://sce-ogun.sabiogun.jtcheck.com/backend/public/api/adminLogin',
-    signup: 'https://sce-ogun.sabiogun.jtcheck.com/backend/public/api/signup'
+    // login: 'https://sce-ogun.sabiogun.jtcheck.com/backend/public/api/adminLogin',
+    // signup: 'https://sce-ogun.sabiogun.jtcheck.com/backend/public/api/signup'
 
     
     // login: 'http://localhost/sce-platform2/backend/public/api/adminLogin',
 
     // signup: 'http://localhost/sce-platform2/backend/public/api/signup'
 
+    
+    login: environment.login,
+    signup: environment.signup,
     
   };
 

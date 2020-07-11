@@ -6,9 +6,9 @@ import { HttpClient } from '@angular/common/http';
 )
 export class JarwisService {
 
-  private baseUrl = 'https://sce-ogun.sabiogun.jtcheck.com/backend/public/api';
+  // private baseUrl = 'https://sce-ogun.sabiogun.jtcheck.com/backend/public/api';
 
-  //  private baseUrl = 'http://localhost/sce-platform2/backend/public/api';
+   private baseUrl = 'http://localhost/sce-platform2/backend/public/api';
 
   constructor(private http: HttpClient) { }
   roleuser() {
