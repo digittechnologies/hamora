@@ -5,7 +5,7 @@ import { environment } from '../../environments/environment';
 export class TokenService {
   private iss = {
  
-    login: 'http://sabiogun.testenv.digittechnologies.org/backend/public/api/login',
+    login: 'http://sabiogun.testenv.digittechnologies.org/backend/public/api/adminLogin',
     signup: 'http://sabiogun.testenv.digittechnologies.org/backend/public/api/signup'
     
     // login: 'http://localhost/sce-platform2/backend/public/api/adminLogin',
