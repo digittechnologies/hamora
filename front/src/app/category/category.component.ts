@@ -21,6 +21,10 @@ export class CategoryComponent implements OnInit {
   res: any;
   article: any;
   loading=true;
+  control: any;
+  filteredStreets:any;
+  search:any;
+  locateMe:any;
 
   constructor(
     private Auth: AuthService,

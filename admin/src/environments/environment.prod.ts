@@ -1,10 +1,7 @@
 export const environment = {
-  production: true,
-
-  
-  baseUrl : 'https://sce-ogun.sabiogun.jtcheck.com/backend/public/api',
-  // imageUrl : 'http://localhost/sce-platform2/backend/public/upload',
-  login: 'https://sce-ogun.sabiogun.jtcheck.com/backend/public/api/adminLogin',
-  signup: 'https://sce-ogun.sabiogun.jtcheck.com/backend/public/api/signup'
+  production: true,  
+  baseUrl : 'http://sabiogun.testenv.digittechnologies.org/backend/public/api',
+  login: 'http://sabiogun.testenv.digittechnologies.org/backend/public/api/login',
+  signup: 'http://sabiogun.testenv.digittechnologies.org/backend/public/api/signup'
 
 };

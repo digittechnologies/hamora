@@ -24,13 +24,13 @@ export class SigninComponent implements OnInit {
     email: null,
     firstname: null,
     lastname: null,
-    // middlename: 'null',
-    // family: 'null',
-    // familybackground: 'null',
-    // gender: 'Male',
-    // address: 'null',
-    // town: 'Abeokuta',
-    // phone:'null',
+    middlename: 'null',
+    family: 'null',
+    familybackground: 'null',
+    gender: 'Male',
+    address: 'null',
+    town: 'Abeokuta',
+    phone:'null',
     password: null,
     password_confirmation: null,
     role_id:null
@@ -72,7 +72,7 @@ export class SigninComponent implements OnInit {
     handleResponse(data) {
       this.disabled=true; 
       this.Token.handle(data.access_token);
-      this.router.navigateByUrl('/User/(side:Details)');
+      this.router.navigateByUrl('/User/(side:Details)');  
       this.ngOnInit();
       this.disabled= false;
       this.sav= 'Submited'
