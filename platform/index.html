@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- meta -->
+    <base href="/">
+    <meta charset="utf-8">
+    <title>Sabiogun (Omo Ogun, Ise Yaa..)</title>    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <!-- vendor css -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+    <link rel="stylesheet" href="assets/plugins/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/plugins/animate/animate.min.css">
+
+    <!-- plugins css -->
+    <link href="assets/plugins/owl-carousel/css/owl.carousel.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/plugins/summernote/summernote-bs4.css">
+    <link rel="stylesheet" href="assets/plugins/switchery/switchery.min.css">
+    <link rel="stylesheet" href="assets/plugins/select2/css/select2.min.css">
+    <link rel="stylesheet" href="assets/plugins/flatpickr/flatpickr.min.css"> 
+  
+    <!-- theme css -->
+    <link rel="stylesheet" href="assets/css/theme.min.css">
+    <link rel="stylesheet" href="assets/css/custom.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.css">
+  <link rel="stylesheet" href="styles.c7d283f53a885dd8be7b.css"></head>
+  <body class="fixed-header">
+
+        <app-root></app-root> 
+
+    <!-- vendor js -->
+    <script src="assets/plugins/jquery/jquery-3.2.1.min.js"></script>
+    <script src="assets/plugins/popper/popper.min.js"></script>
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css"></script>
+
+    <!-- plugins js -->    
+    <script src="assets/plugins/lightbox/lightbox.js"></script>
+    <script src="assets/plugins/owl-carousel/js/owl.carousel.min.js"></script>
+    <script src="assets/plugins/ytplayer/jquery.mb.YTPlayer.min.js"></script>
+    <script src="assets/plugins/sticky/jquery.sticky.js"></script>
+    <script src="assets/plugins/summernote/summernote-bs4.js"></script>
+    <script src="assets/plugins/switchery/switchery.min.js"></script>
+    <script src="assets/plugins/select2/js/select2.min.js"></script>
+    <script src="assets/plugins/flatpickr/flatpickr.min.js"></script>
+    <script src="assets/plugins/easypiechart/jquery.easing.1.3.js"></script>
+    <script src="assets/plugins/easypiechart/jquery.easypiechart.min.js"></script>
+
+  <script>
+
+            (function($) {
+              "use strict";
+        
+              // Full Width Carousel
+              $('.owl-slide').owlCarousel({
+                nav: true,
+                loop: true,
+                autoplay: true,
+                items: 1
+              });
+        
+              // Recent Reviews
+              $('.owl-list').owlCarousel({
+                margin: 25,
+                nav: true,
+                dots: false,
+                responsive: {
+                  0: {
+                    items: 1
+                  },
+                  500: {
+                    items: 2
+                  },
+                  701: {
+                    items: 3
+                  },
+                  1000: {
+                    items: 4
+                  }
+                }
+              });
+        
+              // lightbox
+              $('[data-lightbox]').lightbox();
+            })(jQuery);
+  </script>
+
+    <!-- theme js -->
+    <script src="assets/js/theme.min.js"></script>
+  </body>
+
+  <script>
+        _latitude = 48.87;
+        _longitude = 2.29;
+        createHomepageGoogleMap(_latitude,_longitude);
+        $(window).load(function(){
+          initializeOwl(false);
+        });
+    
+        
+        </script>
+        <body>
+          <app-root></app-root>
+          <script src="https://www.gstatic.com/firebasejs/7.2.0/firebase-app.js"></script>
+          <script src="https://www.gstatic.com/firebasejs/7.2.0/firebase-auth.js"></script>
+          <script src="https://www.gstatic.com/firebasejs/7.2.0/firebase-firestore.js"></script>
+          <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBneTry7a6XDjUjSBLISxx7Fr6s0AePqVM"></script>
+        <script type="text/javascript" src="runtime.26209474bfa8dc87a77c.js"></script><script type="text/javascript" src="es2015-polyfills.3f4e8bcd7f6755d78863.js" nomodule></script><script type="text/javascript" src="polyfills.8bbb231b43165d65d357.js"></script><script type="text/javascript" src="main.31629c4212ea8c96efec.js"></script></body>
+</html>
