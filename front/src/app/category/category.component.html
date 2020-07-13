@@ -21,7 +21,7 @@
 </section>
 <section class="toolbar toolbar-links" data-fixed="true">
 <div class="container">
-  <h5 class="m-r-30">Calegory: {{actname}}</h5>
+  <h5 class="m-r-30">Category: {{actname}}</h5>
   <form method="post" class="hidden-lg-down" (submit)="search()">
     <div class="form-group input-icon-right">
       <i class="fa fa-search"></i>
@@ -121,9 +121,9 @@
                       <h2 class="post-title"><a routerink="" (click)="navigate(all.id)">{{all.name_title}}</a></h2>
                     </h2>
                     <div class="post-meta">
-                      <span><i class="fa fa-clock-o"></i> {{all.created_at}} by <a href="profile.html">{{all.firstname + ' '+ all.lastname}}</a></span>
-                      <span><a href="blog-post-carousel.html#comments"><i class="fa fa-comment-o"></i>{{all.comment_count}}</a></span>
-                      <a class="float-right p-t-10" href="#"><i class="fa fa-heart-o"></i> {{all.views}}</a>
+                      <span><i class="fa fa-clock-o"></i> {{all.created_at}} by <a >{{all.firstname + ' '+ all.lastname}}</a></span>
+                      <span><a ><i class="fa fa-comment-o"></i>{{all.comment_count}}</a></span>
+                      <a class="float-right p-t-10" ><i class="fa fa-heart-o"></i> {{all.views}}</a>
                     </div>
                   </div>
                 </div>  

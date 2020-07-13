@@ -24,7 +24,7 @@
                   <li><a href="/Login" [routerLink]="['/Login']" *ngIf="!loggedIn">Login</a></li>
                   <li class="dropdown dropdown-profile" *ngIf="loggedIn">
                           
-                      <a href="login.html" data-toggle="dropdown"><img [src]='image' alt=""> <span>{{response.firstname}}</span></a>
+                      <a  data-toggle="dropdown"><img [src]='image' alt=""> <span>{{response.firstname}}</span></a>
                       <div class="dropdown-menu dropdown-menu-right">
                         <a class="dropdown-item active" [routerLink]="['/User', {outlets: {side: ['Details']}}]"><i class="fa fa-user"></i> Profile</a>
                         <a class="dropdown-item" [routerLink]="['/Platform']"><i class="fa fa-envelope-open"></i>Platform</a>
