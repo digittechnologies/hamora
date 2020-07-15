@@ -80,7 +80,7 @@ export class PlatformComponent implements OnInit {
         this.article=this.ftitle.name
         this.gallery=this.ftitle.gallery
             console.log(this.gallery);
-            this.image= 'https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/'+this.article.t_image;
+            this.image= 'http://localhost/backend/public/upload/uploads/'+this.article.t_image;
         }
       )
 
@@ -112,7 +112,7 @@ export class PlatformComponent implements OnInit {
          this.documentArray = this.resa.subevent;
          let string:string
          for(let i=0;i<=this.documentArray.length -1;i++){
-           string += '<div class="card-img"><a href="video-post.html"><img src="https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/'+this.resac.t_image+' class="card-img-top" alt="Anthem Official Gameplay Reveal"></a><div class="card-meta"><span>6:46</span></div></div><div class="card-block"><h4 class="card-title"><a href="video-post.html">Anthem Official Gameplay Reveal</a></h4><div class="card-meta"><span><i class="fa fa-clock-o"></i> 2 weeks ago</span><span>447 views</span></div></div>';
+           string += '<div class="card-img"><a href="video-post.html"><img src="http://localhost/backend/public/upload/uploads/'+this.resac.t_image+' class="card-img-top" alt="Anthem Official Gameplay Reveal"></a><div class="card-meta"><span>6:46</span></div></div><div class="card-block"><h4 class="card-title"><a href="video-post.html">Anthem Official Gameplay Reveal</a></h4><div class="card-meta"><span><i class="fa fa-clock-o"></i> 2 weeks ago</span><span>447 views</span></div></div>';
          }
         string = string.replace('undefined','');
         jQuery().append(string);

@@ -60,7 +60,7 @@ public role;
     this.Token.handle(data.access_token);
    
     this.Auth.changeAuthStatus(true);
-   this.router.navigateByUrl('');
+   this.router.navigate(['']);
   
    
   //  this.disabled= false;

@@ -119,8 +119,8 @@ export class UpdateComponent implements OnInit {
                     this.contents=this.response.content
                     this.comment=this.response.comment                    
                     
-                    this.image='https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/'+this.res.t_image
-                    this.uimage='https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/'+this.res.image;
+                    this.image='http://localhost/backend/public/upload/uploads/'+this.res.t_image
+                    this.uimage='http://localhost/backend/public/upload/uploads/'+this.res.image;
                      
                     })
                 
@@ -147,8 +147,8 @@ export class UpdateComponent implements OnInit {
                   console.log(this.contents);
                   this.comment=this.response.comment
                 
-                  this.image='https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/'+this.res.t_image
-                  this.uimage='https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/'+this.res.image;
+                  this.image='http://localhost/backend/public/upload/uploads/'+this.res.t_image
+                  this.uimage='http://localhost/backend/public/upload/uploads/'+this.res.image;
                    
                   })
               }

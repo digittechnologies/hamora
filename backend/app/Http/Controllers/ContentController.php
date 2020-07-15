@@ -103,15 +103,15 @@ class ContentController extends Controller
         $request->merge(['user_id'=>$authid]);
         $detcontents = $request->contents;
         $videodet = $request->videos;
-    //    return $videodet;
+  
          $files=$image_name[0];
          $filenames=time().'.' . explode('/', explode(':', substr($files, 0, strpos($files,';')))[1])[1];
         Image::make($files)->resize(300, 300)->save(public_path('/upload/uploads/'.$filenames));
        
         $request->merge(['t_image'=>$filenames]);
-        return $request;
+   
         $content= title::create($request-> all());
-    // return $content->id;
+   
 $imageName=[];
 $count = 0;
 foreach ($image_name as $img) {

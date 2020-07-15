@@ -62,7 +62,7 @@ contents:null,
   }
   handleError(error: any): void {
     this.disabled=false;
-    this.sav= 'Contribut';
+    this.sav= 'Contribute';
   }
 
   

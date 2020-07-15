@@ -121,7 +121,7 @@ handleError(error) {
 
       this.article=this.ftitle.name
       this.gallery=this.ftitle.gallery         
-          this.image= 'https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/'+this.article.t_image;
+          this.image= 'http://localhost/backend/public/upload/uploads/'+this.article.t_image;
       }
     )
 
@@ -261,8 +261,8 @@ handleError(error) {
                     this.cgallery=this.response.cgallery;
                     this.contributes=this.response.contribute;                   
                    
-                    this.images='https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/'+this.res.t_image
-                    this.uimage='https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/'+this.res.image;
+                    this.images='http://localhost/backend/public/upload/uploads/'+this.res.t_image
+                    this.uimage='http://localhost/backend/public/upload/uploads/'+this.res.image;
                      
                     })
                 
@@ -308,8 +308,8 @@ handleError(error) {
                               this.contributes=this.response.contribute;                   
                              
                               
-                              this.images='https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/'+this.res.t_image
-                              this.uimage='https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/'+this.res.image;
+                              this.images='http://localhost/backend/public/upload/uploads/'+this.res.t_image
+                              this.uimage='http://localhost/backend/public/upload/uploads/'+this.res.image;
                           })   
                         }} 
                          
@@ -379,8 +379,8 @@ handleError(error) {
                       this.contents=this.response.content;
                       this.comment=this.response.comment;  
                     this.gallery=this.response.gallery;                   
-                      this.images='https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/'+this.res.t_image
-                      this.uimage='https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/'+this.res.image;
+                      this.images='http://localhost/backend/public/upload/uploads/'+this.res.t_image
+                      this.uimage='http://localhost/backend/public/upload/uploads/'+this.res.image;
                        
                       })
                   

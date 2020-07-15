@@ -24,7 +24,7 @@ export class DetailsComponent implements OnInit {
       data=>{
       
       this.profres = data;
-      this.image='https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/'+this.profres.image
+      this.image='http://localhost/backend/public/upload/uploads/'+this.profres.image
      
     });
     this.Jarwis.timelinebyfollow().subscribe(

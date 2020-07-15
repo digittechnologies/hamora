@@ -43,7 +43,7 @@ response: any;
       this.email=this.response.email,
   this.family=this.response.family,
   this.middlename=this.response.middlename,
-      this.image='https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/'+this.response.image
+      this.image='http://localhost/backend/public/upload/uploads/'+this.response.image
      
     });
 
