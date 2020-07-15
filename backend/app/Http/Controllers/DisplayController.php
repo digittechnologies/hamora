@@ -282,6 +282,11 @@ class DisplayController extends Controller
             ->where('activity_id','=',$id)
             ->where('titles.status','=','Y')
                ->get(),
+               'follow'=>Follows::join('titles','follows.title_id','=','titles.id')
+               ->join('users','follows.user_id','=','users.id')
+               ->select('follows.*', )
+               ->where('follows.user_id','=', auth()->user()->id)
+              ->where('follows.title_id','=',$id)->count(),
             'acti' =>Activities::where('id','=', $id)->get(),
             'cat' =>Category::where('activity_id','=', $id)->get()
         

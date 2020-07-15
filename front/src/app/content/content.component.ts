@@ -38,6 +38,7 @@ id: any;
     title_id: null,
    
   };
+  folllow= "Follow";
   loading=true;
   comment: any;
   title: any;
@@ -53,6 +54,7 @@ id: any;
   location: any;
   public orderForm: FormGroup;
   img:any;
+  follows:any;
   images: any;
   ftitle: any;
   footer: any;
@@ -262,7 +264,13 @@ handleError(error) {
                     this.gallery=this.response.gallery;
                     this.cgallery=this.response.cgallery;
                     this.contributes=this.response.contribute;                   
-                    this.videos=this.response.video; 
+                    this.videos=this.response.video;
+                    this.follows=this.response.follow; 
+                    if(this.follows == 0 )   {
+                      this.folllow = "Follow";
+                    }  else{
+                      this.folllow = "Following";
+                    } 
                     this.images='http://localhost/backend/public/upload/uploads/'+this.res.t_image
                     this.uimage='http://localhost/backend/public/upload/uploads/'+this.res.image;
                      
@@ -309,7 +317,12 @@ handleError(error) {
                               this.cgallery=this.response.cgallery;
                               this.contributes=this.response.contribute;                   
                               this.videos=this.response.video; 
-                              
+                              this.follows=this.response.follow;
+                              if(this.follows == 0 )   {
+                                this.folllow = "Follow";
+                              }  else{
+                                this.folllow = "Following";
+                              } 
                               this.images='http://localhost/backend/public/upload/uploads/'+this.res.t_image
                               this.uimage='http://localhost/backend/public/upload/uploads/'+this.res.image;
                           })   
@@ -381,7 +394,13 @@ handleError(error) {
                       this.contents=this.response.content;
                       this.comment=this.response.comment;  
                     this.gallery=this.response.gallery;     
-                    this.videos=this.response.video;               
+                    this.videos=this.response.video;   
+                    this.follows=this.response.follow;
+                    if(this.follows == 0 )   {
+                      this.folllow = "Follow";
+                    }  else{
+                      this.folllow = "Following";
+                    }       
                       this.images='http://localhost/backend/public/upload/uploads/'+this.res.t_image
                       this.uimage='http://localhost/backend/public/upload/uploads/'+this.res.image;
                        
@@ -451,8 +470,15 @@ handleError(error) {
         let snackBarRef = this.snackBar.open("follow", 'Dismiss', {
           duration: 2000
         }) 
-       
+        // this.folllow = "Following";
         this.ngOnInit()
+      },
+      error => {
+        let snackBarRef = this.snackBar.open("You are following already", 'Dismiss', {
+          duration: 2000
+
+        })
+        // this.folllow = "Following";
       }
       
       );

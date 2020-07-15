@@ -15,7 +15,7 @@
   <div class="hero-block">
     <h2 class="hero-title">Do you Know about Ogun State or you have a story to tell </h2>
     <p>Share your story here.</p>
-    <a class="btn btn-primary btn-lg btn-shadow btn-md btn-rounded" href="blog-post.html" role="button">Contribute</a>
+    <a class="btn btn-primary btn-lg btn-shadow btn-md btn-rounded" [routerLink]="['/User', {outlets: {side: ['Post']}}]" role="button">Contribute</a>
   </div>
 </div>
 </section>
@@ -130,7 +130,7 @@
                 <p>{{all.content | slice:0:250 }}....</p>
                 <div class="post-footer">
                   <a class="btn btn-secondary" (click)="navigate(all.id)" role="button">Read More</a>                 
-                  <a class="btn btn-secondary" (click)="follow(all.id)" role="button">Folllow</a>
+                  <a class="btn btn-secondary" (click)="follow(all.id)" role="button">{{ folllow }}</a>
                   <a class="btn btn-secondary float-right p-t-10" (click)="likes(all.id)"><i class="fa fa-thumbs-o-up"></i> {{all.like}}</a>
                 </div>
               </div>

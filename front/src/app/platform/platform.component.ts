@@ -50,6 +50,7 @@ export class PlatformComponent implements OnInit {
   documentArray: any;
   article: any;
   loading=true;
+  folllow = "Follow";
 
   mySlideImages = [1,2,3].map((i)=> `https://picsum.photos/640/480?image=${i}`);
   myCarouselImages =[1,2,3,4,5,6].map((i)=>`https://picsum.photos/640/480?image=${i}`);
@@ -76,7 +77,12 @@ export class PlatformComponent implements OnInit {
         data=>{
           this.loading=false;
         this.ftitle = data; 
-
+        this.follows=this.ftitle.follow;
+        if(this.follows == 0 )   {
+          this.folllow = "Follow";
+        }  else{
+          this.folllow = "Following";
+        } 
         this.article=this.ftitle.name
         this.gallery=this.ftitle.gallery
             console.log(this.gallery);
@@ -268,8 +274,16 @@ this.Jarwis.like(id).subscribe(
         let snackBarRef = this.snackBar.open("follow", 'Dismiss', {
           duration: 2000
         }) 
+        this.folllow = "Following"
         console.log(data)
         this.ngOnInit()
+      },
+      error => {
+        let snackBarRef = this.snackBar.open("You are following already", 'Dismiss', {
+          duration: 2000
+
+        })
+        this.folllow = "Following"
       }
       
       );

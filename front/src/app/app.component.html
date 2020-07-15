@@ -28,7 +28,7 @@
                       <div class="dropdown-menu dropdown-menu-right">
                         <a class="dropdown-item active" [routerLink]="['/User', {outlets: {side: ['Details']}}]"><i class="fa fa-user"></i> Profile</a>
                         <a class="dropdown-item" [routerLink]="['/Platform']"><i class="fa fa-envelope-open"></i>Platform</a>
-                        <a class="dropdown-item" [routerLink]="['/User', {outlets: {side: ['Details']}}]"><i class="fa fa-heart"></i>My Story</a>
+                        <a class="dropdown-item"[routerLink]="['/User', {outlets: {side: ['Mypost']}}]"><i class="fa fa-heart"></i>My Story</a>
                         <a class="dropdown-item" [routerLink]="['/User', {outlets: {side: ['Profile']}}]"><i class="fa fa-cog"></i> Settings</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" (click)="logout($event)"><i class="fa fa-sign-out"></i> Logout</a>

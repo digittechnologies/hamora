@@ -48,7 +48,9 @@ export class JarwisService {
     return this.http.get(`${this.baseUrl}/getact`,)
   }
   getArticle() {
-    return this.http.get(`${this.baseUrl}/getArticle`,)
+    return this.http.get(`${this.baseUrl}/getArticle`,{headers:{
+      Authorization:`Bearer ${localStorage.token}`
+    }})
   }
   profile() {
     return this.http.get(`${this.baseUrl}/me`,{headers:{
@@ -94,7 +96,9 @@ export class JarwisService {
     return this.http.post<any>(`${this.baseUrl}/addview`, data)
   }
   getcontent(id:string) {
-    return this.http.get(`${this.baseUrl}/getcontent/${id}`)
+    return this.http.get(`${this.baseUrl}/getcontent/${id}`,{headers:{
+      Authorization:`Bearer ${localStorage.token}`
+    }})
   }
   getcontentonly(id:string) {
     return this.http.get(`${this.baseUrl}/getcontentonly/${id}`)
@@ -106,7 +110,9 @@ export class JarwisService {
     return this.http.get(`${this.baseUrl}/getfootertitle`,)
   }
   gettitles(id:string) {
-    return this.http.get(`${this.baseUrl}/gettitles/${id}`)
+    return this.http.get(`${this.baseUrl}/gettitles/${id}`,{headers:{
+      Authorization:`Bearer ${localStorage.token}`
+    }})
   }
   getUtitles() {
     return this.http.get(`${this.baseUrl}/getUtitles`,{headers:{
