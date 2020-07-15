@@ -57,7 +57,7 @@
                     <a class="btn btn-secondary float-right social-share" (click)="follow(res.id)" role="button">Folllow</a>
                     <div class="post-meta">
                           <span><i class="fa fa-clock-o"></i> {{res.created_at}} by <a >{{name}}</a></span>
-                          <span><a href="#comments"><i class="fa fa-comment-o"></i> {{res.comment_count}} comments</a></span>
+                          <span><a ><i class="fa fa-comment-o"></i> {{res.comment_count}} comments</a></span>
                     </div>
                   </div>
                 </div> 
@@ -65,7 +65,7 @@
 
           <div class="post-thumbnail col-lg-8">
               <img *ngIf="loading"  width="100%" height="320" src="assets/img/loading.gif" alt="">
-                  <img width="100%" height="320" src="http://localhost/backend/public/upload/uploads/{{res.t_image}}" alt="">
+                  <img width="100%" height="320" src="http://localhost/sce-platform2/backend/public/upload/uploads/{{res.t_image}}" alt="">
                 </div>
         
           <div id="description" *ngFor="let r of contents">
@@ -163,7 +163,7 @@
         <div id="comments" class="comments anchor">
             <div class="comments-header">
               <h5><i class="fa fa-comment-o m-r-5"></i> Comments ({{res.comment_count}})</h5>
-              <div class="dropdown float-right">
+              <!-- <div class="dropdown float-right">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Sorted by Best <span class="caret"></span></button>
                 <div class="dropdown-menu dropdown-menu-right">
                   <a class="dropdown-item active" >Best</a>
@@ -171,14 +171,14 @@
                   <a class="dropdown-item" >Oldest</a>
                   <a class="dropdown-item" >Random</a>
                 </div>
-              </div>
+              </div> -->
             </div>
-            <a class="btn btn-success text-left m-t-15 btn-block" href="#comments" role="button"><i class="fa fa-spinner fa-pulse m-r-5"></i> </a>
+            <a class="btn btn-success text-left m-t-15 btn-block"  role="button"><i class="fa fa-spinner fa-pulse m-r-5"></i> </a>
             <ul>
               <li>
                 <div class="comment" *ngFor="let r of comment">
                   <div class="comment-avatar">
-                    <a ><img alt="" src="http://localhost/backend/public/upload/uploads/{{r.image}}"></a>
+                    <a ><img alt="" src="http://localhost/sce-platform2/backend/public/upload/uploads/{{r.image}}"></a>
                     <a class="badge badge-success"  data-toggle="tooltip" data-placement="bottom" title="Add as friend"><i class="fa fa-user-plus"></i></a>
                   </div>
                   <div class="comment-post">
@@ -293,7 +293,7 @@
             <ul class="widget-list">              
                
               <li  *ngFor="let H of footer">
-                <div class="widget-img"><a (click)="nav(H.id)"><img width="100%" height="80" src="http://localhost/backend/public/upload/uploads/{{H.t_image}}" alt=""></a></div>
+                <div class="widget-img"><a (click)="nav(H.id)"><img width="100%" height="80" src="http://localhost/sce-platform2/backend/public/upload/uploads/{{H.t_image}}" alt=""></a></div>
                 <div>
                   <h4><a routerink="" (click)="nav(H.id)">{{H.name_title}}</a></h4>
                   <span>{{H.created_at}}</span>
@@ -341,8 +341,8 @@
               <div class="col-12 col-sm-6 col-md-4" *ngFor="let r of gallery">
                         <figure>
                           <div class="figure-img">
-                            <a href="http://localhost/backend/public/upload/uploads/{{r.image_name}}" data-lightbox='{"disqus": true, "gallery": "uncharted"}'>
-                            <img src="http://localhost/backend/public/upload/uploads/{{r.image_name}}" alt="">
+                            <a href="http://localhost/sce-platform2/backend/public/upload/uploads/{{r.image_name}}" data-lightbox='{"disqus": true, "gallery": "uncharted"}'>
+                            <img src="http://localhost/sce-platform2/backend/public/upload/uploads/{{r.image_name}}" alt="">
                           </a>
                             <a class="figure-likes" >32</a>
                           </div>
@@ -366,11 +366,11 @@
 
         <div class="post post-single" >
           <!-- main -->
-          <section class="bg-image" style="background-image: url('https://youtu.be/OukK1AybYbg');">
+          <section class="bg-image" *ngFor="let r of videos" style="background-image: url('https://youtu.be/OukK1AybYbg');">
             <div class="overlay-light"></div>
             <div class="container">
-              <div class="embed-responsive embed-responsive-16by9">
-                  <iframe width="560" height="315" src="https://www.youtube.com/embed/wHhjZhUJDtA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>              </div>
+              <div class="embed-responsive embed-responsive-16by9">{{r.video_name}}
+                  <iframe width="560" height="315" src="{{r.video_name}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>              </div>
             </div>
           </section>
         
@@ -387,7 +387,7 @@
                         <h2 class="post-title">r</h2>
                         <div class="post-meta">
                           <span><i class="fa fa-clock-o"></i> August 22, 2017 by <a >Clark</a></span>
-                          <span><a href="#comments"><i class="fa fa-comment-o"></i></a></span>
+                          <span><a ><i class="fa fa-comment-o"></i></a></span>
                         </div>
                       </div>
                     </div>
@@ -407,17 +407,17 @@
                   <div id="comments" class="comments anchor">
                     <div class="comments-header">
                       <h5><i class="fa fa-comment-o"></i> Comments</h5>
-                      <div class="dropdown float-right">
+                      <!-- <div class="dropdown float-right">
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Sorted by best <span class="caret"></span></button>
                         <div class="dropdown-menu dropdown-menu-right">
-                          <a class="dropdown-item active" >Best</a>
+                          <a class="dropdown-item active" >Best</a> -->
                           <!-- <a class="dropdown-item" href="#">Latest</a>
                           <a class="dropdown-item" href="#">Oldest</a>
                           <a class="dropdown-item" href="#">Random</a> -->
-                        </div>
-                      </div>
+                        <!-- </div>
+                      </div> -->
                     </div>
-                    <a class="btn btn-success text-left m-t-15 btn-block" href="#comments" role="button"><i class="fa fa-spinner fa-pulse m-r-5"></i></a>
+                    <a class="btn btn-success text-left m-t-15 btn-block"  role="button"><i class="fa fa-spinner fa-pulse m-r-5"></i></a>
                     
                     <form>
                       <h5>Leave a comment</h5>
@@ -611,7 +611,7 @@
           <div class="col-12 col-sm-6 col-md-3" *ngFor="let rel of footer">
             <div class="card card-widget" >
               <div class="card-img">
-                <a ><img  width="100%" height="180" src="http://localhost/backend/public/upload/uploads/{{rel.t_image}}" alt=""></a>
+                <a ><img  width="100%" height="180" src="http://localhost/sce-platform2/backend/public/upload/uploads/{{rel.t_image}}" alt=""></a>
               </div>                     
               
               <div class="card-block">

@@ -56,6 +56,7 @@ id: any;
   images: any;
   ftitle: any;
   footer: any;
+  videos:any;
   post=true;
   mapv=false;
   imgs=false;
@@ -120,7 +121,8 @@ handleError(error) {
       this.ftitle = data; 
 
       this.article=this.ftitle.name
-      this.gallery=this.ftitle.gallery         
+      this.gallery=this.ftitle.gallery 
+              
           this.image= 'http://localhost/backend/public/upload/uploads/'+this.article.t_image;
       }
     )
@@ -260,7 +262,7 @@ handleError(error) {
                     this.gallery=this.response.gallery;
                     this.cgallery=this.response.cgallery;
                     this.contributes=this.response.contribute;                   
-                   
+                    this.videos=this.response.video; 
                     this.images='http://localhost/backend/public/upload/uploads/'+this.res.t_image
                     this.uimage='http://localhost/backend/public/upload/uploads/'+this.res.image;
                      
@@ -306,7 +308,7 @@ handleError(error) {
                               this.gallery=this.response.gallery;
                               this.cgallery=this.response.cgallery;
                               this.contributes=this.response.contribute;                   
-                             
+                              this.videos=this.response.video; 
                               
                               this.images='http://localhost/backend/public/upload/uploads/'+this.res.t_image
                               this.uimage='http://localhost/backend/public/upload/uploads/'+this.res.image;
@@ -378,7 +380,8 @@ handleError(error) {
   
                       this.contents=this.response.content;
                       this.comment=this.response.comment;  
-                    this.gallery=this.response.gallery;                   
+                    this.gallery=this.response.gallery;     
+                    this.videos=this.response.video;               
                       this.images='http://localhost/backend/public/upload/uploads/'+this.res.t_image
                       this.uimage='http://localhost/backend/public/upload/uploads/'+this.res.image;
                        

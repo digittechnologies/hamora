@@ -52,17 +52,38 @@ contents:null,
   onSubmit() {
     this.form.contents=this.items  
     console.log(this.form)
-    this.Jarwis.content(this.form).subscribe(
+    if (this.form.contents.length == 0){
+      let snackBarRef = this.snackBar.open("Content are required ", 'Dismiss', {
+        duration: 4000
+      })
+     
+    }else{
+      if (this.form.image == null){
+        let snackBarRef = this.snackBar.open("Image are required ", 'Dismiss', {
+          duration: 4000
+        })
+       
+      }else{
+       
+          this.Jarwis.content(this.form).subscribe(
       data => this.handleResponse(data),
         error => this.handleError(error)
    );
+        this.disabled=true;
+      this.sav= 'Posting';
+      }
+      
+    }
+  
 
-   this.disabled=true;
-    this.sav= 'Posting';
+   
   }
   handleError(error: any): void {
     this.disabled=false;
     this.sav= 'Contribute';
+    let snackBarRef = this.snackBar.open("Post", 'Dismiss', {
+      duration: 8000
+    })
   }
 
   
