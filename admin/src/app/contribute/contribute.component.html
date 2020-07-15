@@ -49,7 +49,7 @@
                   
                   <td class="center">{{t.content}}</td>
                   <td class="center">{{t.updated_at}}</td>
-                  <td class="center"><img style="width:40%;height:200px" src="https://sce-ogun.sabiogun.jtcheck.com/backend/public/upload/uploads/{{t.c_image}}"></td>
+                  <td class="center"><img style="width:40%;height:200px" src="http://localhost/backend/public/upload/uploads/{{t.c_image}}"></td>
                   <td class="center"><span class="label label-danger" *ngIf ="t.status=== 'N'">INACTIVE</span>
                     <span class="label label-warning" *ngIf ="t.status=== 'E'">PENDING</span>
                     <span class="label label-success" *ngIf ="t.status=== 'Y'">LIVE</span> <span class="label label-default" *ngIf ="t.status=== 'T'">Trash</span>
@@ -99,7 +99,7 @@
                 <tbody>
                   <tr *ngFor="let t of resimg">
                     <td>{{t.id}}</td>
-                  <td class="center"><img src="https://sce-ogun.sabiogun.jtcheck.com/backend/public/upload/uploads/{{t.image_name}}" style="width:50%;height:200px"></td>
+                  <td class="center"><img src="http://localhost/backend/public/upload/uploads/{{t.image_name}}" style="width:50%;height:200px"></td>
                     <!-- <td>{{t.header}}</td> -->
                     <!-- <td class="center">{{t.content}}</td> -->
                     <td class="center">{{t.updated_at}}</td>

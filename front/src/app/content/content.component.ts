@@ -38,6 +38,7 @@ id: any;
     title_id: null,
    
   };
+  folllow= "Follow";
   loading=true;
   comment: any;
   title: any;
@@ -53,9 +54,11 @@ id: any;
   location: any;
   public orderForm: FormGroup;
   img:any;
+  follows:any;
   images: any;
   ftitle: any;
   footer: any;
+  videos:any;
   post=true;
   mapv=false;
   imgs=false;
@@ -120,8 +123,9 @@ handleError(error) {
       this.ftitle = data; 
 
       this.article=this.ftitle.name
-      this.gallery=this.ftitle.gallery         
-          this.image= 'https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/'+this.article.t_image;
+      this.gallery=this.ftitle.gallery 
+              
+          this.image= 'http://localhost/backend/public/upload/uploads/'+this.article.t_image;
       }
     )
 
@@ -260,9 +264,15 @@ handleError(error) {
                     this.gallery=this.response.gallery;
                     this.cgallery=this.response.cgallery;
                     this.contributes=this.response.contribute;                   
-                   
-                    this.images='https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/'+this.res.t_image
-                    this.uimage='https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/'+this.res.image;
+                    this.videos=this.response.video;
+                    this.follows=this.response.follow; 
+                    if(this.follows == 0 )   {
+                      this.folllow = "Follow";
+                    }  else{
+                      this.folllow = "Following";
+                    } 
+                    this.images='http://localhost/backend/public/upload/uploads/'+this.res.t_image
+                    this.uimage='http://localhost/backend/public/upload/uploads/'+this.res.image;
                      
                     })
                 
@@ -306,10 +316,15 @@ handleError(error) {
                               this.gallery=this.response.gallery;
                               this.cgallery=this.response.cgallery;
                               this.contributes=this.response.contribute;                   
-                             
-                              
-                              this.images='https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/'+this.res.t_image
-                              this.uimage='https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/'+this.res.image;
+                              this.videos=this.response.video; 
+                              this.follows=this.response.follow;
+                              if(this.follows == 0 )   {
+                                this.folllow = "Follow";
+                              }  else{
+                                this.folllow = "Following";
+                              } 
+                              this.images='http://localhost/backend/public/upload/uploads/'+this.res.t_image
+                              this.uimage='http://localhost/backend/public/upload/uploads/'+this.res.image;
                           })   
                         }} 
                          
@@ -378,9 +393,16 @@ handleError(error) {
   
                       this.contents=this.response.content;
                       this.comment=this.response.comment;  
-                    this.gallery=this.response.gallery;                   
-                      this.images='https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/'+this.res.t_image
-                      this.uimage='https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/'+this.res.image;
+                    this.gallery=this.response.gallery;     
+                    this.videos=this.response.video;   
+                    this.follows=this.response.follow;
+                    if(this.follows == 0 )   {
+                      this.folllow = "Follow";
+                    }  else{
+                      this.folllow = "Following";
+                    }       
+                      this.images='http://localhost/backend/public/upload/uploads/'+this.res.t_image
+                      this.uimage='http://localhost/backend/public/upload/uploads/'+this.res.image;
                        
                       })
                   
@@ -448,8 +470,15 @@ handleError(error) {
         let snackBarRef = this.snackBar.open("follow", 'Dismiss', {
           duration: 2000
         }) 
-       
+        // this.folllow = "Following";
         this.ngOnInit()
+      },
+      error => {
+        let snackBarRef = this.snackBar.open("You are following already", 'Dismiss', {
+          duration: 2000
+
+        })
+        // this.folllow = "Following";
       }
       
       );

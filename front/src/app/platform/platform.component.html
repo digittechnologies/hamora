@@ -99,7 +99,7 @@
            
           <div class="post post-md" >
           <div class="post-thumbnail">
-            <a href="Content/{{all.id}}" (click)="nav(all.id)"><img  width="100%" height="180" src="https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/{{all.t_image}}" alt=""></a>
+            <a href="Content/{{all.id}}" (click)="nav(all.id)"><img  width="100%" height="180" src="http://localhost/backend/public/upload/uploads/{{all.t_image}}" alt=""></a>
             <!-- <img src="assets/img/loading.gif" class="lazy" data-src="assets/img/SC.jpg" [src]="image" width="240" height="152"> -->
           </div>
           <!-- <div class="post-thumbnail">
@@ -109,7 +109,7 @@
             <div class="post-header">
               <div>
               <a href="Content/{{all.id}}" (click)="nav(all.id)">
-                <img src="https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/{{all.image}}" alt="">
+                <img src="http://localhost/backend/public/upload/uploads/{{all.image}}" alt="">
               </a>
               </div>
               <div>
@@ -117,9 +117,9 @@
                   <h2 class="post-title"><a routerink="" (click)="nav(all.id)">{{all.name_title}}</a></h2>                  
                 </h2>                
                 <div class="post-meta">
-                  <span><i class="fa fa-clock-o"></i> {{all.created_at}} by <a href="profile.html">{{all.firstname + ' '+ all.lastname}}</a></span>
-                  <span><a href="blog-post-carousel.html#comments"><i class="fa fa-comment-o"></i>{{all.comment_count}}</a></span>
-                  <span><a href="blog-post-carousel.html#comments"><i class="fa fa-eye"></i>{{all.views}}</a></span>
+                  <span><i class="fa fa-clock-o"></i> {{all.created_at}} by <a >{{all.firstname + ' '+ all.lastname}}</a></span>
+                  <span><a ><i class="fa fa-comment-o"></i>{{all.comment_count}}</a></span>
+                  <span><a ><i class="fa fa-eye"></i>{{all.views}}</a></span>
                 </div>
               </div>
             </div>  
@@ -130,7 +130,7 @@
               <!-- <a class="float-right p-t-10" (click)="likes(all.id)"><i class="fa fa-thumbs-up"></i> {{all.like}}</a> -->
 
 
-              <a class="btn btn-secondary" (click)="follow(all.id)" role="button">Folllow</a>
+              <a class="btn btn-secondary" (click)="follow(all.id)" role="button">{{ folllow }} </a>
               <a class="btn btn-secondary float-right p-t-10" (click)="likes(all.id)"><i class="fa fa-thumbs-o-up"></i> {{all.like}}</a>
 
             </div>
@@ -173,7 +173,7 @@
             <ul class="widget-list">              
                
               <li  *ngFor="let H of footer">
-                <div class="widget-img"><a (click)="nav(H.id)"><img width="100%" height="80" src="https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/{{H.t_image}}" alt=""></a></div>
+                <div class="widget-img"><a (click)="nav(H.id)"><img width="100%" height="80" src="http://localhost/backend/public/upload/uploads/{{H.t_image}}" alt=""></a></div>
                 <div>
                   <h4><a routerink="" (click)="nav(H.id)">{{H.name_title}}</a></h4>
                   <span>{{H.created_at}}</span>

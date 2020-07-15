@@ -141,8 +141,8 @@ export class EditComponent implements OnInit {
     this.result=val.gcontents;
    //  console.log(this.result)
      console.log(this.orderForm.value)
-     this.image='https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/'+this.res.t_image
-     this.uimage='https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/'+this.res.image;
+     this.image='http://localhost/backend/public/upload/uploads/'+this.res.t_image
+     this.uimage='http://localhost/backend/public/upload/uploads/'+this.res.image;
       
      })
    

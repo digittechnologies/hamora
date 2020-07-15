@@ -156,8 +156,8 @@ handleError(error) {
                       });
                     })
                     
-                    this.image='https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/'+this.res.t_image
-                    this.uimage='https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/'+this.res.image;
+                    this.image='http://localhost/backend/public/upload/uploads/'+this.res.t_image
+                    this.uimage='http://localhost/backend/public/upload/uploads/'+this.res.image;
                      
                     })
                 
@@ -212,8 +212,8 @@ handleError(error) {
                     });
                 })
                   
-                  this.image='https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/'+this.res.t_image
-                  this.uimage='https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/'+this.res.image;
+                  this.image='http://localhost/backend/public/upload/uploads/'+this.res.t_image
+                  this.uimage='http://localhost/backend/public/upload/uploads/'+this.res.image;
                    
                   })
               }

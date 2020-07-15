@@ -134,5 +134,8 @@
       }
     }
   },
-  "defaultProject": "laravel-api"
+  "defaultProject": "laravel-api",
+  "cli": {
+    "analytics": false
+  }
 }

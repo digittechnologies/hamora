@@ -105,7 +105,7 @@
                   <div class="post-header" >
                       <div>
                       <a href="Content/{{all.id}}" (click)="nav(all.id)">
-                        <img src="https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/{{all.image}}" alt="">
+                        <img src="http://localhost/backend/public/upload/uploads/{{all.image}}" alt="">
                       </a>
                       </div>
                       <div>
@@ -113,11 +113,11 @@
                           <h2 class="post-title"><a routerink="" (click)="nav(all.id)">{{all.name_title}}</a></h2>
                         </h2>
                         <div class="post-meta">
-                          <span><i class="fa fa-clock-o"></i> {{all.created_at}} by <a href="profile.html">{{all.firstname + ' '+ all.lastname}}</a></span>
-                          <span><a href="blog-post-carousel.html#comments"><i class="fa fa-comment-o"></i>{{all.comment_count}}</a></span>
+                          <span><i class="fa fa-clock-o"></i> {{all.created_at}} by <a >{{all.firstname + ' '+ all.lastname}}</a></span>
+                          <span><a ><i class="fa fa-comment-o"></i>{{all.comment_count}}</a></span>
                     <span><a><i class="fa fa-heart-o"></i>{{all.like}} likes</a></span>
                   </div>
-                  <div class="dropdown float-right">
+                  <!-- <div class="dropdown float-right">
                     <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-chevron-down"></i></a>
                     <div class="dropdown-menu dropdown-menu-right">
                       <a class="dropdown-item" href="#">View</a>
@@ -125,21 +125,21 @@
                       <a class="dropdown-item" href="#">Comment</a>
                       <a class="dropdown-item" href="#">Delete</a>
                     </div>
-                  </div>
+                  </div> -->
                 </div>
               </div>
               <p>{{all.content | slice:0:250 }}....</p>
               <div class="post-thumbnail">
-                <img src="https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/{{all.t_image}}" alt="">
+                <img src="http://localhost/backend/public/upload/uploads/{{all.t_image}}" alt="">
               </div>
-              <div class="post-footer">
+              <!-- <div class="post-footer">
                 <a href="#"><i class="fa fa-reply"></i>{{all.share}} shares</a>
                 <a href="#"><i class="fa fa-comment-o"></i>{{all.comment_count}} comments</a>
                 <a href="#"><i class="fa fa-heart-o"></i>{{all.like}} likes</a>
-              </div>
+              </div> -->
               <div class="post-footer">
                   <a class="btn btn-secondary" (click)="nav(all.id)" role="button">Read More</a>
-                  <a class="float-right p-t-10" href="#"><i class="fa fa-heart-o"></i> {{all.views}}</a>
+                  <a class="float-right p-t-10"><i class="fa fa-eye"></i> {{all.views}}</a>
                 </div>
             </div> 
               </div></div>
@@ -148,7 +148,7 @@
                     <div class="post-header">
                         <div>
                         <a href="Content/{{all.id}}" (click)="nav(all.id)">
-                          <img src="https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/{{all.image}}" alt="">
+                          <img src="http://localhost/backend/public/upload/uploads/{{all.image}}" alt="">
                         </a>
                         </div>
                         <div>
@@ -160,7 +160,7 @@
                             <span><a href="blog-post-carousel.html#comments"><i class="fa fa-comment-o"></i>{{all.comment_count}}</a></span>
                       <span><a href="#"><i class="fa fa-heart-o"></i>{{all.like}} likes</a></span>
                     </div>
-                    <div class="dropdown float-right">
+                    <!-- <div class="dropdown float-right">
                       <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-chevron-down"></i></a>
                       <div class="dropdown-menu dropdown-menu-right">
                         <a class="dropdown-item" href="#">View</a>
@@ -168,21 +168,21 @@
                         <a class="dropdown-item" href="#">Comment</a>
                         <a class="dropdown-item" href="#">Delete</a>
                       </div>
-                    </div>
+                    </div> -->
                   </div>
                 </div>
                 <p>{{all.content | slice:0:250 }}....</p>
                 <div class="post-thumbnail">
-                  <img src="https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/{{all.t_image}}" alt="">
+                  <img src="http://localhost/backend/public/upload/uploads/{{all.t_image}}" alt="">
                 </div>
-                <div class="post-footer">
+                <!-- <div class="post-footer">
                   <a href="#"><i class="fa fa-reply"></i>{{all.share}} shares</a>
                   <a href="#"><i class="fa fa-comment-o"></i>{{all.comment_count}} comments</a>
                   <a href="#"><i class="fa fa-heart-o"></i>{{all.like}} likes</a>
-                </div>
+                </div> -->
                 <div class="post-footer">
                     <a class="btn btn-secondary" (click)="nav(all.id)" role="button">Read More</a>
-                    <a class="float-right p-t-10" href="#"><i class="fa fa-heart-o"></i> {{all.views}}</a>
+                    <a class="float-right p-t-10" ><i class="fa fa-eye"></i> {{all.views}}</a>
                   </div>
               </div>   
               <!-- <div class="text-center"><a  class="btn btn-primary btn-shadow btn-rounded btn-effect btn-lg m-b-20">Show More</a></div> -->

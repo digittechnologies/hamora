@@ -24,11 +24,11 @@
                   <li><a href="/Login" [routerLink]="['/Login']" *ngIf="!loggedIn">Login</a></li>
                   <li class="dropdown dropdown-profile" *ngIf="loggedIn">
                           
-                      <a href="login.html" data-toggle="dropdown"><img [src]='image' alt=""> <span>{{response.firstname}}</span></a>
+                      <a  data-toggle="dropdown"><img [src]='image' alt=""> <span>{{response.firstname}}</span></a>
                       <div class="dropdown-menu dropdown-menu-right">
                         <a class="dropdown-item active" [routerLink]="['/User', {outlets: {side: ['Details']}}]"><i class="fa fa-user"></i> Profile</a>
                         <a class="dropdown-item" [routerLink]="['/Platform']"><i class="fa fa-envelope-open"></i>Platform</a>
-                        <a class="dropdown-item" [routerLink]="['/User', {outlets: {side: ['Details']}}]"><i class="fa fa-heart"></i>My Story</a>
+                        <a class="dropdown-item"[routerLink]="['/User', {outlets: {side: ['Mypost']}}]"><i class="fa fa-heart"></i>My Story</a>
                         <a class="dropdown-item" [routerLink]="['/User', {outlets: {side: ['Profile']}}]"><i class="fa fa-cog"></i> Settings</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" (click)="logout($event)"><i class="fa fa-sign-out"></i> Logout</a>
@@ -71,7 +71,7 @@
             <div class="col-sm-12 col-md-5">
               <h4 class="footer-title">About Sabi-Ogun</h4>
               <p>Ogun State culture has a rich culture with formidable background that requires preservation and promotion which will not
-                    happen effectively without the leverage of technology and DEAB intervention.</p>
+                    happen effectively without the leverage of technology and DEAG intervention.</p>
 
                     <h4 class="footer-title">Contact</h4>
                     <p>DEAG Foundation<br>
@@ -99,7 +99,7 @@
             </div>
             <div class="col-sm-12 col-md-4">
               <h4 class="footer-title">Subscribe</h4>
-              <p>Subscribe to our newsletter and get notification when new games are available.</p>
+              <p>Subscribe to our newsletter and get notification when new Contribution are available on Sabiogun.</p>
               <div class="input-group m-t-25">
                 <input type="text" class="form-control" placeholder="Email">
                 <span class="input-group-btn">
@@ -116,7 +116,7 @@
               <a target="_blank" data-toggle="tooltip" title="twitch"><i class="fa fa-twitch"></i></a>
               <a target="_blank" data-toggle="tooltip" title="youtube"><i class="fa fa-youtube"></i></a>
             </div>
-            <p>Copyright &copy; 2019 <a href="https://themeforest.net/item/gameforest-responsive-gaming-html-theme/5007730" target="_blank">Sabiogun</a>. All rights reserved.</p>
+            <p>Copyright &copy; 2019 <a href="">Sabiogun</a>. All rights reserved.</p>
           </div>
         </div>
       </footer>

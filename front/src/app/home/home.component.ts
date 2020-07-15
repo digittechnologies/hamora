@@ -67,7 +67,6 @@ export class HomeComponent implements OnInit {
         autoplay: true,
         items: 1
       });
-
       // Recent Reviews
       $('.owl-list').owlCarousel({
         margin: 25,

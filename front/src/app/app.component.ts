@@ -100,7 +100,7 @@ export class AppComponent {
       data=>{
       
       this.response = data;
-      this.image='https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/'+this.response.image
+      this.image='http://localhost/backend/public/upload/uploads/'+this.response.image
      
     });
     
