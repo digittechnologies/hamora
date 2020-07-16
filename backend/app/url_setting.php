@@ -4,10 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Videos extends Model
+class url_setting extends Model
 {
-    //
     protected $fillable = [
-        'video_name','title_id'
+        'url'
     ];
 }

@@ -45,6 +45,11 @@ class UserController extends Controller
         ->select('titles.*','categories.catname','contents.header','contents.content','categories.destription','categories.activity_id','activities.actname','users.firstname','users.lastname','users.middlename', 'users.familybackground', 'users.image')
         ->where('titles.status','=','Y')
         ->get(),
+    //     'follow'=>Follows::join('titles','follows.title_id','=','titles.id')
+    //     ->join('users','follows.user_id','=','users.id')
+    //     ->select('follows.*', )
+    //     ->where('follows.user_id','=', auth()->user()->id)
+    //    ->where('follows.title_id','=',$id)->count(),
         'gallery'=>Galleries::orderBy('id')->join('titles','galleries.title_id','=','titles.id')
        ->join('users','titles.user_id','=','users.id')
         ->select('galleries.*','titles.name_title','titles.location','titles.t_image','users.firstname','users.lastname','users.middlename','users.image','users.email')

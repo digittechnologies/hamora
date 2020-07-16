@@ -13,6 +13,8 @@ use App\comment_tbs;
 use App\Galleries;
 use App\Videos;
 use App\Contribute;
+use App\Follows;
+use App\Users;
 class ContentController extends Controller
 {
     /**
@@ -22,26 +24,39 @@ class ContentController extends Controller
      */
     public function getcontent($id)
     {
+        // return  auth()->user();
         return response()->json(
            
             [
-        'name'=>title::orderBy('id')->join('categories','titles.category_id','=','categories.id')
+    //     'follow'=>Follows::orderBy('titles.id','desc')->join('titles','follows.title_id','=','titles.id')
+       
+    //     ->join('users','follows.user_id','=','users.id')
+    //     ->select('follows.*', )
+    //     ->where('follows.user_id','=', auth()->user()->id)
+    //    ->where('follows.title_id','=',$id)->count(),
+        'name'=>title::orderBy('titles.id','desc')->join('categories','titles.category_id','=','categories.id')
         ->join('activities','categories.activity_id','=','activities.id')
         ->join('users','titles.user_id','=','users.id')
         ->select('titles.*','categories.catname','categories.destription','categories.activity_id','activities.actname','users.firstname','users.lastname','users.middlename', 'users.familybackground', 'users.image')
        ->where('titles.id','=',$id)->get(),
-       'gallery'=>Galleries::orderBy('id')->join('titles','galleries.title_id','=','titles.id')
+       'gallery'=>Galleries::orderBy('galleries.id','desc')->join('titles','galleries.title_id','=','titles.id')
        ->join('users','titles.user_id','=','users.id')
         ->select('galleries.*','titles.name_title','titles.location','titles.t_image','users.firstname','users.lastname','users.middlename','users.image','users.email')
        ->where('galleries.title_id','=',$id)
        ->where('galleries.status','=','Y')
        ->get(),
-       'comment'=>comment_tbs::orderBy('id')->join('titles','comment_tbs.title_id','=','titles.id')
+       'video'=>Videos::orderBy('videos.id','desc')->join('titles','videos.title_id','=','titles.id')
+       ->join('users','titles.user_id','=','users.id')
+        ->select('videos.*','titles.name_title','titles.location','titles.t_image','users.firstname','users.lastname','users.middlename','users.image','users.email')
+       ->where('videos.title_id','=',$id)
+       ->where('videos.status','=','Y')
+       ->get(),
+       'comment'=>comment_tbs::orderBy('id','desc')->join('titles','comment_tbs.title_id','=','titles.id')
        ->join('users','comment_tbs.user_id','=','users.id')
         ->select('comment_tbs.*','titles.name_title','titles.location','titles.t_image','users.firstname','users.lastname','users.middlename','users.image','users.email')
        ->where('comment_tbs.title_id','=',$id)
        ->get(),
-       'content'=>Content::orderBy('id')->join('titles','contents.name_id','=','titles.id')
+       'content'=>Content::orderBy('id','desc')->join('titles','contents.name_id','=','titles.id')
         ->select('contents.*','titles.name_title','titles.location','titles.t_image','titles.views')
        ->where('contents.name_id','=',$id)
        ->get(),
@@ -51,7 +66,7 @@ class ContentController extends Controller
        ->where('contributes.title_id','=',$id)
        ->where('contributes.status','=','Y')
        ->get(),
-       'cgallery'=>Galleries::orderBy('id')->join('titles','galleries.title_id','=','titles.id')
+       'cgallery'=>Galleries::orderBy('id','desc')->join('titles','galleries.title_id','=','titles.id')
        ->join('users','titles.user_id','=','users.id')
         ->select('galleries.*','titles.name_title','titles.location','titles.t_image','users.firstname','users.lastname','users.middlename','users.image','users.email')
        ->where('galleries.title_id','=',$id)
@@ -103,15 +118,16 @@ class ContentController extends Controller
         $request->merge(['user_id'=>$authid]);
         $detcontents = $request->contents;
         $videodet = $request->videos;
-    //    return $videodet;
+        $request->merge(['video_name'=> $videodet]);
          $files=$image_name[0];
          $filenames=time().'.' . explode('/', explode(':', substr($files, 0, strpos($files,';')))[1])[1];
         Image::make($files)->resize(300, 300)->save(public_path('/upload/uploads/'.$filenames));
        
         $request->merge(['t_image'=>$filenames]);
-        return $request;
+   
         $content= title::create($request-> all());
-    // return $content->id;
+        $request->merge(['title_id'=>$content->id]);
+        Videos::create($request-> all());
 $imageName=[];
 $count = 0;
 foreach ($image_name as $img) {
@@ -126,6 +142,29 @@ foreach ($image_name as $img) {
     $count++;
 }
  Galleries::insert($imageName);
+
+ $contentData=[];
+       $counts = 0;
+        foreach ($detcontents as $item) {
+            $file=$item['c_image'];
+            if($file){
+            
+            $filename=$counts.''.time().'.' . explode('/', explode(':', substr($file, 0, strpos($file,';')))[1])[1];
+         
+             Image::make($file)->resize(300, 300)->save(public_path('/upload/uploads/'.$filename));
+            }
+             $contentData[] =[
+             'header'=>$item['header'],
+             'content' =>$item['content'],
+             'quote'=>$item['quote'],
+             'name_id' => $content->id,
+             'c_image' =>$filename
+             ] ; 
+             $counts++;
+         }
+      
+         Content::insert($contentData);
+          return $contentData;
 
 //    $videoName=[];
 // $count = 0;
@@ -147,29 +186,7 @@ foreach ($image_name as $img) {
 // }
 //    Videos::insert($videoName);
 // return $videoName;
-       $contentData=[];
-       $counts = 0;
-        // $request->merge(['name_id'=>$content->id]);
-        foreach ($detcontents as $item) {
-            $file=$item['c_image'];
-            if($file){
-            
-            $filename=$counts.''.time().'.' . explode('/', explode(':', substr($file, 0, strpos($file,';')))[1])[1];
-         
-             Image::make($file)->resize(300, 300)->save(public_path('/upload/uploads/'.$filename));
-            }
-             $contentData[] =[
-             'header'=>$item['header'],
-             'content' =>$item['content'],
-             'quote'=>$item['quote'],
-             'name_id' => $content->id,
-             'c_image' =>$filename
-             ] ; 
-             $counts++;
-         }
       
-        //  Content::insert($contentData);
-          return $contentData;
     }
 
  

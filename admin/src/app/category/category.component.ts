@@ -14,6 +14,8 @@ export class CategoryComponent implements OnInit {
   actname: any;
   title: any;
   lenght: void;
+  url:any;
+  appUrl:any;
 
   constructor(
     private Auth: AuthService,
@@ -24,6 +26,15 @@ export class CategoryComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.Jarwis.geturl().subscribe(
+      data=>{
+       
+       this.url= data;
+      let y:any = this.url.url;
+       this.appUrl = y[0].url;
+    //  console.log("url",this.appUrl);
+      }
+    )
     this.actRoute.paramMap.subscribe((params => {
       let id = params.get('id');
       

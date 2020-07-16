@@ -15,6 +15,9 @@ export class JarwisService {
 
 
   constructor(private http: HttpClient) { }
+  geturl(){
+    return this.http.get(`${this.baseUrl}/geturl`);
+  }
   roleuser() {
     return this.http.get(`${this.baseUrl}/roleuser`)
   }

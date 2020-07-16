@@ -50,6 +50,7 @@ export class PlatformComponent implements OnInit {
   documentArray: any;
   article: any;
   loading=true;
+  folllow = "Follow";
 
   mySlideImages = [1,2,3].map((i)=> `https://picsum.photos/640/480?image=${i}`);
   myCarouselImages =[1,2,3,4,5,6].map((i)=>`https://picsum.photos/640/480?image=${i}`);
@@ -57,6 +58,8 @@ export class PlatformComponent implements OnInit {
   myCarouselOptions={items: 3, dots: true, nav: true};
   gallery: any;
   follows: any;
+  url:any;
+  appUrl:any;
 
   constructor( private Auth: AuthService,
     private router: Router,
@@ -71,16 +74,29 @@ export class PlatformComponent implements OnInit {
   ftitle: any;
   
   ngOnInit() {
-
+    this.Jarwis.geturl().subscribe(
+      data=>{
+       
+       this.url= data;
+      let y:any = this.url.url;
+       this.appUrl = y[0].url;
+    //  console.log("url",this.appUrl);
+      }
+    )
       this.Jarwis.getArticle().subscribe(
         data=>{
           this.loading=false;
         this.ftitle = data; 
-
+        // this.follows=this.ftitle.follow;
+        // if(this.follows == 0 )   {
+        //   this.folllow = "Follow";
+        // }  else{
+        //   this.folllow = "Following";
+        // } 
         this.article=this.ftitle.name
         this.gallery=this.ftitle.gallery
             console.log(this.gallery);
-            this.image= 'https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/'+this.article.t_image;
+            this.image= this.appUrl+this.article.t_image;
         }
       )
 
@@ -112,7 +128,7 @@ export class PlatformComponent implements OnInit {
          this.documentArray = this.resa.subevent;
          let string:string
          for(let i=0;i<=this.documentArray.length -1;i++){
-           string += '<div class="card-img"><a href="video-post.html"><img src="https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/'+this.resac.t_image+' class="card-img-top" alt="Anthem Official Gameplay Reveal"></a><div class="card-meta"><span>6:46</span></div></div><div class="card-block"><h4 class="card-title"><a href="video-post.html">Anthem Official Gameplay Reveal</a></h4><div class="card-meta"><span><i class="fa fa-clock-o"></i> 2 weeks ago</span><span>447 views</span></div></div>';
+           string += '<div class="card-img"><a href="video-post.html"><img src='+this.appUrl+this.resac.t_image+' class="card-img-top" alt="Anthem Official Gameplay Reveal"></a><div class="card-meta"><span>6:46</span></div></div><div class="card-block"><h4 class="card-title"><a href="video-post.html">Anthem Official Gameplay Reveal</a></h4><div class="card-meta"><span><i class="fa fa-clock-o"></i> 2 weeks ago</span><span>447 views</span></div></div>';
          }
         string = string.replace('undefined','');
         jQuery().append(string);
@@ -268,8 +284,16 @@ this.Jarwis.like(id).subscribe(
         let snackBarRef = this.snackBar.open("follow", 'Dismiss', {
           duration: 2000
         }) 
+        this.folllow = "Following"
         console.log(data)
         this.ngOnInit()
+      },
+      error => {
+        // let snackBarRef = this.snackBar.open("You are following already", 'Dismiss', {
+        //   duration: 2000
+
+        // })
+        this.folllow = "Follow"
       }
       
       );

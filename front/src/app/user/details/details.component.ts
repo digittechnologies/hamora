@@ -15,16 +15,26 @@ export class DetailsComponent implements OnInit {
   gallery: any;
   timeline: any;
   followed: any;
+  url:any;
+  appUrl:any;
 
   constructor(private Jarwis: JarwisService, private router: Router,) { }
 
   ngOnInit() {
-
+    this.Jarwis.geturl().subscribe(
+      data=>{
+       
+       this.url= data;
+      let y:any = this.url.url;
+       this.appUrl = y[0].url;
+    //  console.log("url",this.appUrl);
+      }
+    )
     this.Jarwis.profile().subscribe(
       data=>{
       
       this.profres = data;
-      this.image='https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/'+this.profres.image
+      this.image=this.appUrl+this.profres.image
      
     });
     this.Jarwis.timelinebyfollow().subscribe(

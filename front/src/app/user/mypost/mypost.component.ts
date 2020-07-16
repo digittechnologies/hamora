@@ -21,6 +21,8 @@ export class MypostComponent implements OnInit {
   title: any;
   id: '';
   contentres: any;
+  url:any;
+  appUrl:any;
 res:any;
 p:any;
   constructor(
@@ -35,6 +37,7 @@ p:any;
  
  
   ngOnInit() {
+    
 
     (function($) {
       "use strict";
@@ -54,7 +57,15 @@ p:any;
         }
       });
     })(jQuery);
-
+    this.Jarwis.geturl().subscribe(
+      data=>{
+       
+       this.url= data;
+      let y:any = this.url.url;
+       this.appUrl = y[0].url;
+    //  console.log("url",this.appUrl);
+      }
+    )
     this.Jarwis.getUtitles().subscribe(data=>{
       this.response = data;
       console.log("resp", this.response);

@@ -28,12 +28,22 @@ public res:any;
 response: any;
   image: string;
   middlename: any;
+  url:any;
+  appUrl:any;
   constructor( private Jarwis: JarwisService,
     private router: Router
   ) { }
 
   ngOnInit() {
-
+    this.Jarwis.geturl().subscribe(
+      data=>{
+       
+       this.url= data;
+      let y:any = this.url.url;
+       this.appUrl = y[0].url;
+    //  console.log("url",this.appUrl);
+      }
+    )
     this.Jarwis.profile().subscribe(
       data=>{
       
@@ -43,7 +53,7 @@ response: any;
       this.email=this.response.email,
   this.family=this.response.family,
   this.middlename=this.response.middlename,
-      this.image='https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/'+this.response.image
+      this.image=this.appUrl+this.response.image
      
     });
 

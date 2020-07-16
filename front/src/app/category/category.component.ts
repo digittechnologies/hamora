@@ -25,6 +25,10 @@ export class CategoryComponent implements OnInit {
   filteredStreets:any;
   search:any;
   locateMe:any;
+  folllow ="Follow";
+  follows: any;
+  url:any;
+  appUrl:any;
 
   constructor(
     private Auth: AuthService,
@@ -37,7 +41,15 @@ export class CategoryComponent implements OnInit {
 
   ngOnInit() {
 
-    
+    this.Jarwis.geturl().subscribe(
+      data=>{
+       
+       this.url= data;
+      let y = this.url.url;
+       this.appUrl = y[0].url;
+      console.log("url",this.appUrl);
+      }
+    )
     this.Jarwis.getact().subscribe(
       data=>{        
       this.res = data;          
@@ -54,6 +66,13 @@ export class CategoryComponent implements OnInit {
         this.actname=this.response.acti[0].actname
         this.title=this.response.title
         this.cat=this.response.cat
+        // this.follows=this.response.follow;
+        
+                    // if(this.follows == 0 )   {
+                    //   this.folllow = "Follow";
+                    // }  else{
+                    //   this.folllow = "Following";
+                    // } 
         // this.id4=this.resnh.id
         this.lenght= this.title.length
         // console.log(this.lenght)
@@ -104,8 +123,16 @@ export class CategoryComponent implements OnInit {
             let snackBarRef = this.snackBar.open("follow", 'Dismiss', {
               duration: 2000
             }) 
-            console.log(data)
+            console.log(data);
+            // this.folllow = "Following";
             this.ngOnInit()
+          },
+          error => {
+            let snackBarRef = this.snackBar.open("You are following already", 'Dismiss', {
+              duration: 2000
+    
+            })
+            // this.folllow = "Following";
           }
           
           );

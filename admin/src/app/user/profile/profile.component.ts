@@ -25,6 +25,8 @@ export class ProfileComponent implements OnInit {
   gender: any;
   disabled= false;
   sav= 'Update';
+  url:any;
+  appUrl:any;
   
   public submissionForm: FormGroup;
   image: any;
@@ -39,7 +41,15 @@ export class ProfileComponent implements OnInit {
   };
  
  ngOnInit() {
-      
+  this.Jarwis.geturl().subscribe(
+    data=>{
+     
+     this.url= data;
+    let y:any = this.url.url;
+     this.appUrl = y[0].url;
+  //  console.log("url",this.appUrl);
+    }
+  )   
    this.submissionForm = this.formBuilder.group(
      
      {
