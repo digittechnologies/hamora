@@ -30,6 +30,15 @@ export class DetailsComponent implements OnInit {
     //  console.log("url",this.appUrl);
       }
     )
+    this.Jarwis.getArticle().subscribe(
+      data=>{
+      this.ftitle = data; 
+
+      this.article=this.ftitle.name
+      this.gallery=this.ftitle.gallery
+          console.log(this.gallery);
+      }
+    )
     this.Jarwis.profile().subscribe(
       data=>{
       
@@ -49,15 +58,7 @@ export class DetailsComponent implements OnInit {
           console.log(this.timeline);
       }
     )
-    this.Jarwis.getArticle().subscribe(
-      data=>{
-      this.ftitle = data; 
-
-      this.article=this.ftitle.name
-      this.gallery=this.ftitle.gallery
-          console.log(this.gallery);
-      }
-    )
+    
   }
   nav(id){
     this.router.navigate(['Content/'+id+'']);
