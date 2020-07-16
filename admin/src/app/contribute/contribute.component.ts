@@ -17,6 +17,8 @@ export class ContributeComponent implements OnInit {
   lengt: any;
   resimg: any;
   lengimg: any;
+  url:any;
+  appUrl:any;
   constructor(private Jarwis: JarwisService, public snackBar: MatSnackBar,private dialog?: MatDialog, ) { }
   editcontribute(id){
     this.isPopupOpened = true;
@@ -98,6 +100,15 @@ export class ContributeComponent implements OnInit {
    this.ngOnInit()
   }
   ngOnInit() {
+    this.Jarwis.geturl().subscribe(
+      data=>{
+       
+       this.url= data;
+      let y:any = this.url.url;
+       this.appUrl = y[0].url;
+    //  console.log("url",this.appUrl);
+      }
+    )
     this.Jarwis.livecontribute().subscribe(
       data =>  {
        this.resp=data;

@@ -20,8 +20,8 @@
           <!-- post -->
           <div class="post post-review" *ngFor="let t of title | paginate: {itemsPerPage: 10, currentPage: p}">
             <div class="post-thumbnail">
-              <a href="http://localhost/backend/public/upload/uploads/{{t.t_image}}">
-              <img src="http://localhost/backend/public/upload/uploads/{{t.t_image}}" alt="Assassin's Creed: The Ezio Collection">
+              <a href="{{appUrl}}{{t.t_image}}">
+              <img src="{{appUrl}}{{t.t_image}}" alt="Assassin's Creed: The Ezio Collection">
               <span class="badge badge-success">7.5</span>
             </a>
             </div>

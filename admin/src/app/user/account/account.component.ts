@@ -17,6 +17,8 @@ export class AccountComponent implements OnInit {
   commercial = false;
   news = false;
   people = false;
+  url:any;
+  appUrl:any;
 
 public res:any;
   constructor( private Jarwis: JarwisService,
@@ -24,7 +26,15 @@ public res:any;
   ) { }
 
   ngOnInit() {
-    
+    this.Jarwis.geturl().subscribe(
+      data=>{
+       
+       this.url= data;
+      let y:any = this.url.url;
+       this.appUrl = y[0].url;
+    //  console.log("url",this.appUrl);
+      }
+    )  
   }
  
   menu(take) { 

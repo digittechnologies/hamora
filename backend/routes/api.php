@@ -58,6 +58,7 @@ Route::get('usertrashtitle','DisplayController@usertrashtitle');
 Route::get('cattrashtitle','DisplayController@cattrashtitle');
 Route::get('acttrashtitle','DisplayController@acttrashtitle');
 Route::get('getalltrashtitle','DisplayController@getalltrashtitle');
+Route::get('geturl','DisplayController@getUrl');
 
 Route::get('getcontent/{id}','ContentController@getcontent');
 Route::post('updatecontent','ContentController@update');

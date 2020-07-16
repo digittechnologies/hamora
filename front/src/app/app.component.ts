@@ -39,6 +39,8 @@ export class AppComponent {
   public fakerIt = [];
 
   public valToSearch;
+  url:any;
+  appUrl:any;
 
   title = 'SC-Platform';
  
@@ -58,6 +60,15 @@ export class AppComponent {
   public res:any;
   ftitle: any;
   ngOnInit() {
+    this.Jarwis.geturl().subscribe(
+      data=>{
+       
+       this.url= data;
+      let y:any = this.url.url;
+       this.appUrl = y[0].url;
+     console.log("url",this.appUrl);
+      }
+    )
     this.Jarwis.getalltitle().subscribe(data=>{
       let y:any = data;
       for(let x=0; x<y.length; x++){
@@ -100,7 +111,7 @@ export class AppComponent {
       data=>{
       
       this.response = data;
-      this.image='http://localhost/backend/public/upload/uploads/'+this.response.image
+      this.image=this.appUrl+this.response.image
      
     });
     

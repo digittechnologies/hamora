@@ -23,7 +23,8 @@ export class EditComponent implements OnInit {
       public orderForm: FormGroup;
       public items = [];
       image: any;
-
+      url:any;
+      appUrl:any;
 
       res: any;
       response: any;
@@ -86,6 +87,15 @@ export class EditComponent implements OnInit {
 
   
   ngOnInit() {
+    this.Jarwis.geturl().subscribe(
+      data=>{
+       
+       this.url= data;
+      let y:any = this.url.url;
+       this.appUrl = y[0].url;
+    //  console.log("url",this.appUrl);
+      }
+    )
     this.orderForm =  this.formBuilder.group({
       name_title:this.title,
       gcontents: this.formBuilder.array([
@@ -141,8 +151,8 @@ export class EditComponent implements OnInit {
     this.result=val.gcontents;
    //  console.log(this.result)
      console.log(this.orderForm.value)
-     this.image='http://localhost/backend/public/upload/uploads/'+this.res.t_image
-     this.uimage='http://localhost/backend/public/upload/uploads/'+this.res.image;
+     this.image=this.appUrl+this.res.t_image
+     this.uimage=this.appUrl+this.res.image;
       
      })
    

@@ -19,6 +19,8 @@ export class ContentComponent implements OnInit {
   catname: any;
   image: any;
   name: any;
+  url:any;
+  appUrl:any;
 public detail;
 public data;
 public loggedIn: boolean;
@@ -84,7 +86,15 @@ handleError(error) {
   this.error = error.error.errors;
 }
   ngOnInit() {
-
+    this.Jarwis.geturl().subscribe(
+      data=>{
+       
+       this.url= data;
+      let y:any = this.url.url;
+       this.appUrl = y[0].url;
+    //  console.log("url",this.appUrl);
+      }
+    )
     this.Jarwis.getact().subscribe(
       data=>{
       
@@ -156,8 +166,8 @@ handleError(error) {
                       });
                     })
                     
-                    this.image='http://localhost/backend/public/upload/uploads/'+this.res.t_image
-                    this.uimage='http://localhost/backend/public/upload/uploads/'+this.res.image;
+                    this.image=this.appUrl+this.res.t_image
+                    this.uimage=this.appUrl+this.res.image;
                      
                     })
                 
@@ -212,8 +222,8 @@ handleError(error) {
                     });
                 })
                   
-                  this.image='http://localhost/backend/public/upload/uploads/'+this.res.t_image
-                  this.uimage='http://localhost/backend/public/upload/uploads/'+this.res.image;
+                  this.image=this.appUrl+this.res.t_image
+                  this.uimage=this.appUrl+this.res.image;
                    
                   })
               }

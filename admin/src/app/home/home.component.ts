@@ -34,6 +34,9 @@ export class HomeComponent implements OnInit {
   ptotal: any;
   pres: any;
   tpost: any;
+  url:any;
+  appUrl:any;
+
   
   constructor(private Jarwis: JarwisService,private router: Router,private mapserver: MapServiceService, private coordGet: MapServiceService) { }
 
@@ -45,7 +48,15 @@ export class HomeComponent implements OnInit {
   public fakerIt = [];
   public posts=[];
   ngOnInit() {
-
+    this.Jarwis.geturl().subscribe(
+      data=>{
+       
+       this.url= data;
+      let y:any = this.url.url;
+       this.appUrl = y[0].url;
+    //  console.log("url",this.appUrl);
+      }
+    )
     this.fakerIt = this.mapserver.localGovt();
 
       this.Jarwis.getAllPost().subscribe(data=>{

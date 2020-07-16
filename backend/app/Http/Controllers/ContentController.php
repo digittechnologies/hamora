@@ -28,12 +28,12 @@ class ContentController extends Controller
         return response()->json(
            
             [
-        'follow'=>Follows::orderBy('titles.id','desc')->join('titles','follows.title_id','=','titles.id')
+    //     'follow'=>Follows::orderBy('titles.id','desc')->join('titles','follows.title_id','=','titles.id')
        
-        ->join('users','follows.user_id','=','users.id')
-        ->select('follows.*', )
-        ->where('follows.user_id','=', auth()->user()->id)
-       ->where('follows.title_id','=',$id)->count(),
+    //     ->join('users','follows.user_id','=','users.id')
+    //     ->select('follows.*', )
+    //     ->where('follows.user_id','=', auth()->user()->id)
+    //    ->where('follows.title_id','=',$id)->count(),
         'name'=>title::orderBy('titles.id','desc')->join('categories','titles.category_id','=','categories.id')
         ->join('activities','categories.activity_id','=','activities.id')
         ->join('users','titles.user_id','=','users.id')
