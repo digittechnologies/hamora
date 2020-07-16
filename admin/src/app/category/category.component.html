@@ -37,7 +37,7 @@
                                 <div class="property-image">
                                     <!-- <figure class="ribbon">In Hold</figure> -->
                                     <a routerLink="" (click)="navigate(t.id)" >
-                                        <img alt="" src="https://localhost/backend/public/upload/uploads/{{t.t_image}}" (click)="onClick()">
+                                        <img alt="" src="{{appUrl}}{{t.t_image}}" (click)="onClick()">
                                     </a>
                                 </div>
                                 <div class="info">

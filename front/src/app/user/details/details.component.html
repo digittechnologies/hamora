@@ -105,7 +105,7 @@
                   <div class="post-header" >
                       <div>
                       <a href="Content/{{all.id}}" (click)="nav(all.id)">
-                        <img src="http://localhost/backend/public/upload/uploads/{{all.image}}" alt="">
+                        <img src="{{appUrl}}{{all.image}}" alt="">
                       </a>
                       </div>
                       <div>
@@ -130,7 +130,7 @@
               </div>
               <p>{{all.content | slice:0:250 }}....</p>
               <div class="post-thumbnail">
-                <img src="http://localhost/backend/public/upload/uploads/{{all.t_image}}" alt="">
+                <img src="{{appUrl}}{{all.t_image}}" alt="">
               </div>
               <!-- <div class="post-footer">
                 <a href="#"><i class="fa fa-reply"></i>{{all.share}} shares</a>
@@ -148,7 +148,7 @@
                     <div class="post-header">
                         <div>
                         <a href="Content/{{all.id}}" (click)="nav(all.id)">
-                          <img src="http://localhost/backend/public/upload/uploads/{{all.image}}" alt="">
+                          <img src="{{appUrl}}{{all.image}}" alt="">
                         </a>
                         </div>
                         <div>
@@ -173,7 +173,7 @@
                 </div>
                 <p>{{all.content | slice:0:250 }}....</p>
                 <div class="post-thumbnail">
-                  <img src="http://localhost/backend/public/upload/uploads/{{all.t_image}}" alt="">
+                  <img src="{{appUrl}}{{all.t_image}}" alt="">
                 </div>
                 <!-- <div class="post-footer">
                   <a href="#"><i class="fa fa-reply"></i>{{all.share}} shares</a>

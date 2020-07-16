@@ -107,13 +107,13 @@
       <div class="post post-card"  *ngFor="let all of title | paginate: {itemsPerPage: 10, currentPage: p}">
               <div class="post post-md" >
               <div class="post-thumbnail">
-                <a href="Content/{{all.id}}" (click)="navigate(all.id)"><img width="100%" height="180" src="http://localhost/backend/public/upload/uploads/{{all.t_image}}" alt=""></a>
+                <a href="Content/{{all.id}}" (click)="navigate(all.id)"><img width="100%" height="180" src="{{appUrl}}{{all.t_image}}" alt=""></a>
               </div>
               <div class="post-block">
                 <div class="post-header">
                   <div>
                   <a href="Content/{{all.id}}" (click)="nav(all.id)">
-                    <img src="http://localhost/backend/public/upload/uploads/{{all.image}}" alt="">
+                    <img src="{{appUrl}}{{all.image}}" alt="">
                   </a>
                   </div>
                   <div>
@@ -189,7 +189,7 @@
                   <ul class="widget-list">              
                      
                     <li  *ngFor="let H of footer">
-                      <div class="widget-img"><a (click)="nav(H.id)"><img width="100%" height="80" src="http://localhost/backend/public/upload/uploads/{{H.t_image}}" alt=""></a></div>
+                      <div class="widget-img"><a (click)="nav(H.id)"><img width="100%" height="80" src="{{appUrl}}{{H.t_image}}" alt=""></a></div>
                       <div>
                         <h4><a routerink="" (click)="nav(H.id)">{{H.name_title}}</a></h4>
                         <span>{{H.created_at}}</span>

@@ -12,6 +12,7 @@ use App\comment_tbs;
 use App\User;
 use App\Galleries;
 use App\Follows;
+use App\url_setting;
 class DisplayController extends Controller
 {
     /**
@@ -336,6 +337,17 @@ class DisplayController extends Controller
            
                ->get(),
           
+        
+        ]);
+    }
+
+    public function getUrl(){
+        // $url = DB:: table(url_setting)->get();
+        // return json_encode($url);
+        return response()->json([
+          
+            'url' =>url_setting::select('url')->get(),
+            
         
         ]);
     }

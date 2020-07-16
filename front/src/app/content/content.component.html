@@ -65,7 +65,7 @@
 
           <div class="post-thumbnail col-lg-8">
               <img *ngIf="loading"  width="100%" height="320" src="assets/img/loading.gif" alt="">
-                  <img width="100%" height="320" src="http://localhost/sce-platform2/backend/public/upload/uploads/{{res.t_image}}" alt="">
+                  <img width="100%" height="320" src="{{appUrl}}{{res.t_image}}" alt="">
                 </div>
         
           <div id="description" *ngFor="let r of contents">
@@ -178,7 +178,7 @@
               <li>
                 <div class="comment" *ngFor="let r of comment">
                   <div class="comment-avatar">
-                    <a ><img alt="" src="http://localhost/sce-platform2/backend/public/upload/uploads/{{r.image}}"></a>
+                    <a ><img alt="" src="{{appUrl}}{{r.image}}"></a>
                     <a class="badge badge-success"  data-toggle="tooltip" data-placement="bottom" title="Add as friend"><i class="fa fa-user-plus"></i></a>
                   </div>
                   <div class="comment-post">
@@ -293,7 +293,7 @@
             <ul class="widget-list">              
                
               <li  *ngFor="let H of footer">
-                <div class="widget-img"><a (click)="nav(H.id)"><img width="100%" height="80" src="http://localhost/sce-platform2/backend/public/upload/uploads/{{H.t_image}}" alt=""></a></div>
+                <div class="widget-img"><a (click)="nav(H.id)"><img width="100%" height="80" src="{{appUrl}}{{H.t_image}}" alt=""></a></div>
                 <div>
                   <h4><a routerink="" (click)="nav(H.id)">{{H.name_title}}</a></h4>
                   <span>{{H.created_at}}</span>
@@ -341,8 +341,8 @@
               <div class="col-12 col-sm-6 col-md-4" *ngFor="let r of gallery">
                         <figure>
                           <div class="figure-img">
-                            <a href="http://localhost/sce-platform2/backend/public/upload/uploads/{{r.image_name}}" data-lightbox='{"disqus": true, "gallery": "uncharted"}'>
-                            <img src="http://localhost/sce-platform2/backend/public/upload/uploads/{{r.image_name}}" alt="">
+                            <a href="{{appUrl}}{{r.image_name}}" data-lightbox='{"disqus": true, "gallery": "uncharted"}'>
+                            <img src="{{appUrl}}{{r.image_name}}" alt="">
                           </a>
                             <a class="figure-likes" >32</a>
                           </div>
@@ -611,7 +611,7 @@
           <div class="col-12 col-sm-6 col-md-3" *ngFor="let rel of footer">
             <div class="card card-widget" >
               <div class="card-img">
-                <a ><img  width="100%" height="180" src="http://localhost/sce-platform2/backend/public/upload/uploads/{{rel.t_image}}" alt=""></a>
+                <a ><img  width="100%" height="180" src="{{appUrl}}{{rel.t_image}}" alt=""></a>
               </div>                     
               
               <div class="card-block">

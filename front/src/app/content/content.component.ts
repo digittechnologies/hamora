@@ -72,6 +72,8 @@ id: any;
   article:any;
   cgallery: any;
   contributes:any;
+  url:any;
+  appUrl:any;
 constructor(private Jarwis: JarwisService, private Auth: AuthService, private formBuilder: FormBuilder,public snackBar: MatSnackBar,private router: Router, public actRoute: ActivatedRoute, private coordGet: MapServiceService,private dialog?: MatDialog,) { }
 @ViewChild('map') mapElement: any;
 
@@ -117,6 +119,15 @@ handleError(error) {
   this.error = error.error.errors;
 }
   ngOnInit() {
+    this.Jarwis.geturl().subscribe(
+      data=>{
+       
+       this.url= data;
+      let y:any = this.url.url;
+       this.appUrl = y[0].url;
+     console.log("url",this.appUrl);
+      }
+    )
     this.Jarwis.getArticle().subscribe(
       data=>{
         // this.loading=false;
@@ -125,7 +136,7 @@ handleError(error) {
       this.article=this.ftitle.name
       this.gallery=this.ftitle.gallery 
               
-          this.image= 'http://localhost/backend/public/upload/uploads/'+this.article.t_image;
+          this.image= this.appUrl+this.article.t_image;
       }
     )
 
@@ -271,8 +282,8 @@ handleError(error) {
                     }  else{
                       this.folllow = "Following";
                     } 
-                    this.images='http://localhost/backend/public/upload/uploads/'+this.res.t_image
-                    this.uimage='http://localhost/backend/public/upload/uploads/'+this.res.image;
+                    this.images=this.appUrl+this.res.t_image
+                    this.uimage=this.appUrl+this.res.image;
                      
                     })
                 
@@ -323,8 +334,8 @@ handleError(error) {
                               }  else{
                                 this.folllow = "Following";
                               } 
-                              this.images='http://localhost/backend/public/upload/uploads/'+this.res.t_image
-                              this.uimage='http://localhost/backend/public/upload/uploads/'+this.res.image;
+                              this.images=this.appUrl+this.res.t_image
+                              this.uimage=this.appUrl+this.res.image;
                           })   
                         }} 
                          
@@ -401,8 +412,8 @@ handleError(error) {
                     }  else{
                       this.folllow = "Following";
                     }       
-                      this.images='http://localhost/backend/public/upload/uploads/'+this.res.t_image
-                      this.uimage='http://localhost/backend/public/upload/uploads/'+this.res.image;
+                      this.images=this.appUrl+this.res.t_image
+                      this.uimage=this.appUrl+this.res.image;
                        
                       })
                   

@@ -12,6 +12,8 @@ import { TokenService } from '../service/token.service';
 export class DashboardComponent implements OnInit {
   res: any;
   response: any;
+  url:any;
+  appUrl:any;
  
 
   constructor(
@@ -22,7 +24,15 @@ export class DashboardComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-
+    this.Jarwis.geturl().subscribe(
+      data=>{
+       
+       this.url= data;
+      let y:any = this.url.url;
+       this.appUrl = y[0].url;
+    //  console.log("url",this.appUrl);
+      }
+    )
     this.Jarwis.getact().subscribe(
       data=>{
       
