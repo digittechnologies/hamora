@@ -87,12 +87,12 @@ export class PlatformComponent implements OnInit {
         data=>{
           this.loading=false;
         this.ftitle = data; 
-        this.follows=this.ftitle.follow;
-        if(this.follows == 0 )   {
-          this.folllow = "Follow";
-        }  else{
-          this.folllow = "Following";
-        } 
+        // this.follows=this.ftitle.follow;
+        // if(this.follows == 0 )   {
+        //   this.folllow = "Follow";
+        // }  else{
+        //   this.folllow = "Following";
+        // } 
         this.article=this.ftitle.name
         this.gallery=this.ftitle.gallery
             console.log(this.gallery);
@@ -289,11 +289,11 @@ this.Jarwis.like(id).subscribe(
         this.ngOnInit()
       },
       error => {
-        let snackBarRef = this.snackBar.open("You are following already", 'Dismiss', {
-          duration: 2000
+        // let snackBarRef = this.snackBar.open("You are following already", 'Dismiss', {
+        //   duration: 2000
 
-        })
-        this.folllow = "Following"
+        // })
+        this.folllow = "Follow"
       }
       
       );

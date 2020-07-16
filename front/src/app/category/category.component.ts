@@ -66,13 +66,13 @@ export class CategoryComponent implements OnInit {
         this.actname=this.response.acti[0].actname
         this.title=this.response.title
         this.cat=this.response.cat
-        this.follows=this.response.follow;
+        // this.follows=this.response.follow;
         
-                    if(this.follows == 0 )   {
-                      this.folllow = "Follow";
-                    }  else{
-                      this.folllow = "Following";
-                    } 
+                    // if(this.follows == 0 )   {
+                    //   this.folllow = "Follow";
+                    // }  else{
+                    //   this.folllow = "Following";
+                    // } 
         // this.id4=this.resnh.id
         this.lenght= this.title.length
         // console.log(this.lenght)

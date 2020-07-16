@@ -276,12 +276,12 @@ handleError(error) {
                     this.cgallery=this.response.cgallery;
                     this.contributes=this.response.contribute;                   
                     this.videos=this.response.video;
-                    this.follows=this.response.follow; 
-                    if(this.follows == 0 )   {
-                      this.folllow = "Follow";
-                    }  else{
-                      this.folllow = "Following";
-                    } 
+                    // this.follows=this.response.follow; 
+                    // if(this.follows == 0 )   {
+                    //   this.folllow = "Follow";
+                    // }  else{
+                    //   this.folllow = "Following";
+                    // } 
                     this.images=this.appUrl+this.res.t_image
                     this.uimage=this.appUrl+this.res.image;
                      
@@ -328,12 +328,12 @@ handleError(error) {
                               this.cgallery=this.response.cgallery;
                               this.contributes=this.response.contribute;                   
                               this.videos=this.response.video; 
-                              this.follows=this.response.follow;
-                              if(this.follows == 0 )   {
-                                this.folllow = "Follow";
-                              }  else{
-                                this.folllow = "Following";
-                              } 
+                              // this.follows=this.response.follow;
+                              // if(this.follows == 0 )   {
+                              //   this.folllow = "Follow";
+                              // }  else{
+                              //   this.folllow = "Following";
+                              // } 
                               this.images=this.appUrl+this.res.t_image
                               this.uimage=this.appUrl+this.res.image;
                           })   
@@ -407,11 +407,11 @@ handleError(error) {
                     this.gallery=this.response.gallery;     
                     this.videos=this.response.video;   
                     this.follows=this.response.follow;
-                    if(this.follows == 0 )   {
-                      this.folllow = "Follow";
-                    }  else{
-                      this.folllow = "Following";
-                    }       
+                    // if(this.follows == 0 )   {
+                    //   this.folllow = "Follow";
+                    // }  else{
+                    //   this.folllow = "Following";
+                    // }       
                       this.images=this.appUrl+this.res.t_image
                       this.uimage=this.appUrl+this.res.image;
                        
