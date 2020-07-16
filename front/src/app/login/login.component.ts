@@ -54,9 +54,9 @@ public role;
     this.Token.handle(data.access_token);
    
     this.Auth.changeAuthStatus(true);  
-   this.router.navigateByUrl('/User/(side:Details)'); 
    this.disabled= false;
-   this.sav= 'Submited'
+   this.sav= 'Submited';
+   this.router.navigateByUrl('/User/(side:Details)');
    this.ngOnInit();
 
   }
