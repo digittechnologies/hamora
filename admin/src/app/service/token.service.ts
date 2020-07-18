@@ -5,17 +5,12 @@ import { environment } from '../../environments/environment';
 export class TokenService {
   private iss = {
  
-<<<<<<< HEAD
-    // login: 'http://testenv.hamorah.com/backend/public/api/adminLogin',
-    // signup: 'http://testenv.hamorah.com/backend/public/api/signup'
-=======
-    // login: 'http://sabiogun.testenv.digittechnologies.org/backend/public/api/adminLogin',
-    // signup: 'http://sabiogun.testenv.digittechnologies.org/backend/public/api/signup'
->>>>>>> 2eea486076a2a1edfe6a04fa1ae99ebf029510b2
+    login: 'http://testenv.hamorah.com/backend/public/api/adminLogin',
+    signup: 'http://testenv.hamorah.com/backend/public/api/signup'
     
-    login: 'http://localhost/sce-platform2/backend/public/api/adminLogin',
+    // login: 'http://localhost/sce-platform2/backend/public/api/adminLogin',
 
-    signup: 'http://localhost/sce-platform2/backend/public/api/signup'
+    // signup: 'http://localhost/sce-platform2/backend/public/api/signup'
 
     
     // login: environment.login,

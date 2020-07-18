@@ -1,5 +1,0 @@
----
-deployment:
-  tasks:
-    - export DEPLOYPATH=/home/hamorah/public_html/testenv/platform/index.html
-    - /bin/cp -R index2.html $DEPLOYPATH
