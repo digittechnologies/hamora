@@ -47,6 +47,7 @@ export class AppComponent {
   public loggedIn: boolean;
   footer: any;
   image: any;
+  firstname: any;
 
   constructor(
     private Auth: AuthService,
@@ -112,7 +113,7 @@ export class AppComponent {
       
       this.response = data;
       this.image=this.appUrl+this.response.image
-     
+     this.firstname=this.response.firstname
     });
     
     (function($) {

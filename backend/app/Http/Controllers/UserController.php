@@ -11,6 +11,7 @@ use Image;
 use App\User;
 use App\comment_tbs;
 use App\Galleries;
+use App\Follows;
 class UserController extends Controller
 {
 
@@ -35,6 +36,32 @@ class UserController extends Controller
     }
     public function getArticle()
     {
+        if(auth()->check()){
+            return response()->json(
+                // Activities::where('id','=',1)->get(),
+                [
+            'name'=>title::orderBy('id','desc')->join('categories','titles.category_id','=','categories.id')
+            ->join('activities','categories.activity_id','=','activities.id')
+            ->join('users','titles.user_id','=','users.id')
+               ->join ('contents','titles.id','=','contents.name_id')
+            ->select('titles.*','categories.catname','contents.header','contents.content','categories.destription','categories.activity_id','activities.actname','users.firstname','users.lastname','users.middlename', 'users.familybackground', 'users.image')
+            ->where('titles.status','=','Y')
+            ->get(),
+            'follow'=>Follows::join('titles','follows.title_id','=','titles.id')
+            ->join('users','follows.user_id','=','users.id')
+            ->select('follows.*', )
+            ->where('follows.user_id','=', auth()->user()->id)
+           ->get(),
+            'gallery'=>Galleries::orderBy('id')->join('titles','galleries.title_id','=','titles.id')
+           ->join('users','titles.user_id','=','users.id')
+            ->select('galleries.*','titles.name_title','titles.location','titles.t_image','users.firstname','users.lastname','users.middlename','users.image','users.email')
+        //    ->where('title_id','=',$id)
+           ->get(),
+          
+           ]
+        );
+        }
+        // return "false";
         return response()->json(
             // Activities::where('id','=',1)->get(),
             [
@@ -45,11 +72,7 @@ class UserController extends Controller
         ->select('titles.*','categories.catname','contents.header','contents.content','categories.destription','categories.activity_id','activities.actname','users.firstname','users.lastname','users.middlename', 'users.familybackground', 'users.image')
         ->where('titles.status','=','Y')
         ->get(),
-    //     'follow'=>Follows::join('titles','follows.title_id','=','titles.id')
-    //     ->join('users','follows.user_id','=','users.id')
-    //     ->select('follows.*', )
-    //     ->where('follows.user_id','=', auth()->user()->id)
-    //    ->where('follows.title_id','=',$id)->count(),
+        
         'gallery'=>Galleries::orderBy('id')->join('titles','galleries.title_id','=','titles.id')
        ->join('users','titles.user_id','=','users.id')
         ->select('galleries.*','titles.name_title','titles.location','titles.t_image','users.firstname','users.lastname','users.middlename','users.image','users.email')

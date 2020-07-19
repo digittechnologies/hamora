@@ -51,7 +51,7 @@ export class PlatformComponent implements OnInit {
   article: any;
   loading=true;
   folllow = "Follow";
-
+token:any;
   mySlideImages = [1,2,3].map((i)=> `https://picsum.photos/640/480?image=${i}`);
   myCarouselImages =[1,2,3,4,5,6].map((i)=>`https://picsum.photos/640/480?image=${i}`);
   mySlideOptions={items: 1, dots: true, nav: false};
@@ -60,6 +60,7 @@ export class PlatformComponent implements OnInit {
   follows: any;
   url:any;
   appUrl:any;
+  loggedIn: boolean;
 
   constructor( private Auth: AuthService,
     private router: Router,
@@ -72,8 +73,18 @@ export class PlatformComponent implements OnInit {
   public response:any;
   public res:any;
   ftitle: any;
-  
+  id:any;
   ngOnInit() {
+    this.Auth.authStatus.subscribe(value => this.loggedIn = value);
+    this.Jarwis.profile().subscribe(
+      data=>{
+      
+      this.response = data;
+      this.id=this.response.id;
+      console.log(this.id)
+      this.image=this.appUrl+this.response.image
+     
+    });
     this.Jarwis.geturl().subscribe(
       data=>{
        
@@ -87,7 +98,8 @@ export class PlatformComponent implements OnInit {
         data=>{
           this.loading=false;
         this.ftitle = data; 
-        // this.follows=this.ftitle.follow;
+        this.follows=this.ftitle.follow;
+        console.log(this.follows)
         // if(this.follows == 0 )   {
         //   this.folllow = "Follow";
         // }  else{
@@ -304,8 +316,15 @@ this.Jarwis.like(id).subscribe(
   }
 
   nav(id){
-    this.router.navigate(['Content/'+id+'']);
+   this.token=localStorage.getItem('token');
+  //  console.log(this.token)
+if(this.token == null){
+  this.router.navigate(['Login']);
+}else
+{    this.router.navigate(['Content/'+id+'']);
     this.ngOnInit()
+  }
+
   }
 
   refresh(){

@@ -17,6 +17,7 @@ export class DetailsComponent implements OnInit {
   followed: any;
   url:any;
   appUrl:any;
+  token: any;
 
   constructor(private Jarwis: JarwisService, private router: Router,) { }
 
@@ -61,7 +62,14 @@ export class DetailsComponent implements OnInit {
     
   }
   nav(id){
-    this.router.navigate(['Content/'+id+'']);
-    this.ngOnInit()
+    this.token=localStorage.getItem('token');
+    //  console.log(this.token)
+  if(this.token == null){
+    this.router.navigate(['Login']);
+  }else
+  {    this.router.navigate(['Content/'+id+'']);
+      this.ngOnInit()
+    }
+    
   }
 }

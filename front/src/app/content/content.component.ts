@@ -74,6 +74,9 @@ id: any;
   contributes:any;
   url:any;
   appUrl:any;
+  public responses:any;
+  uid:any;
+  user_id: any;
 constructor(private Jarwis: JarwisService, private Auth: AuthService, private formBuilder: FormBuilder,public snackBar: MatSnackBar,private router: Router, public actRoute: ActivatedRoute, private coordGet: MapServiceService,private dialog?: MatDialog,) { }
 @ViewChild('map') mapElement: any;
 
@@ -118,7 +121,19 @@ handleError(error) {
     this.sav= 'Comment';
   this.error = error.error.errors;
 }
+ 
+    
   ngOnInit() {
+    this.Auth.authStatus.subscribe(value => this.loggedIn = value);
+    this.Jarwis.profile().subscribe(
+      data=>{
+      
+      this.responses = data;
+      this.uid=this.responses.id;
+      console.log(this.uid)
+      // this.image=this.appUrl+this.response.image
+     
+    });
     this.Jarwis.geturl().subscribe(
       data=>{
        
@@ -263,6 +278,7 @@ handleError(error) {
                     this.catname=this.res.catname;
                     this.form.title_id=this.res.id;
                     this.title=this.res.name_title;
+                    this.user_id=this.res.user_id;
                     this.about=this.res.about;
                     this.dates=this.res.created_at;
                     this.bio=this.res.familybackground;
@@ -276,12 +292,12 @@ handleError(error) {
                     this.cgallery=this.response.cgallery;
                     this.contributes=this.response.contribute;                   
                     this.videos=this.response.video;
-                    // this.follows=this.response.follow; 
-                    // if(this.follows == 0 )   {
-                    //   this.folllow = "Follow";
-                    // }  else{
-                    //   this.folllow = "Following";
-                    // } 
+                    this.follows=this.response.follow; 
+                    if(this.follows == 1 )   {
+                      this.folllow = "Following";
+                    }  else{
+                      this.folllow = "Follow";
+                    } 
                     this.images=this.appUrl+this.res.t_image
                     this.uimage=this.appUrl+this.res.image;
                      
@@ -321,19 +337,19 @@ handleError(error) {
                               this.name=this.res.firstname+" "+this.res.lastname+" "+this.res.middlename;
                               this.location= this.response.content[0].location;
                              this.img=this.res.t_image;
-          
+                             this.user_id=this.res.user_id;
                               this.contents=this.response.content;
                               this.comment=this.response.comment;  
                               this.gallery=this.response.gallery;
                               this.cgallery=this.response.cgallery;
                               this.contributes=this.response.contribute;                   
                               this.videos=this.response.video; 
-                              // this.follows=this.response.follow;
-                              // if(this.follows == 0 )   {
-                              //   this.folllow = "Follow";
-                              // }  else{
-                              //   this.folllow = "Following";
-                              // } 
+                              this.follows=this.response.follow;
+                              if(this.follows == 1 )   {
+                                this.folllow = "Following";
+                              }  else{
+                                this.folllow = "Follow";
+                              } 
                               this.images=this.appUrl+this.res.t_image
                               this.uimage=this.appUrl+this.res.image;
                           })   
@@ -401,17 +417,17 @@ handleError(error) {
                       this.name=this.res.firstname+" "+this.res.lastname+" "+this.res.middlename;
                       this.location= this.response.content[0].location;
                      this.img=this.res.t_image;
-  
+                     this.user_id=this.res.user_id;
                       this.contents=this.response.content;
                       this.comment=this.response.comment;  
                     this.gallery=this.response.gallery;     
                     this.videos=this.response.video;   
                     this.follows=this.response.follow;
-                    // if(this.follows == 0 )   {
-                    //   this.folllow = "Follow";
-                    // }  else{
-                    //   this.folllow = "Following";
-                    // }       
+                    if(this.follows == 1 )   {
+                      this.folllow = "Following";
+                    }  else{
+                      this.folllow = "Follow";
+                    }       
                       this.images=this.appUrl+this.res.t_image
                       this.uimage=this.appUrl+this.res.image;
                        
