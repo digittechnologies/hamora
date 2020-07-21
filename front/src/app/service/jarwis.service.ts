@@ -6,9 +6,9 @@ import { HttpClient } from '@angular/common/http';
 )
 export class JarwisService {
 
-  // private baseUrl = 'http://sabiogun.testenv.digittechnologies.org/backend/public/api';
+  private baseUrl = 'http://testenv.hamorah.com/backend/public/api';
 
-   private baseUrl = 'http://localhost/sce-platform2/backend/public/api';
+  // private baseUrl = 'http://localhost/sce-platform2/backend/public/api';
 
   constructor(private http: HttpClient) { }
   geturl(){
