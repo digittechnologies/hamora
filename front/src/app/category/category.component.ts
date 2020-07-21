@@ -29,6 +29,9 @@ export class CategoryComponent implements OnInit {
   follows: any;
   url:any;
   appUrl:any;
+  loggedIn: boolean;
+  id: any;
+  token: any;
 
   constructor(
     private Auth: AuthService,
@@ -40,7 +43,16 @@ export class CategoryComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-
+    this.Auth.authStatus.subscribe(value => this.loggedIn = value);
+    this.Jarwis.profile().subscribe(
+      data=>{
+      
+      this.response = data;
+      this.id=this.response.id;
+      console.log(this.id)
+      // this.image=this.appUrl+this.response.image
+     
+    });
     this.Jarwis.geturl().subscribe(
       data=>{
        
@@ -66,13 +78,8 @@ export class CategoryComponent implements OnInit {
         this.actname=this.response.acti[0].actname
         this.title=this.response.title
         this.cat=this.response.cat
-        // this.follows=this.response.follow;
-        
-                    // if(this.follows == 0 )   {
-                    //   this.folllow = "Follow";
-                    // }  else{
-                    //   this.folllow = "Following";
-                    // } 
+        this.follows=this.response.follow;
+       
         // this.id4=this.resnh.id
         this.lenght= this.title.length
         // console.log(this.lenght)
@@ -92,12 +99,26 @@ export class CategoryComponent implements OnInit {
         )
   }
   navigates(id){
-    this.router.navigate(['Category/'+id+'']);
-    this.ngOnInit()
+    this.token=localStorage.getItem('token');
+    //  console.log(this.token)
+  if(this.token == null){
+    this.router.navigate(['Login']);
+  }else
+  {    this.router.navigate(['Content/'+id+'']);
+      this.ngOnInit()
+    }
+    
   }
   navigate(id){
-    this.router.navigate(['Content/'+id+'']);
-    this.ngOnInit()
+    this.token=localStorage.getItem('token');
+    //  console.log(this.token)
+  if(this.token == null){
+    this.router.navigate(['Login']);
+  }else
+  {    this.router.navigate(['Content/'+id+'']);
+      this.ngOnInit()
+    }
+    
   }
 
   likes(id){
@@ -143,8 +164,15 @@ export class CategoryComponent implements OnInit {
           }
 
           nav(id){
-            this.router.navigate(['Content/'+id+'']);
-            this.ngOnInit()
+            this.token=localStorage.getItem('token');
+            //  console.log(this.token)
+          if(this.token == null){
+            this.router.navigate(['Login']);
+          }else
+          {    this.router.navigate(['Content/'+id+'']);
+              this.ngOnInit()
+            }
+            
           }
 
 }

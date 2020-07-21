@@ -25,15 +25,62 @@ class ContentController extends Controller
     public function getcontent($id)
     {
         // return  auth()->user();
+        if(auth()->check()){
+            return response()->json(
+           
+                [
+            'follow'=>Follows::orderBy('titles.id','desc')->join('titles','follows.title_id','=','titles.id')
+           
+            ->join('users','follows.user_id','=','users.id')
+            ->select('follows.*', )
+            ->where('follows.user_id','=', auth()->user()->id)
+           ->where('follows.title_id','=',$id)->count(),
+            'name'=>title::orderBy('titles.id','desc')->join('categories','titles.category_id','=','categories.id')
+            ->join('activities','categories.activity_id','=','activities.id')
+            ->join('users','titles.user_id','=','users.id')
+            ->select('titles.*','categories.catname','categories.destription','categories.activity_id','activities.actname','users.firstname','users.lastname','users.middlename', 'users.familybackground', 'users.image')
+           ->where('titles.id','=',$id)->get(),
+           'gallery'=>Galleries::orderBy('galleries.id','desc')->join('titles','galleries.title_id','=','titles.id')
+           ->join('users','titles.user_id','=','users.id')
+            ->select('galleries.*','titles.name_title','titles.location','titles.t_image','users.firstname','users.lastname','users.middlename','users.image','users.email')
+           ->where('galleries.title_id','=',$id)
+           ->where('galleries.status','=','Y')
+           ->get(),
+           'video'=>Videos::orderBy('videos.id','desc')->join('titles','videos.title_id','=','titles.id')
+           ->join('users','titles.user_id','=','users.id')
+            ->select('videos.*','titles.name_title','titles.location','titles.t_image','users.firstname','users.lastname','users.middlename','users.image','users.email')
+           ->where('videos.title_id','=',$id)
+           ->where('videos.status','=','Y')
+           ->get(),
+           'comment'=>comment_tbs::orderBy('id','desc')->join('titles','comment_tbs.title_id','=','titles.id')
+           ->join('users','comment_tbs.user_id','=','users.id')
+            ->select('comment_tbs.*','titles.name_title','titles.location','titles.t_image','users.firstname','users.lastname','users.middlename','users.image','users.email')
+           ->where('comment_tbs.title_id','=',$id)
+           ->get(),
+           'content'=>Content::orderBy('id','desc')->join('titles','contents.name_id','=','titles.id')
+            ->select('contents.*','titles.name_title','titles.location','titles.t_image','titles.views')
+           ->where('contents.name_id','=',$id)
+           ->get(),
+           'contribute'=>Contribute::orderBy('id','desc')->join('titles','contributes.title_id','=','titles.id')
+           ->join('users','contributes.user_id','=','users.id')
+            ->select('contributes.*','titles.name_title','titles.location','titles.t_image','users.firstname','users.lastname','users.middlename','users.image','users.email')
+           ->where('contributes.title_id','=',$id)
+           ->where('contributes.status','=','Y')
+           ->get(),
+           'cgallery'=>Galleries::orderBy('id','desc')->join('titles','galleries.title_id','=','titles.id')
+           ->join('users','titles.user_id','=','users.id')
+            ->select('galleries.*','titles.name_title','titles.location','titles.t_image','users.firstname','users.lastname','users.middlename','users.image','users.email')
+           ->where('galleries.title_id','=',$id)
+           ->where('galleries.status','=','Y')
+           ->where('galleries.contribute','=','C')
+           ->get(),
+           ]
+        );
+        }
         return response()->json(
            
             [
-    //     'follow'=>Follows::orderBy('titles.id','desc')->join('titles','follows.title_id','=','titles.id')
-       
-    //     ->join('users','follows.user_id','=','users.id')
-    //     ->select('follows.*', )
-    //     ->where('follows.user_id','=', auth()->user()->id)
-    //    ->where('follows.title_id','=',$id)->count(),
+        
         'name'=>title::orderBy('titles.id','desc')->join('categories','titles.category_id','=','categories.id')
         ->join('activities','categories.activity_id','=','activities.id')
         ->join('users','titles.user_id','=','users.id')
