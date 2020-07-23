@@ -119,7 +119,7 @@
                 </h2>                
                 <div class="post-meta">
                   <span><i class="fa fa-clock-o"></i> {{all.created_at}} by <a >{{all.firstname + ' '+ all.lastname}}</a></span>
-                  <span><a (click)="follow(all.id)" style="color: blue;">follow  </a></span>
+                  <span><a (click)="follow(all.id)" style="color: blue;" *ngIf="loggedIn">follow  </a></span>
                   <span><a ><i class="fa fa-comment-o"></i>{{all.comment_count}}</a></span>
                   <span><a ><i class="fa fa-eye"></i>{{all.views}}</a></span>
                 </div>

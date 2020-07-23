@@ -76,6 +76,15 @@ token:any;
   id:any;
   ngOnInit() {
     this.Auth.authStatus.subscribe(value => this.loggedIn = value);
+    this.Jarwis.geturl().subscribe(
+      data=>{
+       
+       this.url= data;
+      let y:any = this.url.url;
+       this.appUrl = y[0].url;
+    //  console.log("url",this.appUrl);
+      }
+    )
     this.Jarwis.profile().subscribe(
       data=>{
       
@@ -89,7 +98,7 @@ token:any;
           this.loading=false;
           this.ftitle = data; 
           // this.follows=this.ftitle.follow;
-          console.log("follows",this.follows)
+          // console.log("follows logged in",this.follows,"status", this.loggedIn)
           // if(this.follows == 0 )   {
           //   this.folllow = "Follow";
           // }  else{
@@ -101,7 +110,13 @@ token:any;
               this.image= this.appUrl+this.article.t_image;
         }
       )
-      } else
+      }
+     
+    });
+
+    
+      
+ if(!this.loggedIn)
       {
         this.Jarwis.getArticle().subscribe(
           data=>{
@@ -116,24 +131,11 @@ token:any;
           // } 
           this.article=this.ftitle.name
           this.gallery=this.ftitle.gallery
-              console.log(this.gallery);
+              console.log("not logged");
               this.image= this.appUrl+this.article.t_image;
           }
         )
       }
-     
-    });
-    this.Jarwis.geturl().subscribe(
-      data=>{
-       
-       this.url= data;
-      let y:any = this.url.url;
-       this.appUrl = y[0].url;
-    //  console.log("url",this.appUrl);
-      }
-    )
-      
-
       this.Jarwis.getact().subscribe(
         data=>{        
         this.res = data;          
