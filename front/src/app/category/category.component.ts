@@ -141,11 +141,11 @@ export class CategoryComponent implements OnInit {
          console.log(follow_id)
         this.Jarwis.follow({title_id:id,followed_user_id:follow_id}).subscribe(
           data =>  {
-            let snackBarRef = this.snackBar.open("follow", 'Dismiss', {
+            let snackBarRef = this.snackBar.open("following", 'Dismiss', {
               duration: 2000
             }) 
-            console.log(data);
-            // this.folllow = "Following";
+            // this.folllow = "Following"
+            // console.log(data)
             this.ngOnInit()
           },
           error => {
@@ -153,12 +153,11 @@ export class CategoryComponent implements OnInit {
               duration: 2000
     
             })
-            // this.folllow = "Following";
+            // this.folllow = "Follow"
           }
           
           );
           }
-
           refresh(){          
             this.ngOnInit()
           }

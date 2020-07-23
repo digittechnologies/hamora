@@ -170,5 +170,9 @@ comment(data) {
     Authorization:`Bearer ${localStorage.token}`
   }})
 }
-
+getFollow(data) {
+  return this.http.post(`${this.baseUrl}/getFollows`,data,{headers:{
+    Authorization:`Bearer ${localStorage.token}`
+  }})
+}
 }

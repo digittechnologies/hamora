@@ -86,6 +86,7 @@ Route::post('usertrash','UserController@usertrash');
 Route::get('name','UserController@name');
 Route::post('movetrashu','UserController@movetrashuser');
 Route::post('deleteuser','UserController@deleteuser');
+Route::post('getFollows','UserController@getFollows');
 
 Route::get('getalltrashtitle','DisplayController@getalltrashtitle');
 Route::post('trash','ContentController@trash');

@@ -215,5 +215,43 @@ class UserController extends Controller
         // ->delete();
         return $deletecat;
     }
-
+    public function getFollows(Request $request){
+        $id =$request[0];
+        // $follow= DB::table('follows')->where('followed_user_id',$id)
+        // ->where('status','Following')->get();
+        // return $follow;
+        if(auth()->check()){
+            return response()->json(
+                // Activities::where('id','=',1)->get(),
+                [
+            'name'=>title::orderBy('id','desc')->join('categories','titles.category_id','=','categories.id')
+            ->join('activities','categories.activity_id','=','activities.id')
+            ->join('users','titles.user_id','=','users.id')
+               ->join ('contents','titles.id','=','contents.name_id')
+            ->select('titles.*','categories.catname','contents.header','contents.content','categories.destription','categories.activity_id','activities.actname','users.firstname','users.lastname','users.middlename', 'users.familybackground', 'users.image')
+            ->where('titles.status','=','Y')
+            ->get(),
+            'gallery'=>DB::select('select DISTINCT galleries.*,name_title, location, t_image,t.user_id,users.firstname,
+            users.lastname,users.middlename,users.image,users.email, (select status from follows fo where fo.followed_user_id = 5 and fo.user_id = t.user_id ) as "follow" from titles t LEFT JOIN follows f ON (t.user_id = f.user_id) 
+            left join galleries on (galleries.title_id= t.id) join users on (t.user_id = users.id)')
+        //     'gallery'=>Galleries::orderBy('id')->join('titles','galleries.title_id','=','titles.id')
+        //    ->join('users','titles.user_id','=','users.id')
+        //    ->leftJoin('follows','follows.user_id','=','titles.user_id')
+        //     ->select('galleries.*','titles.name_title','titles.location','titles.t_image','titles.user_id','users.firstname','users.lastname','users.middlename','users.image','users.email',DB::raw('count(select * from follows where user_id =) AS follow'))
+        //     // ->where('follows.followed_user_id', '=', $id )
+        //     // ->where('follows.user_id', '=', 'titles.user_id')
+        // //    ->where('title_id','=',$id)
+        //    ->get(),
+           ]
+        );
+        }
+    }
+        public function unFollow(Request $request){
+            $id = $request[0].user_id;
+            $user = $request[0].follower_id;
+            $unfollow = DB::table('follows')->update(['status'=>'Follow']);
+            if($unfollow){
+                return 0;
+            }
+        }
 }

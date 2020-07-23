@@ -83,6 +83,44 @@ token:any;
       this.id=this.response.id;
       console.log(this.id)
       this.image=this.appUrl+this.response.image
+      if(this.loggedIn){
+      this.Jarwis.getFollow(this.id).subscribe(
+        data=>{
+          this.loading=false;
+          this.ftitle = data; 
+          // this.follows=this.ftitle.follow;
+          console.log("follows",this.follows)
+          // if(this.follows == 0 )   {
+          //   this.folllow = "Follow";
+          // }  else{
+          //   this.folllow = "Following";
+          // } 
+          this.article=this.ftitle.name
+          this.gallery=this.ftitle.gallery
+              console.log(this.gallery);
+              this.image= this.appUrl+this.article.t_image;
+        }
+      )
+      } else
+      {
+        this.Jarwis.getArticle().subscribe(
+          data=>{
+            this.loading=false;
+          this.ftitle = data; 
+          // this.follows=this.ftitle.follow;
+          // console.log(this.follows)
+          // if(this.follows == 0 )   {
+          //   this.folllow = "Follow";
+          // }  else{
+          //   this.folllow = "Following";
+          // } 
+          this.article=this.ftitle.name
+          this.gallery=this.ftitle.gallery
+              console.log(this.gallery);
+              this.image= this.appUrl+this.article.t_image;
+          }
+        )
+      }
      
     });
     this.Jarwis.geturl().subscribe(
@@ -94,23 +132,7 @@ token:any;
     //  console.log("url",this.appUrl);
       }
     )
-      this.Jarwis.getArticle().subscribe(
-        data=>{
-          this.loading=false;
-        this.ftitle = data; 
-        this.follows=this.ftitle.follow;
-        console.log(this.follows)
-        // if(this.follows == 0 )   {
-        //   this.folllow = "Follow";
-        // }  else{
-        //   this.folllow = "Following";
-        // } 
-        this.article=this.ftitle.name
-        this.gallery=this.ftitle.gallery
-            console.log(this.gallery);
-            this.image= this.appUrl+this.article.t_image;
-        }
-      )
+      
 
       this.Jarwis.getact().subscribe(
         data=>{        
@@ -293,19 +315,19 @@ this.Jarwis.like(id).subscribe(
      console.log(follow_id)
     this.Jarwis.follow({title_id:id,followed_user_id:follow_id}).subscribe(
       data =>  {
-        let snackBarRef = this.snackBar.open("follow", 'Dismiss', {
+        let snackBarRef = this.snackBar.open("following", 'Dismiss', {
           duration: 2000
         }) 
-        this.folllow = "Following"
-        console.log(data)
+        // this.folllow = "Following"
+        // console.log(data)
         this.ngOnInit()
       },
       error => {
-        // let snackBarRef = this.snackBar.open("You are following already", 'Dismiss', {
-        //   duration: 2000
+        let snackBarRef = this.snackBar.open("You are following already", 'Dismiss', {
+          duration: 2000
 
-        // })
-        this.folllow = "Follow"
+        })
+        // this.folllow = "Follow"
       }
       
       );
