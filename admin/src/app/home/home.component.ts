@@ -62,7 +62,8 @@ export class HomeComponent implements OnInit {
       this.Jarwis.getAllPost().subscribe(data=>{
         this.posts = JSON.parse(JSON.stringify(data));
         console.log(this.posts);
-      })
+      });
+
       this.Jarwis.displayevent().subscribe(
         data=>{
           // All data which contain category and subcat
@@ -85,7 +86,7 @@ export class HomeComponent implements OnInit {
         // this.id1=this.resah.id
         // this.resac=this.resa.arti_cat
 
-        console.log(this.resa)
+        console.log("resa",this.resa)
        
         
      })

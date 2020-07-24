@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col-lg-8">
           <div class="toolbar-custom">
-            <a class="btn btn-default btn-icon btn-sm m-r-10 float-left hidden-sm-down" href="#" data-toggle="tooltip" title="refresh" data-placement="bottom" role="button"><i class="fa fa-refresh"></i></a>
+            <a class="btn btn-default btn-icon btn-sm m-r-10 float-left hidden-sm-down" href="/User/(side:Mypost)" data-toggle="tooltip" title="refresh" data-placement="bottom" role="button"><i class="fa fa-refresh"></i></a>
             <div class="dropdown float-left">
               <button class="btn btn-default" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">All Platform <i class="fa fa-caret-down"></i></button>
               <div class="dropdown-menu">
@@ -21,8 +21,8 @@
           <div class="post post-review" *ngFor="let t of title | paginate: {itemsPerPage: 10, currentPage: p}">
             <div class="post-thumbnail">
               <a href="{{appUrl}}{{t.t_image}}">
-              <img src="{{appUrl}}{{t.t_image}}" alt="Assassin's Creed: The Ezio Collection">
-              <span class="badge badge-success">7.5</span>
+              <img src="{{appUrl}}{{t.t_image}}" alt="">
+              <span class="badge badge-success"></span>
             </a>
             </div>
             <div class="post-block">
@@ -46,10 +46,10 @@
         </div>
 
         <!-- sidebar -->
-        <div class="col-lg-4">
-          <div class="sidebar">
+        <!-- <div class="col-lg-4">
+          <div class="sidebar"> -->
             <!-- widget search -->
-            <div class="widget widget-search">
+            <!-- <div class="widget widget-search">
               <form>
                 <div class="form-group input-icon-right">
                   <i class="fa fa-search"></i>
@@ -86,7 +86,7 @@
               </form>
             </div>        
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </section>

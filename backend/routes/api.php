@@ -20,7 +20,7 @@ Route::group([
     Route::post('resetPassword', 'ChangePasswordController@process');
     
 });
-Route::get('gettitles/{id}','DisplayController@gettitles');
+Route::post('gettitles','DisplayController@gettitles');
 Route::get('gettitlesforadmin/{id}','DisplayController@gettitlesforadmin');
 Route::get('getUtitles','DisplayController@getUtitles');
 Route::get('getUcontent','DisplayController@getUContent');
@@ -86,6 +86,9 @@ Route::post('usertrash','UserController@usertrash');
 Route::get('name','UserController@name');
 Route::post('movetrashu','UserController@movetrashuser');
 Route::post('deleteuser','UserController@deleteuser');
+Route::post('getFollows','UserController@getFollows');
+Route::post('unFollow','UserController@unFollow');
+Route::post('follow2','UserController@follow2');
 
 Route::get('getalltrashtitle','DisplayController@getalltrashtitle');
 Route::post('trash','ContentController@trash');

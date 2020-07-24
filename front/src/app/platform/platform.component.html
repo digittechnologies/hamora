@@ -5,7 +5,8 @@
     <div class="hero-block">
       <h2 class="hero-title">What do you know about Ogun State </h2>
       <p>Share your story.</p>
-      <a class="btn btn-primary btn-lg btn-shadow btn-md btn-rounded" [routerLink]="['/User', {outlets: {side: ['Post']}}]" role="button">Contribute</a>
+      <a class="btn btn-primary btn-lg btn-shadow btn-md btn-rounded" [routerLink]="['/User', {outlets: {side: ['Post']}}]" role="button" *ngIf="loggedIn" >Contribute</a>
+      <a class="btn btn-primary btn-lg btn-shadow btn-md btn-rounded" [routerLink]="['/Login']" role="button" *ngIf="!loggedIn">Contribute</a>
     </div>
   </div>
 </section>
@@ -118,21 +119,39 @@
                 </h2>                
                 <div class="post-meta">
                   <span><i class="fa fa-clock-o"></i> {{all.created_at}} by <a >{{all.firstname + ' '+ all.lastname}}</a></span>
+                  <span *ngIf = "all.user_id != id"> <span *ngIf="loggedIn" ><a (click)="follow(all.id)" style="color: blue;" *ngIf="all.follow ==NULL || all.follow == 'Unfollowed'">Follow  </a>
+                    <a (click)="unfollow(all.id)" style="color: blue;" *ngIf="all.follow == 'Following'">Following  </a></span></span>
                   <span><a ><i class="fa fa-comment-o"></i>{{all.comment_count}}</a></span>
                   <span><a ><i class="fa fa-eye"></i>{{all.views}}</a></span>
                 </div>
               </div>
             </div>  
             <p>{{all.content | slice:0:200 }}....</p>
-            <div class="post-footer">
-              <a class="btn btn-secondary" (click)="nav(all.id)" role="button">Read More</a>
+            <div class="post-footer"  *ngIf="!loggedIn">
+              <a class="btn btn-secondary"  [routerLink]="['/Login']" role="button">Read More</a>
               <!-- <a class="float-right p-t-10"  (click)="follow(all.id)"><i class="fa fa-heart-o"></i> {{all.views}}</a> -->
               <!-- <a class="float-right p-t-10" (click)="likes(all.id)"><i class="fa fa-thumbs-up"></i> {{all.like}}</a> -->
 
 
-              <a class="btn btn-secondary" (click)="follow(all.id)" role="button">{{ folllow }} </a>
-              <a class="btn btn-secondary float-right p-t-10" (click)="likes(all.id)"><i class="fa fa-thumbs-o-up"></i> {{all.like}}</a>
+              <a class="btn btn-secondary"  role="button" [routerLink]="['/Login']">{{ folllow }} </a>
+              <a class="btn btn-secondary float-right p-t-10" (click)="likes(all.id)" [routerLink]="['/Login']"><i class="fa fa-thumbs-o-up"></i> {{all.like}}</a>
 
+            </div>
+            
+            <div class="post-footer"  *ngIf="loggedIn" >
+             
+              <!-- <div *ngFor="let cr of follows"> -->
+              <a class="btn btn-secondary" (click)="nav(all.id)"  role="button">Read More</a>
+              <!-- <a class="float-right p-t-10"  (click)="follow(all.id)"><i class="fa fa-heart-o"></i> {{all.views}}</a> -->
+              <!-- <a class="float-right p-t-10" (click)="likes(all.id)"><i class="fa fa-thumbs-up"></i> {{all.like}}</a> -->
+
+<!-- <div *ngIf="id != all.user_id"> -->
+              <!-- <a class="btn btn-secondary" (click)="follow(all.id)" role="button"  *ngIf="cr.followed_user_id === all.user_id">folllowing  </a>
+              <a class="btn btn-secondary" (click)="follow(all.id)" role="button"  *ngIf="cr.followed_user_id != all.user_id">{{ folllow }} </a> -->
+
+              <a class="btn btn-secondary float-right p-t-10" (click)="likes(all.id)"><i class="fa fa-thumbs-o-up"></i> {{all.like}}</a>
+<!-- </div> -->
+<!-- </div> -->
             </div>
           </div>
         </div>

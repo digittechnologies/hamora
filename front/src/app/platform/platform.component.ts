@@ -10,6 +10,7 @@ import {Observable} from 'rxjs';
 import { ViewChild } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
 import {startWith, map} from 'rxjs/operators';
+import { stringify } from 'querystring';
 
 declare let jQuery: any;
 
@@ -51,7 +52,7 @@ export class PlatformComponent implements OnInit {
   article: any;
   loading=true;
   folllow = "Follow";
-
+token:any;
   mySlideImages = [1,2,3].map((i)=> `https://picsum.photos/640/480?image=${i}`);
   myCarouselImages =[1,2,3,4,5,6].map((i)=>`https://picsum.photos/640/480?image=${i}`);
   mySlideOptions={items: 1, dots: true, nav: false};
@@ -60,6 +61,7 @@ export class PlatformComponent implements OnInit {
   follows: any;
   url:any;
   appUrl:any;
+  loggedIn: boolean;
 
   constructor( private Auth: AuthService,
     private router: Router,
@@ -72,8 +74,9 @@ export class PlatformComponent implements OnInit {
   public response:any;
   public res:any;
   ftitle: any;
-  
+  id:any;
   ngOnInit() {
+    this.Auth.authStatus.subscribe(value => this.loggedIn = value);
     this.Jarwis.geturl().subscribe(
       data=>{
        
@@ -83,23 +86,57 @@ export class PlatformComponent implements OnInit {
     //  console.log("url",this.appUrl);
       }
     )
-      this.Jarwis.getArticle().subscribe(
+    this.Jarwis.profile().subscribe(
+      data=>{
+      
+      this.response = data;
+      this.id=this.response.id;
+      console.log(this.id)
+      this.image=this.appUrl+this.response.image
+      if(this.loggedIn){
+      this.Jarwis.getFollow(this.id).subscribe(
         data=>{
           this.loading=false;
-        this.ftitle = data; 
-        // this.follows=this.ftitle.follow;
-        // if(this.follows == 0 )   {
-        //   this.folllow = "Follow";
-        // }  else{
-        //   this.folllow = "Following";
-        // } 
-        this.article=this.ftitle.name
-        this.gallery=this.ftitle.gallery
-            console.log(this.gallery);
-            this.image= this.appUrl+this.article.t_image;
+          this.ftitle = data; 
+          // this.follows=this.ftitle.follow;
+          // console.log("follows logged in",this.follows,"status", this.loggedIn)
+          // if(this.follows == 0 )   {
+          //   this.folllow = "Follow";
+          // }  else{
+          //   this.folllow = "Following";
+          // } 
+          this.article=this.ftitle.name
+          this.gallery=this.ftitle.gallery
+              console.log(this.gallery);
+              this.image= this.appUrl+this.article.t_image;
         }
       )
+      }
+     
+    });
 
+    
+      
+ if(!this.loggedIn)
+      {
+        this.Jarwis.getArticle().subscribe(
+          data=>{
+            this.loading=false;
+          this.ftitle = data; 
+          // this.follows=this.ftitle.follow;
+          // console.log(this.follows)
+          // if(this.follows == 0 )   {
+          //   this.folllow = "Follow";
+          // }  else{
+          //   this.folllow = "Following";
+          // } 
+          this.article=this.ftitle.name
+          this.gallery=this.ftitle.gallery
+              console.log("not logged");
+              this.image= this.appUrl+this.article.t_image;
+          }
+        )
+      }
       this.Jarwis.getact().subscribe(
         data=>{        
         this.res = data;          
@@ -279,33 +316,82 @@ this.Jarwis.like(id).subscribe(
     let follow=follows[0]
     let follow_id=follow.user_id
      console.log(follow_id)
-    this.Jarwis.follow({title_id:id,followed_user_id:follow_id}).subscribe(
+    this.Jarwis.follow({followed_user_id:follow_id}).subscribe(
       data =>  {
-        let snackBarRef = this.snackBar.open("follow", 'Dismiss', {
+        let snackBarRef = this.snackBar.open("following", 'Dismiss', {
           duration: 2000
         }) 
-        this.folllow = "Following"
-        console.log(data)
+        // this.folllow = "Following"
+        // console.log(data)
         this.ngOnInit()
       },
       error => {
-        // let snackBarRef = this.snackBar.open("You are following already", 'Dismiss', {
-        //   duration: 2000
-
-        // })
-        this.folllow = "Follow"
+        let idd = this.id;
+        this.Jarwis.follow2({follower_id:idd,user_id:follow_id}).subscribe(
+          data =>  {
+            let snackBarRef = this.snackBar.open("following", 'Dismiss', {
+              duration: 2000
+            }) 
+            // this.folllow = "Following"
+            // console.log(data)
+            this.ngOnInit()
+          },
+          error => {
+            let snackBarRef = this.snackBar.open("Try again later", 'Dismiss', {
+              duration: 2000
+    
+            })
+           
+          }
+          
+          );
+       
+      
       }
       
       );
       }
+      unfollow(id){
+        // this.follows=this.article
+        let follows = this.article.filter(c => c.id == id);
+        let follow=follows[0]
+        let follow_id=follow.user_id;
+        let idd = this.id;
+        //  console.log(follow_id)
+        this.Jarwis.unFollow({follower_id:idd,user_id:follow_id}).subscribe(
+          data =>  {
+            let snackBarRef = this.snackBar.open("Unfollowed", 'Dismiss', {
+              duration: 2000
+            }) 
+            // this.folllow = "Following"
+            // console.log(data)
+            this.ngOnInit()
+          },
+          error => {
+            let snackBarRef = this.snackBar.open("Try again", 'Dismiss', {
+              duration: 2000
+    
+            })
+            // this.folllow = "Follow"
+          }
+          
+          );
+          }
   navigate(id){
     this.router.navigate(['Category/'+id+''])
     this.ngOnInit()
   }
 
   nav(id){
-    this.router.navigate(['Content/'+id+'']);
+   this.token=localStorage.getItem('token');
+  //  console.log(this.token)
+if(this.token == null){
+  this.router.navigate(['Login']);
+}else
+{    this.router.navigate(['Content/'+id+'']);
     this.ngOnInit()
+  }
+
   }
 
   refresh(){

@@ -6,9 +6,9 @@ import { HttpClient } from '@angular/common/http';
 )
 export class JarwisService {
 
-  private baseUrl = 'http://testenv.hamorah.com/backend/public/api';
+  // private baseUrl = 'http://testenv.hamorah.com/backend/public/api';
 
-  // private baseUrl = 'http://localhost/sce-platform2/backend/public/api';
+  private baseUrl = 'http://localhost/sce-platform2/backend/public/api';
 
   constructor(private http: HttpClient) { }
   geturl(){
@@ -112,8 +112,8 @@ export class JarwisService {
   getfootertitle() {
     return this.http.get(`${this.baseUrl}/getfootertitle`,)
   }
-  gettitles(id:string) {
-    return this.http.get(`${this.baseUrl}/gettitles/${id}`,{headers:{
+  gettitles(data) {
+    return this.http.post(`${this.baseUrl}/gettitles`,data,{headers:{
       Authorization:`Bearer ${localStorage.token}`
     }})
   }
@@ -170,5 +170,19 @@ comment(data) {
     Authorization:`Bearer ${localStorage.token}`
   }})
 }
-
+getFollow(data) {
+  return this.http.post(`${this.baseUrl}/getFollows`,data,{headers:{
+    Authorization:`Bearer ${localStorage.token}`
+  }})
+}
+unFollow(data) {
+  return this.http.post(`${this.baseUrl}/unFollow`,data,{headers:{
+    Authorization:`Bearer ${localStorage.token}`
+  }})
+}
+follow2(data) {
+  return this.http.post(`${this.baseUrl}/follow2`,data,{headers:{
+    Authorization:`Bearer ${localStorage.token}`
+  }})
+}
 }
