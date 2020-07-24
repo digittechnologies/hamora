@@ -8,7 +8,7 @@
                 <a [routerLink]="['/home']" class="logo"><img src="assets/img/logo.png" alt="Sabi-Ogun"></a>
                 <nav class="nav">
                   <ul>
-                        
+                       
                     <li><a href="/home" [routerLink]="['/home']">Home</a> </li>
                     <li><a href="/Platform" [routerLink]="['/Platform']">Platform</a></li>                      
                     <li><a href="/About" [routerLink]="['/About']">About</a></li>
@@ -24,7 +24,7 @@
                   <li><a href="/Login" [routerLink]="['/Login']" *ngIf="!loggedIn">Login</a></li>
                   <li class="dropdown dropdown-profile" *ngIf="loggedIn">
                           
-                      <a  data-toggle="dropdown"><img [src]='image' alt=""> <span>{{response.firstname}}</span></a>
+                      <a  data-toggle="dropdown"><img [src]='image' alt=""> <span>{{firstname}}</span></a>
                       <div class="dropdown-menu dropdown-menu-right">
                         <a class="dropdown-item active" [routerLink]="['/User', {outlets: {side: ['Details']}}]"><i class="fa fa-user"></i> Profile</a>
                         <a class="dropdown-item" [routerLink]="['/Platform']"><i class="fa fa-envelope-open"></i>Platform</a>
@@ -114,11 +114,11 @@
           </div>
           <div class="footer-bottom">
             <div class="footer-social">
-              <a target="_blank" data-toggle="tooltip" title="facebook"><i class="fa fa-facebook"></i></a>
-              <a target="_blank" data-toggle="tooltip" title="twitter"><i class="fa fa-twitter"></i></a>
-              <a target="_blank" data-toggle="tooltip" title="steam"><i class="fa fa-steam"></i></a>
-              <a target="_blank" data-toggle="tooltip" title="twitch"><i class="fa fa-twitch"></i></a>
-              <a target="_blank" data-toggle="tooltip" title="youtube"><i class="fa fa-youtube"></i></a>
+              <a href="https://facebook.com" target="_blank" data-toggle="tooltip" title="facebook"><i class="fa fa-facebook"></i></a>
+              <a href="https://twitter.com/hamorah_ng?s=09" target="_blank" data-toggle="tooltip" title="twitter"><i class="fa fa-twitter"></i></a>
+              <!-- <a href="https://facebook.com" target="_blank" data-toggle="tooltip" title="steam"><i class="fa fa-steam"></i></a> -->
+              <!-- <a href="https://facebook.com" target="_blank" data-toggle="tooltip" title="twitch"><i class="fa fa-twitch"></i></a> -->
+              <a href="https://instagram.com/hamorahng?igshid=1atrdjc72s4zr" target="_blank" data-toggle="tooltip" title="instagram"><i class="fa fa-instagram"></i></a>
             </div>
             <p>Copyright &copy; 2019 <a href="">Sabiogun</a>. All rights reserved.</p>
           </div>

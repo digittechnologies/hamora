@@ -50,6 +50,7 @@ export class AppComponent {
   image: any;
   message: string;
   error: any;
+  firstname: any;
 
   constructor(
     private Auth: AuthService,
@@ -68,8 +69,6 @@ export class AppComponent {
   };
 
   onSubmit(form:NgForm){
-
-alert(form.value.email)
 
     this.Jarwis.subscribe(form.value).subscribe(
       data=>{
@@ -132,7 +131,7 @@ alert(form.value.email)
       
       this.response = data;
       this.image=this.appUrl+this.response.image
-     
+     this.firstname=this.response.firstname
     });
     
     (function($) {
