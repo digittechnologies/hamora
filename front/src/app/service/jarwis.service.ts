@@ -39,6 +39,12 @@ export class JarwisService {
       Authorization:`Bearer ${localStorage.token}`
     }})
   }
+
+  subscribe(data) {
+    return this.http.post(`${this.baseUrl}/subscribe`, data,{headers:{
+      Authorization:`Bearer ${localStorage.token}`
+    }})
+  }
   
   name_t(data) {
     return this.http.post(`${this.baseUrl}/name_t`, data)

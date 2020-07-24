@@ -25,6 +25,7 @@ Route::get('gettitlesforadmin/{id}','DisplayController@gettitlesforadmin');
 Route::get('getUtitles','DisplayController@getUtitles');
 Route::get('getUcontent','DisplayController@getUContent');
 Route::post('comment','CommentController@store');
+Route::post('subscribe','MailController@subscribe');
 Route::post('me','AuthController@updateprofile');
 Route::get('roleuser', 'RoleController@roleuser');
 Route::post('role','RoleController@store');
