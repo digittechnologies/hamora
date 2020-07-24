@@ -207,8 +207,7 @@ class DisplayController extends Controller
             ->get()
         
         );
-        // $admintitle = DB::table('contributes')->select('contributes.*')->limit(10)->get();
-        // return $admintitle;
+        
     }
    
     public function getfootertitle()

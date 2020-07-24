@@ -41,9 +41,11 @@ export class JarwisService {
   }
 
   subscribe(data) {
-    return this.http.post(`${this.baseUrl}/subscribe`, data,{headers:{
-      Authorization:`Bearer ${localStorage.token}`
-    }})
+    return this.http.post(`${this.baseUrl}/subscribe`, data
+    // ,{headers:{
+    //   Authorization:`Bearer ${localStorage.token}`
+    // }}
+    )
   }
   
   name_t(data) {
@@ -191,4 +193,7 @@ follow2(data) {
     Authorization:`Bearer ${localStorage.token}`
   }})
 }
+// subscribes(data) {
+//   return this.http.post(`${this.baseUrl}/subscribe`,data);
+// }
 }

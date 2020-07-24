@@ -114,6 +114,8 @@ Route::post('contributeimg','ContributeController@contributeimage');
 Route::post('editimgcontribute','ContributeController@editimgcontribute');
 Route::post('like','LikesController@likes');
 Route::post('follow','LikesController@follow');
+
+Route::post('subscribe','MailController@subscribe');
 //  Route::get('test',function(){rolecate
 //      return response()->json([
 //          'user'=>['fname'=>'tawa',

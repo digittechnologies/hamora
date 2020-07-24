@@ -15,6 +15,10 @@ class MailController extends Controller
     public function subscribe(Request $request)
     {
          $email= $request->email;
+         $insert = DB::table('subscribe')->insert(['email' => $email]);
+         if($insert){
+             return 0;
+         }
        
         
     }
