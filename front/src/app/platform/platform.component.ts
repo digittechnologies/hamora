@@ -10,7 +10,7 @@ import {Observable} from 'rxjs';
 import { ViewChild } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
 import {startWith, map} from 'rxjs/operators';
-import { stringify } from 'querystring';
+import { NgForm } from '@angular/forms';
 
 declare let jQuery: any;
 
@@ -75,6 +75,31 @@ token:any;
   public res:any;
   ftitle: any;
   id:any;
+
+  public form = {
+    email: null,
+  };
+  
+  onSubmit(form:NgForm){
+
+    this.Jarwis.subscribe(form.value).subscribe(
+      data=>{
+        this.response = data;
+        let snackBarRef = this.snackBar.open("Subscribed Successfully", 'Dismiss', {
+          duration: 2000
+        }) 
+          
+        this.ngOnInit();
+  },
+  error=>{
+    let snackBarRef = this.snackBar.open("You have Subscribed already", 'Dismiss', {
+      duration: 2000
+    }) 
+    this.ngOnInit();
+  }
+  )
+
+  }
   ngOnInit() {
     this.Auth.authStatus.subscribe(value => this.loggedIn = value);
     this.Jarwis.geturl().subscribe(

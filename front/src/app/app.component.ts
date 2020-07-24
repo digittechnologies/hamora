@@ -10,6 +10,7 @@ import {Observable} from 'rxjs';
 import { ViewChild } from '@angular/core';
 import {startWith, map} from 'rxjs/operators';
 import { NgForm } from '@angular/forms';
+import { MatSnackBar } from '@angular/material';
 
 declare let jQuery: any;
 declare var $: any;
@@ -58,7 +59,8 @@ export class AppComponent {
     private Jarwis: JarwisService,
     private Token: TokenService,
     private mapserver: MapServiceService, 
-    private coordGet: MapServiceService
+    private coordGet: MapServiceService,
+    public snackBar: MatSnackBar,
   ) { }
   public response:any;
   public res:any;
@@ -72,10 +74,20 @@ export class AppComponent {
 
     this.Jarwis.subscribe(form.value).subscribe(
       data=>{
-        this.handleResponse("Operation successfuly")
-        this.response = data;  
+        this.response = data;
+        let snackBarRef = this.snackBar.open("Subscribed Successfully", 'Dismiss', {
+          duration: 2000
+        }) 
+          
         this.ngOnInit();
-  })
+  },
+  error=>{
+    let snackBarRef = this.snackBar.open("You have Subscribed already", 'Dismiss', {
+      duration: 2000
+    }) 
+    this.ngOnInit();
+  }
+  )
 
   }
   ngOnInit() {
