@@ -100,12 +100,16 @@
             <div class="col-sm-12 col-md-4">
               <h4 class="footer-title">Subscribe</h4>
               <p>Subscribe to our newsletter and get notification when new Contribution are available on Sabiogun.</p>
+              <form class="form-auth-small m-t-20" role="form" (ngSubmit)="onSubmit(fm)" #fm="ngForm">
               <div class="input-group m-t-25">
-                <input type="text" class="form-control" placeholder="Email">
+                
+                <input type="text" class="form-control" placeholder="Email" ngModel name="email" >
                 <span class="input-group-btn">
-                <button class="btn btn-success" type="button">Subscribe</button>
-              </span>
+                  <button class="btn btn-success" type="submit">Subscribe</button>
+                </span>
+                
               </div>
+            </form>
             </div>
           </div>
           <div class="footer-bottom">

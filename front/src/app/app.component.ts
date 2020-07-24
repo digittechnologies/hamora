@@ -9,6 +9,7 @@ import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs';
 import { ViewChild } from '@angular/core';
 import {startWith, map} from 'rxjs/operators';
+import { NgForm } from '@angular/forms';
 
 declare let jQuery: any;
 declare var $: any;
@@ -47,6 +48,8 @@ export class AppComponent {
   public loggedIn: boolean;
   footer: any;
   image: any;
+  message: string;
+  error: any;
 
   constructor(
     private Auth: AuthService,
@@ -59,6 +62,23 @@ export class AppComponent {
   public response:any;
   public res:any;
   ftitle: any;
+
+  public form = {
+    email: null,
+  };
+
+  onSubmit(form:NgForm){
+
+alert(form.value.email)
+
+    this.Jarwis.subscribe(form.value).subscribe(
+      data=>{
+        this.handleResponse("Operation successfuly")
+        this.response = data;  
+        this.ngOnInit();
+  })
+
+  }
   ngOnInit() {
     this.Jarwis.geturl().subscribe(
       data=>{
@@ -294,6 +314,15 @@ $('body').removeClass('navbar-search-open');
 
   private _normalizeValue(value: string): string {
     return value.toLowerCase().replace(/\s/g, '');
+  }
+
+  handleResponse(data) {
+    this.message='Save successfully'
+  //  this.router.navigateByUrl('/User');
+  }
+
+  handleError(error) {
+    this.error = error.error.error;
   }
 
 
