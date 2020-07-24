@@ -30,7 +30,7 @@
     </div>
     <mat-autocomplete #auto="matAutocomplete">
       <mat-option *ngFor="let street of filteredStreets | async" [value]="street">
-      <a href="/Content/{{street}}"> {{street}} </a>
+      <a href="/Category/{{street}}"> {{street}} </a>
       </mat-option>
   </mat-autocomplete>
   </form>   
@@ -108,7 +108,7 @@
       <div class="post post-card"  *ngFor="let all of title | paginate: {itemsPerPage: 10, currentPage: p}">
               <div class="post post-md" >
               <div class="post-thumbnail">
-                <a href="Content/{{all.id}}" (click)="navigate(all.id)"><img width="100%" height="180" src="{{appUrl}}{{all.t_image}}" alt=""></a>
+                <a href="Content/{{all.id}}" (click)="navigate(all.id)"><img width="110%" height="180" src="{{appUrl}}{{all.t_image}}" alt=""></a>
               </div>
               <div class="post-block">
                 <div class="post-header">
@@ -123,15 +123,17 @@
                     </h2>
                     <div class="post-meta">
                       <span><i class="fa fa-clock-o"></i> {{all.created_at}} by <a >{{all.firstname + ' '+ all.lastname}}</a></span>
-                      <span><a (click)="follow(all.id)" style="color: blue;">follow  </a></span>
-                      <span><a ><i class="fa fa-comment-o"></i>{{all.comment_count}}</a></span>
-                      <a class="float-right p-t-10" ><i class="fa fa-heart-o"></i> {{all.views}}</a>
+                     <span *ngIf = "all.user_id != id"><span *ngIf="loggedIn" ><a (click)="follow(all.id)" style="color: blue;" *ngIf="all.follow ==NULL || all.follow == 'Unfollowed'">Follow  </a>
+                        <a (click)="unfollow(all.id)" style="color: blue;" *ngIf="all.follow == 'Following'">Following  </a></span></span>
+                      
+                      <span><a ><i class="fa fa-comment-o" title="Comment"></i>{{all.comment_count}}</a></span>
+                      <a class="" ><i class="fa fa-eye" title="Views"></i> {{all.views}}</a>
                     </div>
                   </div>
                 </div>  
                 <p>{{all.content | slice:0:250 }}....</p>
                 <div class="post-footer"  *ngIf="!loggedIn">
-                  <a class="btn btn-secondary"  [routerLink]="['/Login']" role="button">Read More</a>
+                  <a class="btn btn-secondary"  [routerLink]="['/Login']" role="button">Read More</a>&nbsp;
                   <!-- <a class="float-right p-t-10"  (click)="follow(all.id)"><i class="fa fa-heart-o"></i> {{all.views}}</a> -->
                   <!-- <a class="float-right p-t-10" (click)="likes(all.id)"><i class="fa fa-thumbs-up"></i> {{all.like}}</a> -->
     
@@ -180,7 +182,7 @@
       </div>
 
       <!-- sidebar -->
-      <div class="col-lg-4">
+      <div class="col-lg-3">
         <div class="sidebar">
           <!-- widget search -->
           <div class="widget widget-search">

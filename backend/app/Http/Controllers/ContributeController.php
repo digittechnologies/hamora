@@ -65,6 +65,7 @@ class ContributeController extends Controller
           $request->merge(['quote'=>$data['quote']]);
           $request->merge(['title_id'=>$data['title_id']]);
           $request->merge(['content_id'=>$data['content_id']]);
+          $request->merge(['status'=>'E']);
         $contribute=Contribute::create($request-> all());
         return $contribute;
     }

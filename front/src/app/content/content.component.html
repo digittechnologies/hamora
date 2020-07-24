@@ -63,7 +63,7 @@
                   </div>
                     <div class="post-meta">
                           <span><i class="fa fa-clock-o"></i> {{res.created_at}} by <a >{{name}}</a></span>
-                          <span><a ><i class="fa fa-comment-o"></i> {{res.comment_count}} comments</a></span>
+                          <span><a ><i class="fa fa-comment-o" title="Comments"></i> {{res.comment_count}} comments</a></span>
                     </div>
                   </div>
                 </div> 
@@ -106,10 +106,11 @@
       <div class="widget widget-share" data-fixed="widget">
         <div class="widget-block">
           <span>{{res.like}}</span><br>
-          <a class="btn btn-social btn-info btn-circle" (click)="likes(res.id)" data-toggle="tooltip" title="Share on Facebook" data-placement="right" role="button"><i class="fa fa-thumbs-o-up"></i></a>
-          <a class="btn btn-social btn-facebook btn-circle" data-toggle="tooltip" title="Share on Facebook" data-placement="right" role="button"><i class="fa fa-facebook"></i></a>
+          <a class="btn btn-social btn-info btn-circle" (click)="likes(res.id)" data-toggle="tooltip" title="Like" data-placement="right" role="button"><i class="fa fa-thumbs-o-up"></i></a>
+          <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fhamorah.com%2Ftestenv%2Fplatform%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore" class="btn btn-social btn-facebook btn-circle" data-toggle="tooltip" title="Share on Facebook" data-placement="right" role="button"><i class="fa fa-facebook"></i></a>
           <a class="btn btn-social btn-twitter btn-circle" data-toggle="tooltip" title="Share on Twitter" data-placement="right" role="button"><i class="fa fa-twitter"></i></a>
           <a class="btn btn-social btn-google-plus btn-circle" data-toggle="tooltip" title="Share on Google Plus" data-placement="right" role="button"><i class="fa fa-google-plus"></i></a>
+        
         </div>
       </div>
     </div>
@@ -179,13 +180,13 @@
                 </div>
               </div> -->
             </div>
-            <a class="btn btn-success text-left m-t-15 btn-block"  role="button"><i class="fa fa-spinner fa-pulse m-r-5"></i> </a>
+            <a class="btn btn-success text-left m-t-15 btn-block"  role="button"><i class="fa fa-pulse m-r-5"></i> </a>
             <ul>
               <li>
                 <div class="comment" *ngFor="let r of comment">
                   <div class="comment-avatar">
                     <a ><img alt="" src="{{appUrl}}{{r.image}}"></a>
-                    <a class="badge badge-success"  data-toggle="tooltip" data-placement="bottom" title="Add as friend"><i class="fa fa-user-plus"></i></a>
+                    <!-- <a class="badge badge-success"  data-toggle="tooltip" data-placement="bottom" title="Add as friend"><i class="fa fa-user-plus"></i></a> -->
                   </div>
                   <div class="comment-post">
                     <div class="comment-header">
@@ -208,9 +209,9 @@
                     <p>{{r.comment}}.</p>
                     <div class="comment-footer">
                       <ul>
-                        <li><a ><i class="fa fa-heart-o"></i> Like</a></li>
-                        <li><a ><i class="icon-reply"></i> Reply</a></li>
-                        <li><a ><i class="fa fa-clock-o"></i> 3 hours ago</a></li>
+                        <!-- <li><a ><i class="fa fa-heart-o"></i> Like</a></li>
+                        <li><a ><i class="icon-reply"></i> Reply</a></li> -->
+                        <li><a ><i class="fa fa-clock-o"></i>{{r.created_at}}</a></li>
                       </ul>
                     </div>
                   </div>
@@ -390,9 +391,9 @@
                         <a ><img src="img/user/user-3.jpg" alt=""></a>
                       </div>
                       <div>
-                        <h2 class="post-title">r</h2>
+                        <h2 class="post-title"></h2>
                         <div class="post-meta">
-                          <span><i class="fa fa-clock-o"></i> August 22, 2017 by <a >Clark</a></span>
+                          <span><i class="fa fa-clock-o"></i> {{r.created_at}} by <a >{{r.firstname}}</a></span>
                           <span><a ><i class="fa fa-comment-o"></i></a></span>
                         </div>
                       </div>
@@ -405,7 +406,7 @@
                     </div>
                     <div class="social-share">
                       <a class="btn btn-social btn-facebook btn-circle" data-toggle="tooltip" title="" data-placement="bottom" role="button" data-original-title="Share on facebook"><i class="fa fa-facebook"></i></a>
-                      <span>5.345k</span>
+                      <span>0</span>
                       <a class="btn btn-social btn-twitter btn-circle" data-toggle="tooltip" title="" data-placement="bottom" role="button" data-original-title="Share on twitter"><i class="fa fa-twitter"></i></a>
                       <a class="btn btn-social btn-google-plus btn-circle"  data-toggle="tooltip" title="" data-placement="bottom" role="button" data-original-title="Share on google-plus"><i class="fa fa-google-plus"></i></a>
                     </div>

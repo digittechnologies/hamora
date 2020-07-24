@@ -32,6 +32,7 @@ export class CategoryComponent implements OnInit {
   loggedIn: boolean;
   id: any;
   token: any;
+  actid:any;
 
   constructor(
     private Auth: AuthService,
@@ -52,33 +53,17 @@ export class CategoryComponent implements OnInit {
       console.log(this.id)
       // this.image=this.appUrl+this.response.image
      
-    });
-    this.Jarwis.geturl().subscribe(
-      data=>{
-       
-       this.url= data;
-      let y = this.url.url;
-       this.appUrl = y[0].url;
-      console.log("url",this.appUrl);
-      }
-    )
-    this.Jarwis.getact().subscribe(
-      data=>{        
-      this.res = data;          
-      }
-    )
-
-
+  
+   
     this.actRoute.paramMap.subscribe((params => {
       let id = params.get('id');
-      
-      this.Jarwis.gettitles(id).subscribe(data=>{
+      this.actid = id;
+      this.Jarwis.gettitles({id:this.actid, user_id:this.id}).subscribe(data=>{
         this.response = data;
         this.loading=false;
         this.actname=this.response.acti[0].actname
         this.title=this.response.title
         this.cat=this.response.cat
-        this.follows=this.response.follow;
        
         // this.id4=this.resnh.id
         this.lenght= this.title.length
@@ -88,7 +73,7 @@ export class CategoryComponent implements OnInit {
       })
     
         }));
-
+      });
         this.Jarwis.getfootertitle().subscribe(
           data=>{
           this.ftitle = data; 
@@ -97,14 +82,31 @@ export class CategoryComponent implements OnInit {
           
           }
         )
+        this.Jarwis.geturl().subscribe(
+          data=>{
+           
+           this.url= data;
+          let y = this.url.url;
+           this.appUrl = y[0].url;
+          console.log("url",this.appUrl);
+          }
+        )
+        this.Jarwis.getact().subscribe(
+          data=>{        
+          this.res = data;          
+          }
+        )
+    
+    
   }
+  
   navigates(id){
     this.token=localStorage.getItem('token');
     //  console.log(this.token)
   if(this.token == null){
     this.router.navigate(['Login']);
   }else
-  {    this.router.navigate(['Content/'+id+'']);
+  {    this.router.navigate(['Category/'+id+'']);
       this.ngOnInit()
     }
     
@@ -133,13 +135,38 @@ export class CategoryComponent implements OnInit {
       
       );
       }
+      // follow(id){
+      //   // this.follows=this.article
+      //   let follows = this.article.filter(c => c.id == id);
+      //   let follow=follows[0]
+      //   let follow_id=follow.user_id
+      //    console.log(follow_id)
+      //   this.Jarwis.follow({title_id:id,followed_user_id:follow_id}).subscribe(
+      //     data =>  {
+      //       let snackBarRef = this.snackBar.open("following", 'Dismiss', {
+      //         duration: 2000
+      //       }) 
+      //       // this.folllow = "Following"
+      //       // console.log(data)
+      //       this.ngOnInit()
+      //     },
+      //     error => {
+      //       let snackBarRef = this.snackBar.open("You are following already", 'Dismiss', {
+      //         duration: 2000
+    
+      //       })
+      //       // this.folllow = "Follow"
+      //     }
+          
+      //     );
+      //     }
       follow(id){
         // this.follows=this.article
-        let follows = this.article.filter(c => c.id == id);
+        let follows = this.title.filter(c => c.id == id);
         let follow=follows[0]
         let follow_id=follow.user_id
          console.log(follow_id)
-        this.Jarwis.follow({title_id:id,followed_user_id:follow_id}).subscribe(
+        this.Jarwis.follow({followed_user_id:follow_id}).subscribe(
           data =>  {
             let snackBarRef = this.snackBar.open("following", 'Dismiss', {
               duration: 2000
@@ -149,15 +176,58 @@ export class CategoryComponent implements OnInit {
             this.ngOnInit()
           },
           error => {
-            let snackBarRef = this.snackBar.open("You are following already", 'Dismiss', {
-              duration: 2000
-    
-            })
-            // this.folllow = "Follow"
+            let idd = this.id;
+            this.Jarwis.follow2({follower_id:idd,user_id:follow_id}).subscribe(
+              data =>  {
+                let snackBarRef = this.snackBar.open("following", 'Dismiss', {
+                  duration: 2000
+                }) 
+                // this.folllow = "Following"
+                // console.log(data)
+                this.ngOnInit()
+              },
+              error => {
+                let snackBarRef = this.snackBar.open("Try again later", 'Dismiss', {
+                  duration: 2000
+        
+                })
+               
+              }
+              
+              );
+           
+          
           }
           
           );
           }
+          unfollow(id){
+            // alert("follow");
+            // this.follows=this.article
+            let follows = this.title.filter(c => c.id == id);
+            let follow=follows[0]
+            let follow_id=follow.user_id;
+            let idd = this.id;
+            //  console.log(follow_id)
+            this.Jarwis.unFollow({follower_id:idd,user_id:follow_id}).subscribe(
+              data =>  {
+                let snackBarRef = this.snackBar.open("Unfollowed", 'Dismiss', {
+                  duration: 2000
+                }) 
+                // this.folllow = "Following"
+                // console.log(data)
+                this.ngOnInit()
+              },
+              error => {
+                let snackBarRef = this.snackBar.open("Try again", 'Dismiss', {
+                  duration: 2000
+        
+                })
+                // this.folllow = "Follow"
+              }
+              
+              );
+              }
           refresh(){          
             this.ngOnInit()
           }

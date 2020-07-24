@@ -10,6 +10,7 @@ import {Observable} from 'rxjs';
 import { ViewChild } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
 import {startWith, map} from 'rxjs/operators';
+import { stringify } from 'querystring';
 
 declare let jQuery: any;
 
@@ -315,7 +316,7 @@ this.Jarwis.like(id).subscribe(
     let follow=follows[0]
     let follow_id=follow.user_id
      console.log(follow_id)
-    this.Jarwis.follow({title_id:id,followed_user_id:follow_id}).subscribe(
+    this.Jarwis.follow({followed_user_id:follow_id}).subscribe(
       data =>  {
         let snackBarRef = this.snackBar.open("following", 'Dismiss', {
           duration: 2000
@@ -325,15 +326,57 @@ this.Jarwis.like(id).subscribe(
         this.ngOnInit()
       },
       error => {
-        let snackBarRef = this.snackBar.open("You are following already", 'Dismiss', {
-          duration: 2000
-
-        })
-        // this.folllow = "Follow"
+        let idd = this.id;
+        this.Jarwis.follow2({follower_id:idd,user_id:follow_id}).subscribe(
+          data =>  {
+            let snackBarRef = this.snackBar.open("following", 'Dismiss', {
+              duration: 2000
+            }) 
+            // this.folllow = "Following"
+            // console.log(data)
+            this.ngOnInit()
+          },
+          error => {
+            let snackBarRef = this.snackBar.open("Try again later", 'Dismiss', {
+              duration: 2000
+    
+            })
+           
+          }
+          
+          );
+       
+      
       }
       
       );
       }
+      unfollow(id){
+        // this.follows=this.article
+        let follows = this.article.filter(c => c.id == id);
+        let follow=follows[0]
+        let follow_id=follow.user_id;
+        let idd = this.id;
+        //  console.log(follow_id)
+        this.Jarwis.unFollow({follower_id:idd,user_id:follow_id}).subscribe(
+          data =>  {
+            let snackBarRef = this.snackBar.open("Unfollowed", 'Dismiss', {
+              duration: 2000
+            }) 
+            // this.folllow = "Following"
+            // console.log(data)
+            this.ngOnInit()
+          },
+          error => {
+            let snackBarRef = this.snackBar.open("Try again", 'Dismiss', {
+              duration: 2000
+    
+            })
+            // this.folllow = "Follow"
+          }
+          
+          );
+          }
   navigate(id){
     this.router.navigate(['Category/'+id+''])
     this.ngOnInit()

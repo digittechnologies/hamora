@@ -47,11 +47,11 @@ class UserController extends Controller
             ->select('titles.*','categories.catname','contents.header','contents.content','categories.destription','categories.activity_id','activities.actname','users.firstname','users.lastname','users.middlename', 'users.familybackground', 'users.image')
             ->where('titles.status','=','Y')
             ->get(),
-            'follow'=>Follows::join('titles','follows.title_id','=','titles.id')
-            ->join('users','follows.user_id','=','users.id')
-            ->select('follows.*', )
-            ->where('follows.user_id','=', auth()->user()->id)
-           ->get(),
+        //     'follow'=>Follows::join('titles','follows.title_id','=','titles.id')
+        //     ->join('users','follows.user_id','=','users.id')
+        //     ->select('follows.*', )
+        //     ->where('follows.user_id','=', auth()->user()->id)
+        //    ->get(),
             'gallery'=>Galleries::orderBy('id')->join('titles','galleries.title_id','=','titles.id')
            ->join('users','titles.user_id','=','users.id')
             ->select('galleries.*','titles.name_title','titles.location','titles.t_image','users.firstname','users.lastname','users.middlename','users.image','users.email')
@@ -217,27 +217,37 @@ class UserController extends Controller
     }
     public function getFollows(Request $request){
         $id =$request[0];
-        // $follow= DB::table('follows')->where('followed_user_id',$id)
-        // ->where('status','Following')->get();
-        // return $follow;
         if(auth()->check()){
             return response()->json(
                 // Activities::where('id','=',1)->get(),
                 [
-            'name'=>title::orderBy('id','desc')->join('categories','titles.category_id','=','categories.id')
-            ->join('activities','categories.activity_id','=','activities.id')
+                    'name'=>DB::select('SELECT DISTINCT t.*,categories.catname,contents.header,contents.content,
+                    categories.destription,categories.activity_id,activities.actname,users.firstname,users.lastname,
+                    users.middlename, users.familybackground, users.image, (select status from follows l where
+                     l.user_id = '.$id.' and l.followed_user_id = t.user_id ) as follow from titles t LEFT JOIN 
+                     follows f ON (t.user_id = f.followed_user_id)join categories on(t.category_id = categories.id) 
+                     join activities on (categories.activity_id = activities.id) join users on (t.user_id = users.id) 
+                     join  contents on(t.id = contents.name_id) where t.status = "Y" order by id desc'),
+            // 'name'=>title::orderBy('id','desc')->join('categories','titles.category_id','=','categories.id')
+            // ->join('activities','categories.activity_id','=','activities.id')
+            // ->join('users','titles.user_id','=','users.id')
+            //    ->join ('contents','titles.id','=','contents.name_id')
+            // ->select('titles.*','categories.catname','contents.header','contents.content','categories.destription','categories.activity_id','activities.actname','users.firstname','users.lastname','users.middlename', 'users.familybackground', 'users.image')
+            // ->where('titles.status','=','Y')
+            // ->get(),
+            // 'gallery'=>DB::select('select DISTINCT galleries.*,name_title, location, t_image,t.user_id,users.firstname,
+            // users.lastname,users.middlename,users.image,users.email, (select status from follows l where l.user_id = '.$id.
+            // ' and l.followed_user_id = t.user_id ) as "follow" from titles t LEFT JOIN follows f ON (t.user_id = f.followed_user_id) 
+            // left join galleries on (galleries.title_id= t.id) join users on (t.user_id = users.id) where t.status = "Y" order by id desc')
+            'gallery'=>Galleries::orderBy('id')->join('titles','galleries.title_id','=','titles.id')
             ->join('users','titles.user_id','=','users.id')
-               ->join ('contents','titles.id','=','contents.name_id')
-            ->select('titles.*','categories.catname','contents.header','contents.content','categories.destription','categories.activity_id','activities.actname','users.firstname','users.lastname','users.middlename', 'users.familybackground', 'users.image')
-            ->where('titles.status','=','Y')
+             ->select('galleries.*','titles.name_title','titles.location','titles.t_image','users.firstname','users.lastname','users.middlename','users.image','users.email')
+         //    ->where('title_id','=',$id)
             ->get(),
-            'gallery'=>DB::select('select DISTINCT galleries.*,name_title, location, t_image,t.user_id,users.firstname,
-            users.lastname,users.middlename,users.image,users.email, (select status from follows fo where fo.followed_user_id = 5 and fo.user_id = t.user_id ) as "follow" from titles t LEFT JOIN follows f ON (t.user_id = f.user_id) 
-            left join galleries on (galleries.title_id= t.id) join users on (t.user_id = users.id)')
         //     'gallery'=>Galleries::orderBy('id')->join('titles','galleries.title_id','=','titles.id')
         //    ->join('users','titles.user_id','=','users.id')
         //    ->leftJoin('follows','follows.user_id','=','titles.user_id')
-        //     ->select('galleries.*','titles.name_title','titles.location','titles.t_image','titles.user_id','users.firstname','users.lastname','users.middlename','users.image','users.email',DB::raw('count(select * from follows where user_id =) AS follow'))
+        //     ->select('galleries.*','titles.name_title','titles.location','titles.t_image','titles.user_id','users.firstname','users.lastname','users.middlename','users.image','users.email')
         //     // ->where('follows.followed_user_id', '=', $id )
         //     // ->where('follows.user_id', '=', 'titles.user_id')
         // //    ->where('title_id','=',$id)
@@ -247,10 +257,28 @@ class UserController extends Controller
         }
     }
         public function unFollow(Request $request){
-            $id = $request[0].user_id;
-            $user = $request[0].follower_id;
-            $unfollow = DB::table('follows')->update(['status'=>'Follow']);
+            // return $request;
+            $id = $request->user_id;
+            $user = $request->follower_id;
+            $unfollow = DB::update('UPDATE follows SET status ="Unfollowed" WHERE user_id = '.$user.' AND 
+            followed_user_id = '.$id);
+            // $unfollow = DB::table('follows')->update(['status'=>'Unfollowed'])
+            // ->where('followed_user_id','=',$id )
+            // ->where('user_id','=',$user) ;
             if($unfollow){
+                return 0;
+            }
+        }
+        public function follow2(Request $request){
+            // return $request;
+            $id = $request->user_id;
+            $user = $request->follower_id;
+            $follow = DB::update('UPDATE follows SET status ="Following" WHERE user_id = '.$user.' AND 
+            followed_user_id = '.$id);
+            // $unfollow = DB::table('follows')->update(['status'=>'Unfollowed'])
+            // ->where('followed_user_id','=',$id )
+            // ->where('user_id','=',$user) ;
+            if($follow){
                 return 0;
             }
         }
