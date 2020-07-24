@@ -205,10 +205,10 @@
           <div class="widget widget-newsletter">
             <div class="widget-block" style="background-image: url('assets/img/3.jpg')">
               <div class="overlay"></div>
-              <form>
+              <form class="form-auth-small m-t-20" role="form" (ngSubmit)="onSubmit(fm)" #fm="ngForm">
                 <p>Get notification when new Contribution are available on Sabiogun.</p>
                 <div class="form-group input-icon-right">
-                  <input type="email" class="form-control" placeholder="Email address...">
+                  <input type="email" class="form-control" placeholder="Email address..." ngModel name="email">
                 </div>
                 <button type="submit" class="btn btn-primary btn-block">Subscribe</button>
               </form>
