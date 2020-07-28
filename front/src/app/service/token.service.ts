@@ -4,8 +4,8 @@ import { Injectable } from '@angular/core';
 export class TokenService {
   private iss = {
     
-    login: 'http://testenv.hamorah.com/backend/public/api/Login',
-    signup: 'http://testenv.hamorah.com/backend/public/api/signup'
+    login: 'http://hamorah.com/testenv/backend/public/api/login',
+    signup: 'http://hamorah.com/testenv/backend/public/api/signup'
 
 
     // login: 'http://localhost/sce-platform2/backend/public/api/login',
@@ -37,8 +37,8 @@ export class TokenService {
     if (token) {
       const payload = this.payload(token);
       if (payload) {
-        // return Object.values(this.iss).indexOf(payload.iss) > -1 ? true : false;
-        return true;
+        return Object.values(this.iss).indexOf(payload.iss) > -1 ? true : false;
+        // return true;
       }
     }
     return false;

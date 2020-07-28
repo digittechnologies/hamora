@@ -5,8 +5,8 @@ import { environment } from '../../environments/environment';
 export class TokenService {
   private iss = {
  
-    login: 'http://testenv.hamorah.com/backend/public/api/adminLogin',
-    signup: 'http://testenv.hamorah.com/backend/public/api/signup'
+    login: 'http://hamorah.com/testenv/backend/public/api/adminLogin',
+    signup: 'http://hamorah.com/testenv/backend/public/api/signup'
     
     // login: 'http://localhost/sce-platform2/backend/public/api/adminLogin',
 

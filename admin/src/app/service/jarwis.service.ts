@@ -7,7 +7,7 @@ import { environment } from '../../environments/environment';
 )
 export class JarwisService {
 
-  private baseUrl = 'http://testenv.hamorah.com/backend/public/api';
+  private baseUrl = 'http://hamorah.com/testenv/backend/public/api';
 
   // private baseUrl = 'http://localhost/sce-platform2/backend/public/api';
 
