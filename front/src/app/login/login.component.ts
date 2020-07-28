@@ -47,16 +47,16 @@ public role;
     
   }
   handleResponse(data) {
-    let snackBarRef = this.snackBar.open("Login successfully", 'Dismiss', {
-      duration: 2000
-    })   
    
     this.Token.handle(data.access_token);
-   
+   alert(data);
   this.Auth.changeAuthStatus(true);  
    this.disabled= false;
-   this.sav= 'Submited';
    this.router.navigateByUrl('/User/(side:Details)');
+   this.sav= 'Submited';
+   let snackBarRef = this.snackBar.open("Login successfully", 'Dismiss', {
+    duration: 2000
+  })   
    this.ngOnInit();
 
   }
