@@ -5,6 +5,7 @@ export class TokenService {
   private iss = {
     
     login: 'http://hamorah.com/testenv/backend/public/api/login',
+
     signup: 'http://hamorah.com/testenv/backend/public/api/signup'
 
 
