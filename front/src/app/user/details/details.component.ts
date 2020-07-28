@@ -29,7 +29,7 @@ export class DetailsComponent implements OnInit {
       this.profres = data;
       this.image=this.appUrl+this.profres.image;
       this.id = this.profres.id;
-      console.log("detail id",this.id);
+      // console.log("detail id",this.id);
      
     });
     this.Jarwis.geturl().subscribe(
@@ -47,20 +47,20 @@ export class DetailsComponent implements OnInit {
 
       this.article=this.ftitle.name
       this.gallery=this.ftitle.gallery
-          console.log("details",this.gallery);
+          // console.log("details",this.gallery);
       }
     )
     
     this.Jarwis.timelinebyfollow().subscribe(
       data=>{
       this.followed = data; 
-          console.log(this.followed);
+          // console.log(this.followed);
       }
     )
     this.Jarwis.displaytimeline().subscribe(
       data=>{
       this.timeline = data; 
-          console.log(this.timeline);
+          // console.log(this.timeline);
       }
     )
     

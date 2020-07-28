@@ -38,41 +38,42 @@ public role;
   ) { }
  
   onSubmit() {
-      this.disabled= true;
-     this.sav= 'Processing'
-    this.Jarwis.login(this.form).subscribe(
-      data => this.handleResponse(data),
-      error => this.handleError(error)
-      );
-    
-  }
-  handleResponse(data) {
-   
-    this.Token.handle(data.access_token);
-   alert(data);
-  this.Auth.changeAuthStatus(true);  
-   this.disabled= false;
-   this.router.navigateByUrl('/User/(side:Details)');
-   this.sav= 'Submited';
-   let snackBarRef = this.snackBar.open("Login successfully", 'Dismiss', {
+    this.disabled= true;
+   this.sav= 'Processing'
+  this.Jarwis.login(this.form).subscribe(
+    data => this.handleResponse(data),
+    error => this.handleError(error)
+    );
+  
+}
+handleResponse(data) {
+  let snackBarRef = this.snackBar.open("Login successfully", 'Dismiss', {
     duration: 2000
   })   
+//  alert(data.access_token);
+  this.Token.handle(data.access_token);
+   
+    this.Auth.changeAuthStatus(true);  
+   this.router.navigateByUrl('/User/(side:Details)'); 
+   this.disabled= false;
+   this.sav= 'Submited'
    this.ngOnInit();
 
-  }
 
-  handleError(error) {
+}
 
-    this.error = error.error.error;
-    let snackBarRef = this.snackBar.open(this.error, 'Dismiss', {
-      duration: 2000
+handleError(error) {
 
-    })
-    this.disabled= false;
-    this.sav= 'Login'
+  this.error = error.error.error;
+  let snackBarRef = this.snackBar.open(this.error, 'Dismiss', {
+    duration: 2000
+
+  })
+  this.disabled= false;
+  this.sav= 'Login'
 
 
-  }
+}
 
   ngOnInit() {
 
