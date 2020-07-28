@@ -196,4 +196,8 @@ follow2(data) {
 // subscribes(data) {
 //   return this.http.post(`${this.baseUrl}/subscribe`,data);
 // }
+
+contactus(data) {
+  return this.http.post(`${this.baseUrl}/contactus`,data);
+}
 }

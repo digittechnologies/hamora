@@ -123,3 +123,5 @@ Route::post('subscribe','MailController@subscribe');
 //      ]); 
 //  }); destroytitle
 
+
+Route::post('contactus','ContactUsController@contactus');
