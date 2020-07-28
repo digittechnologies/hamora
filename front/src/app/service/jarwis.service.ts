@@ -6,9 +6,9 @@ import { HttpClient } from '@angular/common/http';
 )
 export class JarwisService {
 
-  // private baseUrl = 'http://hamorah.com/testenv/backend/public/api';
+  private baseUrl = 'http://hamorah.com/testenv/backend/public/api';
 
-  private baseUrl = 'http://localhost/sce-platform2/backend/public/api';
+  // private baseUrl = 'http://localhost/sce-platform2/backend/public/api';
 
   constructor(private http: HttpClient) { }
   geturl(){
@@ -196,4 +196,8 @@ follow2(data) {
 // subscribes(data) {
 //   return this.http.post(`${this.baseUrl}/subscribe`,data);
 // }
+
+contactus(data) {
+  return this.http.post(`${this.baseUrl}/contactus`,data);
+}
 }

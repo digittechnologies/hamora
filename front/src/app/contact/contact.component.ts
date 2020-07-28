@@ -14,7 +14,12 @@ declare let $: any;
 })
 export class ContactComponent implements OnInit {
   result: any;
-
+  public form = {
+    'name': null,
+    'email': null,
+    'subject':null,
+    'message': null
+  };
   constructor(private Jarwis: JarwisService,public snackBar: MatSnackBar,private router: Router, public actRoute: ActivatedRoute, private coordGet: MapServiceService) { }
 
   ngOnInit() {
@@ -52,4 +57,33 @@ export class ContactComponent implements OnInit {
    
   }
 
+  contactUs(){
+    // console.log("form",this.form);
+    this.Jarwis.contactus(this.form).subscribe(
+        data=>{
+          this.form = {
+            'name': null,
+            'email': null,
+            'subject':null,
+            'message': null
+          };
+          let snackBarRef = this.snackBar.open("Sent successfully", 'Dismiss', {
+            duration: 2000
+          })  
+          // console.log("contact",data)
+        },
+        error =>{
+          if(error.error.status == 500){
+          let snackBarRef = this.snackBar.open("Failed, Check your Internet Connection", 'Dismiss', {
+            duration: 2000
+          })  
+        } else {
+          let snackBarRef = this.snackBar.open("Fill all fields", 'Dismiss', {
+            duration: 2000
+        })
+          // console.log(error.error.error);
+        }
+      }
+    );
+}
 }

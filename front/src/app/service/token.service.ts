@@ -4,12 +4,12 @@ import { Injectable } from '@angular/core';
 export class TokenService {
   private iss = {
     
-    // login: 'http://hamorah.com/testenv/backend/public/api/adminLogin',
-    // signup: 'http://hamorah.com/testenv/backend/public/api/signup'
+    login: 'http://hamorah.com/testenv/backend/public/api/login',
+    signup: 'http://hamorah.com/testenv/backend/public/api/signup'
 
 
-    login: 'http://localhost/sce-platform2/backend/public/api/login',
-    signup: 'http://localhost/sce-platform2/backend/public/api/signup'
+    // login: 'http://localhost/sce-platform2/backend/public/api/login',
+    // signup: 'http://localhost/sce-platform2/backend/public/api/signup'
 
     
   };
@@ -18,7 +18,6 @@ export class TokenService {
 
   handle(token) {
     this.set(token);
-    // console.log(this.isValid());
   }
 
 
@@ -39,6 +38,7 @@ export class TokenService {
       const payload = this.payload(token);
       if (payload) {
         return Object.values(this.iss).indexOf(payload.iss) > -1 ? true : false;
+        // return true;
       }
     }
     return false;

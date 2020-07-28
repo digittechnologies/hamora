@@ -11,7 +11,7 @@ export class MapServiceService {
   constructor(private http: HttpClient) { }
 
   getLocality(lat) {
-    return this.http.get('https://maps.googleapis.com/maps/api/geocode/json?address='+lat+'ogun+state,Nigeria&key=AIzaSyDY7BbB_D1IE3672o_w7Vtl6si-sjZF3oM');
+    return this.http.get('https://maps.googleapis.com/maps/api/geocode/json?address='+lat+'ogun+state,Nigeria&key=AIzaSyANgBZlHVUHEO1jj0fYd9pWrhcZIDc5TcU');
   }
 
   localGovt() {

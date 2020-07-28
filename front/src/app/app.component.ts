@@ -97,7 +97,6 @@ export class AppComponent {
        this.url= data;
       let y:any = this.url.url;
        this.appUrl = y[0].url;
-     console.log("url",this.appUrl);
       }
     )
     this.Jarwis.getalltitle().subscribe(data=>{
@@ -117,7 +116,7 @@ export class AppComponent {
       map(value => this._filter(value))     
       
     );
-    console.log(this.filteredStreets);
+    // console.log(this.filteredStreets);
 
     this.Auth.authStatus.subscribe(value => this.loggedIn = value);
     this.Jarwis.getact().subscribe(
@@ -132,7 +131,7 @@ export class AppComponent {
       data=>{
       this.ftitle = data; 
       this.footer=this.ftitle[0] 
-      console.log(this.footer)
+      // console.log(this.footer)
      
       
       }
@@ -316,9 +315,9 @@ $('body').removeClass('navbar-search-open');
 
   streets: string[] = this.newArr;
   private _filter(value: string): string[] {
-    console.log(this.newArr)
+    // console.log(this.newArr)
     
-    console.log(Array.isArray(this.streets));
+    // console.log(Array.isArray(this.streets));
     const filterValue = this._normalizeValue(value);
     return this.streets.filter(street => this._normalizeValue(street).includes(filterValue));
   }
