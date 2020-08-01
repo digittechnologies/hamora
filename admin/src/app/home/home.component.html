@@ -53,7 +53,7 @@
 </div>
 <!-- vd_panel-menu --> 
                              
-<a class="panel-body" href="#">
+<a class="panel-body">
         <div class="clearfix">
             <span class="menu-icon">
                 <i class="fa fa-comment"></i>
@@ -74,7 +74,7 @@
 </div>
 <!-- vd_panel-menu --> 
                               
-<a class="panel-body" href="#">
+<a class="panel-body" >
         <div class="clearfix">
             <span class="menu-icon">
                 <i class="fa fa-check-circle-o"></i>
@@ -95,7 +95,7 @@
 </div>
 <!-- vd_panel-menu --> 
                                
-<a class="panel-body" href="#">
+<a class="panel-body"  >
         <div class="clearfix">
             <span class="menu-icon">
                 <i class="fa  fa-road"></i>
@@ -116,7 +116,7 @@
 </div>
 <!-- vd_panel-menu --> 
                               
-<a class="panel-body" href="#">
+<a class="panel-body"  >
         <div class="clearfix">
             <span class="menu-icon">
                 <i class="fa fa-trash-o"></i>
@@ -126,7 +126,7 @@
             </span>  
         </div>   
         <div class="menu-text clearfix">
-            Spam
+           Editted
         </div>                                                               
 </a>        
 </div>                </div>
@@ -140,14 +140,14 @@
         <span class="menu-icon">
             <i class="fa fa-pencil"></i>
         </span>        
-        Quick Press        
+       Editor        
     </h3>
     <div class="vd_panel-menu">
 <div data-action="minimize" data-original-title="Minimize" data-toggle="tooltip" data-placement="bottom" class=" menu entypo-icon"> <i class="icon-minus3"></i> </div>
 <div data-action="refresh"  data-original-title="Refresh" data-toggle="tooltip" data-placement="bottom" class=" menu entypo-icon smaller-font"> <i class="icon-cycle"></i> </div>
-<div data-original-title="Config" data-toggle="tooltip" data-placement="bottom" class=" menu entypo-icon smaller-font">
-<div class="menu-trigger" data-action="click-trigger"> <i class="icon-cog"></i> </div>
-<div data-action="click-target" class="vd_mega-menu-content  width-xs-2  left-xs">
+<!-- <div data-original-title="Config" data-toggle="tooltip" data-placement="bottom" class=" menu entypo-icon smaller-font"> -->
+<!-- <div class="menu-trigger" data-action="click-trigger"> <i class="icon-cog"></i> </div> -->
+<!-- <div data-action="click-target" class="vd_mega-menu-content  width-xs-2  left-xs">
   <div class="child-menu">
     <div class="content-list content-menu">
       <ul class="list-wrapper pd-lr-10">
@@ -160,8 +160,8 @@
       </ul>
     </div>
   </div>
-</div>
-</div>
+</div> -->
+<!-- </div> -->
 <div data-action="close" data-original-title="Close" data-toggle="tooltip" data-placement="bottom" class=" menu entypo-icon"> <i class="icon-cross"></i> </div>
 </div>
 <!-- vd_panel-menu --> 
@@ -196,7 +196,7 @@
         <div class="form-group">
           <label class="col-sm-2 control-label">Tags</label>
           <div class="col-sm-10 controls">
-              <input  type="text" class="tags" data-rel="tags-input" value="foo,bar,baz,roffle" />
+              <input  type="text" class="tags" data-rel="tags-input" value="" />
 
           </div>
         </div> 
@@ -224,30 +224,30 @@
       </a></li>
       <li>
       <a data-toggle="tab" href="#posts-tab">
-          <span class="menu-icon"><i class="fa fa-rocket"></i></span>
+          <span class="menu-icon"><i class="fa fa-edit"></i></span>
           Recent Edited Post
           <span class="menu-active"><i class="fa fa-caret-up"></i></span>
       </a></li>
-      <li>
+      <!-- <li>
       <a data-toggle="tab" href="#list-tab">
           <span class="menu-icon"><i class="fa fa-user"></i></span>
           New Users
           <span class="menu-active"><i class="fa fa-caret-up"></i></span>
-      </a></li>
+      </a></li> -->
     </ul>
     <div class="tab-content">
       <div id="home-tab" class="tab-pane active">                                         
        <div class="content-list content-image menu-action-right">
        <div  data-rel="scroll" data-scrollheight="550">
-           <ul class="list-wrapper pd-lr-15" *ngFor="let r of resa">
+           <ul class="list-wrapper pd-lr-15" *ngFor="let r of resa.title | paginate: {itemsPerPage: 10, currentPage: p}">
                 <li *ngIf="r.status === 'N'">  
-                    <div class="menu-icon"><a href="#"><img alt="example image" src="{{this.appUrl}}{{r.t_image}}" alt="example image"></a></div> 
+                    <div class="menu-icon"><a href="{{this.appUrl}}{{r.t_image}}"><img alt="image" src="{{this.appUrl}}{{r.t_image}}"></a></div> 
                     <div class="menu-text"> 
                         {{r.name_title}} 
                     </div>                                               
                     <div class="menu-text">
                         <div class="menu-info">
-                            in <a href="#">{{r.catname}}</a> - 
+                            in <a>{{r.catname}}</a> - 
 
                             <span class="menu-date">{{r.created_at}} </span> - 
                             <span class="menu-rating vd_yellow"><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i></span>
@@ -259,7 +259,7 @@
                             <i class="fa fa-pencil"></i>
                         </div>   
                                                                                 
-                        <div class="menu-action-icon vd_red"   data-original-title="Reject" data-rel="tooltip-bottom">
+                        <div class="menu-action-icon vd_red"   data-original-title="Reject" (click)="rejects(r.id)" data-rel="tooltip-bottom">
                             <i class="fa fa-times"></i>
                         </div>                                                                                                                                       
                     </div>                                                	  
@@ -267,8 +267,8 @@
                     
            </ul>
            </div>
-           <div class="closing text-center">
-                <a href="#">See All Recent Reviews <i class="fa fa-angle-double-right"></i></a>
+           <div class="closing text-center" *ngIf = "resa.title == []">
+                <a  >See All Recent Post <i class="fa fa-angle-double-right"></i></a>
            </div>                                                                                                            
        </div>                              
 
@@ -276,9 +276,9 @@
       <div id="posts-tab" class="tab-pane sidebar-widget">
            <div class="content-list">	
                <div data-rel="scroll">
-                  <ul class="list-wrapper pd-lr-15" *ngFor="let r of resa">
+                  <!-- <ul class="list-wrapper pd-lr-15" *ngFor="let r of resa.title">
                       <li *ngIf="r.status === 'E'">  
-                          <div class="menu-icon"><a href="#"><img alt="example image" src="{{this.appUrl}}{{r.image}}" alt="example image"></a></div> 
+                          <div class="menu-icon"><a href="#"><img alt="image" src="{{this.appUrl}}{{r.t_image}}"></a></div> 
                           <div class="menu-text"> 
                               {{r.name_title}} 
                           </div>                                               
@@ -287,7 +287,6 @@
                                   in <a href="#">{{r.catname}}</a> - 
       
                                   <span class="menu-date">{{r.created_at}} </span> - 
-                                  <span class="menu-rating vd_yellow"><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i></span>
                                                                                                  
                               </div>
                           </div>
@@ -304,41 +303,41 @@
                           
                                                                                         
                     
-               </ul>
+               </ul> -->
+               <ul class="list-wrapper pd-lr-15" *ngFor="let g of edittedpost | paginate: {itemsPerPage: 10, currentPage: p}">
+                <li>  
+                    <div class="menu-icon"><a href="{{this.appUrl}}{{g.c_image}}"><img alt="image" src="{{this.appUrl}}{{g.c_image}}"></a></div> 
+                    <div class="menu-text"> 
+                        {{g.name_title}} 
+                    </div>                                               
+                    <div class="menu-text">
+                        <div class="menu-info">
+                            in <a >{{g.catname}}</a> - 
+
+                            <span class="menu-date">{{g.created_at}} </span> - 
+                            <!-- <span class="menu-rating vd_yellow"><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i></span> -->
+                                                                                           
+                        </div>
+                    </div>
+                    <div class="menu-action">  
+                        <div class="menu-action-icon vd_green" routerLink="" (click)="navigates(g.id)"  data-original-title="Approve" data-rel="tooltip-bottom">
+                            <i class="fa fa-pencil"></i>
+                        </div>   
+                                                                                
+                        <div class="menu-action-icon vd_red"   data-original-title="Reject" (click)="reject(g.id)" data-rel="tooltip-bottom">
+                            <i class="fa fa-times"></i>
+                        </div>                                                                                                                                       
+                    </div>                                                	  
+                </li>
+                    
+                                                                                  
+              
+         </ul>
                </div>
-               <div class="closing text-center" >
-                    <a href="#">See All Activities <i class="fa fa-angle-double-right"></i></a>
+               <div class="closing text-center" *ngIf = "edittedpost == []" >
+                    <a >See All Reviews <i class="fa fa-angle-double-right"></i></a>
                </div>                                                                       
            </div>                              
-      </div>
-      <div id="list-tab" class="tab-pane">
-           <div class="content-grid column-xs-2 column-sm-6 height-xs-3">	
-           <div data-rel="scroll" >
-               <ul class="list-wrapper">
-                <!-- <li> <a href="#"> 
-                        <div class="menu-icon width-50"><img alt="example image" src="assets/img/avatar/avatar.jpg"></div> 
-                     </a>
-                    <div class="menu-text"> Gabriella Montagna
-                        <div class="menu-info">
-                            <div class="menu-date">San Diego</div>                                                                         
-                            <div class="menu-action">
-                                <span class="menu-action-icon vd_green vd_bd-green" data-original-title="Approve" data-toggle="tooltip" data-placement="bottom">
-                                    <i class="fa fa-check"></i>
-                                </span> 
-                                <span class="menu-action-icon vd_red vd_bd-red" data-original-title="Reject" data-toggle="tooltip" data-placement="bottom">
-                                    <i class="fa fa-times"></i>
-                                </span>                                                                                                                   
-                            </div>                                
-                        </div>
-                    </div> 
-                 </li>                                                                                                                -->
-                    
-               </ul>
-               </div>
-               <div class="closing text-center">
-                    <a href="#">See All New Users <i class="fa fa-angle-double-right"></i></a>
-               </div>                                                                       
-           </div>      
       </div>
     </div>
 </div> <!-- tabs-widget -->              </div>

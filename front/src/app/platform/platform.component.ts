@@ -253,6 +253,12 @@ token:any;
   }
 
   locateMe(event: any) {
+    let search = "Abeokuta";
+    this.Jarwis.search(search).subscribe(
+       data=>{
+         console.log("search",data);
+       }
+    )
     this.valToSearch = event.target.value;
     // alert(this.valToSearch.category)
     //map Init
@@ -286,7 +292,7 @@ token:any;
   }
 
   public search(): void {
-   
+ 
     console.log(this.valToSearch);
     this.mapserver.getLocality(this.valToSearch.status).subscribe(data=>{
       if(this.data.results[0].address_components[1].short_name=='OG'){
@@ -408,14 +414,15 @@ this.Jarwis.like(id).subscribe(
   }
 
   nav(id){
-   this.token=localStorage.getItem('token');
+  //  this.token=localStorage.getItem('token');
   //  console.log(this.token)
-if(this.token == null){
-  this.router.navigate(['Login']);
-}else
-{    this.router.navigate(['Content/'+id+'']);
+// if(this.token == null){
+//   this.router.navigate(['Login']);
+// }else
+// {   
+   this.router.navigate(['Content/'+id+'']);
     this.ngOnInit()
-  }
+  // }
 
   }
 

@@ -394,7 +394,9 @@ handleError(error) {
     var view = (show == 'image')?this.imgs=true:this.imgs=false;
     var view = (show == 'video')?this.video=true:this.video=false;
     var view = (show == 'stream')?this.stream=true:this.stream=false;
-    if (show == 'contribute'){this.contribute=true;
+    if (show == 'contribute'){
+      if(this.loggedIn){
+      this.contribute=true;
 
       this.actRoute.paramMap.subscribe(( params => {  
       
@@ -421,20 +423,17 @@ handleError(error) {
                       this.contents=this.response.content;
                       this.comment=this.response.comment;  
                     this.gallery=this.response.gallery;     
-                    this.videos=this.response.video;   
-                    this.follows=this.response.follow;
-                    if(this.follows == 1 )   {
-                      this.folllow = "Following";
-                    }  else{
-                      this.folllow = "Follow";
-                    }       
+                    this.videos=this.response.video;         
                       this.images=this.appUrl+this.res.t_image
                       this.uimage=this.appUrl+this.res.image;
                        
                       })
-                  
+                    
                 }));
-
+              }else{
+                this.router.navigate(['Login']);
+                this.ngOnInit()
+              }
     } else{this.contribute=false;}  
   }
   onContribute(id){    

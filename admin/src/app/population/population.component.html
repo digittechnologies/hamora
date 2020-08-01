@@ -40,8 +40,8 @@
                 </tr> 
               </thead>
               <tbody>
-                <tr *ngFor="let t of title | paginate: {itemsPerPage: 10, currentPage: p}">
-                  <td>1</td>
+                <tr *ngFor="let i = index; let t of title | paginate: {itemsPerPage: 10, currentPage: p}">
+                  <td>{{i+1}}</td>
                   <td>{{t.name_title}}</td>
                   <td class="center">{{t.updated_at}}</td>
                   <td class="center">{{t.catname}}</td>

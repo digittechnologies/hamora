@@ -60,6 +60,7 @@ Route::get('cattrashtitle','DisplayController@cattrashtitle');
 Route::get('acttrashtitle','DisplayController@acttrashtitle');
 Route::get('getalltrashtitle','DisplayController@getalltrashtitle');
 Route::get('geturl','DisplayController@getUrl');
+Route::get('getalledittedpost','DisplayController@getalledittedpost');
 
 Route::get('getcontent/{id}','ContentController@getcontent');
 Route::post('updatecontent','ContentController@update');
@@ -112,6 +113,8 @@ Route::get('imgcontribute','ContributeController@imgcontribute');
 Route::get('livecontribute','ContributeController@livecontribute');
 Route::post('contributeimg','ContributeController@contributeimage');
 Route::post('editimgcontribute','ContributeController@editimgcontribute');
+Route::post('rejectPost','ContributeController@rejectPost');
+Route::post('rejectContribution','ContributeController@rejectContribution');
 Route::post('like','LikesController@likes');
 Route::post('follow','LikesController@follow');
 

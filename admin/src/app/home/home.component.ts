@@ -36,6 +36,7 @@ export class HomeComponent implements OnInit {
   tpost: any;
   url:any;
   appUrl:any;
+  edittedpost:any;
 
   
   constructor(private Jarwis: JarwisService,private router: Router,private mapserver: MapServiceService, private coordGet: MapServiceService) { }
@@ -48,20 +49,21 @@ export class HomeComponent implements OnInit {
   public fakerIt = [];
   public posts=[];
   ngOnInit() {
+this.gets();
+   
+  }
+  gets(){
     this.Jarwis.geturl().subscribe(
       data=>{
-       
-       this.url= data;
+      this.url= data;
       let y:any = this.url.url;
-       this.appUrl = y[0].url;
-    //  console.log("url",this.appUrl);
+      this.appUrl = y[0].url;
       }
     )
     this.fakerIt = this.mapserver.localGovt();
-
-      this.Jarwis.getAllPost().subscribe(data=>{
+        this.Jarwis.getAllPost().subscribe(data=>{
         this.posts = JSON.parse(JSON.stringify(data));
-        console.log(this.posts);
+        console.log("All post",this.posts);
       });
 
       this.Jarwis.displayevent().subscribe(
@@ -90,8 +92,38 @@ export class HomeComponent implements OnInit {
        
         
      })
+     this.Jarwis.getalledittedpost().subscribe(
+       data=>{
+         this.edittedpost = data;
+         console.log("editeed post", this.edittedpost);
+       },
+       error=>{
+         console.log(error.error);
+       }
+     )
   }
-
+reject(id){
+  this.Jarwis.rejectContribution(id).subscribe(
+    data=>{
+      console.log(data)
+      this.gets();
+    },
+    error=>{
+      console.log(error.error.error);
+    }
+  )
+}
+rejects(id){
+  this.Jarwis.rejectPost(id).subscribe(
+    data=>{
+      console.log(data)
+      this.gets();
+    },
+    error=>{
+      console.log(error.error.error);
+    }
+  )
+}
   navigat(id){
     // console.log(id)
    this.router.navigate(['Category/'+id+''])

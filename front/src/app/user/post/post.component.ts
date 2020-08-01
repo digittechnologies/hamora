@@ -36,6 +36,7 @@ contents:null,
   id: any;
   data: any;
   public orderForm: FormGroup;
+  public orderForm2: FormGroup;
   public items = [];
   image: any;
   constructor(private Jarwis: JarwisService, private router: Router, private formBuilder: FormBuilder,public snackBar: MatSnackBar,private coordGet: MapServiceService ) { }
@@ -50,8 +51,37 @@ contents:null,
   }
  
   onSubmit() {
-    this.form.contents=this.items  
-    console.log(this.form)
+if(this.items.length == 0){
+  this.form.contents=[{ id: 1,header: this.orderForm.value.header, content: this.orderForm.value.content, c_image :this.orderForm.value. c_image, quote: this.orderForm.value.quote}] ;  
+  if (this.form.contents.length == 0){
+    let snackBarRef = this.snackBar.open("Content are required ", 'Dismiss', {
+      duration: 4000
+    })
+   
+  }else{
+    if (this.form.image == null){
+      let snackBarRef = this.snackBar.open("Image are required ", 'Dismiss', {
+        duration: 4000
+      })
+     
+    }else{
+     
+        this.Jarwis.content(this.form).subscribe(
+    data => this.handleResponse(data),
+      error => this.handleError(error)
+ );
+      this.disabled=true;
+    this.sav= 'Posting';
+    }
+    
+  }
+} else {
+  this.form.contents=[{ id: 1,header: this.orderForm.value.header, content: this.orderForm.value.content, c_image :this.orderForm.value. c_image, quote: this.orderForm.value.quote}] ;  
+  this.items.map(item=>{
+    this.form.contents.push([item]);
+  }) 
+  this.form.contents.push([{ id: 1,header: this.orderForm2.value.header, content: this.orderForm2.value.content, c_image :this.orderForm.value. c_image, quote: this.orderForm2.value.quote}]) ;
+    console.log(this.form);
     if (this.form.contents.length == 0){
       let snackBarRef = this.snackBar.open("Content are required ", 'Dismiss', {
         duration: 4000
@@ -75,7 +105,7 @@ contents:null,
       
     }
   
-
+  }
    
   }
   handleError(error: any): void {
@@ -99,16 +129,26 @@ contents:null,
   getLength(): Number{
     return this.items.length
   }
+  // saver():void{
+  //   if(this.items.length)
+  //   let header = this.orderForm.value.header;
+  //   let content = this.orderForm.value.content;
+  //   let c_image=this.orderForm.value.c_image;
+  //   let quote=this.orderForm.value.quote;
+  //     let id = this.items.length;
+  //     this.items= [{id: id,header: header, content: content, c_image : c_image, quote: quote}]; 
+  // }
   addItem(): void{
-    let header = this.orderForm.value.header;
-    let content = this.orderForm.value.content;
+    let header = this.orderForm2.value.header;
+    let content = this.orderForm2.value.content;
     let c_image=this.orderForm.value.c_image;
-    let quote=this.orderForm.value.quote;
+    let quote=this.orderForm2.value.quote;
     let existingItem = this.items.filter(i => i.header==header && i.content == content && i.quote == quote )
+    // this.items=[{ id: 1,header: this.orderForm.value.header, content: this.orderForm.value.content, c_image :this.orderForm.value. c_image, quote: this.orderForm.value.quote}] ;
     if(existingItem.length == 0){
       let id = this.items.length;
-      this.items.push({id: id,header: header, content: content, c_image : c_image, quote: quote})      
-      // console.log(this.items),
+      this.items.push({id: id,header: header, content: content, c_image : c_image, quote: quote});    
+      console.log(this.items);
       // this.orderForm.value.header=""
       // this.orderForm.value.content=""
     }else{
@@ -200,6 +240,12 @@ contents:null,
         }
       )
       this.orderForm =  this.formBuilder.group({
+        header: '',
+        content: '',
+        quote: '',
+         c_image:''
+      }); 
+      this.orderForm2 =  this.formBuilder.group({
         header: '',
         content: '',
         quote: '',

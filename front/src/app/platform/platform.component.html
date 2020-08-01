@@ -12,7 +12,7 @@
 </section>
 <section class="toolbar toolbar-links" data-fixed="true">
   <div class="container" (submit)="search()">
-    <h5 class="m-r-30">Recent Contribution</h5>
+    <h5 class="m-r-30">Recent Contributions</h5>
     <form method="post" class="hidden-lg-down" >
       <div class="form-group input-icon-right">
         <i class="fa fa-search"></i>
@@ -128,12 +128,12 @@
             </div>  
             <p>{{all.content | slice:0:200 }}....</p>
             <div class="post-footer"  *ngIf="!loggedIn">
-              <a class="btn btn-secondary"  [routerLink]="['/Login']" role="button">Read More</a>
+               <a class="btn btn-secondary" (click)="nav(all.id)" role="button">Read More</a>
               <!-- <a class="float-right p-t-10"  (click)="follow(all.id)"><i class="fa fa-heart-o"></i> {{all.views}}</a> -->
               <!-- <a class="float-right p-t-10" (click)="likes(all.id)"><i class="fa fa-thumbs-up"></i> {{all.like}}</a> -->
 
 
-              <a class="btn btn-secondary"  role="button" [routerLink]="['/Login']">{{ folllow }} </a>
+              &nbsp;<a class="btn btn-secondary"  role="button" [routerLink]="['/Login']">{{ folllow }} </a>
               <a class="btn btn-secondary float-right p-t-10" (click)="likes(all.id)" [routerLink]="['/Login']"><i class="fa fa-thumbs-o-up"></i> {{all.like}}</a>
 
             </div>
@@ -206,7 +206,7 @@
             <div class="widget-block" style="background-image: url('assets/img/3.jpg')">
               <div class="overlay"></div>
               <form class="form-auth-small m-t-20" role="form" (ngSubmit)="onSubmit(fm)" #fm="ngForm">
-                <p>Get notification when new Contribution are available on Sabiogun.</p>
+                <p>Get notification when new Contributions are available on Hamorah.</p>
                 <div class="form-group input-icon-right">
                   <input type="email" class="form-control" placeholder="Email address..." ngModel name="email">
                 </div>

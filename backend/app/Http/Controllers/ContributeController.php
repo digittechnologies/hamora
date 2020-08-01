@@ -170,6 +170,20 @@ class ContributeController extends Controller
         ->get()
         );
     }
+    public function rejectPost(Request $request)
+    {
+        $updatet=DB::table('titles')
+        ->where('id', $request[0])
+        ->update(['status'=>'T']);
+        return $updatet;
+    }
+    public function rejectContribution(Request $request)
+    {
+        $updatet=DB::table('contributes')
+        ->where('id', $request[0])
+        ->update(['status'=>'T']);
+        return $updatet;
+    }
     /**
      * Remove the specified resource from storage.
      *
