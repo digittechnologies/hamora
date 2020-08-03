@@ -121,7 +121,7 @@
       </li>  
       <li>
           <a  data-action="click-trigger">
-              <span class="menu-icon"><i class="icon-palette"> </i></span> 
+              <span class="menu-icon"><i class="fa fa-user"> </i></span> 
               <span class="menu-text">User</span>  
               <span class="menu-badge"><span class="badge vd_bg-black-30"><i class="fa fa-angle-down"></i></span></span>
              </a>
@@ -160,8 +160,8 @@
           </div>
     </li>
       <li>
-        <a data-action="click-trigger">
-            <span class="menu-icon"><i class="fa fa-dashboard"></i></span> 
+        <a data-action="click-trigger" routerLINK>
+            <span class="menu-icon"><i class="fa fa-object-group"></i></span> 
             <span class="menu-text">Category</span>  
             <span class="menu-badge"><span class="badge vd_bg-black-30"><i class="fa fa-angle-down"></i></span></span>
            </a>
@@ -183,7 +183,7 @@
       
     <li>
         <a routerLink="" (click)="navigatestrash()" data-action="click-trigger">
-            <span class="menu-icon"><i class="icon-palette"> </i></span> 
+            <span class="menu-icon"><i class="fa fa-trash-o"> </i></span> 
             <span class="menu-text">Trash</span>  
             <!-- <span class="menu-badge"><span class="badge vd_bg-black-30"><i class="fa fa-angle-down"></i></span></span> -->
            </a>
@@ -191,12 +191,20 @@
     </li> 
     <li>
             <a routerLink="" (click)="Contribute()" data-action="click-trigger">
-                <span class="menu-icon"><i class="icon-palette"> </i></span> 
+                <span class="menu-icon"><i class="fa fa-plus"> </i></span> 
                 <span class="menu-text">Contribute</span>  
                 <!-- <span class="menu-badge"><span class="badge vd_bg-black-30"><i class="fa fa-angle-down"></i></span></span> -->
                </a>
              
-        </li>               
+        </li>  
+        <li>
+            <a routerLink="/signup" data-action="click-trigger">
+                <span class="menu-icon"><i class="fa fa-user"> </i></span> 
+                <span class="menu-text">Create New User</span>  
+                <!-- <span class="menu-badge"><span class="badge vd_bg-black-30"><i class="fa fa-angle-down"></i></span></span> -->
+               </a>
+             
+        </li>             
   </ul>
   <!-- Head menu search form ends -->         </div>             
       </div>
@@ -207,7 +215,7 @@
               <li>
                   <a >
                       <span class="menu-icon"><i class="fa fa-sign-out"></i></span>          
-                      <span class="menu-text">Logout</span>             
+                    <span class="menu-text"(click)="logout($event)">Logout</span>             
                   </a>
                   
               </li>

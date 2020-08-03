@@ -16,7 +16,7 @@
     <form method="post" class="hidden-lg-down" >
       <div class="form-group input-icon-right">
         <i class="fa fa-search"></i>
-        <input type="text" class="form-control form-control-secondary" placeholder="Type to search..." (keyup) = 'locateMe($event)' [formControl]="control" [matAutocomplete]="auto">
+        <input type="text" class="form-control form-control-secondary" id="search" placeholder="Type to search..." (keyup) = 'locateMe($event)' [formControl]="control" [matAutocomplete]="auto">
       </div>
       <div class="card _card d-none">                
         <mat-autocomplete #auto="matAutocomplete">
@@ -96,7 +96,7 @@
                     </div>
 
         <!-- post -->
-        <div class="post post-card" *ngFor="let all of article | paginate: {itemsPerPage: 10, currentPage: p}">
+        <div class="post post-card" id="result" *ngFor="let all of article | paginate: {itemsPerPage: 10, currentPage: p}">
            
           <div class="post post-md" >
           <div class="post-thumbnail">

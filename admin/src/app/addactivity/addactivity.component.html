@@ -95,7 +95,8 @@
                     <span class="label label-warning" *ngIf ="c.status=== 'E'">PENDING</span>
                     <span class="label label-success" *ngIf ="c.status=== 'Y'">LIVE</span>
                     <span class="label label-default " *ngIf ="c.status=== 'T'">TRASH</span>  </td>
-                  <td class="menu-action rounded-btn" ><a data-original-title="view" data-toggle="tooltip" data-placement="top" class="btn menu-icon vd_bg-green"> <i class="fa fa-eye"></i> </a> 
+                  <td class="menu-action rounded-btn" >
+                    <!-- <a data-original-title="view" data-toggle="tooltip" data-placement="top" class="btn menu-icon vd_bg-green"> <i class="fa fa-eye"></i> </a>  -->
                                                       <a data-original-title="edit" data-toggle="tooltip" data-placement="top" class="btn menu-icon vd_bg-yellow"  (click)="editAct(c.id)"> <i class="fa fa-pencil"></i> </a> 
                                                       <a data-original-title="delete" data-toggle="tooltip" data-placement="top" class="btn menu-icon vd_bg-red" (click)="acttrash(c.id)"> <i class="fa fa-times"></i> </a></td>
                 </tr>                

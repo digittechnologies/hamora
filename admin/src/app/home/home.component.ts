@@ -49,8 +49,13 @@ export class HomeComponent implements OnInit {
   public fakerIt = [];
   public posts=[];
   ngOnInit() {
+    // this.router.navigateByUrl('');
+    this.reload();
 this.gets();
    
+  }
+  reload(){
+    this.router.navigateByUrl('');
   }
   gets(){
     this.Jarwis.geturl().subscribe(
@@ -134,7 +139,11 @@ rejects(id){
     this.router.navigate(['edit/'+id+'']);
     this.ngOnInit()
   }
-
+  navigatecontribute(id){
+    
+    this.router.navigate(['contribute/']);
+    this.ngOnInit()
+  }
   navigate(id){
     this.router.navigate(['Content/'+id+''])
   }

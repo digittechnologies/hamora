@@ -45,6 +45,8 @@ export class EditComponent implements OnInit {
       cat: any;
       result: any;
       initcontent:any;
+      contentimage:any;
+      contribute:any;
   bio: any;
   location: any;
   paramsid: any;
@@ -118,6 +120,7 @@ export class EditComponent implements OnInit {
      this.response = data;
      console.log(this.response)
      this.res=this.response.name[0];
+     this.contribute = this.response.contribute;
      this.actname=this.res.actname;
      this.catname=this.res.catname;
      this.location=this.res.location;                  
@@ -130,6 +133,7 @@ export class EditComponent implements OnInit {
      this.contents=this.response.content
      // console.log(this.contents);
      this.comment=this.response.comment
+     this.contentimage = this.response.t_name
      this.orderForm =  this.formBuilder.group({
       name_title:this.title,
       gcontents: this.formBuilder.array([
@@ -151,7 +155,12 @@ export class EditComponent implements OnInit {
     this.result=val.gcontents;
    //  console.log(this.result)
      console.log(this.orderForm.value)
-     this.image=this.appUrl+this.res.t_image
+     if(this.res.t_image){
+     this.image=this.appUrl+this.res.t_image;
+     }
+     else if(this.res.c_image){
+       this.image = this.appUrl+this.res.c_image;
+     }
      this.uimage=this.appUrl+this.res.image;
       
      })
@@ -196,12 +205,13 @@ uploadFiles(event){
 onSubmit() {
  // console.log(this.paramsid)
 //  console.log(this.orderForm.value) 
+this.disabled=true;
+ this.sav= 'Updating';
  this.Jarwis.updatecontent({fdata:this.orderForm.value,id:this.paramsid,t_image:this.t_image,galleryimage:this.galleryimage}).subscribe(
    data => this.handleResp(data),
      error => this.handleErr(error)
 );
-this.disabled=true;
- this.sav= 'Updating';
+
 }
 handleErr(error: any): void {
  this.disabled=false;
@@ -226,7 +236,7 @@ onSubmit2() {
       error => this.handleError(error)
  );
  this.disabled=true;
-  this.sav= 'Updating';
+  // this.sav= 'Updating';
  }
  handleError(error: any): void {
   // this.disabled=false;
