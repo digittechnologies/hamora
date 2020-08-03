@@ -74,6 +74,7 @@ export class ContactComponent implements OnInit {
         },
         error =>{
           if(error.error.message == "Connection could not be established with host mail.hamorah.com [php_network_getaddresses: getaddrinfo failed: No such host is known.  #0]"){
+
           let snackBarRef = this.snackBar.open("Failed, Check your Internet Connection", 'Dismiss', {
             duration: 2000
           })  
