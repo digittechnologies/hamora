@@ -8,9 +8,11 @@ export class TokenService {
     // login: 'http://hamorah.com/testenv/backend/public/api/adminLogin',
     // signup: 'http://hamorah.com/testenv/backend/public/api/signup'
     
+
     login: 'http://localhost/sce-platform2/backend/public/api/adminLogin',
 
     signup: 'http://localhost/sce-platform2/backend/public/api/signup'
+
 
     
     // login: environment.login,
