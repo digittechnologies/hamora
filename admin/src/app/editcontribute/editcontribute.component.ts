@@ -2,6 +2,7 @@ import { Component, OnInit , Inject} from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-editcontribute',
@@ -10,7 +11,8 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 })
 export class EditcontributeComponent implements OnInit {
   c_image: any;
-  constructor(private _formBuilder:FormBuilder,private dialogRef: MatDialogRef<EditcontributeComponent>,@Inject(MAT_DIALOG_DATA) public data:any) { }
+  paramsid: any;
+  constructor(public actRoute: ActivatedRoute,private _formBuilder:FormBuilder,private dialogRef: MatDialogRef<EditcontributeComponent>,@Inject(MAT_DIALOG_DATA) public data:any) { }
   public _catForm: FormGroup;
   
   onNoClick(): void {
@@ -18,6 +20,12 @@ export class EditcontributeComponent implements OnInit {
    }
 
   ngOnInit() {
+      
+  // this.actRoute.paramMap.subscribe((params => {  
+      
+  //   this.paramsid= this.actRoute.snapshot.params['id'];
+  // }));
+  
     console.log(this.data);
   this._catForm = this._formBuilder.group({
       id: [this.data.category.id],

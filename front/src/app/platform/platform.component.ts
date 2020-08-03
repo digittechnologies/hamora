@@ -13,6 +13,11 @@ import {startWith, map} from 'rxjs/operators';
 import { NgForm } from '@angular/forms';
 
 declare let jQuery: any;
+declare var $:any;
+
+// declare var form_wizard: any;
+// declare var steps:any;
+// declare var mutil_list:any;
 
 @Component({
   selector: 'app-platform',
@@ -100,6 +105,9 @@ token:any;
   )
 
   }
+  // @HostListener('window:keyup', ['$event'])
+  // keyEvent(event: KeyboardEvent) {
+  // }
   ngOnInit() {
     this.Auth.authStatus.subscribe(value => this.loggedIn = value);
     this.Jarwis.geturl().subscribe(
@@ -201,7 +209,12 @@ token:any;
         
         }
       );
-    
+      $("#search").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#result").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
       (function($) {
         "use strict";
   
@@ -253,6 +266,12 @@ token:any;
   }
 
   locateMe(event: any) {
+    // let search = "Abeokuta";
+    // this.Jarwis.search(search).subscribe(
+    //    data=>{
+    //      console.log("search",data);
+    //    }
+    // )
     this.valToSearch = event.target.value;
     // alert(this.valToSearch.category)
     //map Init
@@ -286,7 +305,7 @@ token:any;
   }
 
   public search(): void {
-   
+ 
     console.log(this.valToSearch);
     this.mapserver.getLocality(this.valToSearch.status).subscribe(data=>{
       if(this.data.results[0].address_components[1].short_name=='OG'){
@@ -408,14 +427,15 @@ this.Jarwis.like(id).subscribe(
   }
 
   nav(id){
-   this.token=localStorage.getItem('token');
+  //  this.token=localStorage.getItem('token');
   //  console.log(this.token)
-if(this.token == null){
-  this.router.navigate(['Login']);
-}else
-{    this.router.navigate(['Content/'+id+'']);
+// if(this.token == null){
+//   this.router.navigate(['Login']);
+// }else
+// {   
+   this.router.navigate(['Content/'+id+'']);
     this.ngOnInit()
-  }
+  // }
 
   }
 

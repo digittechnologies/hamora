@@ -18,7 +18,8 @@
   <h2 class="hero-title">{{title}}</h2>
   <!-- <p>Uncharted 4: A Thief's End will explore what it means when Drake is forced back into the world of thieves.</p> -->
   <!-- <a class="btn btn-primary btn-lg btn-shadow btn-rounded m-t-20"  data-lightbox role="button">Watch Review <i class="fa fa-play"></i></a> -->
-  <a class="btn btn-outline-success btn-lg btn-shadow btn-rounded m-l-10 m-t-20 text-light" (click)="swip('contribute')"  role="button">Write Review <i class="fa fa-pencil"></i></a>
+  <a class="btn btn-outline-success btn-lg btn-shadow btn-rounded m-l-10 m-t-20 text-light" (click)="swip('contribute')" role="button">Write Review <i class="fa fa-pencil"></i></a>
+  <!-- <a class="btn btn-outline-success btn-lg btn-shadow btn-rounded m-l-10 m-t-20 text-light" (click)="swip('contribute')" *ngIf = "!loggedIn" role="button">Write Review <i class="fa fa-pencil"></i></a> -->
 </div>
 </div>
 </section>
@@ -32,7 +33,8 @@
   <li><a routerlink="" (click)="swip('image')">Images</a></li>
   <li><a routerlink="" (click)="swip('video')">Videos</a></li>
   <!-- <li><a routerlink="" (click)="swip('stream')">Streams</a></li>         -->
-  <li><a routerlink="" (click)="swip('contribute')">Contribute</a></li>
+  <!-- <li><a routerlink="['/Login']" *ngIf = "!loggedIn" >Contribute</a></li> -->
+  <li><a routerlink="" (click)="swip('contribute')" >Contribute</a></li>
 </ul>
 </div>
 </section>

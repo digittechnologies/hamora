@@ -71,10 +71,16 @@ public role;
   handleError(error) {
 
     this.error = error.error.error;
+    if(this.error == null || this.error == undefined){
+      let snackBarRef = this.snackBar.open("Failed", 'Dismiss', {
+        duration: 2000
+      })
+    }else{
     let snackBarRef = this.snackBar.open(this.error, 'Dismiss', {
       duration: 2000
 
     })
+  }
     this.disabled= false;
     this.sav= 'Login'
 

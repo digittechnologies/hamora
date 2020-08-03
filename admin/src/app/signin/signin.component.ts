@@ -36,7 +36,7 @@ export class SigninComponent implements OnInit {
   };
   disable= "disabled";
   disabled= true;
-  sav= 'Register'
+  sav = 'Register';
   public error: any;
   public gender;
   response: Object;
@@ -72,7 +72,7 @@ export class SigninComponent implements OnInit {
     handleResponse(data) {
       this.disabled=true; 
       this.Token.handle(data.access_token);
-      this.router.navigateByUrl('/User/(side:Profile)');
+      this.router.navigateByUrl('');
       this.disabled=false; 
       this.sav= 'Saved';
       this.ngOnInit();

@@ -73,12 +73,13 @@
         <!-- <li class="group-heading">Category</li> -->
         <li *ngIf="cr.activity_id === c.id">  
             <a  > 
-                    <div class="menu-icon"><img src="assets/img/avatar/avatar.jpg" alt="example image"></div> 
+                    <!-- <div class="menu-icon"><img src="assets/img/avatar/avatar.jpg" alt="image"></div>  -->
                     <div class="menu-text">{{cr.catname}}
                         <div class="menu-info">
                             <span class="menu-date" >{{cr.destription}}</span>                                                         
                         </div>
-                        <div class="menu-info rounded-btn "><a data-original-title="view" data-toggle="tooltip" data-placement="top" class="btn menu-icon "> <i style="width:40px;" class="fa fa-eye"></i> </a> 
+                        <div class="menu-info rounded-btn ">
+                          <!-- <a data-original-title="view" data-toggle="tooltip" data-placement="top" class="btn menu-icon "> <i style="width:40px;" class="fa fa-eye"></i> </a>  -->
                           <a data-original-title="edit" data-toggle="tooltip" data-placement="top" class="btn menu-icon "  (click)="editCategory(cr.id)"> <i style="width:40px;" class="fa fa-pencil" style="color:yellowgreen;"></i> </a> 
                           <a data-original-title="delete" data-toggle="tooltip" data-placement="top" class="btn menu-icon " (click)="catetrash(cr.id)"> <i style="width:40px;" class="fa fa-times" style="color: red;"></i> </a></div>
                     </div>                    

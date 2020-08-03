@@ -43,8 +43,8 @@
                 </tr> 
               </thead>
               <tbody>
-                <tr *ngFor="let t of res">
-                  <td>{{t.content_id}}</td>
+                <tr *ngFor="let t of res; let i = index;">
+                  <td>{{i + 1}}</td>
                   <td>{{t.header}}</td>
                   
                   <td class="center">{{t.content}}</td>
@@ -97,8 +97,8 @@
                   </tr> 
                 </thead>
                 <tbody>
-                  <tr *ngFor="let t of resimg">
-                    <td>{{t.id}}</td>
+                  <tr *ngFor="let t of resimg; let i = index;">
+                    <td>{{i + 1}}</td>
                   <td class="center"><img src="{{appUrl}}{{t.image_name}}" style="width:50%;height:200px"></td>
                     <!-- <td>{{t.header}}</td> -->
                     <!-- <td class="center">{{t.content}}</td> -->
@@ -152,8 +152,8 @@
                   </tr> 
                 </thead>
                 <tbody>
-                  <tr *ngFor="let t of resp">
-                    <td>{{t.content_id}}</td>
+                  <tr *ngFor="let t of resp; let i = index;">
+                    <td>{{i + 1}}</td>
                     <td>{{t.header}}</td>
                     
                     <td class="center">{{t.content}}</td>

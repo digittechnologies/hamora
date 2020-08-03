@@ -6,9 +6,9 @@ import { HttpClient } from '@angular/common/http';
 )
 export class JarwisService {
 
-  private baseUrl = 'http://hamorah.com/testenv/backend/public/api';
+  // private baseUrl = 'http://hamorah.com/testenv/backend/public/api';
 
-  // private baseUrl = 'http://localhost/sce-platform2/backend/public/api';
+  private baseUrl = 'http://localhost/sce-platform2/backend/public/api';
 
   constructor(private http: HttpClient) { }
   geturl(){
@@ -138,6 +138,9 @@ export class JarwisService {
 //  search(searchTerm:string) {
 //     return this.http.get(`${this.baseUrl}/getalltitle/${searchTerm}`)
 //   }
+ search(searchTerm:string) {
+    return this.http.get(`${this.baseUrl}/search/${searchTerm}`)
+  }
 contribute(data) {
   return this.http.post(`${this.baseUrl}/contribute`,data,{headers:{
     Authorization:`Bearer ${localStorage.token}`

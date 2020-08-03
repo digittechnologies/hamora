@@ -87,15 +87,16 @@
                 </tr> 
               </thead>
               <tbody>
-                <tr *ngFor="let c of res  | paginate: {itemsPerPage: 10, currentPage: p}">
-                  <td>1</td>
+                <tr *ngFor="let c of res  | paginate: {itemsPerPage: 10, currentPage: p}; let i = index">
+                  <td>{{i+1}}</td>
                   <td>{{c.actname}}</td>
                   <td class="center">{{c.destription}}</td>
                   <td class="center"><span class="label label-danger" *ngIf ="c.status=== 'N'">INACTIVE</span>
                     <span class="label label-warning" *ngIf ="c.status=== 'E'">PENDING</span>
                     <span class="label label-success" *ngIf ="c.status=== 'Y'">LIVE</span>
                     <span class="label label-default " *ngIf ="c.status=== 'T'">TRASH</span>  </td>
-                  <td class="menu-action rounded-btn" ><a data-original-title="view" data-toggle="tooltip" data-placement="top" class="btn menu-icon vd_bg-green"> <i class="fa fa-eye"></i> </a> 
+                  <td class="menu-action rounded-btn" >
+                    <!-- <a data-original-title="view" data-toggle="tooltip" data-placement="top" class="btn menu-icon vd_bg-green"> <i class="fa fa-eye"></i> </a>  -->
                                                       <a data-original-title="edit" data-toggle="tooltip" data-placement="top" class="btn menu-icon vd_bg-yellow"  (click)="editAct(c.id)"> <i class="fa fa-pencil"></i> </a> 
                                                       <a data-original-title="delete" data-toggle="tooltip" data-placement="top" class="btn menu-icon vd_bg-red" (click)="acttrash(c.id)"> <i class="fa fa-times"></i> </a></td>
                 </tr>                

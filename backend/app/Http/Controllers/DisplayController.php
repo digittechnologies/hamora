@@ -13,6 +13,7 @@ use App\User;
 use App\Galleries;
 use App\Follows;
 use App\url_setting;
+use App\Contribute;
 class DisplayController extends Controller
 {
     /**
@@ -199,17 +200,35 @@ class DisplayController extends Controller
     public function getalladmintitle()
     {
         return response()->json(
-          
-                title::orderBy('id', 'desc')->join('categories','titles.category_id','=','categories.id')
+          [
+            'title' =>title::orderBy('id', 'desc')->join('categories','titles.category_id','=','categories.id')
                 ->join('users','titles.user_id','=','users.id')
             ->select('titles.*','categories.catname','categories.destription','categories.activity_id','users.firstname','users.lastname','users.middlename') 
-            ->limit(10) 
-            ->get()
+           ->where('titles.status','=','N')
+            // ->limit(10) 
+            ->get(),
+            'gallery'=>Galleries::orderBy('id','desc')->join('titles','galleries.title_id','=','titles.id')
+            ->join('users','titles.user_id','=','users.id')
+             ->select('galleries.*','titles.name_title','titles.location','titles.t_image','users.firstname','users.lastname','users.middlename','users.image','users.email')
+             ->where('titles.status','=','N')
+             //    ->where('title_id','=',$id)
+            ->get(),
         
-        );
+    ]);
         
     }
-   
+   public function getalledittedpost(){
+    //    return response()->json(
+    //     contribute::orderBy('id','desc')->select('contributes.*')
+    //    ->where('contributes.status','=','E') ->where('contributes.status','=','N')->get()
+    //    );
+    $edittedpost = DB::table('contributes')->select('contributes.*','titles.name_title','categories.catname')
+    ->join('titles','contributes.title_id','=','titles.id')
+    ->join('categories','titles.category_id','=','categories.id')
+    ->where('contributes.status','=','N')->orWhere('contributes.status','=','E')
+    ->orderBy('id','desc')->get();
+    return $edittedpost;
+   }
     public function getfootertitle()
     {
         return response()->json([
