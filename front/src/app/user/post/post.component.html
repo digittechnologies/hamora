@@ -47,35 +47,7 @@
                     <input type="text" class="form-control" id="description" placeholder="Name / Tittle" [(ngModel)]="form.name_title" name="name_title" required>
                     <!-- <small class="form-text">Short Description about your topic content.</small> -->
                   </div>
-                  <div *ngIf="getLength()">
-                    <div [formGroup]="orderForm" >
-                    <div  *ngFor="let i of items">
-                        <div class="form-group">
-                            <label for="description">Header</label>
-                            <input type="text" class="form-control" id="description" placeholder="Header" value="{{i.header}}"  formControlName="header"  required>
-                            <!-- <small class="form-text">Short Description about your topic content.</small> -->
-                          </div>
-                          <div class="form-group m-t-25">
-                              <label for="description">Content</label>
-
-                            <textarea   name="content" rows="8" style="width: 100%"  formControlName="content">{{i.content}}</textarea>
-                            <!-- <textarea id="summernote" [(ngModel)]="form.contents" name="contents">cnxvcxnvcmn</textarea> -->
-                            <!-- <small class="form-text">Others will se when reach your topic (max 50 character).</small> -->
-                          </div>
-                          <div class="form-group">
-                            <label for="description">Quote </label>
-                            <input type="text" class="form-control" id="description" placeholder="Quote" formControlName="quote" value="{{i.quote}}" required>
-                            <!-- <small class="form-text">Short Description about your topic content.</small> -->
-                          </div>
-                          <div class="form-group">
-
-                            <img src="{{i.c_image}}" style="width: 20%;">
-                            </div>
-                          <input type="button"  class="btn btn-primary btn-sm" (click)="deleteItem(i.id)" value="Remove Details">
-
-                    </div></div></div>
-                  
-                 
+              
                     <div [formGroup]="orderForm">
                     <div class="form-group">
                         <label for="description">Header</label>
@@ -104,7 +76,36 @@
                           </div><!-- /.form-group -->
                       </div>
 </div>
- <button class="btn btn-default  btn-rounded btn-shadow float-right" (click)="addItem()">Add content</button>                               
+<div *ngIf="getLength()">
+  <div [formGroup]="orderForm2" >
+  <div  *ngFor="let i of items">
+      <div class="form-group">
+          <label for="description">Header</label>
+          <input type="text" class="form-control" id="description" placeholder="Header" value="{{i.header}}"  formControlName="header"  required>
+          <!-- <small class="form-text">Short Description about your topic content.</small> -->
+        </div>
+        <div class="form-group m-t-25">
+            <label for="description">Content</label>
+
+          <textarea   name="content" rows="8" style="width: 100%"  formControlName="content">{{i.content}}</textarea>
+          <!-- <textarea id="summernote" [(ngModel)]="form.contents" name="contents">cnxvcxnvcmn</textarea> -->
+          <!-- <small class="form-text">Others will se when reach your topic (max 50 character).</small> -->
+        </div>
+        <div class="form-group">
+          <label for="description">Quote </label>
+          <input type="text" class="form-control" id="description" placeholder="Quote" formControlName="quote" value="{{i.quote}}" required>
+          <!-- <small class="form-text">Short Description about your topic content.</small> -->
+        </div>
+        <div class="form-group">
+
+          <img src="{{i.c_image}}" style="width: 20%;">
+          </div>
+        <input type="button"  class="btn btn-primary btn-sm" (click)="deleteItem(i.id)" value="Remove Details">
+
+  </div></div></div>
+
+
+ <button class="btn btn-default  btn-rounded btn-shadow float-right" (click)="addItem()">Save and Add New content</button>                               
 
                 </div>
                 <div class="tab-pane" id="gallery" role="tabpanel">

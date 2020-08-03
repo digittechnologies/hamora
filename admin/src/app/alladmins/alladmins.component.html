@@ -40,8 +40,8 @@
               </tr> 
             </thead>
             <tbody>
-              <tr *ngFor="let t of res | paginate: {itemsPerPage: 10, currentPage: p}">
-                <td>1</td>
+              <tr *ngFor="let i = index; let t of res | paginate: {itemsPerPage: 10, currentPage: p}">
+                <td>{{i+1}}</td>
                 <td>{{t.firstname}} {{t.middlename}} {{t.lastname}}</td>
                 <td class="center">{{t.updated_at}}</td>
                 <td class="center">{{t.role_id}}</td>

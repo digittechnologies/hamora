@@ -20,17 +20,19 @@ import { ProfileComponent } from './user/profile/profile.component';
 import { AlladminsComponent } from './alladmins/alladmins.component';
 import { AllusersComponent } from './allusers/allusers.component';
 import { ContributeComponent } from './contribute/contribute.component';
+import { EditcontributeComponent } from './editcontribute/editcontribute.component';
 
 const routes: Routes = [
 
   {path: '', component: HomeComponent,canActivate: [AfterLoginService]},  
-  {path: 'Login', component: LoginComponent,canActivate: [BeforeLoginService] },
-  {path: 'Signin', component: SigninComponent,canActivate: [BeforeLoginService] },
+  {path: '', component: LoginComponent,canActivate: [BeforeLoginService] },
+  {path: 'signup', component: SigninComponent,canActivate: [AfterLoginService] },
 
 
-  {path: 'dashboard', component: DashboardComponent,canActivate: [AfterLoginService] },
+  // {path: 'dashboard', component: DashboardComponent,canActivate: [AfterLoginService] },
   {path: 'population/:id', component: PopulationComponent,canActivate: [AfterLoginService] },
   {path: 'edit/:id', component: EditComponent,canActivate: [AfterLoginService] },
+  {path: 'editcon/:id', component: EditcontributeComponent,canActivate: [AfterLoginService] },
   {path: 'trash', component:  TrashComponent,canActivate: [AfterLoginService]},
   {path: 'contribute', component:  ContributeComponent,canActivate: [AfterLoginService]},
   {path: 'Category/:id', component: CategoryComponent},

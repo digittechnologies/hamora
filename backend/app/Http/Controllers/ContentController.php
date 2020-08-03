@@ -29,12 +29,12 @@ class ContentController extends Controller
             return response()->json(
            
                 [
-            'follow'=>Follows::orderBy('titles.id','desc')->join('titles','follows.title_id','=','titles.id')
+        //     'follow'=>Follows::orderBy('titles.id','desc')->join('titles','follows.title_id','=','titles.id')
            
-            ->join('users','follows.user_id','=','users.id')
-            ->select('follows.*' )
-            ->where('follows.user_id','=', auth()->user()->id)
-           ->where('follows.title_id','=',$id)->count(),
+        //     ->join('users','follows.user_id','=','users.id')
+        //     ->select('follows.*' )
+        //     ->where('follows.user_id','=', auth()->user()->id)
+        //    ->where('follows.title_id','=',$id)->count(),
             'name'=>title::orderBy('titles.id','desc')->join('categories','titles.category_id','=','categories.id')
             ->join('activities','categories.activity_id','=','activities.id')
             ->join('users','titles.user_id','=','users.id')
@@ -65,7 +65,7 @@ class ContentController extends Controller
            ->join('users','contributes.user_id','=','users.id')
             ->select('contributes.*','titles.name_title','titles.location','titles.t_image','users.firstname','users.lastname','users.middlename','users.image','users.email')
            ->where('contributes.title_id','=',$id)
-           ->where('contributes.status','=','Y')
+        //    ->where('contributes.status','=','Y')
            ->get(),
            'cgallery'=>Galleries::orderBy('id','desc')->join('titles','galleries.title_id','=','titles.id')
            ->join('users','titles.user_id','=','users.id')
@@ -286,15 +286,16 @@ foreach ($image_name as $img) {
     ->where('id', $id)
     ->update(['status' =>'E','name_title'=>$name_title]); 
     foreach ($detcontents as $item) {
-        $update = DB::table('contents')
+       $updates = DB::table('contents')
                     ->where([
                         ['id','=',$item['id']]
                     ])
                     ->update(array('header' => $item['header'], 'content' => $item['content']));
     
     }
+    // return $updatetitle;
     
-    if($update | $updatetitle | $gally){
+    if($updatetitle || $gally ||updates){
         return $id;
     }else{
         return '

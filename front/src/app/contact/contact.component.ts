@@ -73,15 +73,20 @@ export class ContactComponent implements OnInit {
           // console.log("contact",data)
         },
         error =>{
-          if(error.error.status == 500){
+          if(error.error.message == "Connection could not be established with host mail.hamorah.com [php_network_getaddresses: getaddrinfo failed: No such host is known.  #0]"){
+
           let snackBarRef = this.snackBar.open("Failed, Check your Internet Connection", 'Dismiss', {
             duration: 2000
           })  
+        } else if(error.error.message == undefined){
+
+          let snackBarRef = this.snackBar.open("Failed", 'Dismiss', {
+            duration: 2000
+          })
         } else {
           let snackBarRef = this.snackBar.open("Fill all fields", 'Dismiss', {
             duration: 2000
         })
-          // console.log(error.error.error);
         }
       }
     );

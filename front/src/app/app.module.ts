@@ -47,6 +47,8 @@ import { ContributeComponent } from './contribute/contribute.component';
 import { MapvComponent } from './content/mapv/mapv.component';
 import { StoryComponent } from './content/story/story.component';
 import { MapComponent } from './map/map.component';
+import { SearchFilterPipe } from './search-filter.pipe';
+import { EditcontributionComponent } from './editcontribution/editcontribution.component';
 
 
 
@@ -78,7 +80,9 @@ import { MapComponent } from './map/map.component';
     ContributeComponent,
     MapvComponent,
     StoryComponent,
-    MapComponent
+    MapComponent,
+    SearchFilterPipe,
+    EditcontributionComponent
 
   ],
   imports: [
